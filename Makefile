@@ -51,7 +51,7 @@ $(NAME).pdf: $(NAME).tex $(BIBFILES)
 	$(LATEX) $(NAME).tex
 	@echo '-------------------- latex #3 --------------------'
 	$(LATEX) $(NAME).tex
-	cp $(NAME).pdf nanocubes.pdf
+
 dw:
 	@-$(RM) $(NAME).dw
 	@echo '-------------------- doubled words --------------------'
