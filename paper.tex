@@ -74,8 +74,7 @@
 
 %% Paper title.
 
-\title{RCloud: Integrating Exploratory Visualization, Analysis and
-  Deployment}
+\title{RCloud: Integrating Exploratory Visualization, Analysis and Deployment}
 
 %% This is how authors are specified in the journal style
 
@@ -173,19 +172,21 @@
 \section{Related Work}
 
 Kandel's interview study points out the typical ``explore'',
-``model'', ``report'' cycle~\cite{Kandel:2012:EDA}. RCloud seeks to
-reduce the impedance mismatch. Kandel et al point out that larger teams
-are becoming more common in data analysis, that supporting
+``model'', ``report'' cycle~\cite{Kandel:2012:EDA}. There
+are many discontinuities in this cycle that cost time and
+effort to overcome.  RCloud seeks to reduce this impedance
+mismatch. Kandel et al also point out that larger teams are
+becoming more common in data analysis, that supporting
 collaboration is a difficult and important problem, and that
-sharing and versioning of data sources and artifacts was hindered
-by technology.  ``We found that analysts typically did not share scripts
-with each other. Scripts that were shared were disseminated similarly to
-intermediate data: either through shared drives or email.
-Analysts rarely stored their analytic code in source control.''
-Their work points to the need for better technology to support
-these aspects of data analysis in teams.
+sharing and versioning of data sources and artifacts is hindered
+by current technology in practice. ``We found that analysts typically
+did not share scripts with each other. Scripts that were shared were
+disseminated similarly to intermediate data: either through shared
+drives or email. Analysts rarely stored their analytic code in
+source control.'' Their work points to the opportunity for better
+technology to support collaboration and sharing by data analysis teams.
 
-Heer and Agarwala identify a large number of design considerations for
+Heer and Agarwala identify many design considerations for
 collaborative visual analytics~\cite{Heer:2008:DCF}. \emph{Starring},
 the system for signaling interest in notebooks, described in
 Section~\ref{sec:starring}, addresses social-psychological incentives,
@@ -193,12 +194,17 @@ recommendation, and voting and ranking. RCloud's integrated deployment
 mechanism, described in Section~\ref{sec:deployment}, addresses cost of
 integration, content export, presentation and view sharing. Notebooks,
 and the integrated version control system for them, described in
-Section~\ref{sec:notebooks}, addresses modularity and granularity, and
+Section~\ref{sec:notebooks}, address modularity and granularity, and
 artifact histories.
 
-Our work has been inspired or has benefited from other modern technologies
-to improve the data analysis environments and processes, such as RStudio,
-R packages such as Markdown, knitr and Shiny, and iPython notebooks, to name a few.  % explain
+Our work has been inspired by and has benefited from other recent projects
+to improve data analysis environments and processes, including RStudio,
+R packages such as Markdown, knitr and Shiny, and iPython notebooks,
+to name a few. RStudio aims at providing an integrated development environment
+for R programming, with support for publishing code in packages. Markdown,
+knitR and Shiny provide R with sophisticated reporting capabilities, including
+interactive web interfaces. iPython \cite{Perez:2007:ISI:1251563.1251831}
+shares many of our goals...
 
 \section{System Architecture}
 
@@ -217,16 +223,11 @@ R packages such as Markdown, knitr and Shiny, and iPython notebooks, to name a f
 \section{Discussion and Limitations}
 
 % limitations
-Previous studies have pointed out frequent difficulties in the
-achieving production-level flexibility, scalability and maintainability
-with experimental code created by data analysts.  These properties cannot
-be ensured by any programming environment, but a reasonable approach in
-general is to provide suitable tools that make it easier for well-intentioned
-programmers to adopt such practices.
-
-% security issues
-
-\section{Conclusions}
+Previous studies have pointed out difficulties in achieving production-level
+flexibility, scalability and maintainability with experimental code created
+by data analysts. These properties cannot be ensured by any programming environment,
+but suitable tools can help well-intentioned analysts and programmers to create
+robust applications with less effort.
 
 \bibliographystyle{abbrv}
 
