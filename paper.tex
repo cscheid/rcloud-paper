@@ -167,24 +167,39 @@
 
 \firstsection{Introduction}
 
+"Coordination is done by meetings"
+
+"how do you trace an automated alert back to an EDA environment ?"
+
+
 \maketitle
 
 \section{Related Work}
 
-Kandel's interview study points out the typical ``explore'',
-``model'', ``report'' cycle~\cite{Kandel:2012:EDA}. There
-are many discontinuities in this cycle that cost time and
-effort to overcome.  RCloud seeks to reduce this impedance
-mismatch. Kandel et al also point out that larger teams are
-becoming more common in data analysis, that supporting
-collaboration is a difficult and important problem, and that
-sharing and versioning of data sources and artifacts is hindered
-by current technology in practice. ``We found that analysts typically
-did not share scripts with each other. Scripts that were shared were
+Kandel et al. argue in their review of data wrangling work that data
+cleaning, wrangling and transformation is a major part of exploratory
+analysis and visualization~\cite{Kandel:2011:RDI}. Although RCloud
+does not by itself include modules specific to data cleaning and
+wrangling, we note from internal experience that these cleaning
+scripts themselves tend to change over time. RCloud addresses this
+issue by providing easy publishing of data-cleaning notebooks as web
+services, which reduces the total data-cleaning effort across an
+organization.
+
+Kandel et al.'s interview study points out the typical ``explore'',
+``model'', ``report'' cycle in enterprise data
+analysis~\cite{Kandel:2012:EDA}. There are many discontinuities in
+this cycle that cost time and effort to overcome.  RCloud seeks to
+reduce this impedance mismatch. They also point out that larger teams
+are becoming more common in data analysis, that supporting
+collaboration is a difficult and important problem, and that sharing
+and versioning of data sources and artifacts is hindered by current
+technology in practice. ``We found that analysts typically did not
+share scripts with each other. Scripts that were shared were
 disseminated similarly to intermediate data: either through shared
-drives or email. Analysts rarely stored their analytic code in
-source control.'' Their work points to the opportunity for better
-technology to support collaboration and sharing by data analysis teams.
+drives or email. Analysts rarely stored their analytic code in source
+control.'' Their work points to the opportunity for better technology
+to support collaboration and sharing by data analysis teams.
 
 Heer and Agarwala identify many design considerations for
 collaborative visual analytics~\cite{Heer:2008:DCF}. \emph{Starring},
@@ -203,7 +218,7 @@ R packages such as Markdown, knitr and Shiny, and iPython notebooks,
 to name a few. RStudio aims at providing an integrated development environment
 for R programming, with support for publishing code in packages. Markdown,
 knitR and Shiny provide R with sophisticated reporting capabilities, including
-interactive web interfaces. iPython \cite{Perez:2007:ISI:1251563.1251831}
+interactive web interfaces. IPython \cite{Perez:2007:ISI:1251563.1251831}
 shares many of our goals...
 
 \section{System Architecture}
@@ -215,6 +230,18 @@ shares many of our goals...
 \subsection{Reputation and Interest: starring\label{sec:starring}}
 
 \subsection{Deployment of notebooks\label{sec:deployment}}
+
+Notebooks as versioned subroutines, web services.
+
+Notebooks by default are visible by the entire organization: there
+exists a URL for every notebook in RCloud. This is deliberate. As
+pointed out by Wattenberg and Kriss~\cite{Wattenberg:2011:DFS}, broad
+access to analysis outputs (in their case, in the form of NameVoyager)
+increases long-term engagement partly by the crossreferences in the
+web. Our main RCloud deployment is only visible inside an intranet,
+but we have nevertheless found anecdotal support for this theory by
+noticing links to RCloud notebooks in internal discussion fora and
+mailing lists.
 
 \section{Case Studies}
 
@@ -228,6 +255,11 @@ flexibility, scalability and maintainability with experimental code created
 by data analysts. These properties cannot be ensured by any programming environment,
 but suitable tools can help well-intentioned analysts and programmers to create
 robust applications with less effort.
+
+Asynchronous collaborative visual analytics
+(ACVA)~\cite{Chen:2011:SEC}. This paper addresses visualization
+\emph{of} the ACVA process. It will be important when we talk about
+recommendation systems, and navigation of the set of notebooks, etc.
 
 \bibliographystyle{abbrv}
 
