@@ -189,7 +189,7 @@ organization.
 Kandel et al.'s interview study points out the typical ``explore'',
 ``model'', ``report'' cycle in enterprise data
 analysis~\cite{Kandel:2012:EDA}. There are many discontinuities in
-this cycle that cost time and effort to overcome.  RCloud seeks to
+this cycle that cost time and effort to overcome. RCloud seeks to
 reduce this impedance mismatch. They also point out that larger teams
 are becoming more common in data analysis, that supporting
 collaboration is a difficult and important problem, and that sharing
@@ -203,7 +203,7 @@ to support collaboration and sharing by data analysis teams.
 
 Heer and Agarwala identify many design considerations for
 collaborative visual analytics~\cite{Heer:2008:DCF}. \emph{Starring},
-the system for signaling interest in notebooks, described in
+the means for signaling interest in notebooks, described in
 Section~\ref{sec:starring}, addresses social-psychological incentives,
 recommendation, and voting and ranking. RCloud's integrated deployment
 mechanism, described in Section~\ref{sec:deployment}, addresses cost of
@@ -212,10 +212,22 @@ and the integrated version control system for them, described in
 Section~\ref{sec:notebooks}, address modularity and granularity, and
 artifact histories.
 
-Manyeyes \cite{Viegas:2007:MAS} was a landmark system supporting the
-integration of social media with visualization and data publishing.
+Manyeyes \cite{Viegas:2007:MAS} was a landmark system for the integration
+of social media with visualization and data publishing. We build on this
+work by defining a rich interface for collaboration about code and for
+operating on metadata.
 
-\cite{Perer:2008:ISA}
+The need for integrating statistics and visualization has been
+highlighted in previous studies and is widely understood by
+various technical communities \cite{Perer:2008:ISA}
+
+There has been considerable work on specific techniques such as
+social bookmarking \cite{Millen:2006:DSB} \cite{Heer:2007:VAV} that could benefit data scientists and deployment
+specialists if they were made available, together, in a broader environment.
+
+\cite{Santos:2009:VST}
+
+\cite{Mates:2011:CSA}
 
 Our work has been inspired by and has benefited from other recent projects
 to improve data analysis environments and processes, including RStudio,
@@ -225,6 +237,11 @@ for R programming, with support for publishing code in packages. Markdown,
 knitR and Shiny provide R with sophisticated reporting capabilities, including
 interactive web interfaces. IPython \cite{Perez:2007:IAS}
 shares many of our goals...
+
+Reducing gap between implementors and deployers. Don't want a team of
+20 IT people to support 5 data scientists.
+
+% devops for data science.
 
 \section{System Architecture}
 
