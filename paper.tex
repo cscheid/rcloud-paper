@@ -76,6 +76,8 @@
 
 \title{RCloud: Integrating Exploratory Visualization, Analysis and Deployment}
 
+% DevOps for Visual Analysis and Data Science
+
 %% This is how authors are specified in the journal style
 
 %% indicate IEEE Member or Student Member in form indicated below
@@ -103,7 +105,7 @@
   while data scientist teams could greatly benefit from easier sharing of
   scripts and data feeds, experiments, annotations, and automated
   recommendations, which are well beyond what traditional version control
-  systems provide.  In this paper, we propose RCloud, a system that supports
+  systems provide.  \todo{sell idea, not system} In this paper, we propose RCloud, a system that supports
   collaborative data analysis, visualization and web deployment. We will
   discuss the design decisions, tradeoffs and limitations, and compare RCloud
   to other current proposals.
@@ -170,6 +172,36 @@
 \maketitle
 
 \todo{Points we want to make."Coordination is done by meetings" "how do you trace an automated alert back to an EDA environment ?"}
+
+% What's the area
+Consider the emerging role of a data science team within an
+organization. 
+
+% How do people do it today?
+Individual data scientists and statisticians usually
+work on loosely related problems, and must devise effective ways to 
+share their findings and to move results from exploratory data analysis
+to automated diagnostics and reports deployed for wider consumption.
+
+% Why does this not work?
+There are two problems with the current
+practice. First, there are gaps in this workflow: EDA is performed
+with one set of tools, and automated reports and deployments with another.
+Second, EDA environments often assume a single-developer perspective,
+while data scientist teams could greatly benefit from easier sharing of
+scripts and data feeds, experiments, annotations, and automated
+recommendations, which are well beyond what traditional version control
+systems provide. 
+
+% What are we going to do about this?
+\todo{Sell idea, not system} In this paper, we propose RCloud, a system that supports
+collaborative data analysis, visualization and web deployment. We will
+discuss the design decisions, tradeoffs and limitations, and compare RCloud
+to other current proposals.
+
+% What is the scope of our solution?
+
+% We want our solution to play well with the rest of the ecosystem
 
 \section{Related Work}
 
@@ -249,6 +281,9 @@ Reducing gap between implementors and deployers. Don't want a team of
 
 \section{System Architecture}
 
+Design for cloud-friendly? This goes back to the point in the
+introduction about playing nice with the rest of the ecosystem.
+
 \section{System Design}
 
 \subsection{Notebooks\label{sec:notebooks}}
@@ -269,11 +304,20 @@ but we have nevertheless found anecdotal support for this theory by
 noticing links to RCloud notebooks in internal discussion fora and
 mailing lists.
 
+\subsection{Technologies: R, Python, HTML5, interactive notebooks, etc.}
+
+How do we do things that are not trivial to do with IPython (for example)
+
+dcplot. two-way communication between between backend session and
+frontend session.
+
 \section{Case Studies}
 
 \section{Lessons Learned}
 
 \section{Discussion and Limitations}
+
+What are the decisions and ideas that are central to this paper?
 
 discussion about binding times, running vs.caching.
 transparent vs. explicit operations done by programmers
