@@ -205,6 +205,15 @@ a system that supports collaborative data analysis, visualization and
 web deployment. We will discuss the design decisions, tradeoffs and
 limitations, and compare RCloud to other current proposals.
 
+\todo{Define the requirements for the system}
+\begin{itemize}
+\item Technology transfer. Things developed by analysts need to become accessible in the production environment and should be supported in the environment, making it easy to push new features, experiments, etc.
+\item Dasboarding. There should be a mode in which people can operate the experiments without coding. At times code has to be written because some things cannot be done any other way but other people must not ever see code because their eyes will fall out.
+\item Version control as a primary concept in the repository. Need to control the visibility of 
+\item Modern interactive technologies. People want to interact with data to explore it. Scalable technologies like crossfilter exist. Want to support those in the context of an R environment. Need to support full 2-way communication between computing in the cloud and interaction on the web.
+\item Other requirements e.g. Kandel's user study. Not our contribution but things we must address, mentioned in related work section. Heer/Agarwala design considerations for collaborative visual analytics.
+\end{itemize}
+
 % What is the scope of our solution?
 Our investigation focuses on the R language \cite{RCoreTeam:2013:R}
 for statistical computing and graphics. R is one of the most popular
@@ -293,7 +302,7 @@ shares many of our goals, such as providing a comprehensive environment
 for analysis and programming, with sharable documents on the web.
 
 One overall goal is to reduce the gap between implementors and deployers
-of technology.  Don't want a team of 20 IT people to support 5 data scientists.
+of technology. Don't want a team of 20 IT people to support 5 data scientists.
 
 % devops for data science.
 
