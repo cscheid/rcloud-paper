@@ -319,11 +319,29 @@ of technology. Don't want a team of 20 IT people to support 5 data scientists.
 
 \begin{figure}
 \includegraphics[width=\linewidth]{fig/system/system.pdf}
-\caption{\label{fig:system}A diagram of RCloud's architecture}
+\caption{\label{fig:system}A diagram of RCloud's architecture. Dashed
+  lines represent features which not yet implemented.}
 \end{figure}
 
-Design for cloud-friendly? This goes back to the point in the
-introduction about playing nice with the rest of the ecosystem.
+The internal computing infrastructure of organizations has changed
+radically in the last fifteen years or so. Much of the move toward the
+``cloud'' brought with it an ecosystem of processes distributed over a
+network (many times virtually defined) that communicate over a
+high-level protocol of some sort. Messages are typically exchanged
+over HTTP. HTTP is attractive because web browsers and servers are
+ubiquituous and available in essentially all pieces hardware today,
+from tiny sensors in sensor networks to handheld devices to laptops to
+rack-mounted servers.
+
+As a result, in our view HTTP has become the lingua franca of IPC in
+an intranet. One of the design goals for RCloud was to provide an
+attractive environment for creators of data-analysis scripts, but at
+the same time to create a system that behaves as a first-class citizen
+in the ecosystem of computer services and networks with an
+organization.
+
+%% Design for cloud-friendly? This goes back to the point in the
+%% introduction about playing nice with the rest of the ecosystem.
 
 \section{System Design}
 
