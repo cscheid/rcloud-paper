@@ -74,9 +74,9 @@
 
 %% Paper title.
 
-\title{RCloud: Integrating Exploratory Visualization, Analysis and Deployment}
+% \title{RCloud: Integrating Exploratory Visualization, Analysis and Deployment}
+\title{RCloud: DevOps for Visual Analysis and Data Science}
 
-% DevOps for Visual Analysis and Data Science
 
 %% This is how authors are specified in the journal style
 
@@ -96,16 +96,16 @@
 \abstract{ Consider the emerging role of a data science team within an
   organization. Individual data scientists and statisticians usually
   work on loosely related problems, and must devise effective ways to 
-  share their findings and to move results from exploratory data analysis
-  to automated diagnostics and reports deployed for wider consumption.
+  share their findings and move results from exploratory data analysis
+  into automated diagnostics and reports deployed for wider consumption.
   There are two problems with the current
   practice. First, there are gaps in this workflow: EDA is performed
   with one set of tools, and automated reports and deployments with another.
   Second, EDA environments often assume a single-developer perspective,
-  while data scientist teams could greatly benefit from easier sharing of
-  scripts and data feeds, experiments, annotations, and automated
+  while data scientist teams would get much benefit from easier sharing
+  of scripts and data feeds, experiments, annotations, and automated
   recommendations, which are well beyond what traditional version control
-  systems provide.  \todo{sell idea, not system} In this paper, we propose RCloud, a system that supports
+  systems provide. \todo{sell idea, not system} In this paper, we propose RCloud, a system that supports
   collaborative data analysis, visualization and web deployment. We will
   discuss the design decisions, tradeoffs and limitations, and compare RCloud
   to other current proposals.
@@ -177,41 +177,48 @@
 
 % What's the area
 Consider the emerging role of a data science team within an
-organization \cite{Keim:2008:VAS}.
+organization today \cite{Keim:2008:VAS}.
 
 % How do people do it today?
-Individual data scientists and statisticians usually
-work on loosely related problems, and must devise effective ways to 
-share their findings and to move results from exploratory data analysis
-to automated diagnostics and reports deployed for wider consumption.
-They generally rely on a patchwork of resources that are shared informally,
-or at best, through systems that attack some of the tasks or functions in
-the data analysis workcycle.
+Individual data scientists and statisticians usually work on loosely
+related problems, and must devise effective ways to share their findings
+and move results from exploratory data analysis to automated diagnostics
+and reports that are deployed for wider consumption.
+They generally rely on a patchwork of resources shared informally,
+or at best, through systems that attack individual tasks or functions
+in the data analysis workcycle.
 
 % Why does this not work?
 There are two problems with the current
-practice. First, there are gaps in this workflow:
-Exploratory Data Analysis (EDA) is performed with one set of tools,
-and automated reports and deployments with another.
+practice. First, there are gaps in the workflow:
+Exploratory Data Analysis (EDA) is done with one set of tools,
+and automated reports and deployments with another. This makes
+transferring results from EDA to production slow, expensive, and error-prone.
 Second, EDA environments often assume a single-developer perspective,
-while data scientist teams could greatly benefit from easier sharing of
+while data scientist teams could greatly benefit from convenient sharing of
 scripts, data sets, data feeds, experiments, annotations, and automated
-recommendations, which are well beyond what traditional version control systems provide. 
+analyses and recommendations. These features are well beyond what existing
+repositories and version control systems provide.
 
 % What are we going to do about this?
 \todo{Sell idea, not system} In this paper, we investigate the hypothesis
 that the practice of visual analytics can advance by adopting techniques
-from information retrieval and collaborative computer, formally supported
-within the computing environment. To investigate this, we propose RCloud,
-a system that supports collaborative data analysis, visualization and
-web deployment. We will discuss the design decisions, tradeoffs and
-limitations, and compare RCloud to other current proposals.
+from information retrieval and collaborative work environments. To investigate
+these ideas, we designed and deployed a prototype environment called RCloud,
+that supports collaborative data analysis, visualization and web deployment.
+We will report on the design decisions, tradeoffs and limitations, and compare
+the concepts in RCloud to similar proposals.
 
 \todo{Define the requirements for the system}
-\begin{itemize}
-\item Technology transfer. Things developed by analysts need to become accessible in the production environment and should be supported in the environment, making it easy to push new features, experiments, etc.
-\item Dasboarding. There should be a mode in which people can operate the experiments without coding. At times code has to be written because some things cannot be done any other way but other people must not ever see code because their eyes will fall out.
-\item Version control as a primary concept in the repository. Need to control the visibility of 
+
+We begin by noting the main requirements for a data analysis environment for
+collaboration and transfer of results into production.
+
+begin{itemize}
+\item Technology transfer. Experiments in notebooks developed by analysts need to become accessible in the production environment, making it easy to push new features, prototypes, etc.
+\item Dashboarding. To support the above, there should be a mode in which non-experts
+can operate the experiments without coding.
+\item Version control as a primary concept in the repository. There needs to be a way to control the visibility of prototypes as they are being developed and tested.
 \item Modern interactive technologies. People want to interact with data to explore it. Scalable technologies like crossfilter exist. Want to support those in the context of an R environment. Need to support full 2-way communication between computing in the cloud and interaction on the web.
 \item Other requirements e.g. Kandel's user study. Not our contribution but things we must address, mentioned in related work section. Heer/Agrawala design considerations for collaborative visual analytics.
 \end{itemize}
@@ -385,8 +392,8 @@ transparent vs. explicit operations done by programmers
 Previous studies have pointed out difficulties in achieving the flexibility,
 scalability and maintainability expected of production software with experimental
 code created by data analysts.
-These properties cannot be ensured by any programming environment,
-but suitable tools can help well-motivated analysts and programmers to create
+Although these properties cannot be enforced by any programming environment,
+suitable tools can help well-motivated analysts and programmers to create
 robust applications with much less effort.
 
 Asynchronous collaborative visual analytics
