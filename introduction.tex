@@ -24,13 +24,16 @@ practice. First, there are gaps in the workflow:
 Exploratory Data Analysis (EDA) is done with one set of tools,
 and automated reports and deployments with another. This makes
 transferring results between EDA and production (in both directions)
-slow, expensive, and error-prone. This transfer is usually  a
+slow, expensive, and error-prone. Coordination is done through
+meetings and may take months to implement.
 
 Second, EDA environments often assume a single-developer perspective,
-while data scientist teams could greatly benefit from convenient sharing of
-scripts, data sets, data feeds, experiments, annotations, and automated
-analyses and recommendations. These features are well beyond what existing
-repositories and version control systems provide.
+while data scientist teams could greatly benefit from convenient searching
+and sharing of scripts, data sets, data feeds, experiments, annotations,
+and automated analyses and recommendations. These capabilities have had
+tremendous impact on information retrieval in general but are well
+beyond what existing visual analytics environments provide, or what
+is found in today's repositories and version control systems.
 
 % What are we going to do about this?
 \todo{Sell idea, not system} In this paper, we investigate the hypothesis
@@ -58,10 +61,11 @@ can operate the experiments without coding.
 % What is the scope of our solution?
 Our investigation focuses on the R language \cite{RCoreTeam:2013:R}
 for statistical computing and graphics. R is one of the most popular
-systems for ...
+systems for data analysis and is well-supported by 
+a complex ecosystem of compatible packages, software
+tools and other resources. Of importance to us, there are
+packages for high performance computing in the cloud,
+and for generating web graphics.
 
 % We want our solution to play well with the rest of the ecosystem
-R has developed a complex ecosystem of compatible packages, software
-tools and other resources. For example there are packages that make
-it convenient to execute map-reduce programs, generate web interfaces,
 
