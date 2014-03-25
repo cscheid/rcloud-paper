@@ -1,11 +1,65 @@
 \section{Lessons Learned, Discussion and Limitations}
 
+What are the consequences of introducing this technology into the
+data analysis ecosystem. 
+
+
+Good and bad.
+
+Deploying RCloud has certain implications .
+There are interesting implications
+
+We have observed that people start sharing ideas through the system,
+instead of hacking up prototypes and sending screenshots and Powerpoint
+they hack up experiments and send them. Makes this easier to collaborate
+about code but also makes it easy to collaborate about services that are
+deployed.
+
+The negative is that at every stage everything is deployed, so that if
+you break something
+
+Allows people to fork and try something else without restriction.
+Have not solved the problem of having a lot of bits and pieces lying around
+but have made it easier to get at them and to use algorithms to 
+help organize them.
+
+Recommendations - was done in Vistrails - within the same graph but
+there is clustering of workflows that could be applied to recommending
+across graphs.
+
+Because we developed the ideas and the system together 
+
+Package dependencies and versions could be a problem
+
+
 What are the decisions and ideas that are central to this paper?
 
 % limitations
 Previous studies have pointed out difficulties in achieving the flexibility,
-scalability and maintainability expected of production software in experimental
-code written by data analysts.
+scalability and maintainability expected of production software,
+with experimental code written by data analysts. In RCloud this problem
+is compounded by its flexible versioning, which may make it even
+more challenging to ensure that production services are stable.
+Versioning happens in several places: in scripts (that are under
+our control in RCloud through git), in libraries (that should be
+under the control of the R environment, though support for this
+is very weak), and in the external environment
+(such as operating system components and even the protocols
+spoken by external services, for which there is no realistic
+hope of formal control).  
+Also, because there is no explicit separation between the experimental
+and production environments in RCloud, it seems relatively easy for
+data scientists to inintentionally modify or break production services.
+
+Upgrading is troublesome, but what is better. When different things are being
+upgraded in flight how do you ensure the things you are calling behave as
+expected, and if someone upgrades 
+Would require support from the R environment which does not exist now.
+
+have only the right version of the script we are working on but
+can't do the same for the environment
+the environment includes remote services not under our control
+
 Although these properties cannot be enforced by any programming environment,
 suitable tools can help well-motivated analysts and programmers to create
 robust applications with much less effort.
