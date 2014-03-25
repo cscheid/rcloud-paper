@@ -3,7 +3,7 @@
 
 \maketitle
 
-\todo{Points we want to make."Coordination is done by meetings" "how do you trace an automated alert back to an EDA environment ?"}
+%% \todo{Points we want to make."Coordination is done by meetings" "how do you trace an automated alert back to an EDA environment ?"}
 
 % What's the area
 Consider the emerging role of a data science team within an
@@ -50,22 +50,36 @@ We begin by noting the main requirements for a data analysis environment for
 collaboration and transfer of results into production.
 
 \begin{itemize}
-\item Technology transfer. Experiments in notebooks developed by analysts need to become accessible in the production environment, making it easy to push new features, prototypes, etc.
+\item Constant technology transfer. Experiments in notebooks developed
+by analysts need to become accessible in the production environment,
+making it easy to push new features, prototypes, etc.
 \item Dashboarding. To support the above, there should be a mode in which non-experts
 can operate the experiments without coding.
-\item Version control as a primary concept in the repository. There needs to be a way to control the visibility of prototypes as they are being developed and tested.
-\item Modern interactive technologies. People want to interact with data to explore it. Scalable technologies like crossfilter exist. Want to support those in the context of an R environment. Need to support full 2-way communication between computing in the cloud and interaction on the web.
-\item Other requirements e.g. Kandel's user study. Not our contribution but things we must address, mentioned in related work section. Heer/Agrawala design considerations for collaborative visual analytics.
+\item Version control as a primary concept in the repository. There
+needs to be a way to control the visibility of prototypes as they are
+being developed and tested.
+\item Coexistence in the current data ecosystem. We perceive the
+isolation of current exploratory visualization and data analysis
+environments to be a serious threat to a wider adoption of modern
+techniques.
+\item Modern interactive technologies. current isolation
+notwithstanding, we find there is business demand for interactive
+visualization tools. The main challenge here is how to integrate
+these technologies so data scientists and statisticians can target
+them, \emph{and} business-facing users can use them.
+%% Scalable technologies like crossfilter exist. Want to support those in the context of an R environment. Need to support full 2-way communication between computing in the cloud and interaction on the web.
+%% \item Other requirements e.g. Kandel's user study. Not our contribution but things we must address, mentioned in related work section. Heer/Agrawala design considerations for collaborative visual analytics.
 \end{itemize}
 
 % What is the scope of our solution?
 Our investigation focuses on the R language \cite{RCoreTeam:2013:R}
 for statistical computing and graphics. R is one of the most popular
-systems for data analysis and is well-supported by 
+systems for data analysis and is well-supported by
 a complex ecosystem of compatible packages, software
-tools and other resources. Of importance to us, there are
+tools and other resources.
+%
+Of importance to us, there are existing
 packages for high performance computing in the cloud,
-and for generating web graphics.
+and for generating web graphics. % no, there aren't. we wrote those!
 
 % We want our solution to play well with the rest of the ecosystem
-
