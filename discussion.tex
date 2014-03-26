@@ -3,57 +3,62 @@
 \subsection{Design Considerations}
 
 Experience with deploying RCloud in a community of data analysts
-has provided some insight into how its capabilities were received
-that may be informative to researchers and designers of future systems
-supporting visual analytics.
+has provided some insight into how well the proposed requirements
+satisfied their needs. This may be informative to researchers and
+designers of future systems supporting visual analytics.
+
 Returning to the design considerations outlined by Heer and Agrawala,
 our experience underscores the value of several of their proposals,
 and suggests areas for further exploration.
 
 {\bf Shared artifacts and artifact histories} are a central feature.
-The prototype aims at making it convenient to collaborate on code
+The prototype aimed at making it convenient to collaborate on code
 and experiments with data. It was a success to observe that analysts
 readily shared ideas through RCloud. We observed them creating experiments
-in workbooks and sharing URLs to discuss data analysis and programming
+in workbooks and sharing URLs to discuss analysis and programming
 problems, instead of sending screenshots in Powerpoint.
 
 {\bf View sharing, bookmarking.} Likewise, everything is named
-and accessed as a URL.
+and accessed as a URL. This turned out to be an effective mechanism
+to support sharing and integration of analyses in notebooks
+with external processes and systems.
 
 {\bf Discussion.} Annotation is supported in our human interface,
-and was also a central goal for our prototype.
-An interesting question is to decide to what extent the users of
-production notebooks also use tools like annotation etc. without coding
-or without being exposed to the analyst's view.\todo{Is this a gap in
+and was also a central goal for our prototype. \todo{Elaborate.}
+An interesting question is to what extent users of production notebooks
+should be able to use tools like annotation without coding and
+without being exposed to the analyst's view.\todo{Is this a gap in
 our design?}
 
 {\bf Content export} is not a capability we worked to support,
-but the R environment already has many packages for it.
-Our goal is to devise ways of working where explicit export is
+but the R environment already has many packages for this.
+Our goal was to devise ways of working where explicit export is
 less necessary. However it is desirable to integrate results
 through web protocols such as JSON. We did assume that RCloud
-notebooks need to play well in the ecosystem of other tools
-and this worked out as planned, though it also leads to a temptation
-to absorb features almost without limit. (Should RCloud support
-templates for personal web pages? Should it incorporate emacs
-on the web, and an email client?)
+notebooks need to play well in the ecosystem of other tools,
+and this worked out as intended, though we learned it also creates
+a temptation to absorb features almost without limit. (Should
+RCloud support templates for personal web pages? Should it
+incorporate emacs on the web, and an email client?)
 
 {\bf Social-psychological incentives} and {\bf voting and ranking}
 are supported through starring. This mechanism was employed often
-by our test audience. An obvious next step would be to enhance
+by our test audience.  An obvious next step would be to enhance
 recommendations using relationships discovered by static and
 dynamic code analysis. This should be done both within and across
 collections of scripts (the latter being similar to work in Vistrails
 that enhanced recommendations by clustering multiple workflows).
 It may be valuable to data analysts to know which packages are often
 used together, or with a given type of data. It is probably helpful
-to know which data sources and packages often go together.
+to know which data sources and packages often go together. In general,
+though, trivial or even passive mechanisms to collect data for
+recommendations are essential.
 
 {\bf Group management, size and diversity.} This area lacks sufficient
 support in RCloud, but is clearly desirable. We rely on conventional
-administrative and social processes, outside our platform. Automation
-of this capability in a large organization could rely on social media
-services
+external administrative and social processes, outside our platform,
+to manage accounts and groups.  Automation of this capability in a
+large organization could rely on social media services
 
 \subsection{Limitations}
 
@@ -108,3 +113,7 @@ What is relationship to a standard CMS with R/Python
 Discussion about binding times, running vs.caching.
 
 Transparent vs. explicit operations done by programmers
+
+Our environment assumes a high level of trust within the user community.
+Access control for information security is implemented by relying on the
+host operating system and web server. We admit this may require further 
