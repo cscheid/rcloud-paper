@@ -113,18 +113,20 @@ Asynchronous collaborative visual analytics
 \emph{of} the ACVA process. It will be important when we talk about
 recommendation systems, and navigation of the set of notebooks, etc.
 
-What is relationship to a standard CMS with R/Python
-
 Discussion about binding times, running vs.caching.
 
 Transparent vs. explicit operations done by programmers
 
-Our environment assumes a high level of trust between its users.
-Access control for information security is deferred to the host
-operating system and web server. This decision should be re-examined,
-but more sophisticated approaches such as information flow analysis
-are an active research area and many subtle problems remain
-\cite{Moore:2011:SAF}. We are hopeful that providing a richer
-environment for collaboration and information sharing may aid
-the application of information security research.
-
+Our environment assumes a high degree of trust between users.
+Access control for information security is delegated to the host
+operating system and web server. In practice, most operating
+systems and web servers rely either on coarse permission models,
+which tend to be ineffective, or on detailed access control
+lists, which tend to be cumbersome and complicated. 
+Information security in RCloud should be re-examined, but more
+sophisticated approaches such as information flow analysis are
+still an active research area, and many subtle problems remain
+\cite{Moore:2011:SAF}. We are hopeful that having a richer
+environment for collaboration and information sharing will encourage
+practical applications for new approaches to information security
+in visual analytics.

@@ -49,7 +49,7 @@ the concepts in RCloud to similar proposals.
 We begin by noting the main requirements for a data analysis environment for
 collaboration and transfer of results into production.
 
-Main requirement is to satisfy these two sets of users: R coders and
+Our main requirement is to satisfy these two sets of users: R coders and
 managers. They work differently and want different things. What should
 the infrastructure look like so they both coexist in peace? If this is
 such a fundamental problem, why have other tools not addressed it?
@@ -59,20 +59,22 @@ Discuss Shiny (maybe in the disc. section).
 \item Constant technology transfer. Experiments in notebooks developed
 by analysts need to become accessible in the production environment,
 making it easy to push new features, prototypes, etc.
-\item Dashboarding. To support the above, there should be a mode in which non-experts
-can operate the experiments without coding.
+\item Dashboarding. To support the above, there should be a mode
+in which non-experts can operate the experiments without coding.
+This may require some accomodation in code written by analysts,
+but our goal is to make that as simple as we can.
 \item Version control as a primary concept in the repository. There
-needs to be a way to control the visibility of prototypes as they are
-being developed and tested.
-\item Coexistence in the current data ecosystem. We perceive the
-isolation of current exploratory visualization and data analysis
-environments to be a serious threat to a wider adoption of modern
-techniques.
-\item Modern interactive technologies. current isolation
-notwithstanding, we find there is business demand for interactive
-visualization tools. The main challenge here is how to integrate
-these technologies so data scientists and statisticians can target
-them, \emph{and} business-facing users can use them.
+needs to be a way to control the visibility of prototypes as they
+are developed and tested.
+\item Coexistence in the current data ecosystem. The isolation of
+today's exploratory visualization and data analysis environments is
+a real obstacle to wider adoption of novel data analysis methods.
+\item Modern interactive technologies. Current isolation notwithstanding,
+there is demand for interactive visualization tools. In some respects,
+the prevalence of data journalism has raised expectations very high.
+The main challenge is how to integrate these technologies so data
+scientists and statisticians can program in them, \emph{and} business-facing
+workers can operate them.
 %% Scalable technologies like crossfilter exist. Want to support those in the context of an R environment. Need to support full 2-way communication between computing in the cloud and interaction on the web.
 %% \item Other requirements e.g. Kandel's user study. Not our contribution but things we must address, mentioned in related work section. Heer/Agrawala design considerations for collaborative visual analytics.
 \end{itemize}
@@ -80,12 +82,13 @@ them, \emph{and} business-facing users can use them.
 % What is the scope of our solution?
 Our investigation focuses on the R language \cite{RCoreTeam:2013:R}
 for statistical computing and graphics. R is one of the most popular
-systems for data analysis and is well-supported by
-a complex ecosystem of compatible packages, software
-tools and other resources.
+data analysis systems and is well-supported by a complex ecosystem
+of compatible packages, software tools and other resources.
 %
-Of importance to us, there are existing
-packages for high performance computing in the cloud,
+Of importance to us, there are many existing R packages, including
+packages for high performance computing in the cloud, domain specific
+models,
 and for generating web graphics. % no, there aren't. we wrote those!
+% well, right about that
 
 % We want our solution to play well with the rest of the ecosystem
