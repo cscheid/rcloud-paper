@@ -71,12 +71,10 @@ always readily available, thus encouraging its use.
 
 Implicit signaling of interest is supported by keeping click-through
 \cite{Joachims:2005:AIC} and execution counts. (In addition to these
-classic web search techniques of collecting feedback, we have the
-prospect of applying static and dynamic code analysis to generate
-further fine-grained information about relationships, for example,
-which packages and data sets often appear together.)
-
-\todo{explain} These will be ingredients for the recommendation system.
+classic techniques of collecting feedback from web search, we anticipate
+applying static and dynamic code analysis to generate fine-grained
+information about relationships, for example, which packages and data
+sets often appear together.)
 
 \subsection{Deployment of notebooks\label{sec:deployment}}
 
@@ -102,5 +100,10 @@ dcplot. two-way communication between between backend session and
 frontend session.
 
 A key engineering decision in RCloud was to rely on full two-way
-communication between human interface in a web client, and remote
-data and computing resources in the cloud.
+communication between the web client human interface, and data and
+computing resources in the cloud. It is easier to engineer a design
+in which the human interface is pushed one-way from the server
+and thereafter all interaction takes place within the client.
+Two-way communication is necessary, though, where the size of
+the data or computational performance makes it impractical to
+move all computation to the client.
