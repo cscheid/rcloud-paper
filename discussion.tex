@@ -1,91 +1,94 @@
-\section{Lessons Learned, Discussion and Limitations}
+\section{Discussion, Lessons and Limitations}
 
 \subsection{Design Considerations}
 
 Experience with deploying RCloud in a community of data analysts
 has provided some insight into how well the proposed requirements
-satisfied their needs. This may be informative to researchers and
-designers of future systems supporting visual analytics.
+were met and matched their work. This may be informative to
+researchers and designers of future systems supporting visual analytics.
 
 Returning to the design considerations outlined by Heer and Agrawala,
 our experience underscores the value of several of their proposals,
 and suggests areas for further exploration.
 
-{\bf Shared artifacts and artifact histories} are a central feature.
-The prototype aimed at making it convenient to collaborate on code
-and experiments with data. It was a success to observe that analysts
-readily shared ideas through RCloud. We observed them creating experiments
+{\bf Shared artifacts and artifact histories} are a central feature
+of RCloud. The prototype aimed at making it convenient to collaborate
+on code and experiments with data. It was a success to observe that analysts
+readily shared ideas through RCloud. We noticed them creating experiments
 in workbooks and sharing URLs to discuss analysis and programming
-problems, instead of sending screenshots in Powerpoint.
+problems, instead of sending screenshots in PowerPoint.\todo{Talk about artifact histories?}
 
-{\bf View sharing, bookmarking.} Likewise, everything is named
-and accessed as a URL. This turned out to be an effective mechanism
-to support sharing and integration of analyses in notebooks
-with external processes and systems.
+{\bf View sharing, bookmarking.} Almost everything in RCloud is named
+and accessed as a URL. This proved to be an effective mechanism
+for sharing, and for analyses in notebooks to be integrated with
+external processes and systems.
 
 {\bf Discussion.} Annotation is supported in our human interface,
-and was also a central goal for our prototype. \todo{Elaborate.}
-An interesting question is to what extent users of production notebooks
-should be able to use tools like annotation without coding and
-without being exposed to the analyst's view.\todo{Is this a gap in
+and was another central goal of our prototype. \todo{Elaborate.}
+An interesting question is, to what extent should users of production
+notebooks also able to use annotation and similar tools without coding
+and without being exposed to the analyst's view?\todo{Is this a gap in
 our design?}
 
 {\bf Content export} is not a capability we worked to support,
 but the R environment already has many packages for this.
-Our goal was to devise ways of working where explicit export is
-less necessary. However it is desirable to integrate results
+Our goal was to devise ways of working where explicit export
+is less necessary. However it is desirable to integrate results
 through web protocols such as JSON. We did assume that RCloud
 notebooks need to play well in the ecosystem of other tools,
 and this worked out as intended, though we learned it also creates
 a temptation to absorb features almost without limit. (Should
-RCloud support templates for personal web pages? Should it
-incorporate emacs on the web, and an email client?)
+RCloud support templates for personal web pages and graphical
+editing? Should it incorporate an email client and emacs?
+Should it be able to push results to Facebook?)
 
 {\bf Social-psychological incentives} and {\bf voting and ranking}
 are supported through starring. This mechanism was employed often
-by our test audience.  An obvious next step would be to enhance
-recommendations using relationships discovered by static and
+by our test audience. An obvious next step would be to enhance
+recommendations via relationships discovered by static and
 dynamic code analysis. This should be done both within and across
-collections of scripts (the latter being similar to work in Vistrails
-that enhanced recommendations by clustering multiple workflows).
-It may be valuable to data analysts to know which packages are often
-used together, or with a given type of data. It is probably helpful
-to know which data sources and packages often go together. In general,
-though, trivial or even passive mechanisms to collect data for
-recommendations are essential.
+collections of scripts (the latter being similar to Vistrails'
+enhanced recommendations by clustering multiple workflows).
+It should be valuable to data analysts to know which packages are
+frequently used together, or appear with a given record type
+or data feed. In general, though, trivial or passive mechanisms
+to collect data for recommendations are essential.
 
 {\bf Group management, size and diversity.} This area lacks sufficient
-support in RCloud, but is clearly desirable. We rely on conventional
-external administrative and social processes, outside our platform,
-to manage accounts and groups.  Automation of this capability in a
-large organization could rely on social media services
+support in RCloud, but is clearly important to working in teams.
+We rely on existing administrative and social processes and conventions,
+outside RCloud, to manage accounts and groups. This capability
+could likely benefit from integrating social media to track
+identities and groups and to maintain communication channels.
 
 \subsection{Limitations}
 
 Because we developed the ideas and the prototype together,
-we could not forsee some of the requirements that emerged
+we did not foresee some of the requirements that emerged
 after our audience started working with the prototype.
 
-It was unexpected that we had to had to back off so soon on
-the assumption that programming is being done in only one
-language (R). In retrospect, it should have been obvious that
-many data science problems are already being solved with
-cross-language approaches.
+We did not anticipate having to back off so soon on the
+assumption that programming is being done mainly in one
+language (R). In retrospect, it should have been obvious
+that many data science problems are already being solved
+with cross-language approaches.
 
-A clear disdavantage is that some important aspects of the environment in
-RCloud are more difficult to manage than in conventional systems. Not only
-do we lack an explicit separation of the development and deployment
-environments, but every version of every prototype is shared by default.
-While this encourages collaboration on work in progress, errors such as
-misconfiguration, mismatches between versions of packages,or ordinary
-programming errors are also easily shared and could affect production
-websites unintentionally. We take the position that this cannot entirely
-be avoided, but the power of sharing is worth this price (just as that
-has proven true with distributed systems in general). Still, this 
-problem needs more attention. 
+A disadvantage is that some important aspects of the environment
+are more difficult to manage in RCloud than in conventional systems.
+Not only does it lack an explicit separation of the development and
+deployment environments, but every version of every prototype is
+shared by default. While this encourages collaboration on work
+in progress, errors such as misconfiguration, mismatches between
+versions of packages, and ordinary programming errors are also
+easily shared and can affect production websites unintentionally.
+This cannot be avoided entirely, but the power of sharing is worth
+this price (as proven true with distributed systems in general).
+Still, this problem needs more attention if the environment is
+going to be scaled up to a wider number of users with fewer
+informal channels to coordinate work. \todo{need a transition}
 Versioning occurs in several places: in scripts, in the R environment
 such as the installed R libraries and packages, and in the external
-environent such as the operating system and even protocols spoken by
+environment such as the operating system and even protocols spoken by
 remote services. At one end of the scale, we have full control over the
 versioning of scripts via git, though there is still a need for conventions
 for example to name stable or working versions of scripts or versions known
@@ -99,7 +102,7 @@ and a conservative approach to upgrades.
 
 On top of this, RCloud allows analysts to fork experiments to try
 new ideas quickly. But we have not done much so far to address the
-probem of having a lot of bits and pieces of code and data lying
+problem of having a lot of bits and pieces of code and data lying
 around, though at least we have made it easier to get at them and
 to apply algorithms and metadata to organize them.
 
@@ -114,6 +117,12 @@ Discussion about binding times, running vs.caching.
 
 Transparent vs. explicit operations done by programmers
 
-Our environment assumes a high level of trust within the user community.
-Access control for information security is implemented by relying on the
-host operating system and web server. We admit this may require further 
+Our environment assumes a high level of trust between its users.
+Access control for information security is deferred to the host
+operating system and web server. This decision should be re-examined,
+but more sophisticated approaches such as information flow analysis
+are an active research area and many subtle problems remain
+\cite{Moore:2011:SAF}. We are hopeful that providing a richer
+environment for collaboration and information sharing may aid
+the application of information security research.
+
