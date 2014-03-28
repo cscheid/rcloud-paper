@@ -33,7 +33,7 @@ and sharing of scripts, data sets, data feeds, experiments, annotations,
 and automated analyses and recommendations. These capabilities have had
 tremendous impact on information retrieval in general but are well
 beyond what existing visual analytics environments provide, or what
-is found in today's repositories and version control systems.
+is found in current repositories and version control systems.
 
 % What are we going to do about this?
 \todo{Sell idea, not system} In this paper, we investigate the hypothesis
@@ -71,24 +71,23 @@ today's exploratory visualization and data analysis environments is
 a real obstacle to wider adoption of novel data analysis methods.
 \item Modern interactive technologies. Current isolation notwithstanding,
 there is demand for interactive visualization tools. In some respects,
-the prevalence of data journalism has raised expectations very high.
+the prevalence of data journalism has raised expectations very high,
+but handmade, one-off designs are too expensive to most teams to support.
 The main challenge is how to integrate these technologies so data
 scientists and statisticians can program in them, \emph{and} business-facing
 workers can operate them.
 %% Scalable technologies like crossfilter exist. Want to support those in the context of an R environment. Need to support full 2-way communication between computing in the cloud and interaction on the web.
-%% \item Other requirements e.g. Kandel's user study. Not our contribution but things we must address, mentioned in related work section. Heer/Agrawala design considerations for collaborative visual analytics.
+%% \item Other requirements e.g. Kandel's user study. Not our contribution but things we must address, mentioned in related work section. Heer/Agrawala design considerations for collaborative visual analytics. Commenting, annotation, modularity, granulatiry.
 \end{itemize}
 
 % What is the scope of our solution?
 Our investigation focuses on the R language \cite{RCoreTeam:2013:R}
 for statistical computing and graphics. R is one of the most popular
-data analysis systems and is well-supported by a complex ecosystem
-of compatible packages, software tools and other resources.
+data analysis systems and is well-supported by a broad ecosystem
+of packages, tools and other resources.
 %
-Of importance to us, there are many existing R packages, including
-packages for high performance computing in the cloud, domain specific
-models,
-and for generating web graphics. % no, there aren't. we wrote those!
-% well, right about that
-
-% We want our solution to play well with the rest of the ecosystem
+There are many existing R packages, including packages for high performance
+computing in the cloud, domain specific data analysis, statistical computing,
+and web graphics (though the latter has to be adapted for our architecture).
+An additional requirement for our prototype is to work well with the rest
+of this ecosystem.

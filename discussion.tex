@@ -3,39 +3,53 @@
 \subsection{Design Considerations}
 
 Experience with deploying RCloud in a community of data analysts
+(hackers in the parlance of Heer and Agrawala)
 has provided some insight about how the proposed requirements
 were met, and to what extent they were appropriate.
 This experience may be informative to researchers and designers
 of future systems supporting collaborative visual analytics.
 
 Returning to the design considerations defined by Heer and Agrawala,
-our experience underscores the importance of many of their proposals,
-and indicates areas for further exploration.
+our experience underscores the importance of their proposals,
+and indicates areas for further exploration, especially in the
+following areas.
 
 {\bf Shared artifacts and artifact histories} are a central feature
 of RCloud. The prototype aimed at making it convenient to collaborate
-on experimental workbooks and the analyses that result. We observed
-that analysts readily shared ideas through RCloud. They used RCloud
+on experimental workbooks and the resulting analyses. We observed
+that hackers readily shared ideas through RCloud. They used RCloud
 to discuss data analysis, programming problems, and to publish results
 by sharing URLs instead of instead of embedding screenshots in
-PowerPoint.\todo{Talk about artifact histories?}
+PowerPoint. Artifact histories are provided through git. It is fair
+to criticize that it is not human-friendly, but we assume RCloud
+hackers are already familiar with it.
+
+{\bf Modularity and granularity.} The ability to segment work into
+independent units (modularity) is a key to working in teams. It is
+further an advantage if the units may be kept small, and team members
+can realize benefits that are at least proportional to their work
+on these units (granularity). RCloud's notebook and versioning
+capabilities allow work to be divided into units as fine as
+the underlying language allows, and versioning encourages making
+incremental changes at low cost and without disrupting the work
+of others.
 
 {\bf View sharing, bookmarking.} Most resources in RCloud are named
-and accessed as URLs. This proved to be an effective mechanism
-for sharing, and for analyses to be integrated with
-external processes and systems.
+and accessed as URLs. This proved to be an effective mechanism for
+sharing, and for analyses to be integrated with external processes
+and systems.
 
-{\bf Discussion.} Annotation is supported in our human interface,
-and was another central goal of our prototype. \todo{Elaborate.}
-An interesting question is, to what extent should users of production
-notebooks also able to use annotation and similar tools without coding
-and without being exposed to the analyst's view?\todo{Is this a gap in
-our design?}
+{\bf Discussion.} Annotation and commenting was another central goal
+of our prototype, and is provided in our human interface.
+An interesting question is, to what extent should application users
+be able to make annotations and operate similar tools in published
+notebooks without coding and being exposed to the hackers's view?
+Our prototype has not addressed this problem yet.
 
 {\bf Content export} is not a capability we worked to support,
-but the R environment already has many packages for this.
-Our goal was to devise ways of working where explicit export
-is less necessary. However it is desirable to integrate results
+but R already has many packages for this. Our goal was to devise
+ways of working where explicit export is less necessary.
+However it is desirable to integrate results
 through web protocols such as JSON. We did assume that RCloud
 notebooks need to play well in the ecosystem of other tools,
 and this worked out as intended, though we learned it also creates
@@ -51,7 +65,7 @@ recommendations via relationships discovered by static and
 dynamic code analysis. This should be done both within and across
 collections of scripts (the latter being similar to Vistrails'
 enhanced recommendations by clustering multiple workflows).
-It should be valuable to data analysts to know which packages are
+It should be valuable to hackers to know which packages are
 frequently used together, or appear with a given record type
 or data feed. In general, though, trivial or passive mechanisms
 to collect data for recommendations are essential.
@@ -67,7 +81,7 @@ identities and groups and to maintain communication channels.
 
 Because we developed the ideas and the prototype together,
 we did not foresee some of the requirements that emerged
-after our audience started working with the prototype.
+after people started working with the prototype.
 
 We did not anticipate having to back off so soon on the
 assumption that programming is being done mainly in one
@@ -87,8 +101,9 @@ This cannot be avoided entirely, but the power of sharing is worth
 this price (as proven true with distributed systems in general).
 Still, this problem needs more attention if the environment is
 going to be scaled up to a wider number of users with fewer
-informal channels to coordinate work. \todo{need a transition}
-Versioning occurs in several places: in scripts, in the R environment
+informal channels to coordinate work. Effective sharing in RCloud
+will require control over versioning.
+Versioning must be managed in several places: in scripts, in the R environment
 such as the installed R libraries and packages, and in the external
 environment such as the operating system and even protocols spoken by
 remote services. At one end of the scale, we have full control over the
@@ -102,8 +117,8 @@ At the other end of the scale, there is not much reason to expect version
 control for the external environment. Most programmers rely on clean living
 and a conservative approach to upgrades.
 
-On top of this, RCloud allows analysts to fork experiments to try
-new ideas quickly. But we have not done much so far to address the
+On top of this, RCloud allows hackers to fork experiments to try
+new ideas quickly. So far we have not done much more to address the
 problem of having a lot of bits and pieces of code and data lying
 around, though at least we have made it easier to get at them and
 to apply algorithms and metadata to organize them.
