@@ -156,18 +156,19 @@ management being implemented in a new middle layer not in RCloud's
 architecture today.
 
 {\bf Security.}
-It is critical to consider security in an environment that 
-
-RCloud uses an object capability model that prevents
-unauthenticated clients from making unauthorized accesses
-to RCloud objects \cite{
+It is essential to provide security in an environment that encourages
+collaboration and data publishing.  RCloud uses an object capability model
+\cite{Miller:2006:RCT}
+recently added to the Rserve protocol \cite{Urbanek:2003:AFW}
+that prevents unauthenticated clients from making
+unauthorized calls to the RCloud runtime environment.
 
 Our back-end environment assumes a high degree of trust between users.
 Access control for information security is delegated to the host
 operating system and web server. In practice, most operating
 systems and web servers rely either on coarse permission models,
 which tend to be ineffective, or on detailed access control
-lists, which tend to be cumbersome and complicated. 
+lists, which tend to be cumbersome. 
 Information security in RCloud should be re-examined, but more
 sophisticated approaches such as information flow analysis are
 still an active research area, and many subtle problems remain
