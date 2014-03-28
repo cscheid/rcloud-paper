@@ -8,7 +8,7 @@
 % What's the area
 Consider the emerging role of a data science team within an
 organization today \cite{Keim:2008:VAS}.
-
+%
 % How do people do it today?
 Individual data scientists and statisticians usually work on loosely
 related problems, and must devise effective ways to share their findings
@@ -19,13 +19,12 @@ or at best, through systems that attack individual tasks or functions
 in the data analysis workcycle. % might cite information visualization reference model or pirolli/card
 
 % Why does this not work?
-There are two problems with the current
-practice. First, there are gaps in the workflow:
-Exploratory Data Analysis (EDA) is done with one set of tools,
-and automated reports and deployments with another. This makes
-transferring results between EDA and production (in both directions)
-slow, expensive, and error-prone. Coordination is done through
-meetings and may take months to implement.
+There are two problems with the current practice. First, there are
+gaps in the workflow: Exploratory Data Analysis (EDA) is done with one
+set of tools, and automated reports and deployments with another. This
+makes transferring results between EDA and production (in both
+directions) slow, expensive, and error-prone. Coordination is done
+through meetings and may take months to implement.
 
 Second, EDA environments often assume a single-developer perspective,
 while data scientist teams could greatly benefit from convenient searching
@@ -33,61 +32,151 @@ and sharing of scripts, data sets, data feeds, experiments, annotations,
 and automated analyses and recommendations. These capabilities have had
 tremendous impact on information retrieval in general but are well
 beyond what existing visual analytics environments provide, or what
-is found in current repositories and version control systems.
+is found in today's repositories and version control
+systems. \todo{add cites to reco system work}
+
+In addition, take the recent trend in interactive visualization
+technologies. Let us consider prominent designers and developers of
+open source software, Jeffrey Heer, and Hadley Wickham. Heer has
+written (or helped write) Prefuse, Flare, Protovis, d3, and Vega, in
+that order. All but the first of these libraries target web
+technologies, and all but the second use open standards. Wickham has
+written ggplot, ggplot2, and ggvis. ggplot and
+ggplot2 generate static graphics, while ggvis uses Shiny and Vega to
+provide easy interactive visualizations in R, by opening a separate
+web server for each call. \todo{Add cites for all of these}
 
 % What are we going to do about this?
-\todo{Sell idea, not system} In this paper, we investigate the hypothesis
-that the practice of visual analytics can advance by adopting techniques
-from information retrieval and collaborative work environments. To investigate
-these ideas, we designed and deployed a prototype environment called RCloud,
-that supports collaborative data analysis, visualization and web deployment.
-We will report on the design decisions, tradeoffs and limitations, and compare
-the concepts in RCloud to similar proposals.
 
-\todo{Define the requirements for the system}
+%% \todo{Define the requirements for the system}
+%% We begin by noting the main requirements for a data analysis
+%% environment for collaboration and transfer of results into production.
 
-We begin by noting the main requirements for a data analysis environment for
-collaboration and transfer of results into production.
+%% Main requirement is to satisfy these two sets of users: R coders and
+%% managers. They work differently and want different things. What should
+%% the infrastructure look like so they both coexist in peace? If this is
+%% such a fundamental problem, why have other tools not addressed it?
+%% Discuss Shiny (maybe in the disc. section).
 
-Our main requirement is to satisfy these two sets of users: R coders and
-managers. They work differently and want different things. What should
-the infrastructure look like so they both coexist in peace? If this is
-such a fundamental problem, why have other tools not addressed it?
-Discuss Shiny (maybe in the disc. section).
+We see the present state-of-the-art in environments for data science
+teams as tremendously powerful, but ultimately fragmented. Rather than
+design a completely new solution that risks even further
+fragmentation, we wish to find and remedy the shortcomings of data
+science as we see it practiced today. The following requirements
+summarize what we consider to be the main pain points:
 
-\begin{itemize}
-\item Constant technology transfer. Experiments in notebooks developed
-by analysts need to become accessible in the production environment,
-making it easy to push new features, prototypes, etc.
-\item Dashboarding. To support the above, there should be a mode
-in which non-experts can operate the experiments without coding.
-This may require some accomodation in code written by analysts,
-but our goal is to make that as simple as we can.
-\item Version control as a primary concept in the repository. There
-needs to be a way to control the visibility of prototypes as they
-are developed and tested.
-\item Coexistence in the current data ecosystem. The isolation of
-today's exploratory visualization and data analysis environments is
-a real obstacle to wider adoption of novel data analysis methods.
-\item Modern interactive technologies. Current isolation notwithstanding,
-there is demand for interactive visualization tools. In some respects,
-the prevalence of data journalism has raised expectations very high,
-but handmade, one-off designs are too expensive to most teams to support.
-The main challenge is how to integrate these technologies so data
-scientists and statisticians can program in them, \emph{and} business-facing
-workers can operate them.
+\begin{enumerate}
+
+\item Technology transfer. In our experience, development
+of new analyses and visualizations is done by \emph{hackers}
+and \emph{scripters} (where here are use Kandel et al.'s
+terminology~\cite{Kandel:2012:EDA}) who are, by definition, familiar
+to some extent with programming and software development.
+On the other hand, \emph{application
+users} are the ones extracting value from the data using the tools
+developed by hackers and scripters. Traditionally, the communication
+between these two world is done by IT staff. In an environment where
+business needs change possibly many times a week, manual IT support
+does not scale: there needs to exist
+infrastructure to connect the two worlds.
+%% The two classes of users
+%% have quite different perspectives but we
+%% infrastructure for continuous deployment of visualizations.
+
+\item Coexistence. In the current data science ecosystem, the
+isolation of current exploratory visualization and data analysis
+environments is a threat to wider adoption of modern techniques for
+both sides. We specifically see the richness of interactive
+visualization tools isolated from the richness of statistical
+programming environments.
+We wish to provide infrastructure such that
+developments on one side can more easily be employed on the other. In
+addition, this system itself should be easily accessible
+to the rest of the organization.
+
+\item Discoverability. From our experience in working with data
+analyst teams, we find that repeated work (``how can I connect to
+database X?'', ``how do you get clean data from column Y from feed
+Z?'') typically arises from lack of communication of solved
+subproblems. We wish to provide transparency about the work of
+team members in the organization.
+
+\end{enumerate}
+
+Technologies which fail to address these requirements
+are holding back the practice and impact of interactive visual
+analysis. In this paper, we discuss the design and deployment of
+RCloud, a prototype environment that supports collaborative data
+analysis, visualization and web deployment satisfying all requirements
+above. We will report on the design decisions, tradeoffs and
+limitations, and compare the concepts in RCloud to similar proposals.
+
+RCloud uses the R language~\cite{RCoreTeam:2013:R} as the main provider of
+statistical analysis tools. In fact, as we describe in
+Section~\todo{where?}, RCloud notebooks are sequences of R snippets
+interspersed with Markdown for easy generation of reports. In
+Section~\todo{where?}, we describe how RCloud enables
+interactive visualization widgets in this setting. In
+Section~\ref{sec:limitations}, we discuss some consequences of
+designing for a single language, and how this was received by
+our (small, but active) user community.
+
+%% Our investigation focuses on the R language \cite{RCoreTeam:2013:R}
+%% for statistical computing and graphics. R is one of the most popular
+%% systems for data analysis and is well-supported by
+%% a complex ecosystem of compatible packages, software
+%% tools and other resources.
+%
+%% Of importance to us, there are existing
+%% packages for high performance computing in the cloud,
+%% and for generating web graphics. % no, there aren't. we wrote those!
+
+
+
+The facilities for \emph{sharing, viewing and embedding} RCloud
+notebooks address technology transfer, and are described in
+Section~\todo{where?}. RCloud notebooks are edited and shared as web
+pages. In order to support the tight integration of R and HTML5
+technologies, RCloud uses a full, bi-directional communication channel
+between the web browser and a running R process, described in
+Section~\todo{where?}.
+
+Because RCloud embraces technologies that are part of the computing
+environment (specifically, inter-process communication via HTTP and
+web services as remote procedure calls), we find it easier to
+integrate RCloud with satellite efforts in corporate environments. We
+discuss this architecture and consequences in
+Section~\ref{sec:system}.
+
+The requirement of continuous technology transfer creates challenges
+about the \emph{stability} of the many moving pieces: if notebooks are
+always updated and deployed automatically, how can the system handle
+changing requirements and public interfaces? We discuss our choice of
+transparent, integrated version control for RCloud notebooks in 
+Section~\ref{sec:notebooks}.
+
+%% Dashboards are a solution to requirement 1, using solutions of
+%% requirement 2.
+%% Requirement 2: \emph{how is accessibility supposed to happen?}
+
+%% Version control as a primary concept in the environment is a
+%% consequence of requirement 1. There
+%% needs to be a way to control the visibility of prototypes as they are
+%% being developed and tested.
+
+%% Tight integration between R process and web browser is a solution to
+%% requirement 2
+
+%% Current isolation notwithstanding, we find there is demand for interactive
+%% visualization tools. We do not believe that moving the \
+
+%% The main challenge here is how to integrate these
+%% technologies so data scientists and statisticians can target
+%% them, \emph{and} business-facing users can use them.
 %% Scalable technologies like crossfilter exist. Want to support those in the context of an R environment. Need to support full 2-way communication between computing in the cloud and interaction on the web.
-%% \item Other requirements e.g. Kandel's user study. Not our contribution but things we must address, mentioned in related work section. Heer/Agrawala design considerations for collaborative visual analytics. Commenting, annotation, modularity, granulatiry.
-\end{itemize}
+%% \item Other requirements e.g. Kandel's user study. Not our contribution but things we must address, mentioned in related work section. Heer/Agrawala design considerations for collaborative visual analytics.
 
 % What is the scope of our solution?
-Our investigation focuses on the R language \cite{RCoreTeam:2013:R}
-for statistical computing and graphics. R is one of the most popular
-data analysis systems and is well-supported by a broad ecosystem
-of packages, tools and other resources.
-%
-There are many existing R packages, including packages for high performance
-computing in the cloud, domain specific data analysis, statistical computing,
-and web graphics (though the latter has to be adapted for our architecture).
-An additional requirement for our prototype is to work well with the rest
-of this ecosystem.
+
+% We want our solution to play well with the rest of the ecosystem
+
