@@ -43,8 +43,15 @@ Finally, consider the situation where an analyst wants to understand
 the price dynamics of stocks with respects to various attributes and
 time ranges. For this, interactive visualization may be very helpful.
 In our example, the analyst creates an interactive tool with N views.
-\todo{Describe dcplot and notebook which uses it.}
 
+Through the tight integration of R and JavaScript functions and data,
+the analyst writes a function in R which passes the dataframe and the
+description of the charts to the dcplot library.  Simple R expressions
+are captured as trees to generate JavaScript expressions.  The terse
+chart description language, with intelligent defaults inspired by
+ggplot2, provides a simple yet powerful interface to the grouping
+and reduction functionality of crossfilter and the chart styles of
+dc.js and d3.js.
 
 % \subsection{Text analysis\label{sec:textvis}}
 % Same.
