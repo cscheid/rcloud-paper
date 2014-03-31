@@ -26,48 +26,46 @@ services and networks with an organization.
 We designed RCloud around the front-facing API, which provides roughly
 one entry point to correspond with each requirement.
 
-Edit
+\todo{Edit}
 
-View/Run/Share
+\todo{View/Run/Share}
 
-Call
+\todo{Call}
 
-Browse/Search. ``More like this'', and a custom webpage solely for browsing.
+\todor{Browse/Search}. ``More like this'', and a custom webpage solely for browsing.
 
 \subsection{Notebooks\label{sec:notebooks}}
 
-The basic unit of operation in RCloud is a \emph{notebook}. RCloud
-notebooks hold a sequence of \emph{cells}, each of which represents a
+The basic unit of operation in RCloud is a \emph{notebook}. A notebook
+holds a sequence of \emph{cells}, each of which represents a
 snippet of code or hypertext in Markdown. This is not a novel idea;
 executable documents structured in this way are present in a wide
-variety of present software systems, from Mathematica to IPython to
-Sage and others.
+variety of other software systems, including Mathematica, IPython and Sage.
 
 One of the main differences between RCloud and other systems is the
 notion that notebooks are ``always deployed''. This has a variety of
 advantages which we discuss \todo{where?}. On the other hand, there
 are a variety of situations that might ask for a specific version of a
 notebook. Rather than have the notebook designer decide ahead of time
-which versions should be preserved, we choose to expose
-\emph{transparent} versioning. This is similar to models like
-Jankun-Kelly et al.'s p-set calculus \todo{cite} and VisTrails's
-version tree \todo{cite}, where every change in the state of the
+which versions should be preserved, we embrace \emph{transparent} versioning.
+This is similar to models like Jankun-Kelly et al.'s p-set calculus \todo{cite}
+and VisTrails's version tree \todo{cite}, where every change in the state of the
 system is tracked.
 
 Implementing the entire version-control subsystem would be a large
-undertaking. Instead, we build the infrastructure on top of Github's
+undertaking. Fortunately, we can build RCloud on top of Github's
 \emph{gists}~\todo{cite}. Github offers a HTTP interface
-for creating simplified git repositories (the main limitation is the
-use of text-only files and a single directory). The GitHub web-service
-API provides much of the infrastructure we need for the versioning
+for creating simplified git repositories (the main limitation being the
+use of text-only files in a single directory). The GitHub web-service
+API provides most of the semantics we need for the versioning
 portion of the storage back end: access to previous versions,
 comments, starring, and forking.
 
 Using GitHub was mainly a tactical decision to reduce our
-time-to-prototype. At the same time, it had the fortuitous decision of
+time-to-prototype. At the same time, it had the beneficial effect of
 forcing our backend to communicate with separate processes over HTTP
 and JSON. This had the serendipitous advantage of quickly enabling
-full search over RCloud notebooks (built using Apache SOLR).
+full search over RCloud notebooks (using Apache SOLR).
 %
 This perspective has implications for
 systems-based research and prototyping in visual analytics.
@@ -78,8 +76,8 @@ possible.
 %
 Even though it involved learning a variety of standards that are not
 directly related to visual analytics, our early decision to use the
-GitHub gist API has been quite fruitful. We expect similar payoffs to
-happen for related projects as well.
+GitHub gist API has been quite fruitful. We expect related projects
+can gain similar benefits by adopting the same strategy.
 
 %% %
 %% We needed version control over a directory, gist provides that,
@@ -105,7 +103,7 @@ We incorporate both explicit and implicit indications of interest
 in notebooks. Explicit interest is signaled by ``starring,'' or
 clicking on a button that marks a notebook as interesting.
 This makes explicit indication of interest a nearly trivial operation,
-always readily available, thus encouraging its use.
+always readily available, to encourage its use.
 
 Implicit signaling of interest is supported by keeping click-through
 \cite{Joachims:2005:AIC} and execution counts. (In addition to these
@@ -134,7 +132,7 @@ HTTP and web services are convenient but much of the protocol is
 stateless. (For example, GET requests are required to not change the
 remote state, and results can be cached in transparent proxies along
 the network). In the case of close communication between a running
-R process and a web browser, we seek something that is more flexible
+R process and a web browser, we need something that is more flexible
 than distinct URLs for every R process (with the resulting
 complication in providing access 
 
