@@ -1,24 +1,23 @@
 \section{Case Studies}
 
-We present two example applications of the capabilities provided by RCloud
-based on synthetic data and applications.\footnote{Unfortunately, we could
-not show production notebooks because of concerns about revealing proprietary
-or confidential information.} The main pont of the examples is that they are
-representative of a progression through the visual analytics development
-and deployment process that we aim to support.
+We present two example applications in RCloud based on synthetic data
+and applications.\footnote{Unfortunately, we could not show production
+notebooks that may contain proprietary or confidential information.}
+The main point of the examples is to show key steps in the visual
+analytics development and deployment process that we aimed to support.
 
 \subsection{Stock Price Analysis\label{sec:stockvis}}
 
 \begin{figure}
 \includegraphics[width=\linewidth]{fig/casestudy1/casestudy1.pdf}
 \caption{\label{sec:stockvis}Iterations of a stock ticker
-  visualization, after an example by Hadley Wickham.  A
-  simple, static visualization of the closing price of a single ticker
+  visualization, based on an example by Hadley Wickham. A
+  simple, static visualization of the closing price of a single stock
   is progressively developed into a configurable display suitable
-  for dashboarding, then into an interactive visualization of the
-  volatility and volume of two stocks, then finally into an API
-  for data access by other RCloud notebooks. All notebooks
-  in this example can be loaded as web pages. When a notebook
+  for dashboarding, then into an interactive visualization for 
+  comparing the volatility and volume of two stocks, and finally
+  into an API for data access by other RCloud notebooks. The notebooks
+  in this example can all be loaded as web pages. When a notebook
   corresponding to a function call is displayed a web page,
   its associated documentation is displayed.}
 \end{figure}
@@ -32,12 +31,12 @@ for a single trading symbol.
 The webpage that produces that visualization includes a link back to
 the generating source code, from which a user can fork the notebook
 and, in this case, add a configurable ticker based on the URL of
-the notebook. Notice how the notebook changes very little.
+the notebook. Notice that the notebook changes very little.
 
-From there, the notebook author (or another user) may decide to
-provide convenient access to the data apart from its visualization.
-This is achieved by creating a notebook that defines a function.
-This notebook then becomes a \emph{subroutine} for other notebooks,
+From there, the notebook author or a collaborator may decide to
+provide convenient access to the data, apart from its visualization.
+This is done by creating a notebook that defines a function.
+That notebook then becomes a \emph{subroutine} for other notebooks,
 and is version-controlled like other notebooks.
 
 \todo{Interactive version.}

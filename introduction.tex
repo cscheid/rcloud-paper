@@ -24,7 +24,7 @@ gaps in the workflow: Exploratory Data Analysis (EDA) is done with one
 set of tools, and automated reports and deployments with another. This
 makes transferring results between EDA and production (in both
 directions) slow, expensive, and error-prone. Coordination is done
-through meetings and may take months to implement.
+through meetings and may take months to carry out.
 
 Second, EDA environments often assume a single-developer perspective,
 while data scientist teams could greatly benefit from convenient searching
@@ -33,18 +33,17 @@ and automated analyses and recommendations. These capabilities have had
 tremendous impact on information retrieval in general but are well
 beyond what existing visual analytics environments provide, or what
 is found in today's repositories and version control
-systems. \todo{add cites to reco system work}
+systems.\cite{Koren:2009:FIT}
 
-In addition, take the recent trend in interactive visualization
-technologies. Let us consider prominent designers and developers of
-open source software, Jeffrey Heer, and Hadley Wickham. Heer has
-written (or helped write) Prefuse, Flare, Protovis, d3, and Vega, in
-that order. All but the first of these libraries target web
-technologies, and all but the second use open standards. Wickham has
-written ggplot, ggplot2, and ggvis. ggplot and
-ggplot2 generate static graphics, while ggvis uses Shiny and Vega to
-provide easy interactive visualizations in R, by opening a separate
-web server for each call. \todo{Add cites for all of these}
+In addition, consider recent trends in interactive visualization
+technologies in the open source community. Projects led by Jeff Heer
+include Prefuse, Flare, Protovis, d3, and Vega, in that order.
+All but the first of these libraries take advantage of web technologies,
+and all but the second rely on open standards. Hadley Wickham is the
+author of ggplot, ggplot2, and ggvis. ggplot and ggplot2 generate
+static graphics, while ggvis provides convenient interactive visualizations
+in R, using the R package Shiny and the Vega abstract visualization grammar,
+opening a separate web server for each call.
 
 % What are we going to do about this?
 
@@ -58,18 +57,17 @@ web server for each call. \todo{Add cites for all of these}
 %% such a fundamental problem, why have other tools not addressed it?
 %% Discuss Shiny (maybe in the disc. section).
 
-We see the present state-of-the-art in environments for data science
-teams as tremendously powerful, but ultimately fragmented. Rather than
-design a completely new solution that risks even further
-fragmentation, we wish to find and remedy the shortcomings of data
-science as we see it practiced today. The following requirements
-summarize what we consider to be the main pain points:
+Today's state-of-the-art in environments for data science teams are extremely
+powerful, but also fragmented. Instead of creating a new solution that risks
+even further fragmentation, we wish to identify and remedy the shortcomings
+in current technology for the practice of data science. The following
+requirements summarize the main pain points:
 
 \begin{enumerate}
 
 \item Technology transfer. In our experience, development
 of new analyses and visualizations is done by \emph{hackers}
-and \emph{scripters} (where here are use Kandel et al.'s
+and \emph{scripters} (using Kandel et al.'s
 terminology~\cite{Kandel:2012:EDA}) who are, by definition, familiar
 to some extent with programming and software development.
 On the other hand, \emph{application
