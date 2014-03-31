@@ -2,12 +2,6 @@
 
 % High-level architecture
 
-\begin{figure}
-\includegraphics[width=\linewidth]{fig/system/system.pdf}
-\caption{\label{fig:system}A diagram of RCloud's architecture. Dashed
-  lines represent features which not yet implemented.}
-\end{figure}
-
 The internal computing infrastructure of organizations has changed
 radically in the last fifteen years. The shift from large
 servers toward scalable, lower-cost, distributed systems (``the cloud'')
@@ -41,15 +35,6 @@ Call
 Browse/Search. ``More like this'', and a custom webpage solely for browsing.
 
 \subsection{Notebooks\label{sec:notebooks}}
-
-\begin{figure*}
-\includegraphics[width=\linewidth]{fig/notebook/notebook.pdf}
-\caption{\label{fig:notebook}An RCloud notebook is a sequence of
-  \emph{cells}, each a snippet of source in R or Markdown. Notebooks
-  are stored in GitHub \emph{gists}, which provide the version-control
-  primitives needed in RCloud during editing (left) or viewing and
-  executing (right).}
-\end{figure*}
 
 The basic unit of operation in RCloud is a \emph{notebook}. RCloud
 notebooks hold a sequence of \emph{cells}, each of which represents a

@@ -1,3 +1,9 @@
+\begin{figure}
+\includegraphics[width=\linewidth]{fig/system/system.pdf}
+\caption{\label{fig:system}A diagram of RCloud's architecture. Dashed
+  lines represent features which not yet implemented.}
+\end{figure}
+
 \section{Related Work}
 
 Kandel et al. argue in their review of data wrangling work that data
@@ -69,6 +75,16 @@ exploratory work in data science teams. As a result, RCloud tries to
 provide a closer data-analysis to analysts accustomed to creating and
 executing R and Python code while keeping many of the attractive
 properties like automatic versioning and management.
+
+\begin{figure*}
+\centering
+\includegraphics[width=.8\linewidth]{fig/notebook/notebook.pdf}
+\caption{\label{fig:notebook}An RCloud notebook is a sequence of
+  \emph{cells}, each a snippet of source in R or Markdown. Notebooks
+  are stored in GitHub \emph{gists}, which provide the version-control
+  primitives needed in RCloud during editing (left) or viewing and
+  executing (right).}
+\end{figure*}
 
 Our work has been inspired by and benefited from other efforts
 to improve data analysis environments and processes,
