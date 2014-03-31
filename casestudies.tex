@@ -1,14 +1,12 @@
-\section{Case Studies}
+\section{Case Study}
 
-We present two example applications in RCloud based on synthetic data
-and applications.\footnote{Unfortunately, we could not show production
-notebooks that may contain proprietary or confidential information.}
-The main point of the examples is to show key steps in the visual
-analytics development and deployment process that we aimed to support.
+We present an example Stock Price Analysis application
+in RCloud.\footnote{Unfortunately,
+we could not include production notebooks containing proprietary or personal
+information.} The example, although simplified, shows key steps in the
+development and deployment process we aimed to support.
 
-\subsection{Stock Price Analysis\label{sec:stockvis}}
-
-\begin{figure}[b]
+\begin{figure}
 \includegraphics[width=\linewidth]{fig/casestudy1/casestudy1.pdf}
 \caption{\label{fig:stockvis}Iterations of a stock ticker
   visualization, based on an example by Hadley Wickham. A
@@ -22,43 +20,34 @@ analytics development and deployment process that we aimed to support.
   its associated documentation is displayed.}
 \end{figure}
 
-Our first example is a sequence of visualizations of the performance
+The example shows a sequence of visualizations of the performance
 of financial stocks over a multi-year period. The first visualization
-in this example uses ggplot2 and is due to Hadley Wickham. It reads
-data provided by Yahoo! Finance as a web service, and shows the price
-for a single trading symbol.
+in this example uses ggplot2 and was written by Hadley Wickham.
+It reads data provided by Yahoo! Finance as a web service, and shows
+the price for a single trading symbol.
 
 The webpage that produces that visualization includes a link back to
-the generating source code, from which a user can fork the notebook
-and, in this case, add a configurable ticker based on the URL of
-the notebook. Notice that the notebook changes very little.
+the underlying source code. From this link, a user can fork the notebook.
+In the example,a configurable ticker is added, based on the URL of
+the notebook. The change to the notebook is very minor.
 
-From there, the notebook author or a collaborator may decide to
-provide convenient access to the data, apart from its visualization.
+Next, the notebook author or a collaborator may decide to extend
+the application to also provide convenient access to the data,
+apart from its visualization.
 This is done by creating a notebook that defines a function.
-That notebook then becomes a \emph{subroutine} for other notebooks,
-and is version-controlled like other notebooks.
+That notebook then becomes a \emph{subroutine} for other notebooks.
+It can be invoked from interactive notebooks, such as dashboards.
+The data access notebook is is version-controlled like other notebooks.
 
-\todo{Interactive version.}
+Finally, consider the situation where an analyst wants to understand
+the price dynamics of stocks with respects to various attributes and
+time ranges. For this, interactive visualization may be very helpful.
+In our example, the analyst creates an interactive tool with N views.
+\todo{Describe dcplot and notebook which uses it.}
 
-%% This notebook can then be called in an \emph{interactive}
-%% visualization, which uses the Javascript 
 
-%% Easy to convert it into configurable entry point for dashboarding.
-
-%% Now consider an analyst that wants to understand the price dynamics of
-%% different stock attributes, different points in time, etc. For that,
-%% interactive visualization is very attractive. describe dcplot and
-%% notebook which uses it.
-
-%% Then describe abstraction of stock-data fetching, to talk about
-%% calling notebooks from other notebooks.
-
-%% then call.r?
-
-\subsection{Text analysis\label{sec:textvis}}
-
-Same.
+% \subsection{Text analysis\label{sec:textvis}}
+% Same.
 
 % IMPORTANT: what is unique about RCloud here
 % From prototyping to dashboard

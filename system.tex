@@ -48,13 +48,12 @@ advantages which we discuss \todo{where?}. On the other hand, there
 are a variety of situations that might ask for a specific version of a
 notebook. Rather than have the notebook designer decide ahead of time
 which versions should be preserved, we embrace \emph{transparent} versioning.
-This is similar to models like Jankun-Kelly et al.'s p-set calculus \todo{cite}
-and VisTrails's version tree \todo{cite}, where every change in the state of the
-system is tracked.
+This is similar to models like Jankun-Kelly et al.'s p-set calculus \cite{Jankun-Kelly:2007:MFV}
+and VisTrails's version tree \cite{Callahan:2006:VVM}, where every change in the state of the system is tracked.
 
 Implementing the entire version-control subsystem would be a large
 undertaking. Fortunately, we can build RCloud on top of Github's
-\emph{gists}~\todo{cite}. Github offers a HTTP interface
+\emph{gists}~\cite{Github:2014:GG}. Github offers a HTTP interface
 for creating simplified git repositories (the main limitation being the
 use of text-only files in a single directory). The GitHub web-service
 API provides most of the semantics we need for the versioning
