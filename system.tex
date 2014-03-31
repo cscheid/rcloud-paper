@@ -47,7 +47,8 @@ Browse/Search. ``More like this'', and a custom webpage solely for browsing.
 \caption{\label{fig:notebook}An RCloud notebook is a sequence of
   \emph{cells}, each a snippet of source in R or Markdown. Notebooks
   are stored in GitHub \emph{gists}, which provide the version-control
-  primitives necessary for RCloud.}
+  primitives needed in RCloud during editing (left) or viewing and
+  executing (right).}
 \end{figure*}
 
 The basic unit of operation in RCloud is a \emph{notebook}. RCloud
@@ -117,7 +118,7 @@ interest to users would not provide sufficiently ``high-resolution'' data.
 
 We incorporate both explicit and implicit indications of interest
 in notebooks. Explicit interest is signaled by ``starring,'' or
-clicking on a button that marks a notebook as interesting. 
+clicking on a button that marks a notebook as interesting.
 This makes explicit indication of interest a nearly trivial operation,
 always readily available, thus encouraging its use.
 
@@ -130,8 +131,47 @@ sets often appear together.)
 
 \subsection{Executing R in a web browser}
 
-As we reiterated in 
-One of the design goals of the user experience in RCloud 
+One our main goals is to provide ubiquitous access to the statistical
+tools of the R programming language in the wider environment in which data
+science teams participate.
+%
+Given the recent developments of interactive visualization and visual
+analytics in HTML5 and the web, we decided to create an
+\emph{interconnect} between the two environments.
+%
+Every RCloud session spawns a new R execution process in a remote
+server. The communication between the web browser and the 
+
+%% \subsubsection{Object capabilities: R to Javascript RPC and access
+%%   control}
+
+HTTP and web services are convenient but much of the protocol is
+stateless. (For example, GET requests are required to not change the
+remote state, and results can be cached in transparent proxies along
+the network). In the case of close communication between a running
+R process and a web browser, we seek something that is more flexible
+than distinct URLs for every R process (with the resulting
+complication in providing access 
+
+
+%% \subsection{Technologies: R, Python, HTML5, interactive notebooks, etc.}
+
+%% How do we do things that are not trivial to do with IPython (for
+%% example)
+
+%% What is relationship to a standard CMS with R/Python
+
+%% dcplot. two-way communication between between backend session and
+%% frontend session.
+
+%% A key engineering decision in RCloud was to rely on full two-way
+%% communication between the web client human interface, and data and
+%% computing resources in the cloud. It is easier to engineer a design
+%% in which the human interface is pushed one-way from the server
+%% and thereafter all interaction takes place within the client.
+%% Two-way communication is necessary, though, where the size of
+%% the data or computational performance makes it impractical to
+%% move all computation to the client.
 
 
 \subsection{Deployment of notebooks\label{sec:deployment}}
@@ -147,26 +187,3 @@ the web. Although our prototype RCloud deployment is only visible
 inside a corporate intranet, we nevertheless found anecdotal support
 for this notion by discovering links to RCloud notebooks in internal
 discussion fora and mailing lists.
-
-\subsection{Technologies: R, Python, HTML5, interactive notebooks, etc.}
-
-
-
-How do we do things that are not trivial to do with IPython (for
-example)
-
-
-
-What is relationship to a standard CMS with R/Python
-
-dcplot. two-way communication between between backend session and
-frontend session.
-
-A key engineering decision in RCloud was to rely on full two-way
-communication between the web client human interface, and data and
-computing resources in the cloud. It is easier to engineer a design
-in which the human interface is pushed one-way from the server
-and thereafter all interaction takes place within the client.
-Two-way communication is necessary, though, where the size of
-the data or computational performance makes it impractical to
-move all computation to the client.
