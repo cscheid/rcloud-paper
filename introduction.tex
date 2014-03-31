@@ -35,15 +35,17 @@ beyond what existing visual analytics environments provide, or what
 is found in today's repositories and version control
 systems.\cite{Koren:2009:FIT}
 
-In addition, consider recent trends in interactive visualization
-technologies in the open source community. Projects led by Jeff Heer
+In addition, consider trends in interactive visualization software
+in the open source community. Projects led by Jeff Heer
 include Prefuse, Flare, Protovis, d3, and Vega, in that order.
 All but the first of these libraries take advantage of web technologies,
 and all but the second rely on open standards. Hadley Wickham is the
 author of ggplot, ggplot2, and ggvis. ggplot and ggplot2 generate
 static graphics, while ggvis provides convenient interactive visualizations
 in R, using the R package Shiny and the Vega abstract visualization grammar,
-opening a separate web server for each call.
+opening a separate web server for each call. These projects point to
+the trend toward visual analytics frameworks and systems that are
+increasingly interactive, composable, and accessible through the web.
 
 % What are we going to do about this?
 
@@ -57,47 +59,49 @@ opening a separate web server for each call.
 %% such a fundamental problem, why have other tools not addressed it?
 %% Discuss Shiny (maybe in the disc. section).
 
-Today's state-of-the-art in environments for data science teams are extremely
-powerful, but also fragmented. Instead of creating a new solution that risks
-even further fragmentation, we wish to identify and remedy the shortcomings
-in current technology for the practice of data science. The following
-requirements summarize the main pain points:
+Today's state-of-the-art environments for data science teams are unquestionably
+powerful, but also fragmented. Instead of creating a new solution that promotes
+even further fragmentation, we attempt to identify and remedy the shortcomings
+in the current practice of data science. The following requirements summarize
+the main pain points:
 
 \begin{enumerate}
 
 \item Technology transfer. In our experience, development
 of new analyses and visualizations is done by \emph{hackers}
 and \emph{scripters} (using Kandel et al.'s
-terminology~\cite{Kandel:2012:EDA}) who are, by definition, familiar
-to some extent with programming and software development.
+terminology~\cite{Kandel:2012:EDA}) who are, by definition,
+at least somewhat familiar with programming and software development.
 On the other hand, \emph{application
-users} are the ones extracting value from the data using the tools
-developed by hackers and scripters. Traditionally, the communication
-between these two world is done by IT staff. In an environment where
-business needs change possibly many times a week, manual IT support
-does not scale: there needs to exist
-infrastructure to connect the two worlds.
+users} ultimately derive value from the data by means of the tools
+developed by hackers and scripters. Traditionally, the connection
+between these two worlds is made by IT staff. In an environment where
+business needs can change every day, manual IT support does not scale:
+we need to create software infrastructure to connect the two worlds.
+(The path backward is equally important: when problems discovered in
+production require expert help, we would like the experts to be
+able to immediately apply their full range of analytic tools without
+moving the problem back to the EDA environment).
 %% The two classes of users
 %% have quite different perspectives but we
 %% infrastructure for continuous deployment of visualizations.
 
 \item Coexistence. In the current data science ecosystem, the
-isolation of current exploratory visualization and data analysis
-environments is a threat to wider adoption of modern techniques for
-both sides. We specifically see the richness of interactive
-visualization tools isolated from the richness of statistical
-programming environments.
-We wish to provide infrastructure such that
-developments on one side can more easily be employed on the other. In
-addition, this system itself should be easily accessible
+isolation of exploratory visualization and data analysis
+environments is a hinderance to wider adoption of modern techniques
+on both sides. We specifically see the richness of interactive
+visualization tools as still being isolated from the richness
+of statistical programming environments.
+There is an opportunity to provide a framework so that developments
+on either side are more easily employed by the other.
+In addition, the integrated results should be more easily accessible
 to the rest of the organization.
 
 \item Discoverability. From our experience in working with data
-analyst teams, we find that repeated work (``how can I connect to
-database X?'', ``how do you get clean data from column Y from feed
-Z?'') typically arises from lack of communication of solved
-subproblems. We wish to provide transparency about the work of
-team members in the organization.
+analyst teams, we find that repeated work (``How can I connect to
+database X?'', ``How do you get clean data from column Y from feed
+Z?'') arises from lack of communication about previously solved subproblems.
+We wish to provide transparency about the work of team members in the organization.
 
 \end{enumerate}
 
@@ -107,13 +111,13 @@ analysis. In this paper, we discuss the design and deployment of
 RCloud, a prototype environment that supports collaborative data
 analysis, visualization and web deployment satisfying all requirements
 above. We will report on the design decisions, tradeoffs and
-limitations, and compare the concepts in RCloud to similar proposals.
+limitations, and compare the concepts in RCloud to related proposals.
 
-RCloud uses the R language~\cite{RCoreTeam:2013:R} as the main provider of
-statistical analysis tools. In fact, as we describe in
-Section~\todo{where?}, RCloud notebooks are sequences of R snippets
+RCloud uses the R language~\cite{RCoreTeam:2013:R} as the core set
+of statistical analysis tools. In fact, as we describe in
+Section~\ref{sec:notebooks}, RCloud notebooks are sequences of R snippets
 interspersed with Markdown for easy generation of reports. In
-Section~\todo{where?}, we describe how RCloud enables
+Section~\ref{sec:visualization}, we describe how RCloud enables
 interactive visualization widgets in this setting. In
 Section~\ref{sec:limitations}, we discuss some consequences of
 designing for a single language, and how this was received by
@@ -129,26 +133,22 @@ our (small, but active) user community.
 %% packages for high performance computing in the cloud,
 %% and for generating web graphics. % no, there aren't. we wrote those!
 
-
-
 The facilities for \emph{sharing, viewing and embedding} RCloud
 notebooks address technology transfer, and are described in
 Section~\todo{where?}. RCloud notebooks are edited and shared as web
-pages. In order to support the tight integration of R and HTML5
-technologies, RCloud uses a full, bi-directional communication channel
-between the web browser and a running R process, described in
-Section~\todo{where?}.
+pages. To support tight integration of R and HTML5, RCloud uses a
+full bi-directional communication channel between the web browser
+and a running R process, described in Section~\todo{where?}.
 
 Because RCloud embraces technologies that are part of the computing
 environment (specifically, inter-process communication via HTTP and
 web services as remote procedure calls), we find it easier to
-integrate RCloud with satellite efforts in corporate environments. We
-discuss this architecture and consequences in
-Section~\ref{sec:system}.
+integrate RCloud with satellite efforts in corporate environments.
+We discuss this architecture and consequences in Section~\ref{sec:system}.
 
 The requirement of continuous technology transfer creates challenges
 about the \emph{stability} of the many moving pieces: if notebooks are
-always updated and deployed automatically, how can the system handle
+updated and deployed automatically, how can the system handle
 changing requirements and public interfaces? We discuss our choice of
 transparent, integrated version control for RCloud notebooks in 
 Section~\ref{sec:notebooks}.
@@ -177,4 +177,3 @@ Section~\ref{sec:notebooks}.
 % What is the scope of our solution?
 
 % We want our solution to play well with the rest of the ecosystem
-
