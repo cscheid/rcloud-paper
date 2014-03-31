@@ -133,11 +133,11 @@ stateless. (For example, GET requests are required to not change the
 remote state, and results can be cached in transparent proxies along
 the network). In the case of close communication between a running
 R process and a web browser, we need something that is more flexible
-than distinct URLs for every R process (with the resulting
-complication in providing access 
+than distinct URLs for every R process, and which embraces
+statefulness of both calculations and insights in progress.
 
 
-%% \subsection{Technologies: R, Python, HTML5, interactive notebooks, etc.}
+\subsection{Interactive notebooks, etc.}
 
 %% How do we do things that are not trivial to do with IPython (for
 %% example)
@@ -147,19 +147,34 @@ complication in providing access
 %% dcplot. two-way communication between between backend session and
 %% frontend session.
 
-%% A key engineering decision in RCloud was to rely on full two-way
-%% communication between the web client human interface, and data and
-%% computing resources in the cloud. It is easier to engineer a design
-%% in which the human interface is pushed one-way from the server
-%% and thereafter all interaction takes place within the client.
-%% Two-way communication is necessary, though, where the size of
-%% the data or computational performance makes it impractical to
-%% move all computation to the client.
+A key engineering decision in RCloud was to rely on full two-way
+communication between the web client human interface, and data and
+computing resources in the cloud. It is easier to engineer a design
+in which the human interface is pushed one-way from the server
+and thereafter all interaction takes place within the client.
+Two-way communication is necessary, though, where the size of
+the data or computational performance makes it impractical to
+move all computation to the client.
+
+In addition, R is naturally better as a language for analysis, and
+JavaScript as a language for interactive visualization.  To draw on
+the strengths of both languages and both environments, the connection
+between the languages is not just procedural: it makes \emph{closures}
+and \emph{first-class functions} available across the network link.
+This provides great flexibility, so that for example, a chart built
+with dc.js or leaflet.js can call back to analysis functions in R
+without having to formalize the protocol between the processes.
 
 
 \subsection{Deployment of notebooks\label{sec:deployment}}
 
-Notebooks as versioned subroutines, web services.
+Because notebooks are continually published, any work is immediately
+available both as a subroutine and visual component. Close colleagues
+can start on the next stage of analysis, or delve into the data,
+even while the original author is polishing the algorithm or its
+presentation. The code is the page, and can either be shaped into
+a function of inputs and outputs, or the linear cells of the notebook
+can be reworked into a full-fledged HTML layout.
 
 There exists a URL for every notebook in RCloud, and notebooks by
 default are visible by the entire organization. This is deliberate.
