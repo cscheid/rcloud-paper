@@ -88,11 +88,11 @@ environments is a hinderance to wider adoption of modern techniques
 on both sides. We specifically see the richness of interactive
 visualization tools as still being isolated from the richness
 of statistical programming environments.
-(The path backward from production to analysis can be 
-equally important: when problems discovered in
-production require expert help, we would like experts to be
-able to immediately apply the full range of analytic tools without
-extracting data to move it back to the EDA environment.)
+%(The path backward from production to analysis can be 
+%equally important: when problems discovered in
+%production require expert help, we would like experts to be
+%able to immediately apply the full range of analytic tools without
+%extracting data to move it back to the EDA environment.)
 There is an opportunity to provide a framework so that developments
 on either side are more easily employed by the other.
 In addition, the integrated results should be more easily accessible
@@ -114,12 +114,6 @@ analysis, visualization and web deployment satisfying all requirements
 above. We will report on the design decisions, tradeoffs and
 limitations, and compare the concepts in RCloud to related proposals.
 
-RCloud uses the R language~\cite{RCoreTeam:2013:R} as the core set
-of statistical analysis tools. As described in Section~\ref{sec:notebooks},
-RCloud notebooks are sequences of R snippets interspersed with Markdown
-for easy generation of reports. We also describe how RCloud enables
-interactive visualization widgets in this setting (Section~\ref{sec:executinginbrowser}).
-
 %% Our investigation focuses on the R language \cite{RCoreTeam:2013:R}
 %% for statistical computing and graphics. R is one of the most popular
 %% systems for data analysis and is well-supported by
@@ -130,12 +124,23 @@ interactive visualization widgets in this setting (Section~\ref{sec:executinginb
 %% packages for high performance computing in the cloud,
 %% and for generating web graphics. % no, there aren't. we wrote those!
 
-The facilities for \emph{sharing, viewing and embedding} RCloud
-notebooks address technology transfer.
+RCloud uses the R language~\cite{RCoreTeam:2013:R} as the core set
+of statistical analysis tools.  The facilities for \emph{sharing, viewing
+and embedding} RCloud notebooks address the {\bf technology transfer} requrement.
 Because RCloud embraces technologies that are part of the computing
 environment (specifically, inter-process communication via HTTP and
-web services as remote procedure calls), it is not complicated to
+web services as remote procedure calls, as explained
+in Section~\ref{sec:highlevelarchitecture}), it is straightforward to
 integrate RCloud with satellite efforts in corporate environments.
+
+{\bf Coexistence} between analysis and visualization is supported in
+its human interface architecture, described in~\ref{sec:humaninterface}. 
+As oulined in Section~\ref{sec:notebooks}, RCloud notebooks are sequences
+of R snippets interspersed with Markdown for easy generation of reports.
+We describe how RCloud enables interactive visualization widgets in
+this setting (Sections~\ref{sec:Rinbrowser} and~\ref{sec:interactivenotebooks}).
+Indexing, publishing and sharing of notebooks is also the main way
+Rcloud supports {\bf discoverability}.
 
 The requirement of continuous technology transfer, though, creates challenges
 about the \emph{stability} of the many moving pieces: if notebooks are
@@ -144,9 +149,10 @@ changing requirements and public interfaces? We discuss our choice of
 transparent, integrated version control for RCloud notebooks in 
 Section~\ref{sec:deployment}.
 
-In Section~\ref{sec:limitations}, we discuss some consequences of
-designing for a single language, and how this was received by
-our (small, but active) user community.
+Section~\ref{sec:casestudy} describes a case study illustrating some of these concepts.
+
+In Section~\ref{sec:limitations}, we report on experience toward meeting
+these requirements in RCloud, and limitations encountered.  
 
 %% Dashboards are a solution to requirement 1, using solutions of
 %% requirement 2.
