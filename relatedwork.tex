@@ -10,7 +10,7 @@ Kandel et al. argue in their review of data wrangling work that data
 cleaning, wrangling and transformation is a major part of exploratory
 analysis and visualization~\cite{Kandel:2011:RDI}. Although RCloud
 does not by itself include modules specific to data cleaning and
-wrangling, we note from internal experience that these cleaning
+wrangling, we note from practical experience that these cleaning
 scripts themselves tend to change over time. RCloud addresses this
 issue by providing easy publishing of data-cleaning notebooks as web
 services, which reduces the total data-cleaning effort across an
@@ -20,7 +20,7 @@ Kandel et al.'s interview study points out the typical ``explore'',
 ``model'', ``report'' cycle in enterprise data
 analysis~\cite{Kandel:2012:EDA}. There are many discontinuities in
 this cycle that cost time and effort to overcome. RCloud seeks to
-reduce this impedance mismatch. They also point out that larger teams
+reduce this mismatch. They also point out that larger teams
 are becoming more common in data analysis, that supporting
 collaboration is a difficult and important problem, and that sharing
 and versioning of data sources and artifacts is hindered by current
@@ -32,15 +32,15 @@ control.'' Their work points to the opportunity for better technology
 to support collaboration and sharing by data analysis teams.
 
 Heer and Agarwala identify many design considerations for
-collaborative visual analytics~\cite{Heer:2008:DCF}. \emph{Starring},
-the means for signaling interest in notebooks, described in
+collaborative visual analytics~\cite{Heer:2008:DCF}.
+Notebooks, and the integrated version control system for them, described in
+Section~\ref{sec:notebooks}, address modularity and granularity, and
+artifact histories.
+\emph{Starring}, the means for signaling interest in notebooks, described in
 Section~\ref{sec:starring}, addresses social-psychological incentives,
 recommendation, and voting and ranking. RCloud's integrated deployment
 mechanism, described in Section~\ref{sec:deployment}, addresses cost of
-integration, content export, presentation and view sharing. Notebooks,
-and the integrated version control system for them, described in
-Section~\ref{sec:notebooks}, address modularity and granularity, and
-artifact histories.
+integration, content export, presentation and view sharing.
 
 Manyeyes \cite{Viegas:2007:MAS} was a landmark system for the integration
 of social media with visualization and data publishing. We build on this
@@ -72,8 +72,8 @@ workflow upload and remote execution. In our view, the impedance
 mismatch between a dataflow pipeline specification and the power of a
 general-purpose language is too great for the type of general
 exploratory work in data science teams. As a result, RCloud tries to
-provide a closer data-analysis to analysts accustomed to creating and
-executing R and Python code while keeping many of the attractive
+provide a closer match for analysts accustomed to creating and
+executing R and Python code, while retaining many attractive
 properties like automatic versioning and management.
 
 \begin{figure*}
@@ -102,7 +102,7 @@ for analysis and programming, and shareable documents on the web.
 
 One overall goal is to reduce the gap between implementers and deployers
 of technology in visual analytics. The fusion of development with production
-operations in software release management ("devops" \cite{Httermann:2012:DD})
+operations in software release management (``DevOps'' \cite{Httermann:2012:DD})
 is a trend in web services and related fields. By making it possible
 for data scientists to expend a little more effort in the process of
 creating experiments, it may be possible to eliminate the need for

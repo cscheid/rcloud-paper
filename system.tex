@@ -26,14 +26,14 @@ services and networks in an organization.
 We designed RCloud around the front-facing API, which provides roughly
 one entry point to correspond with each requirement.
 
-The central of the screen is for editing code and visualizations through
+The center panel of the screen is for editing code and visualizations through
 the notebook interface. Supplementary ``asset'' files which are part of the
 notebook but not part of the notebook flow, are edited on the right.
 Controls at the top of the screen allow the user to quickly run, view, 
 and share the notebook. The call mechanism is the URL itself; arguments are
 read from the URL and the final cell is the result. On the left are the 
 browsing area for seeing other users' notebooks and for searching, as well
-as the help system.
+as a help system.
 
 \subsection{Notebooks\label{sec:notebooks}}
 
@@ -71,8 +71,8 @@ full search over RCloud notebooks, using Apache SOLR.
 %
 This perspective has implications for
 systems-based research and prototyping in visual analytics:
-For small teams to efficiently explore novel ideas toward the
-improvement of a large, complex software ecosystem, it pays off
+for small teams to efficiently explore novel ideas toward the
+improvement of a large, complex software ecosystem, it pays
 to use existing solutions as far as possible.
 %
 Even though it involved learning standards that are not directly
@@ -109,11 +109,11 @@ always readily available, to encourage its use.
 Implicit signaling of interest is supported by keeping click-through
 \cite{Joachims:2005:AIC} and execution counts. (In addition to these
 classic techniques of collecting feedback from web search, we anticipate
-applying static and dynamic code analysis to generate fine-grained
+applying static and dynamic code analysis to infer fine-grained
 information about relationships, for example, which packages and data
 sets often appear together.)
 
-\subsection{Executing R in a web browser}
+\subsection{Executing R in a web browser\label{sec:executinginbrowser}}
 
 One our main goals is to provide ubiquitous access to the statistical
 tools of the R programming language in the wider environment in which data
@@ -124,7 +124,7 @@ analytics in HTML5 and the web, we decided to create an
 \emph{interconnect} between the two environments.
 %
 Every RCloud session spawns a new R execution process in a remote
-server. The communication between the web browser and the 
+server.
 
 %% \subsubsection{Object capabilities: R to Javascript RPC and access
 %%   control}
@@ -135,10 +135,9 @@ remote state, and results can be cached in transparent proxies along
 the network). In the case of close communication between a running
 R process and a web browser, we need something that is more flexible
 than distinct URLs for every R process, and which embraces
-statefulness of both calculations and insights in progress.
+statefulness of both calculations and visualization parameters.
 
-
-\subsection{Interactive notebooks\label{sec:notebooks}}
+\subsection{Interactive notebooks\label{sec:interactivenotebooks}}
 
 %% How do we do things that are not trivial to do with IPython (for
 %% example)
@@ -168,14 +167,6 @@ without having to formalize the protocol between the processes.
 
 \subsection{Deployment of notebooks\label{sec:deployment}}
 
-Because notebooks are continually published, any work is immediately
-available both as a subroutine and visual component. Close colleagues
-can start on the next stage of analysis, or delve into the data,
-even while the original author is polishing the algorithm or its
-presentation. The code is the page, and can either be shaped into
-a function of inputs and outputs, or the linear cells of the notebook
-can be reworked into a full-fledged HTML layout.
-
 Every notebook in RCloud is named by a URL, and notebooks by
 default are visible by the entire organization. This is deliberate.
 As pointed out by Wattenberg and Kriss~\cite{Wattenberg:2011:DFS},
@@ -185,3 +176,11 @@ the web. Although our prototype RCloud deployment is only visible
 inside a corporate intranet, we nevertheless found anecdotal support
 for this notion by discovering links to RCloud notebooks in internal
 discussion fora and mailing lists.
+
+Because notebooks are continually published, any work is immediately
+available both as a subroutine and a visual component. Close colleagues
+can start on the next stage of analysis, or delve into the data,
+even while the original author is polishing an algorithm or its
+presentation. The code is the page, and can either be shaped into
+a function of inputs and outputs, or the linear cells of the notebook
+can be reworked into a full-fledged HTML layout.

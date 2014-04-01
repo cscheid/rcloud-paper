@@ -4,7 +4,7 @@ To illustrate some aspects of RCloud, we present an example application
 for stock price analysis.\footnote{Unfortunately this report could not
 include production notebooks containing proprietary or personal information.}
 The example, although simplified, shows key steps in the development
-and deployment process we intend to support.
+and deployment process we support.
 
 \begin{figure}
 \includegraphics[width=\linewidth]{fig/casestudy1/casestudy1.pdf}
@@ -37,12 +37,13 @@ apart from its visualization.
 This is done by creating a notebook that defines a function.
 That notebook then becomes a \emph{subroutine} for other notebooks.
 It can be invoked from interactive notebooks, such as dashboards.
-The data access notebook is is version-controlled like other notebooks.
+The data access notebook is version-controlled like other notebooks.
 
 Finally, consider the situation where an analyst wants to understand
 the price dynamics of stocks with respects to various attributes and
 time ranges. For this, interactive visualization may be very helpful.
-In our example, the analyst creates an interactive tool with N views.
+In our example, the analyst creates an interactive tool with multiple
+linked views.
 
 Through the tight integration of R and JavaScript functions and data,
 the analyst writes a function in R which passes the dataframe and the
@@ -50,8 +51,8 @@ description of the charts to the dcplot library.  Simple R expressions
 are captured as trees to generate JavaScript expressions.  The terse
 chart description language, with intelligent defaults inspired by
 ggplot2, provides a simple yet powerful interface to the grouping
-and reduction functionality of crossfilter and the chart styles of
-dc.js and d3.js.
+and reduction functionality of the well-accepted charting libraries
+crossfilter, dc.js and d3.js.
 
 % \subsection{Text analysis\label{sec:textvis}}
 % Same.
