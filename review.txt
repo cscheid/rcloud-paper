@@ -1,0 +1,390 @@
+Title: RCloud: Integrating Collaborative and Exploratory Visualization, Analysis and Deployment
+
+Reviewer:           primary
+
+Overall Rating
+
+  2  (<b>Probably reject:</b> I would argue for rejecting this paper.)
+
+Topic Classification
+
+  Presentation, Production, and Dissemination
+
+Best Paper Award
+
+  No
+
+Contribution to the field of Visual Analytics
+
+  This paper presents a system to support collaboration between data
+  scientists. It is a VAST topic because collaboration is a key issue in
+  visual analytics. The visual analytics agenda calls for research efforts
+  that support collaborative work for distributed teams. 
+
+Expertise
+
+  3  (Knowledgeable)
+
+The Review
+
+  This paper takes a look at the problem of supporting collaborations
+  between data scientists and presents RCloud, a system for creating and
+  sharing notebooks of code snippets. Very few visualization research
+  addresses the social and collaborative aspects of visual analysis, so it
+  is great to see that the authors are thinking about this problem. At its
+  current form, however, it seems that the paper needs more work.
+
+  It is not clear what problem RCloud is trying to solve. The introduction
+  gives a good overview of the problem space, but those are lofty goals
+  requiring years of work potentially involving multiple teams. From a
+  user-centric perspective, how does RCloud help a data science team? I
+  wish there is a lower-level problem formulation addressing real user
+  needs. 
+
+  Perhaps due to the lack of a well-defined goal, there are not many
+  justifications for the design choices in the system description. For
+  example, why do we want to focus on the concept of a notebook in the
+  first place? What activities performed by data scientists can take
+  advantage of the functionalities provided by RCloud?
+
+  In section 3.2, I do not understand what it means by “notebooks are
+  always deployed”. Please elaborate. 
+
+  In general, the descriptions in section 3 feel too technology-specific.
+  As a research paper, the audience probably care less about how the system
+  is implemented (whether it’s in R or some other language), but why. It
+  is important to be able to provide an abstract system model which can be
+  implemented in different ways. 
+
+  The case study is supposed to help us understand how RCloud is used in
+  action, but I’m not sure if I can appreciate the value of the system
+  after reading it.
+
+  Section 5.1 seems to be addressing some of the concerns I raised earlier
+  about design considerations, but without a concrete problem statement,
+  the section appears to be covering too many issues.
+
+Summary Rating
+
+  2  (<b>Probably reject:</b> This paper is not ready for publication as required improvement could not be done within a minor revision.)
+
+The Summary Review
+
+  According to the reviews, the strengths of this paper include:
+    - the submission is addressing an important problem
+    - the topic is under-explored in the VAST community and further
+  research along this direction is needed
+
+    Major weaknesses raised by the reviewers include:
+   - major rewriting is needed to explain how the system works and to
+  clarify the contributions
+    - it's not clear how the system works in real workflow 
+    - feedback from real users needed
+    - stronger validation for system requirements needed
+    - too much focus on technology/implementation details
+    - lack of a well-defined research problem / the scope is too broad
+
+  All reviewers agree the quality of the paper is not good enough for
+  publication, but the topic is interesting and more work is needed in this
+  problem space. However, choosing a good topic does not warrant the
+  acceptance of a paper. We encourage the authors to address the reviewers'
+  concerns and wish the authors best of luck in continuing doing research
+  on this cool topic.  
+
+Second round final review
+
+
+
+Best Paper Award
+
+
+
+Second round comments
+
+
+
+------------------------ Submission 300, Review 1 ------------------------
+
+Title: RCloud: Integrating Collaborative and Exploratory Visualization, Analysis and Deployment
+
+Reviewer:           secondary
+
+Overall Rating
+
+  2  (<b>Probably reject:</b> I would argue for rejecting this paper.)
+
+Topic Classification
+
+  Technology Practice and Experience
+
+Best Paper Award
+
+  No
+
+Contribution to the field of Visual Analytics
+
+  Authors present an integrated environment that supports the development
+  and deployment of visual analytics by data scientists. Sharing and
+  versioning is supported through notebooks that contain scripts of state
+  of the art tools/languages such as R and D3. 
+
+Expertise
+
+  3  (Knowledgeable)
+
+The Review
+
+  Authors present an integrated environment that supports the development
+  and deployment of visual analytics by data scientists. Sharing and
+  versioning is supported through notebooks that contain scripts of state
+  of the art tools/languages such as R and D3. 
+
+  In the Introductions authors motivate their work by expressing a strong
+  need for integration (of  people. technologies, and work artifacts) and
+  identified a number of requirements, particularly for data science teams
+  and practice. It is not clear where those requirements come from. If
+  there is a paper to cite or even an informal study/observation, request
+  from a client, please provide some more information. Otherwise please say
+  that these are based on your own experience, and provide the basis of
+  this experience.
+
+  Authors solutions mainly centers around notebooks, which are in essence
+  scripts with integrated version control. The approach is pretty open in
+  that notebooks are shared with everyone and can be starred to indicate
+  interest/like. 
+
+  Authors claim that collaboration requirement is met by the ability to
+  share and star notebooks openly. I doubt that this requirement can be
+  checked off simply by sharing scripts (there is so much
+  detail/context/assumptions in scripts) which would hardly scale beyond
+  small and closely working teams. It seems starring is only reflected on
+  the UI, as they don't (yet) feed in to a recommender system. Also for
+  organization of notebooks authors adoped a folders approach. It is well
+  known that this doesn't scale much. Also foldering is very personal.
+
+  Likewise issue of provenance seems to be offloaded to version control
+  system. Again this is another hard issue that a simple VCS would suffice,
+  particularly in this domain. There is much more than code, take data for
+  example. Provenance of data is much harder than that of code. It seems
+  authors did not even consider data. Similarly security with data is much
+  different than that of code. Simply providing authentication to the
+  runtime environment would not be acceptable or scalable. Data is very
+  sensitive. Even within a company there is data that needs to be handled
+  in special ways. 
+
+  On many of these issues there seems to be too much
+  technology/implementation perspective/details (http, r, solr, json,
+  github, etc.) rather than on usability/requirements. It seems that
+  authors have put together a number of packages to quickly create an
+  integrated environment without much consideration of actual usability and
+  user requirements. 
+
+  When discussing lessons and limitations it is not clear where these are
+  coming from. Provide details of the mentioned community of analysts. How
+  many users? Who are they? How many notebooks, created, and shared? How
+  much collaboration? How long have they been active? Etc. etc. 
+
+  Overall I felt that the paper/technology is not yet ready for
+  publication. Many claims are made that authors suggested addressed
+  problems/requirements they identified. Limited (very few users) and
+  informal study is reported and need to be validated by larger/longer
+  studies. From system perspective it is not clear how much the system
+  delivers beyond programming language IDEs (e.g. eclipse which has strong
+  (and finer level) collaboration support, integrated version control,
+  debugging, modelling). Author make no mention of debugging, which I am
+  sure would come up with some real-world deployment. 
+
+  Minor points:
+  - Introductions (4th Paragraph) contains several references to
+  technologies which are either not cited or loosely cited. Please cite
+  properly, as some have associated papers, some have at least web
+  references.
+  - Related Work (2nd Paragraph) "There are many discountinuities in this
+  cycle that cost time and effort to overcome". Explain what these are.
+  - Figure 4 is hardly readable as such not adding much value to
+  discussion. Either zoom in on the most critical views in the tools or
+  explain this abstract process picture or better yet through an example. 
+  - Several minor writing mistakes, but I think the paper could use a
+  better organization. Issues are explained when they come up as opposed in
+  properly organized manner. 
+
+
+------------------------ Submission 300, Review 2 ------------------------
+
+Title: RCloud: Integrating Collaborative and Exploratory Visualization, Analysis and Deployment
+
+Reviewer:           external
+
+Overall Rating
+
+  3  (<b>Indecision:</b> I could not make up my mind about this paper.)
+
+Topic Classification
+
+  Presentation, Production, and Dissemination
+
+Best Paper Award
+
+  No
+
+Contribution to the field of Visual Analytics
+
+  This paper describes a web-based system for collaborative production and
+  dissemination of visual and textual analytic artifacts. This is an
+  important topic with visual analytics.
+
+  The paper's contributions include the description of the system based on
+  combining a range of open source and web-based technologies. It discusses
+  design choices in the system and UI and describes lessons learned.
+
+Expertise
+
+  2  (Passing Knowledge)
+
+The Review
+
+  This paper is in a very important space---developing better tools to
+  support collaborative and reproducible visual analytics. The proposed
+  tool, RCloud, is intriguing and I could imagine it being very helpful in
+  my own workflow. Further, I think this type of tool needs broader
+  exposure in the VAST community and would like to see further research in
+  this direction. I like the discussion section reporting on the use of the
+  tool in the authors' organization.
+
+  I think the main weakness of this paper is that it doesn't have enough
+  technical meat. It reads more like a workshop paper than a conference
+  paper. If the new VAST conference-only track is intended to be more
+  workshop-like, I think this paper could be presented there. 
+
+  I think that the paper should be strengthened by:
+
+  * Separating the current section 3 into two sections. One that covers the
+  UI and UX, and another that covers the technical system details. The
+  current intermixing of these is confusing and serves to disguise the fact
+  that neither aspect of the system is described in much detail.
+
+  * I would appreciate a more detailed description of the UI that ties
+  directly to some appropriate figures. UI elements that were treated very
+  cursorily in this paper that deserve more discussion:
+
+  - the "hacker" and "application user" UIs shown in Figure 1. How does a
+  user transition between them? Is there always a 1-to-1 relationship
+  between workbooks and reports? What actions can and can't be done in each
+  UI? etc.
+
+  - the version control model. How is forking, pull requests, etc.
+  presented to users in your UI? Is it similar to github's UI? Is there
+  anything special about version control that arises in the visual
+  analytics space?
+
+  - How are execution and coding interleaved in a workflow?
+
+  - The cell/workbook model. The paper mentions that this is adopted from
+  previous work, but I'd really appreciate a quick discussion of how it
+  works and why you chose to adopt it.
+
+  * I would like a more complete description of the system implementation.
+  From the current descriptions it is difficult to know exactly what is
+  implemented. For example:
+
+  - Section 3.1 mentions a front-facing API, but I can't find any
+  description of this API in the paper.
+
+  - How are you providing R as a web service? The background section
+  mentions Shiny, but the paper never explicitly says that RCloud uses
+  Shiny. Did you roll your own solution?
+
+  - Section 3.5 mentions that you provide a way to share closures between R
+  and Javascript. I'd really appreciate the details of how this works.
+
+  - Figure 2 is somewhat confusing. There are many boxes with no arrows
+  connecting to or from them. How are they used? The Figure shows that you
+  are using Redis for storage, but the text of the paper never mentions it.
+
+  * The Figures need to be referenced from the text and described. As I was
+  reading I often couldn't tell when I was supposed to be referring to a
+  figure and a number of times I think I referred to the wrong figure. For
+  example, I think that Section 3.1 is intended to be associated with
+  Figure 1, but I spent quite awhile looking at Figure 3 since it is on the
+  same page as Section 3.1. The figures all need to be larger. In
+  particular, in Figure 4, I can't tell what is happening since the
+  pictures are all too small.
+
+
+  In Section 5.1, under Discussion, the phrase "making it a bit awkward and
+  not as widely used as we hoped" appears to be extraneous.
+
+
+------------------------ Submission 300, Review 4 ------------------------
+
+Title: RCloud: Integrating Collaborative and Exploratory Visualization, Analysis and Deployment
+
+Reviewer:           external
+
+Overall Rating
+
+  3  (<b>Indecision:</b> I could not make up my mind about this paper.)
+
+Topic Classification
+
+  Others
+
+Best Paper Award
+
+  No
+
+Contribution to the field of Visual Analytics
+
+  This paper describes the design and implementation of a system called
+  RCloud which supports collaborative work by data scientists in corporate
+  organizations. RCloud makes two major contributions: first, it covers the
+  entire workflow of exploratory data analysis so an analyst can use this
+  one system for everything from data analysis and visualization to web
+  deployment all in R; second, RCloud is designed to support sharing and
+  re-using of scripts so team members can collaborate together. I think
+  both contributions are significant and timely. And I like the fact that
+  RCloud is an open-source project that anyone can download and use.
+
+Expertise
+
+  3  (Knowledgeable)
+
+The Review
+
+  I like the concept of RCloud. From the description it looks like the
+  system addresses a number of important issues with current EDA practice
+  in corporate environments. However, I feel the paper at its current stage
+  does not do the system justice. There are vital parts missing from the
+  paper that makes it hard to understand or evaluate the system. I will
+  have to see major revisions before accepting the paper.
+
+  The biggest missing piece is how visualizations are generated. The paper
+  mentions that users only script in R, and then somehow interactive
+  visualizations are built in JavaScript. In the Case Study section there
+  is a brief explanation: “simple R expressions are captured as trees to
+  generate JavaScript expressions”. And I have no idea what the authors
+  mean by “captured as trees”. Then there is a sentence talking about
+  “the terse chart description language”, which I assume is some kind
+  of R library the authors developed to generate charts in JavaScript. I
+  would like to see a full description in the System section of how
+  JavaScript expressions are translated from R, and how the “chart
+  description language” works. 
+
+  Related to this problem, in Section 3.5 the authors claim “the
+  connection between R and JavaScript is not just procedural and makes
+  closures and first-class functions available across the network”. This
+  is very hard to understand, and I’d like the authors to explain it a
+  bit further.
+
+  My second biggest issue with this paper is it does not give the reader
+  any example of how the system really works in an EDA workflow aside from
+  a very simple case study. I’d like to see at least one realistic usage
+  scenario where the collaborative aspect of RCloud is demonstrated. I’d
+  also like to see what real users think of the system. The authors claim
+  they have active users and discussed some issues reported by these users
+  in Section 5.2. I prefer to see a more formal evaluation, but just adding
+  feedback from users can go a long way in improving this paper.
+
+  A minor problem: please reference figures when you discuss them in
+  text.
+
