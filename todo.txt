@@ -1,0 +1,17 @@
+How does it help a data science team?  What activities can take
+advantage of RCloud's capabilities?
+
+What is the purpose of notebooks?  Why focus on notebooks?
+
+------------------------------------------ --------------------------------
+Need an outstanding example for the first figure.
+
+Text analytics example
+
+Demographics example
+
+Example that illustrates power of collaboration
+Example that illustrates the power of search
+
+De-emphasize technologies, though need to explain what is really important.
+Explain why, not what.
