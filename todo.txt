@@ -1,7 +1,32 @@
+1/2/2015
+exploratory vis, analysis, deployment are three separate things
+have a teaser that talks about these three things
+
+showcasing search
+what is the minimum deployment to show these things
+
+have a webpage that looks like browse.html and we just search all the notebooks and sort them by person, sort by thumbnails
+
+search/browse
+edit
+call/deploy
+
+call things - use the API.  dashboard.  Call.R.
+
+- it is a systems paper with a design component. not a design paper like
+http://www.cs.utah.edu/~miriah/mizbee/Overview.html
+D3 is a nice example http://vis.stanford.edu/files/2011-D3-InfoVis.pdf
+
+extensible - can operate on anything - workbooks, menus, etc.
+e.g. turn your research into slides  like knitr with a GUI
+
+------------------------------------------ --------------------------------
 How does it help a data science team?  What activities can take
 advantage of RCloud's capabilities?
 
 What is the purpose of notebooks?  Why focus on notebooks?
+
+Need to justify the design decisions.
 
 ------------------------------------------ --------------------------------
 Need an outstanding example for the first figure.
@@ -11,7 +36,11 @@ Text analytics example
 Demographics example
 
 Example that illustrates power of collaboration
-Example that illustrates the power of search
+Example that illustrates the power of search, somehow
 
 De-emphasize technologies, though need to explain what is really important.
-Explain why, not what.
+Explain why, not what.  (But need to explain how graphics work.)
+
+Feedback from real users is crucial
+
+Need a 2-min video
