@@ -1,3 +1,16 @@
+1/9/2015
+
+Each page should have a figure that explains what is going on.
+Screenshots + schematic diagrams. "everything becomes a web service."
+Looks like figure 2...
+
+Better examples: vignettes from RStudio or all R Packages.  GGPlot2
+http://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html
+https://stat.ethz.ch/R-manual/R-devel/library/utils/html/vignette.html
+Each library has its own entry.
+
+------------------------------------------ --------------------------------
+
 1/2/2015
 exploratory vis, analysis, deployment are three separate things
 have a teaser that talks about these three things
