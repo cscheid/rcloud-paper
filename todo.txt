@@ -1,3 +1,60 @@
+1/23/2015
+The existing structure.
+introduction.tex:\firstsection{Introduction}
+relatedwork.tex:\section{Related Work}
+system.tex:\section{The System\label{sec:system}}
+system.tex:\subsection{High-level Architecture\label{sec:highlevelarchitecture}}
+system.tex:\subsection{Human Interface\label{sec:humaninterface}}
+system.tex:\subsection{Notebooks\label{sec:notebooks}}
+system.tex:\subsection{Reputation and Interest: starring\label{sec:starring}}
+system.tex:\subsection{Executing R in a web browser\label{sec:Rinbrowser}}
+system.tex:%% \subsubsection{Object capabilities: R to Javascript RPC and access
+system.tex:\subsection{Interactive notebooks\label{sec:interactivenotebooks}}
+system.tex:\subsection{Deployment of notebooks\label{sec:deployment}}
+casestudies.tex:\section{Case Study\label{sec:casestudy}}
+casestudies.tex:% \subsection{Text analysis\label{sec:textvis}}
+discussion.tex:\section{Discussion, Lessons and Limitations}
+discussion.tex:\subsection{Design Considerations}
+discussion.tex:\subsection{Limitations}
+conclusion.tex:\section{Conclusions and Future Work}
+
+An org. of 5 to 50 people are working on a collection of problems that change quickly.
+In this org. nobody knows everything.
+An environment for programmers, know how to write R.
+Trying to bridge the gap between people that know how to write data analysis code
+(R, MatLab, numpy) and the people that use it.  How do you make it easier for them
+to re-use each others code and make their work instantly usable to other people
+in the organization that consumes the things that they produce? Trying to maximize
+their productivity. No longer isolated in the company any more. People are asking
+them to engage closely with the business side of the company.  Full stack developer.
+Modelers wranglers visualizers developers 
+Not enough people to do all the system integration, and takes too long.
+(Interview paper 6.3 Kandell etc.) A generalist is more valuable than a specialist.
+A specialist can't switch levels. We argue that they need a good system that
+lets them do that. What the statistis department looks like. 
+Have a lot of specific skills and want to be able to re-use their smarts.
+Make the human resources of the group more efficient.
+RCloud was built to empower the people in the stats department in the way that they operate.
+
+Let's talk about the statistics dept. at AT&T. These people care about making sure the 
+network is going well, hundreds of millions of devices, difference software, legacy,
+marketing, bla bla bla.  How complicated data problems are at AT&T.
+Need to share discoveries and turn them into cost savigns or revenue opportunities.
+Want to
+We contribute RCloud as one complete proposal.
+It is being used by hundreds of people.
+
+Case studies.  How do we finesse this. Someone turned an analysis into a dashboard.
+What is R--. RBI. Point and click interface for some kind of analysis.
+Kenny's topic modeling stuff. Might be used by 12 people. Made a nice internal application.
+Has its own interface, but makes calls through Notebook.R (?) so actually a good example.
+Do other organizations work the same way?  Who would go on the record?  Carlos:Etsy?
+Stephen:LinkedIn - Dan Tunkelang. Mauricio Resende:Amazon?
+Clearinghouse for all interesting work in the department.
+Clearinghouse to find each other's work.
+Make it a story about the stats department.
+------------------------------------------ --------------------------------
+
 1/9/2015
 
 Each page should have a figure that explains what is going on.
