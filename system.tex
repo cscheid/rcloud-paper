@@ -2,6 +2,10 @@
 
 \subsection{High-level Architecture\label{sec:highlevelarchitecture}}
 
+\stephen{Let's work from front to back: from human interface to the
+services and frameworks that support it.}
+
+\stephen{I don't think we need to even make this argument, it seems so obvious.}
 The internal computing infrastructure of organizations has changed
 radically in the last fifteen years. The shift from large
 servers toward scalable, lower-cost, distributed systems (``the cloud'')
@@ -23,51 +27,52 @@ services and networks in an organization.
 
 \subsection{Human Interface\label{sec:humaninterface}}
 
-We designed RCloud around the front-facing API, which provides roughly
-one entry point to correspond with each requirement.
+%\stephen{What??}
+%We designed RCloud around the front-facing API, which provides roughly
+%one entry point to correspond with each requirement.
 
-The center panel of the screen is for editing code and visualizations through
-the notebook interface. Supplementary ``asset'' files which are part of the
-notebook but not part of the notebook flow, are edited on the right.
-Controls at the top of the screen allow the user to quickly run, view, 
-and share the notebook. The call mechanism is the URL itself; arguments are
-read from the URL and the final cell is the result. On the left are the 
-browsing area for seeing other users' notebooks and for searching, as well
-as a help system.
+Figure~\ref{fig:something} shows the RCloud developer interface.
+The center panel is a notebook for code and visualizations.
+Code is edited in this panel, and visualizations are rendered.
+Supplementary ``asset'' files, which are part of the notebook,
+though not part of its executable flow, are edited on the right.
+Controls at the top of the screen allow the user to run, view, and
+share the notebook. The call mechanism is the URL itself; arguments are
+read from the URL and the final cell is the result. On the left is a
+browsing area for searching and seeing other users' notebooks, and a
+help system.
 
 \subsection{Notebooks\label{sec:notebooks}}
 
-The basic unit of operation in RCloud is a \emph{notebook}. A notebook
-holds a sequence of \emph{cells}, each of which represents a
+The main unit of computation in RCloud is a \emph{notebook}.
+A notebook holds a sequence of \emph{cells}, each of which contains a
 snippet of code or hypertext in Markdown. This is not a novel idea;
-executable documents structured in this way are present in a wide
-variety of other software systems, including Mathematica, IPython and Sage.
+executable documents structured this way are present in many
+other systems, including Mathematica, IPython and Sage.
 
-One of the main differences between RCloud and other systems is the
-notion that notebooks are ``always deployed''. This improves the
-ability to share and modify experiments and compose the results
-without binding to specific versions of a notebook.
-On the other hand, there are a variety of situations where it might
-be necessary to name a specific version. Rather than force notebook
-designers to decide which versions need to be preserved,
-we embrace \emph{transparent} versioning.
+One of the main contributions of RCloud is the notion that notebooks
+are ``always deployed''. This improves the ability to share and modify
+experiments and compose the results without binding to specific versions
+of a notebook.
+On the other hand, there are situations where it might be important to
+be able to name a specific version. We do not expect designers to 
+decide which versions need to be preserved, but we embrace
+\emph{transparent} versioning.
 This is similar to models like Jankun-Kelly et al.'s p-set calculus \cite{Jankun-Kelly:2007:MFV}
 and VisTrails's version tree \cite{Callahan:2006:VVM}, where every change in the state of the system is tracked.
 
-Implementing an entire version-control subsystem from scratch would
-be a large undertaking. Fortunately, we can build RCloud on top of Github's
-\emph{gists}~\cite{Github:2014:GG}. Github offers a HTTP interface
-for creating simplified git repositories (the main limitation being the
-use of text-only files in a single directory). The GitHub web-service
+To implement this, it is fortunate that we can build RCloud on top of
+Github's \emph{gists}~\cite{Github:2014:GG}. Github offers a HTTP interface
+for creating simplified git repositories, the main limitation being the
+restriction to text-only files in a single directory. The GitHub web-service
 API provides most of the semantics we need for the versioning
 portion of the storage back end: access to previous versions,
 comments, starring, and forking.
 
-Using GitHub was mainly a tactical decision to reduce our
-time-to-prototype. At the same time, it had the beneficial effect of
-allowing our backend to communicate with separate processes over HTTP
-and JSON. This had the serendipitous advantage of quickly enabling
-full search over RCloud notebooks, using Apache SOLR.
+Using GitHub for storage and versioning also has the advantage of allowing
+us to use other Github capabilities that can be invoked by HTTP and JSON.
+Particularly, we can easily provide full search, using Apache SOLR
+\stephen{whatever that is!}
 %
 This perspective has implications for
 systems-based research and prototyping in visual analytics:
@@ -80,24 +85,13 @@ related to visual analytics, our early decision to use the GitHub
 gist API was successful. Future projects can gain many
 of the same benefits by adopting a similar strategy.
 
-%% %
-%% We needed version control over a directory, gist provides that,
-%% wrapped over an HTTP interface.
-%% %
-%% Mainly a tactical decision to save time.
-%% %
-%% Nevertheless, availability of notebook data as (barely) plain text had good side
-%% effects, like ease to build search.
-%% %
-%% Expect same with suggest.
-
 \subsection{Reputation and Interest: starring\label{sec:starring}}
 
 In RCloud, reputation and interest are a relationship between
 \emph{notebooks} and \emph{users}, rather than a relationship between
-user pairs. We decided on this approach because we expect typical
-RCloud deployments to have relatively few users, but each user to have
-written relatively many notebooks. Under that assumption, assigning
+user pairs. We chose this approach because we expect initial 
+RCloud deployments to have relatively few users, but some users will
+relatively many notebooks. Under that assumption, assigning
 interest to users would not provide sufficiently ``high-resolution'' data.
 
 We incorporate both explicit and implicit indications of interest
