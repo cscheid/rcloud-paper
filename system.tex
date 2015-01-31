@@ -2,7 +2,7 @@
 
 \subsection{High-level Architecture\label{sec:highlevelarchitecture}}
 
-\stephen{Let's work from front to back: from human interface to the
+\stephen{Let's work from front to back, from human interface to the
 services and frameworks that support it.}
 
 \stephen{I don't think we need to even make this argument, it seems so obvious.}
@@ -34,75 +34,86 @@ services and networks in an organization.
 Figure~\ref{fig:something} shows the RCloud developer interface.
 The center panel is a notebook for code and visualizations.
 Code is edited in this panel, and visualizations are rendered.
-Supplementary ``asset'' files, which are part of the notebook,
-though not part of its executable flow, are edited on the right.
+An inventory of supplementary ``asset'' files, that are part of
+the notebook, though not in its executable flow, are edited on the right.
 Controls at the top of the screen allow the user to run, view, and
-share the notebook. The call mechanism is the URL itself; arguments are
-read from the URL and the final cell is the result. On the left is a
-browsing area for searching and seeing other users' notebooks, and a
-help system.
+share the notebook. The result of code execution is the final cell of
+the notebook.  On the left is a browsing area for searching and viewing
+other users' notebooks, and a help system.
+
+The call mechanism is the URL itself; arguments are read from the URL
+and the final cell is rendered as the result.  \stephen{That needs
+more explanation.}
 
 \subsection{Notebooks\label{sec:notebooks}}
 
 The main unit of computation in RCloud is a \emph{notebook}.
 A notebook holds a sequence of \emph{cells}, each of which contains a
 snippet of code or hypertext in Markdown. This is not a novel idea;
-executable documents structured this way are present in many
+executable documents structured this way are a feature of many
 other systems, including Mathematica, IPython and Sage.
+\stephen{Code is executed when...?}
 
-One of the main contributions of RCloud is the notion that notebooks
-are ``always deployed''. This improves the ability to share and modify
-experiments and compose the results without binding to specific versions
-of a notebook.
-On the other hand, there are situations where it might be important to
-be able to name a specific version. We do not expect designers to 
-decide which versions need to be preserved, but we embrace
-\emph{transparent} versioning.
+One of the main contributions of RCloud is the idea that notebooks
+are ``always deployed''. In other words, the most recent version of
+a notebook is immediately available.\stephen{What if it is broken?}
+This makes it convenient to share and modify experiments and compose
+results without binding to a specific version of a notebook.
+On the other hand, there are situations where it might be important
+to name specific versions. We do not expect designers to decide which
+versions need to be preserved, but we embrace \emph{transparent} versioning.
 This is similar to models like Jankun-Kelly et al.'s p-set calculus \cite{Jankun-Kelly:2007:MFV}
 and VisTrails's version tree \cite{Callahan:2006:VVM}, where every change in the state of the system is tracked.
 
-To implement this, it is fortunate that we can build RCloud on top of
-Github's \emph{gists}~\cite{Github:2014:GG}. Github offers a HTTP interface
-for creating simplified git repositories, the main limitation being the
-restriction to text-only files in a single directory. The GitHub web-service
-API provides most of the semantics we need for the versioning
-portion of the storage back end: access to previous versions,
-comments, starring, and forking.
+To implement this, we built RCloud on top of Github's \emph{gists}~\cite{Github:2014:GG}.
+Github offers a HTTP interface for creating simplified git repositories, the main limitation
+being a restriction to text-only files in a single directory. The GitHub web-service
+API provides most of the semantics we need for the versioning portion of the storage back end:
+access to previous versions, comments, starring, and forking.
 
-Using GitHub for storage and versioning also has the advantage of allowing
-us to use other Github capabilities that can be invoked by HTTP and JSON.
-Particularly, we can easily provide full search, using Apache SOLR
-\stephen{whatever that is!}
+Using GitHub for storage and versioning also exposes other capabilities
+that can be invoked with JSON and HTTP.
+Particularly, we can provide full text search using Apache SOLR.
+SOLR is scalable, can index in near-realtime, supports multiple character sets,
+indexes several common types of documents, and has schemas and faceted search.
 %
-This perspective has implications for
-systems-based research and prototyping in visual analytics:
-for small teams to efficiently explore novel ideas toward the
-improvement of a large, complex software ecosystem, it pays
-to use existing solutions as far as possible.
-%
-Even though it involved learning standards that are not directly
-related to visual analytics, our early decision to use the GitHub
-gist API was successful. Future projects can gain many
-of the same benefits by adopting a similar strategy.
+Integrating existing services and software components, especially open source,
+instead of implementing custom code is a trend in the software industry, and
+is very positive for systems research and prototyping in visual analytics.
+By adopting existing technology, small teams with limited resoures can explore
+novel ideas toward the improvement of large, complex software ecosystems.
+In our case, even though this approach involved learning standards not directly
+related to visual analytics, our early decision to use the GitHub gist API
+turned out to be successful. Future projects could gain many of the same benefits
+by adopting this strategy. In fact, it will be essential for technology adoption
+and transfer, because it is almost impossible for any one tool or platform to
+``own'' or support the entire visual analytics process.
+\stephen{Are we preaching too much?}
 
 \subsection{Reputation and Interest: starring\label{sec:starring}}
+
+Information retrieval based on collecting usage and recommendations
+is a cornerstone of modern web services. We would like to help data
+scientists to find workbooks (and therefore items in their contents
+such as code, data, and colleagues with specific expertise) with
+the benefit of such information.
 
 In RCloud, reputation and interest are a relationship between
 \emph{notebooks} and \emph{users}, rather than a relationship between
 user pairs. We chose this approach because we expect initial 
-RCloud deployments to have relatively few users, but some users will
-relatively many notebooks. Under that assumption, assigning
-interest to users would not provide sufficiently ``high-resolution'' data.
+RCloud deployments to have relatively few users, but some users to
+create many notebooks. Under that assumption, assigning interest
+to users would not provide sufficiently ``high-resolution'' data.
 
 We incorporate both explicit and implicit indications of interest
-in notebooks. Explicit interest is signaled by ``starring,'' or
+in notebooks. Explicit interest is indicated by ``starring,'' or
 clicking on a button that marks a notebook as interesting.
 This makes explicit indication of interest a nearly trivial operation,
 always readily available, to encourage its use.
 
-Implicit signaling of interest is supported by keeping click-through
+Implicit signaling of interest is supported by keeping click-through counts
 \cite{Joachims:2005:AIC} and execution counts. (In addition to these
-classic techniques of collecting feedback from web search, we anticipate
+standard techniques of collecting feedback from web search, we anticipate
 applying static and dynamic code analysis to infer fine-grained
 information about relationships, for example, which packages and data
 sets often appear together.)
@@ -188,6 +199,8 @@ Because notebooks are continually published, any work is immediately
 available both as a subroutine and a visual component. Close colleagues
 can start on the next stage of analysis, or delve into the data,
 even while the original author is polishing an algorithm or its
-presentation. The code is the page, and can either be shaped into
+presentation. \stephen{We glossed over the things that can go wrong.
+We should at least discuss that briefly.}
+The code is the page, and can either be shaped into
 a function of inputs and outputs, or the linear cells of the notebook
 can be reworked into a full-fledged HTML layout.
