@@ -1,0 +1,8 @@
+- what do you use RCloud for?
+
+- what would you like to use RCloud for and you currently cannot?
+
+- Were you an R programmer before using RCloud?
+
+- How often do you use RCloud? 
+
