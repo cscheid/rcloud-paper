@@ -1,3 +1,55 @@
+2/16/2015
+refs from VAST
+
+refs from ManyEyes
+
+books - we need to share results we have, this is what we need
+from book that Carlos summarized
+
+a new point in the design space that has not been sufficiently explored
+
+need to explicitly say,that we are aimed at a small number of scientists working in a large organization.
+cite conway's result
+
+rcloud Notebooks are being created so they can be called by the right people
+a deployment that mimics the communication structure of the organization
+
+when writing a systems paper you need to talk about the community that is using the system
+
+cite the interview book, not shy away from understand what the people are saying
+
+"it is natural that the system will reflect the organization we are supporting. this is conway's law."
+
+need examples - demographics
+show web publication
+how do you show collaboration?
+
+can you find people on both sides of stuff that was transferred from the stats dept. then demo can be a teaser, somewhat artificial.
+
+not a solution for everyone?  
+mailchimps model - each person is an expert in one thing.
+but what if somebody leaves?
+
+threats to adoption: employee backlash. making people less necessary.  exposing what they are doing - cuts both ways.
+
+what is the teaser?
+https://archive.ics.uci.edu/ml/datasets/Adult
+14 attributes, 50K points
+
+aspirational goals - production
+
+reference papers
+[12/12/14, 5:09:55 PM] Carlos Scheidegger: https://engineering.purdue.edu/~elm/projects/eval-patterns/eval-patterns.pdf
+[12/12/14, 5:13:42 PM] Carlos Scheidegger: https://engineering.purdue.edu/~elm/projects/eval-patterns/eval-patterns.pdf
+[12/12/14, 5:15:11 PM] Carlos Scheidegger: https://www.cs.ubc.ca/labs/imager/tr/2008/pitfalls/pitfalls.pdf
+[12/12/14, 5:18:19 PM] Carlos Scheidegger: http://vis.stanford.edu/files/2012-EnterpriseAnalysisInterviews-VAST.pdf
+
+describe architectural decisions
+
+expert evaluation
+
+mention chat, want information integrated into workbooks
+	inspect state of current R session
 1/23/2015
 The existing structure.
 introduction.tex:\firstsection{Introduction}
