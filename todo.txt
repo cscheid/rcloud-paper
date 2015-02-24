@@ -1,3 +1,26 @@
+2/23/2015
+
+Concern about citing software that is not a paper, makes us look
+too much like a product.  So isolate to one paragraph: in addition
+to this other work, there are other software projects aimed in
+this direction.
+
+Point of reference are reproducible documents, literate programming.
+Live interactive things that as visual analytics people we care about deeply.
+
+KnitR is a paper too
+A live always-on KnitR
+
+Have people tried to connect source and the visualization?
+Discussion of Brett Victor learnable programming
+
+[2/23/15, 8:46:17 PM] Carlos Scheidegger: http://worrydream.com/LadderOfAbstraction/
+[2/23/15, 8:47:17 PM] Carlos Scheidegger: http://worrydream.com/#!/LearnableProgramming
+
+Jean Daniel Fekete - plan for March 15
+
+----
+
 Rmarkdown paper https://escholarship.org/uc/item/90b2f5xh#page-1
 
 2/16/2015
