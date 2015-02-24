@@ -17,7 +17,14 @@ Discussion of Brett Victor learnable programming
 [2/23/15, 8:46:17 PM] Carlos Scheidegger: http://worrydream.com/LadderOfAbstraction/
 [2/23/15, 8:47:17 PM] Carlos Scheidegger: http://worrydream.com/#!/LearnableProgramming
 
-Jean Daniel Fekete - plan for March 15
+Crowdlabs -  http://www.crowdlabs.org/vistrails/workflows/details/1067/
+Vistrails on the web.
+
+Matrix of systems and features they support.
+
+Ask Jean Daniel Fekete to review - plan for March 15
+
+Make some effort to understand the VAST literature and how to sell it to them.
 
 ----
 
