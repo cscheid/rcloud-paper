@@ -26,6 +26,13 @@ Ask Jean Daniel Fekete to review - plan for March 15
 
 Make some effort to understand the VAST literature and how to sell it to them.
 
+How to interview users;
+https://homepage.univie.ac.at/michael.sedlmair/papers/brehmer2014drtasks.pdf
+references 21,22
+
+ACM TOCHI paper  - SCN  is there a survey on this stuff
+http://mcs.open.ac.uk/pervasive/pdfs/yuillrogersfinal.pdf
+"Space does not allow us ..."
 ----
 
 Rmarkdown paper https://escholarship.org/uc/item/90b2f5xh#page-1
