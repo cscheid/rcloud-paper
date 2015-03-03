@@ -1,8 +1,14 @@
+- how much do you consider yourself you hacker, scripter, app user?
+
+- what tools do you use for data analysis when you're not using RCloud?
+
+- How often do you use RCloud? 
+
 - what do you use RCloud for?
 
 - what would you like to use RCloud for and you currently cannot?
 
 - Were you an R programmer before using RCloud?
 
-- How often do you use RCloud? 
 
+will not use any names, will not use extended quotes.  want to get a sense of how people do data analysis in a large company.
