@@ -1,3 +1,19 @@
+3/11/2015
+Need an intro paragraph.  Need to tie it to Vis without shameless flattery.
+The field is at the forefront. Now there is always a team. Quick prototypes.
+We only start citing stuff by page 3.  Make an effort to tie to the VAST
+or Vis literature.  Tie it to the Visual Analytics Process.
+
+Google vis thing, flash player.  Working through R Markdown.
+Carlos says it's just magic.
+
+EDA users want to have three notebooks open: cleaning, modeling, prediction
+Not easy in our world right now, connections between notebooks
+Also need caching, what if it takes 8 hours to run cleaning.
+Like a job server. Put in last cell, OK to disconnect.
+It only noticed between cells that you have gone away.
+emails when done.
+
 2/23/2015
 
 Concern about citing software that is not a paper, makes us look
