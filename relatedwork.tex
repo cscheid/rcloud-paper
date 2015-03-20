@@ -6,50 +6,45 @@
 
 \section{Related Work}
 
-\carlos{There's no need to position ourselves defensively here; we're
-  addressing different needs, and the connection is already
-  tenuous. We're just hurting ourselves by comparing to wrangling and
-  then saying ``well, we don't have wrangling''}
-
-Kandel et al. argue in their review of data wrangling work that data
-cleaning, wrangling and transformation is a major part of exploratory
-analysis and visualization~\cite{Kandel:2011:RDI}. Although RCloud
-does not by itself include modules specific to data cleaning and
-wrangling, we note from practical experience that these cleaning
-scripts themselves tend to change over time. RCloud addresses this
-issue by providing easy publishing of data-cleaning notebooks as web
-services, which reduces the total data-cleaning effort across an
-organization.
-
 Kandel et al.'s interview study points out the typical ``explore'',
 ``model'', ``report'' cycle in enterprise data
 analysis~\cite{Kandel:2012:EDA}. There are many discontinuities in
 this cycle that cost time and effort to overcome. RCloud seeks to
-reduce this mismatch. They also point out that larger teams
+reduce this mismatch. Kandel et al also point out that larger teams
 are becoming more common in data analysis, that supporting
-collaboration is a difficult and important problem, and that sharing
+collaboration is difficult and important, and that sharing
 and versioning of data sources and artifacts is hindered by current
-technology in practice. ``We found that analysts typically did not
+technology. ``We found that analysts typically did not
 share scripts with each other. Scripts that were shared were
 disseminated similarly to intermediate data: either through shared
 drives or email. Analysts rarely stored their analytic code in source
 control.'' Their work points to the opportunity for better technology
-to support collaboration and sharing by data analysis teams.
+to support collaboration and sharing in data analysis teams.
+
+An earlier study by Kandel et al argues that data wrangling
+(cleaning, parsing and transformation)is a major part of exploratory
+analysis and visualization~\cite{Kandel:2011:RDI}. We view this
+as attacking a different semantic level than ours, but points
+to the need for an environment that enables better sharing
+of the knowledge, tools and processes to do this. Anecdotally
+we find much frustration among practitioners that this knowledge
+is difficult to find and often not recorded or provided in a reusable
+form even within one organization.
 
 Heer and Agarwala identify many design considerations for
 collaborative visual analytics~\cite{Heer:2008:DCF}.
-Notebooks, and the integrated version control system for them, described in
-Section~\ref{sec:notebooks}, address modularity and granularity, and
-artifact histories.
+RCloud notebooks, and the integrated version control system for them,
+described in Section~\ref{sec:notebooks}, address modularity and granularity,
+and artifact histories.
 \emph{Starring}, the means for signaling interest in notebooks, described in
 Section~\ref{sec:starring}, addresses social-psychological incentives,
 recommendation, and voting and ranking. RCloud's integrated deployment
-mechanism, described in Section~\ref{sec:deployment}, addresses cost of
+mechanism, described in Section~\ref{sec:deployment}, addresses the cost of
 integration, content export, presentation and view sharing.
 
 Manyeyes \cite{Viegas:2007:MAS} was a landmark system for the integration
 of social media with visualization and data publishing. We build on this
-work by defining a rich interface for collaboration about code and for
+work by defining a rich interface for collaboration about code, and for
 operating on metadata.
 
 The need for integrating statistics and visualization has been
@@ -65,7 +60,7 @@ or social development or analysis processes.
 Similarly, there are computational methods to support high
 performance execution in incremental code development
 environments \cite{Guo:2010:TPI}.
-Our goal is to define an environment in which many such
+Our present goal is to define an environment in which many such
 techniques may be integrated and made available to a broad community.
 
 VisMashup~\cite{Santos:2009:VST} and Crowdlabs~\cite{Mates:2011:CSA}
@@ -78,7 +73,7 @@ mismatch between a dataflow pipeline specification and the power of a
 general-purpose language is too great for the type of general
 exploratory work in data science teams. As a result, RCloud tries to
 provide a closer match for analysts accustomed to creating and
-executing R and Python code, while retaining many attractive
+executing R and Python code, while retaining attractive
 properties like automatic versioning and management.
 
 \begin{figure*}
@@ -100,16 +95,19 @@ and Shiny \cite{RStudio:2013:SWA},
 and iPython notebooks \cite{Perez:2007:IAS}
 to name a few. RStudio aims at providing an integrated development environment
 for R, with support for publishing code in packages. Markdown,
-knitR and Shiny provide R with sophisticated reporting capabilities, including
+knitR and Shiny augment R with sophisticated reporting capabilities, including
 interactive web interfaces. IPython \cite{Perez:2007:IAS}
 shares many of our goals, such as providing a comprehensive environment
-for analysis and programming, and shareable documents on the web.
+for analysis and programming, and share-able documents on the web.
+\stephen{Do we now need to introduce one of those remarks where we
+explain that we are not the same as IPython.}
 
 One overall goal is to reduce the gap between implementers and deployers
 of technology in visual analytics. The fusion of development with production
-operations in software release management (``DevOps'' \cite{Httermann:2012:DD})
-is a trend in web services and related fields. By making it possible
-for data scientists to expend a little more effort in the process of
-creating experiments, it may be possible to eliminate the need for
-programming teams to recreate their results in production with
-a concomitant penalty in time and expense.
+operations in software release management (``DevOps'' \cite{Httermann:2012:DD}
+or ``continuous integration'' \cite{Fowler:2006:Continuous}) is a trend in web
+services and related fields.
+By making it convenient for data scientists to expend just a little more effort
+in the process of creating experiments, we may be able to eliminate the need
+for programming teams to recreate their work in production which has a high
+penalty in time, expense and sometimes correctness.
