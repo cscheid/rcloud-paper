@@ -1,141 +1,129 @@
 \section{Discussion, Lessons and Limitations}
-\label{sec:limitations}
+\label{sec:discussion}
 
 \subsection{Design Considerations}
 
-\carlos{All this stuff needs to appear in the paper much earlier.}
-
 Experience with deploying RCloud in a community of data analysts
-(``hackers'') has provided some insight about whether the proposed
-requirements were appropriate, and how well they were met.
-\stephen{The term {\it hackers} may be too tainted for us to use.}
-% I know the following is true but also feel we need to let the work speak for itself. SCN
-%This experience may be informative to researchers and implementers
-%of future systems supporting collaborative visual analytics.
+(``hackers'') gave us some insight into whether the proposed
+requirements are appropriate, and how well they were met.
 
-Returning to Heer and Agrawala's design considerations, our experience
-underscores the relevance of their proposals, and indicates areas
-for further exploration. We briefly examine these aspects of the
-visual analytics environment.
+Our experience underscored the relevance of Heer and Agrawala's design
+considerations, and indicated areas for further exploration. We adopt
+their taxonomy for the following discussion.
 
 {\bf Shared artifacts and artifact histories} are a central feature
-of RCloud. The prototype aimed at making it convenient to collaborate
-on experimental workbooks and the resulting analyses. We observed
-that hackers readily shared ideas through RCloud. They used RCloud
-to discuss data analysis, programming problems, and to publish results
-by sharing URLs instead of instead of embedding screenshots in
-PowerPoint. Artifact histories are provided through git. It is fair
-to criticize that it is not human-friendly, but we assume RCloud
-hackers are already familiar with it.
+of RCloud, through its shared workbooks of experiments and analyses.
+We observed that hackers readily shared work through RCloud. They
+used it to discuss ideas and results in data analysis, to ask for help
+with programming problems, and to publish results by sharing URLs.
+Artifact histories are provided through a version management system (git).
+\stephen{Do analysts type raw git commands?}
 
-{\bf Modularity and granularity.} The ability to segment work into
-independent units (modularity) is a key to working in teams. It is
-further an advantage if the units may be kept small, and team members
-can realize benefits that are at least proportional to their work
-on these units (granularity). RCloud's notebook and versioning
-capabilities allow work to be divided into units as fine as
-the underlying language allows, and versioning encourages making
-incremental changes at low cost and without disrupting the work
-of others.
+{\bf Modularity and granularity.} The ability to partition work into
+independent units (modularity) is a key to working productively in teams.
+It is good if the units can be kept small, so team members can realize
+benefits at least proportional to the work on the units (granularity).
+RCloud's notebook and versioning capabilities allow work to be divided
+into units as fine as the underlying language allows, and versioning
+encourages making incremental changes at low cost and without disrupting
+the work of others.
 
 {\bf View sharing, bookmarking.} Most resources in RCloud are named
 and accessed as URLs. This proved to be an effective mechanism for
-sharing, and for analyses to be integrated with external processes
-and systems.
+sharing and for integrating analyses with external processes and systems.
+It is particularly advantageous for work to be shared as URLs that
+provide access to code and experiments, instead of by pasting static
+screenshots into documents and presentations.
 
 {\bf Discussion.} Annotation and commenting was another central goal.
 Commenting is supported through github, but our hackers found it
 awkward and did not exercise it as much as we expected.
-making it a bit awkward and
-not as widely used as we hoped.  More elaborate annotation was not
-implemented, and remains as future work.
 An interesting question is, to what extent should application users
-be able to make annotations and operate similar tools in published
-notebooks without coding and being exposed to the hackers's view?
-Our prototype has not addressed this problem yet.
+be able to make annotations in published notebooks without coding
+and being exposed to the hackers's view? The design of
+more elaborate, integrated annotation remains as future work.
 
-{\bf Content export} is not a capability we worked to support,
-but R already has many packages for this. Our goal was to devise
-ways of working where explicit export is less necessary.
-However it is desirable to integrate results
-through web protocols such as JSON. We did assume that RCloud
-notebooks need to play well in the ecosystem of other tools,
-and this worked out as intended, though we learned it also creates
-a temptation to absorb features almost without limit. (Should
-RCloud support templates for personal web pages and graphical
+{\bf Content export} is not a capability we aimed at supporting,
+and R already has many packages for this. Instead, our goal was to
+encourage ways of working without needing as much explicit export.
+We did assume that RCloud notebooks should play well in the ecosystem
+of other tools, and this worked as intended, though we learned it also
+creates a temptation to absorb features almost without limit. (Should
+RCloud provide templates for personal web pages and graphical
 editing? Should it incorporate an email client and emacs?
-Should it be able to push results to Facebook?)
+Should it push results to Facebook?) Experience shows that interfaces
+to external systems and other features almost always win over architectural
+purity in the real world.
 
 {\bf Social-psychological incentives} and {\bf voting and ranking}
 are supported through starring. This mechanism was employed often
 by our test audience. An obvious next step would be to enhance
-recommendations via relationships discovered by static and
-dynamic code analysis. This should be done both within and across
+recommendations using relationships discovered by static and
+dynamic code analysis. This may be considered both within and across
 collections of scripts (the latter being similar to Vistrails'
 enhanced recommendations by clustering multiple workflows).
-It should be valuable to hackers to know which packages are
-frequently used together, or appear with a given record type
-or data feed. In general, though, trivial or passive mechanisms
-to collect data for recommendations are essential.
+It seems valuable to know which packages are frequently used together,
+or appear in proximity to a certain record types or data feeds.
+In general, trivial or passive mechanisms to collect data for
+recommendations are essential.
 
-{\bf Group management, size and diversity.} This area lacks sufficient
+{\bf Group management, size and diversity.} This area needs better
 support in RCloud, but is clearly important to working in teams.
-We rely on existing administrative and social processes and conventions,
-outside RCloud, to manage accounts and groups. This capability
-could likely benefit from integrating social media to track
-identities and groups and to maintain communication channels.
+We rely on external administrative processes and social conventions
+to manage accounts and groups. Rcloud could benefit greatly from
+integrating social media to track identities and groups and to maintain
+communication channels, instead of having its own isolated solution.
 
-{\bf Curation.} Even without formal group management, users are
-able to curate groups of related notebooks using the folder
-system. This is particularly effective for collecting and
-distributing training materials.
+{\bf Curation.} Even without formal group management, users may
+curate groups of related notebooks using file system folders.
+We found this particularly effective in collecting and distributing
+training materials.
 
 \subsection{Limitations}
-
-Because we developed these ideas while creating a prototype,
+Because we developed our ideas while simultaneously creating a prototype,
 we did not foresee some of the requirements that emerged after
-people started working with it.
+people started working with RCloud.
 
 {\bf Multiple language support.}
-We did not anticipate having to back off so soon on the assumption that
-programming is done mainly in R.  In retrospect, it is clear that many
-data science problems are solved with cross-language approaches
-(for example, scikit-learn in Python, weka in Java).
+We did not forsee the demand to relax the assumption that programming
+is done mainly in R. In retrospect, it is clear that many data science
+problems are solved with cross-language approaches (for example, scikit-learn
+in Python, weka in Java).\stephen{Isn't this fixed in some way now?}
 
 {\bf Versioning.}
 Some important aspects of the environment are more difficult to manage
-in RCloud than in conventional systems.  RCloud does not explicitly
-separate the development and deployment environments. Actually, every
-version of every prototype is shared by default. Although this encourages
-collaboration on work in progress, it also quickly exposes errors such as
+in RCloud than in conventional systems. RCloud does not explicitly
+separate the development and deployment environments. More than that,
+ever version of every prototype is shared by default. Although this encourages
+collaboration on work in progress it also quickly exposes errors such as
 misconfiguration, mismatches between versions of packages, and programming
-errors that can affect production websites unintentionally.
-This cannot be avoided entirely, but the power of sharing is often worth
-this price (as proven true with distributed systems in general).
-Still, effective control over versioning when sharing 
-problem needs more attention if the environment is
-going to be scaled up to a wider number of users with fewer
+errors that can unintentionally affect production websites. Such errors
+are difficult to completely avoid, but the power of convenient sharing is often
+worth it (as proven true with distributed systems in general).
+Still, effective control over versioning when sharing problem needs more
+attention if Rcloud would be scaled up to a wider number of users lacking
 informal channels to coordinate work.
-Versioning must be managed in several places: in scripts, in the R environment
-such as the installed R libraries and packages, and in the external
-environment such as the operating system and even protocols spoken by
-remote services. At one end of the scale, we have full control over the
-versioning of scripts via git, along with conventions to name stable or
-working versions of scripts or versions known to work together.
-The R environment is under the control of its package manager.
+Versioning needs to be managed in several places: in scripts;
+in the R environment such as the installed libraries and packages;
+and in the external environment such as the operating system and
+protocols spoken by remote services. At one end of the scale, we have
+full control over the versioning of scripts via git, along with conventions
+to name stable or working versions of scripts, and versions known to work together.
+The R environment itself is under the control of its package manager
+that has rules to ensure reasonable consistency.
 It is at least possible for RCloud to access information about
 package versions and configurations, but support for checking compatibility
 and maintaining multiple versions in the same environment is not strong.
 At the other end of the scale, there is not much reason to expect version
 control for the external environment. Most programmers rely on clean living
-and a conservative approach to upgrades.
+and a careful approach to system upgrades.
 
-On top of this, RCloud allows hackers to fork experiments to try
-new ideas quickly. So far we have not done much more to address the
-problem of having a lot of bits and pieces of code and data lying
-around, though we have provided a structure in which it should be
-easier to find them and to apply algorithms and metadata to organize them.
-\stephen{Why should the reader believe that?}
+On top of this, RCloud allows or even encourages hackers to fork experiments
+to try new ideas quickly. So far we have not done much more to address the
+problem of having a lot of bits and pieces of code and data lying around,
+though we have provided a framework in which it should be easier to find them
+and to apply algorithms and metadata to organize them.
+\stephen{I think we need to defend that a bit more.}
 
 %Asynchronous collaborative visual analytics
 %(ACVA)~\cite{Chen:2011:SEC}. This paper addresses visualization
@@ -153,14 +141,14 @@ management. This may be desirable to ensure the repeatability of
 computations that rely on volatile or unreliable data sources.
 For example, the stock ticker use case is one for which the data
 might temporarily become unavailable, so caching could improve
-reliability and consistency of results.  Alternatively, in situations
-involving relatively expensive analysis (for example, analysis of large
-text corpora, clustering of multivariate time series, deep learning, etc.)
-caching may be essential to provide adequate performance. Currently we would
-program this in RCloud by explicitly saving the analysis in a persistent database,
-but it would be desirable to implement this in a general purpose associative
-cache, not in application-dependent libraries.  We envision cache management
-being implemented in a new middle layer not in RCloud's architecture today.
+reliability and consistency of results. Alternatively, in situations
+involving relatively expensive computation (for example, analysis of large
+text corpora, clustering multivariate time series or deep learning algorithms)
+caching may be essential to adequate performance. Currently we would
+program this in RCloud by explicitly saving an analysis in a persistent database,
+but it seems better to implement this capability in a general purpose associative
+cache, instead of application-specific libraries. We envision cache management
+being implemented in a new middle layer to be added in the future.
 
 {\bf Security.}
 It is essential to provide security in an environment for
