@@ -2,17 +2,15 @@
 
 \subsection{High-level Architecture\label{sec:highlevelarchitecture}}
 
-\stephen{Let's work from front to back, from human interface to the
-services and frameworks that support it.}
+% Stephen: Let's work from front to back, from human interface to the
+% services and frameworks that support it.
 
-\stephen{I don't think we need to even make this argument, it seems so obvious.}
 The internal computing infrastructure of organizations has changed
 radically in the last fifteen years. The shift from large
 servers toward scalable, lower-cost, distributed systems (``the cloud'')
 led to a software ecosystem of processes distributed over a
-network (often virtually defined) communicating via some
-high-level protocol, usually HTTP. HTTP is dominant because web
-browsers and servers are ubiquitous and available in almost
+network, usually communicating via HTTP. HTTP is dominant because
+web browsers and servers are ubiquitous and available in almost
 all hardware devices, from tiny sensors, to handheld devices and
 laptops, to rack-mounted servers.
 
@@ -42,8 +40,7 @@ the notebook.  On the left is a browsing area for searching and viewing
 other users' notebooks, and a help system.
 
 The call mechanism is the URL itself; arguments are read from the URL
-and the final cell is rendered as the result.  \stephen{That needs
-more explanation.}
+and the final cell is rendered as the result. 
 
 \subsection{Notebooks\label{sec:notebooks}}
 
