@@ -1,3 +1,7 @@
+I did the interviews in a very informal way, but this is the outline of the questions I asked.
+
+Usually all but the first ended up being short background questions, and then the bulk of the interview focused on what doesn't work or could be improved.
+
 - What kind of work do you do?
 
 - How often do you use RCloud?
@@ -11,6 +15,8 @@
 - What are the steps of your work?
 
 - When you are presenting your work, what is the final product?  What tools do you use to present it?
+
+- Do you use visualization?
 
 - What works well in RCloud?
 
