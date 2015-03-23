@@ -29,18 +29,18 @@ services and networks in an organization.
 %We designed RCloud around the front-facing API, which provides roughly
 %one entry point to correspond with each requirement.
 
-Figure~\ref{fig:something} shows the RCloud developer interface.
-The center panel is a notebook for code and visualizations.
-Code is edited in this panel, and visualizations are rendered.
-An inventory of supplementary ``asset'' files, that are part of
-the notebook, though not in its executable flow, are edited on the right.
-Controls at the top of the screen allow the user to run, view, and
-share the notebook. The result of code execution is the final cell of
-the notebook.  On the left is a browsing area for searching and viewing
-other users' notebooks, and a help system.
+Figure~\ref{fig:something} shows the RCloud developer interface.  The center
+panel is a notebook for code and visualizations.  Code is edited in this panel,
+and visualizations are rendered.  An inventory of supplementary ``asset'' files,
+that are part of the notebook, though not in its executable flow, are edited on
+the right.  Controls at the top of the screen allow the user to run, view, and
+share the notebook. \gordon{Why are we talking about the callable interface
+here?} The result of code execution is the final cell of the notebook.  On the
+left is a browsing area for searching and viewing other users' notebooks, and a
+help system.
 
 The call mechanism is the URL itself; arguments are read from the URL
-and the final cell is rendered as the result. 
+and the final cell is rendered as the result.
 
 \subsection{Notebooks\label{sec:notebooks}}
 
@@ -62,8 +62,8 @@ versions need to be preserved, but we embrace \emph{transparent} versioning.
 This is similar to models like Jankun-Kelly et al.'s p-set calculus \cite{Jankun-Kelly:2007:MFV}
 and VisTrails's version tree \cite{Callahan:2006:VVM}, where every change in the state of the system is tracked.
 
-To implement this, we built RCloud on top of Github's \emph{gists}~\cite{Github:2014:GG}.
-Github offers a HTTP interface for creating simplified git repositories, the main limitation
+To implement this, we built RCloud on top of GitHub's \emph{gists}~\cite{GitHub:2014:GG}.
+GitHub offers a HTTP interface for creating simplified git repositories, the main limitation
 being a restriction to text-only files in a single directory. The GitHub web-service
 API provides most of the semantics we need for the versioning portion of the storage back end:
 access to previous versions, comments, starring, and forking.
