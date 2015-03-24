@@ -98,15 +98,15 @@
 %\shortauthortitle{Firstauthor \MakeLowercase{\textit{et al.}}: Paper Title}
 
 %% Abstract section.
-\abstract{ Consider the emerging role of data science teams within
-  organizations. Individual data scientists and statisticians usually
-  work on loosely related problems, and must devise effective ways to
-  share their findings and move results from exploratory data analysis
-  into automated diagnostics and reports deployed for wider consumption.
+\abstract{ Consider the emerging role of data science teams embedded in
+  larger organizations. Individual analysts work on loosely related problems,
+  and must share their findings with each other and the organization at large,
+  moving results from exploratory data analyses (EDA)
+  into automated visualizations, diagnostics and reports deployed for wider consumption.
   There are two problems with the current
   practice. First, there are gaps in this workflow: EDA is performed
   with one set of tools, and automated reports and deployments with another.
-  Second, EDA environments often assume a single-developer perspective,
+  Second, these environments often assume a single-developer perspective,
   while data scientist teams would get much benefit from easier sharing
   of scripts and data feeds, experiments, annotations, and automated
   recommendations, which are well beyond what traditional version control
@@ -114,11 +114,12 @@
   requirements for systems built to support current data science teams
   and users: \emph{technology transfer}, \emph{coexistence}, and
   \emph{discoverability}. In addition, we contribute the design and
-  implementation of RCloud, a system that supports the requirements
-  collaborative data analysis, visualization and web deployment. We
-  discuss the design decisions, tradeoffs and limitations, and compare RCloud
+  implementation of RCloud, a system that supports the requirements of
+  collaborative data analysis, visualization and web deployment.
+  The biggest deployment of RCloud has been in active use for more than a year,
+  and has about fifty active users. We report on interviews with some of these users, and
+  discuss the design decisions, tradeoffs and limitations, comparing RCloud
   to other current proposals.
-  \carlos{RCloud has been in production use for more than a year and has about one hundred active users. We will discuss the adoption issues and etc etc.}
 } % end of abstract
 
 %% Keywords that describe your work. Will show as 'Index Terms' in journal
@@ -137,8 +138,7 @@
   \includegraphics[width=.95\linewidth]{fig/teaser/teaser.pdf}
   % \vspace{-.5em}
   \caption{
-    \carlos{Come up with caption for this. The story is: hackers/scripters work in the middle (and bottom-right), rest of organization has automatic access to their work on left and top-right.}
-    \stephen{An overview of RCloud. a) Workbooks of published experiments and production applications are visible and searchable by all authorized users in an organization b) Data scientists create, publish and anotate workbooks with support for sharing and recommendation c) Workbooks can be parameterized and deployed as production services}
+    An overview of features in RCloud. RCloud was built to support an environment in which a large number of loosely-related problems in data and visual analytics are solved by a small number of \emph{hackers} and \emph{scripters}. In such a shared environment, \emph{discoverability} is also a problem. RCloud supports search, annotation, recommendation, and commenting for all notebooks, enabling an overview mode where users can \emph{browse} popular and recent analyses. When problems and data sources change constantly, deployment becomes a time sink; RCloud supports \emph{transparent and automatic} deployment of analyses as web pages and web services, allowing a seamless transition from exploratory work to production code.
   }
 % \vspace{-.5em}
 }
