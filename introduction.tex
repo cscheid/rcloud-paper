@@ -2,8 +2,7 @@
 
 \maketitle
 
-Almost a
-half-century ago, Tukey foresaw
+More than a half-century ago, Tukey foresaw
 much of what is now commonplace in data analysis~\cite{TukeyFDA}.
 Powerful, interactive environments for analysis and programming were
 the goal, together with an unflinching (and, at the time, somewhat
@@ -19,9 +18,12 @@ We argue, on the other hand, that we \emph{develop} our data analysis
 solutions, and context in which they become part of the broader issues
 being solved in organizations, has not changed as much: the S language
 was developed essentially alongside Unix~\cite{TheSSystem}, after all.
-In this paper, we turn our attention to this opportunity to use computation
+We turn our attention to this opportunity to use computation
 to support, not only individuals, but entire teams and their
-work within larger organizations.
+work within larger organizations. In this paper, we contribute the
+design of RCloud, together with an interview study conducted over the
+course of its development and deployment at AT\&T Labs, where RCloud has
+been in use for about two years.
 
 Consider the role of a data science team within
 a business or technical organization today.
@@ -165,7 +167,7 @@ original decision.
 This situation can affect how data science teams; as analysts and
 toolbuilders, we have experienced this first-hand in our environment, and
 others report similar findings. Gutierrez collected interviews with data
-scientists~\cite{Gutierrez}, which include the following:
+scientists~\cite{Gutierrez:2014:DSA}, which include the following:
 
 \begin{itemize}
 \item (upon being given access to other code and data analysis, in
@@ -207,14 +209,6 @@ control system that provides a common workspace, as well as needed control
 and isolation between stable and experimental versions of code and other
 resources. 
 
-Over the past two years, we prototyped this environment and deployed it in a
-production community of data scientists, business analysts and other colleagues.
-The platform today has over 300 active accounts; about 20 people use it more
-than twice a week, and about 50 people use it more than once a week.  Most of
-the active users are members of AT\&T Labs, but some others are data scientists
-and other collaborators in business units. \gordon{This doesn't measure how
-intensely people use it...}
-
 A key point is that, for the most part, the improved capabilities are
 available by default, without much explicit intervention on the part of
 data scientists and other customers. Visual analytics experiments are
@@ -230,39 +224,6 @@ the dominant statistical computing language in our lab.
 R also has many useful packages for data analysis and visualization,
 and the core system and its packages are open source that can be modified to
 support research. 
-
-There is much previous work that inspired or influenced ours.
-Indeed, many studies have addressed the requirements for future visual
-analytics environments.
-Previous work that we learned from includes:
-
-{\bf Vistrails} as a landmark prototype of a scientific workflow
-and provenance management system. This prototype helped the community
-to understand the value of capturing aspects of the processes that
-surround data analysis experiments and tools, including detailed
-history, collaboration, and deployment.
-
-{\bf iPython notebooks (Jupyter)} are the closest work we are aware of.
-The goal of this project is to provide shared notebooks and a remote
-execution environment for interpreted scripts. \stephen{Are there 
-significant differences involving versioning, provenance, annotation
-and other broad process support?}
-
-{\bf RStudio, RShiny} and other packages based on R for creating and
-publishing web content such as knitR, Rpubs, rCharts, and gg2v.
-These tools are not collaborative, but they are aimed at better
-graphics and web applications.
-
-{\bf bl.ocks, jsfiddle, plotly} and other web services for sharing code
-and demos.
-
-{ManyEyes} is the best-known original work showing the potential for
-integrating data visualization with social media.
-
-Further afield, {\bf Electronic Lab Notebooks} are applications for organizing
-and sharing data from scientific lab experiments\cite{Rubacha:2011:ELN}.
-In a sense, we hope to adapt and extend this concept to the work of
-visual analytics teams.
 
 From a more principled or theoretical perspective, visual analytics goals
 or objectives for emerging systems, described in previous work, closely match
@@ -298,3 +259,13 @@ communication about previously solved subproblems. Our goal is encourage
 and support transparency of work between team members.
 
 \end{enumerate}
+
+Over the past two years, we prototyped RCloud and deployed it to a
+community of data scientists, business analysts and other colleagues.
+The platform today has over 300 active accounts; about 20 people use
+it regularly, and about 50 people use it more than once a week.  Most of
+the active users are members of AT\&T Labs, but some are data scientists
+and other collaborators in other business units. \gordon{This doesn't measure how
+intensely people use it...}
+
+\carlos{we need a segue into related work}.
