@@ -1,8 +1,11 @@
 \section{Interview Study\label{sec:interviews}}
 
+
+
 To evaluate the effectiveness of RCloud, we interviewed 13 current and past
-users of RCloud. Of these, 9 are adata analysts, and 4 build tools for data
+users of RCloud. Of these, 9 are data analysts, and 4 build tools for data
 analysts and business needs.
+
 
 \gordon{Add user statistics here: number of notebooks, forks, stars, users
 who have done one of these things. Number of users who use RCloud a lot,
@@ -35,21 +38,21 @@ notes, if ``some person has done something similar, then you're able to just
 edit that, and that's saved a lot of work time for me''
 
 Taylor develops packages for analysts: ``I use it more for sharing code with
-other people, and for doing tutorials for iotools or hmr or explaining'' issues with data sources. ``A lot
-of times I'll share the code because I'm doing so much package development. I
-want people to see how the package works, so I clearly want them to see the
-code... I kind of write it just like I would write GitHub Markdown, where you have
-little code snippets and text, but RCloud lets me actually run the snippets''
-and display the results.
+other people, and for doing tutorials for iotools or hmr'' or explaining issues
+with data sources. ``A lot of times I'll share the code because I'm doing so
+much package development. I want people to see how the package works, so I
+clearly want them to see the code... I kind of write it just like I would write
+GitHub Markdown, where you have little code snippets and text, but RCloud lets
+me actually run the snippets'' and display the results.
 
-Shelly: Is unable to use RCloud for organizational reasons but likes the
-``concept of being able to create notebooks and share them'' ``wiki is not the
+Some users who tried out RCloud but are not able to use it for organizational
+reasons, already miss the functionality. Shelly likes
+``the concept of being able to create notebooks and share them.'' A ``wiki is not the
 best way for communication results - it's kind of like writing a blog post with
-very limited functionality. can't input equations easily.'' ``have to save every
-picture and post it as an image'' ``I can't share all of the code because it
-would just get crowded and wouldn't look right on a wiki''
-
-Bart: Also unable to use for org/tech reasons. ``So if I could make a folder on
+very limited functionality... I have to save every
+picture and post it as an image'' and ``I can't share all of the code because it
+would just get crowded and wouldn't look right on a wiki.'' Bart says, ``if I could
+make a folder on
 RCloud and have Python notebooks and also Pig notebooks there, and execute them
 from RCloud, that would be much better than my current thing, because that would
 free me from manual documentation and version control and also telling people
@@ -62,33 +65,37 @@ where my code was. It would be just, hey, go look on RCloud, here's the stuff.''
 %% Rick: ``I like being able to look at other people's notebooks.''
 
 \subsection{Forking}
-Rick: ``I fork my own notebooks because I'm going off and doing some other
+Forking is another popular feature. 
+Clint: ``I use [forking] on my own work quite a bit, and I use it on Research a
+ton. Honestly, it's one of the handiest functions, because instead of
+having to find it, copy, paste it, you just hit Fork, you rename it, and it's
+done. It's pretty amazing.''
+
+Although we always intended forking to be used to improve others' code, we
+we initially didn't support forking one's own notebooks, and this has proved very useful. Rick says ``I fork my own notebooks because I'm going off and doing some other
 analogous project, so I've sort of got interesting content that I've already
 done in a previous analysis that I want to start from and then tweak to match a
 new set of data.''
 
-Clint: ``I use [forking] on my own work quite a bit, and I use it on Research a
-ton. Honestly, it's one of the handiest functions in it, because instead of
-having to find it, copy, paste it, you just hit Fork, you rename it, and it's
-done. It's pretty amazing.''
-
-Raif: ``I've been forking other people's notebooks myself, because essentially
+A somewhat more problematic and extremely common use of forking is just to change parameters. Raif: ``I've been forking other people's notebooks myself, because essentially
 they have done some work, but then I want to run it on a different part of data,
 or I want to change some parts, I don't want to see this column, I want a
-different column, things like that''
+different column, things like that.'' Horace: on working with other group using his notebooks, ``I basically point them to a few different parameters that they need to fix.''
 
-Horace: on working with other group using his notebooks, ``I basically point
-them to a few different parameters that they need to fix.'' ``I'll teach people
+But forking also provides a way for others to troubleshoot when something goes wrong.
+Horace continues, ``I'll teach people
 to intercept the result in the middle and see what you should see, and what's
-not being returned, that sort of thing'' ``If the computation went wrong in the
+not being returned, that sort of thing... If the computation went wrong in the
 middle, and something blew up, or you're just returning NULL or empty data,
-where should we check those things?'' ``We should, but a lot of the time we just
-insert print statements here and there and check values. Having debugging code
-inside a functioning program is actually helpful for others to understand what
-you're doing?''
+where should we check those things?''
 
-Shelly: ``gives the audience a way to try their own analysis, like maybe Shelly
-should have used this parameter and they can just change the parameters''
+%% ``a lot of the time we just
+%% insert print statements here and there and check values. Having debugging code
+%% inside a functioning program is helpful for others to understand what
+%% you're doing.''
+
+%% Shelly: ``gives the audience a way to try their own analysis, like maybe Shelly
+%% should have used this parameter and they can just change the parameters''
 
 
 \subsection{Automatic source control}
@@ -100,23 +107,24 @@ know they are'' ``I don't have to worry about it if I drop my computer in the
 bathtub, everythings gone, because I'm not great about uploading my own for
 versioning''
 
-Bart: ``I like the fact that it has a built-in editor, so if you need to, like,
-fixing a typo in a link, or an extra line break or any of this other nonsense,
+Bart: ``I like the fact that it has a built-in editor, so if you need to
+fix a typo in a link, or an extra line break or any of this other nonsense,
 you can just switch to the edit view, pull up your asset, type something, it's
 automatically saved, committed, everything. You don't have to go back to your
-source code, change it, commit it to the repo, you pull the repo to your
+source code, change it, commit it to the repo, pull the repo to your
 distribution version, none of that's necessary. A lot of web development is
-fixing stupid little bugs, and you can do that kind of instantly without a lot
+fixing stupid little bugs, and you can do that instantly without a lot
 of overhead, which is nice.''
 
 
-\subsection{Search}
-Raif: ``the fact that we have all the notebooks there, searchable, it just saves
+\subsection{Search versus Browsing}
+Raif: ``the fact that we have all the notebooks there, searchable, it saves
 me from replicating what other people have done'' ``One way of thinking of it is
 like Google Code, you know you just search for something and you find something
 useful and you just use it. It’s a repository of code''
 
-Rick: ``And the same kind of thing when you search through notebooks, usually I
+But global search doesn't work for everyone, and may need to be refined. Other users
+prefer to just browse the notebooks of the experts they know. Rick says, ``usually I
 know somebody’s notebooks that I want to search through, like I’ll search
 through Simon Urbanek’s first, then I’ll go off to somebody else’s, because I
 know that the kind of thing I’m looking for something more obscure than I’m
