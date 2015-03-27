@@ -1,58 +1,95 @@
-\section{Case Study\label{sec:casestudy}}
+\section{Case Study\label{sec:casestudy}: topic visualization in RCloud}
 
-To illustrate some aspects of RCloud, we present an example notebook
-for stock price analysis.\footnote{Unfortunately this report could not
-include production notebooks containing proprietary information.}
-The example, although simplified, shows key steps in the development
-and deployment of an application.
+In this section, we present a simple, but real-world example
+application currently deployed using RCloud.
 
-\begin{figure}
-\includegraphics[width=\linewidth]{fig/casestudy1/casestudy1.pdf}
-\caption{\label{fig:stockvis}Iterations of a stock ticker
-  visualization, based on an example by Hadley Wickham. A
-  simple, static visualization of the closing price of a single stock
-  is progressively developed into a configurable display suitable
-  for a dashboard, then into an interactive visualization that
-  compares the volatility and volume of two stocks, and finally
-  into an API for data access by other RCloud notebooks. The notebooks
-  in this example can all be loaded as web pages. When a notebook
-  corresponding to a function call is displayed a web page,
-  its associated documentation is displayed.}
-\end{figure}
+This example application is an implementation of LDAVis, a
+recently-published method for visualizing large collections of
+text. It was specifically designed to enable non-expert users to
+explore collections of short text documents using topic modeling and
+visualization. Topic modeling~\cite{Blei:2003:LDA} is a standard
+technique for text summarization which, although powerful, requires a
+certain amount of manual intervention and
+interpretation~\cite{Siever:2014:LAM}.
 
-It shows a sequence of visualizations of the performance
-of financial stocks over several years. The first visualization
-in this example uses ggplot2 and was written by Hadley Wickham.
-It reads data provided by Yahoo! Finance as a web service, and shows
-the price for a single trading symbol.
+\begin{figure*}
+  \includegraphics[width=\linewidth]{fig/casestudytext/casestudytext.pdf}
+  \caption{\label{fig:textvis}An example application developed and deployed in RCloud.}
+\end{figure*}
 
-The webpage that produces that visualization includes a link to
-the underlying source code. From this link, a user can fork the notebook.
-In the example,a configurable ticker is added, based on the URL of
-the notebook. The change to the notebook is minor.
+LDAVis itself was developed by two members of the technical staff at
+AT\&T Labs, and originally was developed entirely in RStudio's
+Shiny~\cite{RStudio:2013:SWA}, a framework for developing R
+applications for the web. The main reason for moving the application
+to an RCloud development was precisely ease of deployment. Shiny
+provides ease of development, but when the application is finished,
+one needs to find a publicly available web server that can host the
+Shiny application; user management needs to be handled, and so
+on. Using RCloud, deployment happens transparently. This is a big win
+in terms of efficiency.
 
-Next, the notebook author or a collaborator may decide to extend
-the application to also provide convenient access to the data,
-apart from its visualization.
-This is done by creating a notebook that defines a function.
-That notebook then becomes a \emph{subroutine} for other notebooks.
-It can be invoked from interactive notebooks, such as dashboards.
-The data access notebook is version-controlled like other notebooks.
+Describe the application and the technologies. Runs code from an R
+package and custom analysis code; files are uploaded from the web
+client, results are provided in JSON format and visualized in the web
+client using d3~\cite{Bostock:2011:DDD}.
 
-Finally, consider the situation where an analyst wants to understand
-the price dynamics of stocks with respects to other attributes and
-time ranges. For this, interactive visualization may be very helpful.
-In our example, the analyst creates an interactive tool with multiple
-linked views.
 
-Demonstrating the integration of R and JavaScript, here the analyst
-writes an R function that passes the dataframe and description of
-the charts to the dcplot library.  Simple R expressions
-are captured as trees to generate JavaScript expressions.
-The terse chart description language, with sensible defaults inspired by
-ggplot2, provides a simple yet powerful interface to the grouping
-and reduction functionality of the well-accepted charting libraries
-crossfilter, dc.js and d3.js.
+
+%% Text analysis in
+
+%% To illustrate some aspects of RCloud, we present an example notebook
+%% for stock price analysis.\footnote{Unfortunately this report could not
+%% include production notebooks containing proprietary information.}
+%% The example, although simplified, shows key steps in the development
+%% and deployment of an application.
+
+%% \begin{figure}
+%% \includegraphics[width=\linewidth]{fig/casestudy1/casestudy1.pdf}
+%% \caption{\label{fig:stockvis}Iterations of a stock ticker
+%%   visualization, based on an example by Hadley Wickham. A
+%%   simple, static visualization of the closing price of a single stock
+%%   is progressively developed into a configurable display suitable
+%%   for a dashboard, then into an interactive visualization that
+%%   compares the volatility and volume of two stocks, and finally
+%%   into an API for data access by other RCloud notebooks. The notebooks
+%%   in this example can all be loaded as web pages. When a notebook
+%%   corresponding to a function call is displayed a web page,
+%%   its associated documentation is displayed.}
+%% \end{figure}
+
+%% It shows a sequence of visualizations of the performance
+%% of financial stocks over several years. The first visualization
+%% in this example uses ggplot2 and was written by Hadley Wickham.
+%% It reads data provided by Yahoo! Finance as a web service, and shows
+%% the price for a single trading symbol.
+
+%% The webpage that produces that visualization includes a link to
+%% the underlying source code. From this link, a user can fork the notebook.
+%% In the example,a configurable ticker is added, based on the URL of
+%% the notebook. The change to the notebook is minor.
+
+%% Next, the notebook author or a collaborator may decide to extend
+%% the application to also provide convenient access to the data,
+%% apart from its visualization.
+%% This is done by creating a notebook that defines a function.
+%% That notebook then becomes a \emph{subroutine} for other notebooks.
+%% It can be invoked from interactive notebooks, such as dashboards.
+%% The data access notebook is version-controlled like other notebooks.
+
+%% Finally, consider the situation where an analyst wants to understand
+%% the price dynamics of stocks with respects to other attributes and
+%% time ranges. For this, interactive visualization may be very helpful.
+%% In our example, the analyst creates an interactive tool with multiple
+%% linked views.
+
+%% Demonstrating the integration of R and JavaScript, here the analyst
+%% writes an R function that passes the dataframe and description of
+%% the charts to the dcplot library.  Simple R expressions
+%% are captured as trees to generate JavaScript expressions.
+%% The terse chart description language, with sensible defaults inspired by
+%% ggplot2, provides a simple yet powerful interface to the grouping
+%% and reduction functionality of the well-accepted charting libraries
+%% crossfilter, dc.js and d3.js.
 
 % \subsection{Text analysis\label{sec:textvis}}
 % Same.
