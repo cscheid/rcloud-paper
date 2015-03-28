@@ -1,4 +1,4 @@
-\section{Case Study\label{sec:casestudy}: topic visualization in RCloud}
+\section{Case Study\label{sec:casestudy}: visual exploration of topic modeling in RCloud}
 
 In this section, we present a simple, but real-world example
 application currently deployed using RCloud.
@@ -10,7 +10,7 @@ explore collections of short text documents using topic modeling and
 visualization. Topic modeling~\cite{Blei:2003:LDA} is a standard
 technique for text summarization which, although powerful, requires a
 certain amount of manual intervention and
-interpretation~\cite{Siever:2014:LAM}.
+interpretation~\cite{Sievert:2014:LAM}.
 
 \begin{figure*}
   \includegraphics[width=\linewidth]{fig/casestudytext/casestudytext.pdf}
@@ -18,22 +18,49 @@ interpretation~\cite{Siever:2014:LAM}.
 \end{figure*}
 
 LDAVis itself was developed by two members of the technical staff at
-AT\&T Labs, and originally was developed entirely in RStudio's
+AT\&T Labs, and originally targeted RStudio's
 Shiny~\cite{RStudio:2013:SWA}, a framework for developing R
-applications for the web. The main reason for moving the application
-to an RCloud development was precisely ease of deployment. Shiny
-provides ease of development, but when the application is finished,
-one needs to find a publicly available web server that can host the
-Shiny application; user management needs to be handled, and so
-on. Using RCloud, deployment happens transparently. This is a big win
-in terms of efficiency.
+applications for the web.  While Shiny provides unparalleled ease of
+development, discoverability and deployment turns out to be equally
+important aspects in the lifecycle of an internal application (see
+Section~\ref{sec:interviews}).  On these aspects, RCloud provides a
+very simple model: \emph{all developed notebooks are automatically
+  deployed}.
 
-Describe the application and the technologies. Runs code from an R
-package and custom analysis code; files are uploaded from the web
-client, results are provided in JSON format and visualized in the web
-client using d3~\cite{Bostock:2011:DDD}.
+LDAVis combines textual analysis, dimensionality reduction, and
+interactive visualization. The text analysis is performed via a
+combination of an existing R library that fits an LDA model using
+Gibbs sampling~\cite{} and some R code written specifically by the
+developers. The analysis module is, ultimately, a single R function
+that is exposed to the web application via the Javascript-R RPC
+mechanism described in Section~\ref{sec:system}; this way, the
+analysis is executed remotely on the RCloud servers.
 
+Each textual topic is a probability distribution over the all the
+words of the document. In order to expose patterns in the
+relationships between the topics, LDAVis employs a combination of
+interactive visualization and dimensionality reduction (letting users
+choose different measures for the topic distances and different
+dimensionality reduction techniques). The dimensionality reduction
+algorithms and distance measures are again implemented in R, which
+means they are executed on the RCloud servers as well.
 
+The result of the dimensionality reduction is a two-dimensional plot
+of the topic space, which can be seen in
+Figure~\ref{fig:textvis}. Describe d3 view.
+
+This application is simple, but highlights some of the unique features
+of RCloud. While RCloud notebooks allow deployment of R analyses over
+the web with no additional effor, RCloud \emph{applications} are more
+powerful, and are developed in a combination of Javascript and HTML
+for the front end. This requires additional knowledge than Shiny, but
+we argue that the RCloud model makes the analysis side simpler for the
+analysts (since they simply write the R code in the style they are
+used to), and the front-end visualization side simpler for the
+front-end developers (since they simply write the Javascript code in
+the style \emph{they} are used to). In addition, RCloud applications
+inherit the automatic deployment and discoverability features of
+regular RCloud notebooks.
 
 %% Text analysis in
 
