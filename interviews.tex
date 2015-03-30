@@ -234,9 +234,8 @@ current setup? If it's just me, I like my text editor and terminal. There's
 nothing that I want that those two don't give me.''
 
 Working in a shared environment also entails compromises about what you can
-install. Byers says that installing random packages is part of exploratory data
-analysis.
-
+install. Byers says installing alternative or nonstandard packages is
+intrinsic to exploratory data analysis.
 
 \subsection{Proliferation of notebook cells}
 RCloud's notebook interface combines editable Markdown with a command line
@@ -266,8 +265,8 @@ Much of the time, commands typed at the R command line just serve a transitory
 purpose, so having RCloud save commands into cells bothers experienced
 users. Kenny notes, ``It saves everything I do like everything is gold, but most
 of it is junk not meant to be saved.'' Rick says ``I just want to type in a
-couple of quick and get some results that are going to tell me what to do next,
-and they're not necessarily archival in any sense''
+couple of quick commands and get some results that are going to tell
+me what to do next, and they're not necessarily archival in any sense.''
 
 The material that is not appropriate to save includes ``expressions that allow
 me to check that I'm the right track'' (Rick), ``checking out what your data is,
@@ -275,7 +274,7 @@ or you make a plot of the data. Things that should not really become part of a
 notebook, but things that help you understand your data better.'' (Raif)
 
 Users also felt that cells do not capture the right level of granularity: they
-either hold too much code or too little. Rick says that RCloud's cells structure
+either hold too much code or too little. Rick says that RCloud's cell structure
 ``tempts me to type a big long thing and then run the whole thing, as opposed to
 typing a few little pieces that I'm thinking of on the inner parts and then put
 them together to make the big thing'' as he would do on the command line. When
@@ -292,12 +291,12 @@ longer and it's harder to deal with.'' Ivan says that cells' controls and blank
 space take extra real estate compared to a straight command line, and he and
 KCKC both complained that when there are long results or plots, it causes the
 code to scroll off the screen. Raif: ``for example imagine I run a cell whose
-output is huge, and now that output would block the whole window, and in order
-to find the next cell, I have to scroll down, and find where that cell starts,
-right? So, I'm losing the continuity of my code to the output''
+output is huge, and now that output would block the whole window, and to
+find the next cell, I have to scroll down, and find where that cell starts,
+right? So, I'm losing the continuity of my code.''
 
-Some users think users should have the option to keep results separate from the
-code.  Ivan thinks that RStudio's layout is more helpful because the charts
+Some users would like the option to keep results separate from code. 
+Ivan thinks that RStudio's layout is more helpful because charts
 are kept in another pane and stay in one place while doing analysis. Raif says
 ``cells are really useful'' but ``you want to see your output in a different
 window [or] on a separate part of the window''.
@@ -305,7 +304,7 @@ window [or] on a separate part of the window''.
 The cell structure also can be problematic if some cells take a long time to
 run. In Kenny's work, there is often a ``long tail''.  The first cell may take
 seconds to run, the next cell minutes, and the last cell 5 hours.  In this
-situation, the run whole notebook button is ``dangerous''. When converting
+situation, the Run Whole Notebook button is ``dangerous''. When converting
 his work to notebooks, Kenny ends up with a lot of comments that say ``this cell
 takes a long time to run.''
 
