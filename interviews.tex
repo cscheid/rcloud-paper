@@ -31,13 +31,13 @@ out Google and finding questionable examples that may or may not work.'' Raif
 notes, if ``some person has done something similar, then you're able to just
 edit that, and that's saved a lot of work time for me''
 
-Taylor develops packages for analysts: ``I use it more for sharing code with
-other people, and for doing tutorials for iotools or hmr'', the packages he
-maintains. ``I want people to see how the package works, so I clearly want them
+Taylor develops packages for analysts, and uses RCloud ``more for sharing code with
+other people, and for doing tutorials for iotools or hmr'', his packages.
+``I want people to see how the package works, so I clearly want them
 to see the code [...] I kind of write it just like I would write GitHub
 Markdown, where you have little code snippets and text, but RCloud lets me
 actually run the snippets'' and display the results. He also uses RCloud for
-explaining issues with data sources.
+explaining problems with data sources.
 
 Some users who tried out RCloud but are not able to use it for organizational
 reasons, already miss the functionality. Shelly likes ``the concept of being
@@ -74,7 +74,7 @@ set of data.''
 Forking also provides a way for others to troubleshoot when something goes
 wrong.  When Horace works with the users of his notebooks, ``I'll teach people
 to intercept the result in the middle,'' to ``insert print statements here and
-there and check values''
+there and check values.''
 
 %% ``a lot of the time we just
 %% insert print statements here and there and check values. Having debugging code
@@ -90,15 +90,15 @@ I want to run it on a different part of data, or I want to change some parts, I
 don't want to see this column, I want a different column, things like that.''
 
 Currently parameters can be added to the URL, but adding user interface elements
-to do the same thing requires expertise. The tool-builders see a need for better
-ways to parameterize notebooks. Taylor complains that a notebook might say ``
+to do the same thing requires expertise. The tool-builders see a need for
+facilities to make it easier. Taylor complains that a notebook might say ``
 `This is a report of the volume of all of our feeds for this month', and someone
 would want to look at it for the next month or the previous month, so they'd
 fork it to change the month.''
 
 Jyothi calls it ``web-enabling'' the notebook: users ``can always fork the
 notebooks and make changes, but I feel that if the owner of the notebook
-web-enables it [...] it's easier to run. Instead of
+web-enables it, [...] it's easier to run. Instead of
 forking it, if they can set options, it's probably more efficient, and also they
 can [still] fork it if they want to.''
 
@@ -110,11 +110,11 @@ can [still] fork it if they want to.''
 %% Rick: ``when I've finished something, there's a nice clean record of it.''
 %% (I think this may be more about the publish/markdown than about source control.)
 
-Automatic source control is also a popular feature. Clint says, ``instead of looking back and saying I've got a billion files here in
-this subdirectory and I hope I've got them backed up, if they're on RCloud I
-know they are. [...] I don't have to worry about it, if I drop my computer in the
-bathtub, everythings gone, because I'm not great about uploading my own for
-versioning.''
+Automatic source control is also a popular feature. Clint says, ``instead of
+looking back and saying I've got a billion files here in this subdirectory and I
+hope I've got them backed up, if they're on RCloud I know they are. [...] I
+don't have to worry about it, if I drop my computer in the bathtub, everythings
+gone, because I'm not great about uploading my own for versioning.''
 
 Bart points out that the automatic versioning works well for dealing with the
 minutiae of web development:
@@ -141,8 +141,7 @@ notebook.''
 \subsection{Discovering others' work}
 Many users find the search function useful. Raif says ``the fact that we have
 all the notebooks there, searchable, saves me from replicating what other people
-have done. [...] One way of thinking of it is like Google Code: you just search
-for something and you find something useful and you just use it.''
+have done.''
 
 But other users prefer to browse just the notebooks of the experts they
 know. Rick says, ``usually I know somebody's notebooks that I want to search
@@ -156,7 +155,7 @@ tree by tag, measuring the quality of notebooks by their forks as well as stars,
 and searching within a single user's notebooks.
 
 
-\subsection{Web integration}
+\subsection{Integrated analysis}
 Integrating an analysis language into a web development environment is something
 the tool developers really appreciate.  The structure of Horace's visualization
 notebook means
@@ -306,23 +305,23 @@ window [or] on a separate part of the window''.
 The cell structure also can be problematic if some cells take a long time to
 run. In Kenny's work, there is often a ``long tail''.  The first cell may take
 seconds to run, the next cell minutes, and the last cell 5 hours.  In this
-situation, the ``Run whole notebook'' button is ``dangerous''. When converting
+situation, the run whole notebook button is ``dangerous''. When converting
 his work to notebooks, Kenny ends up with a lot of comments that say ``this cell
-takes a long time to run.'' This is also a huge
-issue for demoing code.
+takes a long time to run.''
 
-The solution is probably something like knitr's caching of results, which Kenny
-is doing in an ad-hoc way, ``littering the notebook with little switches that
-comment out'' the slow parts and ``load the object instead'', ``save the object
-to disk''. One of the authors of this paper manually writes cells that check if
-a result file exists, and perform the calculation only if it's not there.
+To avert this danger, users are forced to write code within the notebook to
+cache results. Kenny ends up ``littering the notebook with little switches that
+comment out the slow parts'' and either ``load the object instead'' or ``save
+the object to disk''. One of the authors of this paper manually writes cells
+that check if a result file exists, and perform the calculation only if it's not
+there.
 
-Rick on auditing (possible solution): ``you didn't see your mistakes, they were
-in there but you never really saw them because a mistake never led to an answer
-at the end'' ``the real result of this analysis was these three plots, so go
-back and figure out everything that I did that was involved in creating those
-three plots. So that I could start from the raw data and create those three
-plots.''
+%% Rick on auditing (possible solution): ``you didn't see your mistakes, they were
+%% in there but you never really saw them because a mistake never led to an answer
+%% at the end'' ``the real result of this analysis was these three plots, so go
+%% back and figure out everything that I did that was involved in creating those
+%% three plots. So that I could start from the raw data and create those three
+%% plots.''
 
 RCloud combines the functions of scratchpad with notebook assets. KC thinks
 that having a scratch pad that doesn't persist between different notebooks is
@@ -370,48 +369,24 @@ problem with forking a notebook and correcting it, is that the original notebook
 still exists with the error.  We need a way to see that there is a more recent
 fork of notebook and to fetch in the changes from it.
 
-Taylor, who writes tools and example notebooks for those tools, seems to be
+Taylor, who writes packages and example notebooks for them, seems to be
 haunted the most by dead notebooks.  At first, he had to learn how to write safe
 notebooks: ``It would be a file inside a directory that only I had [...] access
 to and so someone else couldn't run it, [...] a temporary file on something that
 was read-only to everyone else. But I've gotten careful about that.''
 
-But even correcting notebooks can come too late:
-\begin{quote}
-I'll make a notebook of a
-little tutorial of basic functions and what they do, and then I'll send [it]
-out, and then people will give me feedback on [it], or have some new feature, or
-I'll realize something's wrong, and then I'll go back and change it and update
+But even correcting notebooks can come too late: ``I'll go back and change it and update
 that page, but then what happens is people have in the meantime forked it. [...]
-Usually what it'll be is actually that I'll have to change a package as well, so
-their old fork stops working, and then they complain. [...] This probably bites
-me more than other people, because I'm doing development so things are changing
-as they're looking at the code. Like, iotools, a lot of the functions change
-names or change syntax.
-\end{quote}
+Usually what it'll be is that I'll have to change a package as well, so
+their old fork stops working, and then they complain.''
 
-Taylor tried to keep his notebook tree tidy, but this didn't help either, because
-notebooks still exist when they have left the tree.
-\begin{quote}
-That's just a problem because people will have old notebooks that
-don't work anymore. It's annoying when it's a notebook that I still have and the
-format has changed just a bit. More than that is when people have, now that I
-know that you can't even delete notebooks, they'll have a fork of something that
-doesn't exist anymore on my thing [...] Now I'm really gun-shy about sharing
-notebooks because it's like, do I want to support this forever?
+Taylor tried to keep his notebook tree tidy, but this didn't help, because
+people either keep old links in their email, or forked a notebook which is now
+obsolete. By design, notebooks that are deleted in the user interface are not
+purged from the repository. ``Now I'm really gun-shy about sharing notebooks
+because it's like, do I want to support this forever?''
 
-[...] A good example is, someone was complaining about doing forking in an
-RCloud notebook. They were trying to use a parallel package. And I said, no no I
-think it works, and I did like a one-cell thing that just did some sweep kind of
-thing to show that it was actually working in parallel, and then I just deleted
-it, thinking it was gone. And then it saved something in a directory that I then
-deleted, because it was just a temporary directory. Three months later, I don't
-know why they were running it, they said `oh it doesn't work'. I think that's
-the biggest issue I'm having right now, all these forks.
-\end{quote}
-
-Taylor and Horace work together on a notebook.
-
+Taylor and Horace work together on a notebook:
 \begin{quote}
 There's no way for both of us
 to have ownership of a notebook, so the only way is to fork it back and forth,
@@ -419,7 +394,7 @@ and so we have dozens of old copies. [We end up] deleting all the old ones, but
 people still have links to them, because they don't actually disappear. [...]
 The UI makes it easy to go back to the old stale versions, because you can say
 `forked from' `forked from' `forked from', but there's actually no way to go the
-way that we want people to go, which is, like, up the tree.
+way that we want people to go, which is up the tree.
 \end{quote}
 
 %% Bart: ``One UI notebook and a bunch of other notebooks that do various tasks and

@@ -18,12 +18,6 @@ Tableau    &                     &      x        &    x       &               & 
 \end{table*}
 % SN says Tableau: versioning=no  collaboration=yes  deployment=yes multilanguage=no  reports=yes  analysis=no
 
-\gordon{This section now overlaps with the Interview Study quite a bit - we can
-  use that to motivate this, but that would mean not immediately responding to
-  the complaints raised there. On the other hand, trying to merge these two
-  sections would be a beast. The good news is, we anticipated most of the
-  problems that people are facing now. :-/}
-
 \subsection{Reflection on Design Considerations}
 
 Experience with deploying RCloud in a community of data analysts
@@ -34,13 +28,13 @@ Our experience underscored the relevance of Heer and Agrawala's design
 considerations, and indicated areas for further exploration. We adopt
 their taxonomy for the following discussion.
 
-{\bf Shared artifacts and artifact histories} are a central feature
-of RCloud, through its shared workbooks of experiments and analyses.
-We observed that hackers readily shared work through RCloud. They
-used it to discuss ideas and results in data analysis, to ask for help
-with programming problems, and to publish results by sharing URLs.
-Artifact histories are provided through a version management system (git).
-\stephen{Do analysts type raw git commands?}
+{\bf Shared artifacts and artifact histories} are a central feature of
+RCloud, through its shared workbooks of experiments and analyses.  We
+observed that hackers readily shared work through RCloud. They used it to
+discuss ideas and results in data analysis, to ask for help with
+programming problems, and to publish results by sharing URLs.  Artifact
+histories can be accessed through the notebook tree or through GitHub's web
+interface.
 
 {\bf Modularity and granularity.} The ability to partition work into
 independent units (modularity) is a key to working productively in teams.
@@ -110,12 +104,71 @@ Because we developed our ideas while simultaneously creating a prototype,
 we did not foresee some of the requirements that emerged after
 people started working with RCloud.
 
-{\bf Multiple language support.}
-We did not foresee the demand to relax the assumption that programming
-is done mainly in R. In retrospect, it is clear that many data science
-problems are solved with cross-language approaches (for example, scikit-learn
-in Python, weka in Java).\stephen{Isn't this fixed in some way now?}
-\gordon{Should we have a section on ways that we've responded to popular demand?}
+{\bf Exploration is hard.}
+R is a popular language for exploratory data analysis, and we built RCloud
+as a way for data scientists to seamlessly transition from EDA to sharing
+and presentation. But the interface we implemented for combining sharing and presentation
+into the R command line interferes with the exploration aspect.
+
+In existing R tools, the command prompt is used to try things out. It is very
+fast and there is no commitment: nothing gets saved and there is nothing to
+later clean up. In contrast, in RCloud's notebook interface, the extra cells need
+to get deleted later, and there seems to be a mental burden that ``bad stuff
+is getting saved.''
+
+One thing to try here is making deletion easier, for example with a
+shortcut key to remove the last cell, or a way to keep a few cells and cull
+the rest. A far more ambitious solution, suggested by one of our
+interviewees, is to implement auditing of data analyses as it existed in
+S \cite{Becker:1988:Auditing}, so that the code which did not lead to a
+result could be discarded automatically.
+
+The interface is also perceived to be slower, both in terms of reaction
+time---RCloud necessarily saves a cell to its repository before executing
+it---and because it requires mouse interaction.
+
+Other complaints mostly focus on layout and can probably be addressed with
+some iteration and customization features.
+
+{\bf Discovery is hard.}
+While we have provided tools for searching and curating notebooks, the
+search function does not help for finding methodology (and does not protect
+searchers from erroneous notebooks), and the notebook tree starts to get
+unwieldly with hundreds of users with hundreds of notebooks. In addition,
+our choice to retain notebooks even when they have been deleted has
+exacerbated the situation, since obsolete and broken notebooks stay around
+forever.
+
+One thing to try is tagging and filtering the tree on tags, so that users
+can mark their own notebooks or those of others to make them easier to
+find.
+
+However, this relies on users making a conscious effort, and it may be
+better to rely more on passive metrics such as how often a notebook has
+been run.
+
+The system also needs to help users curate their notebooks. If a notebook
+has been superceded by one of its forks, a user who opens it should be
+warned. If a notebook has been deleted, but someone still has a link to it,
+it should be clear that the notebook is dead. And operations on multiple
+notebooks and folders of notebooks should be supported to make curation
+easier.
+
+
+{\bf Collaboration is hard.}
+While forking provides a simple way to continue someone else's work, working
+in teams is a lot more complicated. The forking feature is popular but it
+poses a problem, too, as dozens of versions of a notebook start proliferating.
+
+One solution we are mulling over is to allow overwriting the current state
+of a notebook with the current state of another fork of the notebook. More
+general solutions would be serious engineering endeavors: even GitHub's web
+interface does not support merging where there are any conflicts. Actual
+sharing of notebooks would probably require moving toward git's notion of
+decentralized code repositories, because GitHub gists do not support shared
+ownership.
+
+
 
 {\bf Versioning.}
 Some important aspects of the environment are more difficult to manage
@@ -130,6 +183,7 @@ worth it (as proven true with distributed systems in general).
 Still, effective control over versioning when sharing problem needs more
 attention if RCloud would be scaled up to a wider number of users lacking
 informal channels to coordinate work.
+
 Versioning needs to be managed in several places: in scripts;
 in the R environment such as the installed libraries and packages;
 and in the external environment such as the operating system and
