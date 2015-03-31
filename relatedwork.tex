@@ -6,36 +6,106 @@
 
 \section{Related Work}
 
-There is much previous work that inspired or influenced ours.
-Indeed, many studies have addressed requirements for future visual
-analytics environments.
-Previous work that we learned from includes:
+In some sense or another, the entire field of information
+visualization and visual analytics revolve around improving how users
+solve problems using data. In this section, we focus specifically on
+system work relating to problem-solving enviroments and multiple users.
 
-{\bf VisTrails} as a landmark prototype of a scientific workflow
-and provenance management system. This prototype demonstrated
-the value of capturing aspects of the processes that
-surround data analysis experiments and tools, including detailed
-history, collaboration, and deployment.
+\paragraph*{Social Data exploration and Analysis}
+{\bf ManyEyes}~\cite{Viegas:2007:MAS} was a landmark system designed
+for the crowdsourced creation and publication of data
+visualizations. Although ManyEyes only supported a limited number of
+visual encodings, the system's success was both a precursor to more
+sophisticated solutions and an early indication that the world-wide
+web was a suitable platform for data visualization. One of the main
+challenges we faced in designing RCloud was providing an experience
+for \emph{consuming} visualizations as seamless as ManyEyes's, while
+sacrificing as little as possible on the generality of the analyses
+themselves.
 
-{\bf iPython notebooks (Jupyter)} are the closest work we are aware of.
-The goal of this project is to provide shared notebooks and a remote
-execution environment for interpreted scripts. 
-\stephen{Are there significant differences involving versioning,
-provenance, annotation and other broad process support?}
-
-{\bf RStudio, RShiny} and other packages based on R for creating and
-publishing web content such as knitR, Rpubs, rCharts, and gg2v.
-These tools are not collaborative, but they are aimed at better
-graphics and web applications.
-
-{\bf bl.ocks, jsfiddle, plotly} and other web services for sharing code
-and demos.
-
+\paragraph*{Notebooks as a medium for data analysis dissemination}
+The concept of a ``notebook'' as we use it here can be traced all the
+way back to Knuth's literate programming~\cite{Knuth:1984:LP}. In
+literate programming, a comprehensive description in prose of the
+behavior of the program is ``weaved'' together with the source code,
+yielding both an executable program and a human-readable document.  A
+notebook represented as a collection of short, executable cells,
+originated with Mathematica, and in R, literate programming is
+supported by packages such as knitr and RMarkdown~\cite{Xie:2013:DDW}.
+Project Jupyter~\cite{jupyter} (originally implemented as part of
+IPython) offer some notebook features, but lack a transparent
+mechanism for sharing and deployment in multiple-user settings.
+%
 Further afield, {\bf Electronic Lab Notebooks} are applications for organizing
 and sharing data from scientific lab experiments\cite{Rubacha:2011:ELN}.
 In a sense, we hope to adapt and extend this concept to the work of
 visual analytics teams.
+%
+Although RStudio offers publication of literate R programs as a free
+service on their website, the workflow is somewhat disconnected from
+the development of those programs. Once they're uploaded, it's hard
+for other users to build off of the work published (or even for the
+original author to update new versions). In other words, RStudio
+handles \emph{publication}, but not \emph{deployment} and sharing.
 
+\paragraph*{Provenance and versioning} As
+we mentioned, one central problem in exploratory analysis is that
+problems change quickly over time, often in the course of developing a
+solution. As a result, systems should provide adequate support for
+tracking \emph{changes} of the data analyses scripts.  VisTrails was
+one of the original systems for managing \emph{process provenance} ,
+and demonstrated the value of capturing aspects of the processes that
+surround data analysis experiments and tools, including detailed
+history, collaboration, and deployment~\cite{Callahan:2006:VVM}.
+
+{\bf VisMashup}~\cite{Santos:2009:VST} VisMashup defines a schema and
+semantics for automatically deriving user interfaces from workflows,
+while Crowdlabs exposes these capabilities on a website
+feature~\cite{Mates:2011:CSA} workflow upload and remote execution. In
+our view, the impedance mismatch between a dataflow pipeline
+specification and the power of a general-purpose language is too great
+for the type of general exploratory work in data science teams. At the
+expense of ease of use for non-programmers, RCloud tries to provide a
+closer match for analysts accustomed to creating and executing R and
+Python code, while retaining attractive properties like transparent
+provenance tracking and interactive data visualization on the web.
+
+\paragraph*{Web-based tools for sharing code snippets}
+There have been a variety of tools recently developed for quickly
+sharing small programs on the Web, including but not limited to:
+bl.ocks~\cite{blocks}, jsfiddle~\cite{jsfiddle}, and
+plot.ly~\cite{plotly}.  bl.ocks and jsfiddle are both designed to
+share Javascript programs, which means that their deployment happens
+automatically through the web browser. If and when Javascript becomes
+the lingua franca of exploratory data analysis, then we can foresee
+building a much simpler version of RCloud where all execution happens
+either on the client side or via web services. Unfortunately that is
+not a realistic assumption for the present, making these solutions by
+themselves unsuitable to our use case. Plot.ly is notable in that it
+provides API support for publishing \emph{from} scripts: in other
+words, it is possible to generate a plot.ly visualization from inside
+a separate program. Although this is an intriguing idea, it
+nevertheless creates a disconnect between the analysis and the
+resulting visualization. In RCloud, we wanted to make sure that every
+visualization was transparently linked to the source code that
+generated it.
+
+%% publishing web content such as knitR, Rpubs,
+%% rCharts, and gg2v.  These tools are not collaborative, but they are
+%% aimed at better graphics and web applications.
+%% .  {\bf iPython
+%%   notebooks (Jupyter)} are the closest work we are aware of.  The goal
+%% of this project is to provide shared notebooks and a remote execution
+%% environment for interpreted scripts.  \stephen{Are there significant
+%%   differences involving versioning, provenance, annotation and other
+%%   broad process support?}
+
+
+%% {\bf bl.ocks, jsfiddle, plotly} and other web services for sharing code
+%% and demos.
+
+
+\paragraph*{Needs of data analysts}
 Kandel et al.'s interview study points out the typical ``explore'',
 ``model'', ``report'' cycle in enterprise data
 analysis~\cite{Kandel:2012:EDA}. There are many discontinuities in
@@ -72,11 +142,6 @@ recommendation, and voting and ranking. RCloud's integrated deployment
 mechanism, described in Section~\ref{sec:deployment}, addresses the cost of
 integration, content export, presentation and view sharing.
 
-{\bf Manyeyes} \cite{Viegas:2007:MAS} was a landmark system for the integration
-of social media with visualization and data publishing. We build on this
-work by defining a rich interface for collaboration about code, and for
-operating on metadata.
-
 The need for integrating statistics and visualization has been
 highlighted in previous studies and is widely understood by
 various technical communities \cite{Perer:2008:ISA}
@@ -92,51 +157,39 @@ performance execution in incremental code development
 environments \cite{Guo:2010:TPI}.
 The goal of RCloud is to define an environment in which many such
 techniques may be integrated and made available to a broad community.
-
-{\bf VisMashup}~\cite{Santos:2009:VST} and Crowdlabs~\cite{Mates:2011:CSA}
-are tools built on top of the VisTrails workflow management
-system~\cite{Callahan:2006:VVM}. VisMashup defines a schema and
-semantics for automatically deriving user interfaces from workflows,
-while Crowdlabs exposes these capabilities on a website feature
-workflow upload and remote execution. In our view, the impedance
-mismatch between a dataflow pipeline specification and the power of a
-general-purpose language is too great for the type of general
-exploratory work in data science teams. As a result, RCloud tries to
-provide a closer match for analysts accustomed to creating and
-executing R and Python code, while retaining attractive
-properties like automatic versioning and management.
-
 \begin{figure*}
 \centering
 \includegraphics[width=.95\linewidth]{fig/notebook/notebook.pdf}
 \caption{\label{fig:notebook}An RCloud notebook is a sequence of
-  \emph{cells}, each a snippet of source in one of the supported languages (typically R, but Python and others are also supported) or Markdown. The main creation workflow involves editing notebooks, which are transparently stored as git repositories in GitHub, providing us with easy access primitives for version tracking. Notebooks can be executed as they're edited (left), or in a standalone viewer (right), via a slightly different URL. This lightweight provides a very low-friction mechanism for sharing results which we discuss in full in Section~\ref{where}. }
+  \emph{cells}, each a snippet of source in one of the supported languages (typically R, but Python and others are also supported) or Markdown. The main creation workflow involves editing notebooks, which are transparently stored as git repositories in GitHub, providing us with easy access primitives for version tracking. Notebooks can be executed as they're edited (left), or in a standalone viewer (right), via a slightly different URL. This lightweight provides a very low-friction mechanism for sharing results which we discuss in full in Section~\ref{sec:interviews}. }
 \end{figure*}
 
-\stephen{We have a problem we already went over some of this.}
-Our work has been inspired by and benefited from other efforts
-to improve data analysis environments and processes. Building in
-the immense foundation of systems for statistical graphics,
-recent work includes RStudio \cite{RStudio:2013:SWA},
-the R packages Markdown \cite{Allaire:2014:MMR},
-knitr \cite{Xie:2013:DDW}
-and Shiny \cite{RStudio:2013:SWA},
-and iPython notebooks \cite{Perez:2007:IAS}
-to name a few. RStudio aims at providing an integrated development environment
-for R, with support for publishing code in packages. Markdown,
-knitR and Shiny augment R with sophisticated reporting capabilities, including
-interactive web interfaces. IPython \cite{Perez:2007:IAS}
-shares many of our goals, such as providing a comprehensive environment
-for analysis and programming, and share-able documents on the web.
-\stephen{Do we now need to introduce one of those remarks where we
-explain that we are not the same as IPython.}
+%% \stephen{We have a problem we already went over some of this.}
+%% Our work has been inspired by and benefited from other efforts
+%% to improve data analysis environments and processes. Building in
+%% the immense foundation of systems for statistical graphics,
+%% recent work includes RStudio \cite{RStudio:2013:SWA},
+%% the R packages Markdown \cite{Allaire:2014:MMR},
+%% knitr \cite{Xie:2013:DDW}
+%% and Shiny \cite{RStudio:2013:SWA},
+%% and iPython notebooks \cite{Perez:2007:IAS}
+%% to name a few. RStudio aims at providing an integrated development environment
+%% for R, with support for publishing code in packages. Markdown,
+%% knitR and Shiny augment R with sophisticated reporting capabilities, including
+%% interactive web interfaces. IPython \cite{Perez:2007:IAS}
+%% shares many of our goals, such as providing a comprehensive environment
+%% for analysis and programming, and share-able documents on the web.
+%% \stephen{Do we now need to introduce one of those remarks where we
+%% explain that we are not the same as IPython.}
 
-One overall goal is to reduce the gap between implementers and deployers
-in visual analytics. The fusion of development with production
-operations in software release management (``DevOps'' \cite{Httermann:2012:DD}
-or ``continuous integration'' \cite{Fowler:2006:Continuous}) is a trend in web
-services and related fields.
-By making it convenient for data scientists to expend just a little more effort
-when creating experiments, we may be able to eliminate the need for programming
-teams to recreate their work to deploy it in production,
-which has a high cost in time, expense and accuracy.
+One overall goal is to reduce the gap between implementers and
+deployers in visual analytics. The fusion of development with
+production operations in software release management (``DevOps''
+\cite{Httermann:2012:DD} or ``continuous integration''
+\cite{Fowler:2006:Continuous}) is a trend in web services and related
+fields.  By making it convenient for data scientists to expend just a
+little more effort when creating experiments, we may be able to
+eliminate the need for programming teams to recreate their work to
+deploy it in production, which has a high cost in time, expense and
+accuracy. We now turn to a description of the system architecture
+itself, and how it enables the features we have been highlighting.
