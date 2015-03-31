@@ -28,14 +28,14 @@ Our experience underscored the relevance of Heer and Agrawala's design
 considerations, and indicated areas for further exploration. We adopt
 their taxonomy in the following discussion.
 
-{\bf Shared artifacts and artifact histories} are a central feature of
+\paragraph*{Shared artifacts and artifact histories} are a central feature of
 RCloud, through its shared workbooks of experiments and analyses. We
 observed that hackers readily share work through RCloud. They use it to
 demonstrate techniques, share results with peers and managers, and to
 transfer algorithms to other groups. Artifact histories can be accessed through the notebook
 tree or through GitHub's web interface.
 
-{\bf Modularity and granularity.} The ability to partition work into
+\paragraph*{Modularity and granularity} The ability to partition work into
 independent units (modularity) is a key to working productively in teams.
 It is good if the units can be kept small, so team members can realize
 benefits at least proportional to the work on the units (granularity).
@@ -44,14 +44,14 @@ into units as fine as the underlying language allows, and versioning
 encourages making incremental changes at low cost and without disrupting
 the work of others.
 
-{\bf View sharing, bookmarking.} Most resources in RCloud are named
+\paragraph*{View sharing, bookmarking} Most resources in RCloud are named
 and accessed as URLs. This proved to be an effective mechanism for
 sharing and for integrating analyses with external processes and systems.
 It is particularly advantageous for work to be shared as URLs that
 provide access to code and experiments, instead of by pasting static
 screenshots into documents and presentations.
 
-{\bf Discussion.} Annotation and commenting was another central goal.
+\paragraph*{Discussion} Annotation and commenting was another central goal.
 Commenting is supported through GitHub, but our hackers found it
 awkward and did not exercise it as much as we expected.
 An interesting question is, to what extent should application users
@@ -59,14 +59,14 @@ be able to make annotations in published notebooks without coding
 and being exposed to the hackers's view? The design of
 more elaborate, integrated annotation remains as future work.
 
-{\bf Content export} is not a capability we aimed at supporting,
+\paragraph*{Content export} is not a capability we aimed at supporting,
 and R already has many packages for this. Recently, due to popular
 demand, we added user interface support for exporting plot images.
 We assume that RCloud notebooks should play well in the ecosystem
 of other tools, but sometimes it is difficult to know whether adding
 a compatibility feature will offload complexity or bring more in.
 
-{\bf Social-psychological incentives} and {\bf voting and ranking} are
+\paragraph*{Social-psychological incentives} and {\bf voting and ranking} are
 supported through starring and forking. These mechanisms are employed often
 on the platform. An obvious next step would be to enhance recommendations
 using relationships discovered by static and dynamic code analysis. This
@@ -77,14 +77,14 @@ together, or appear in proximity to a certain record types or data feeds.
 In general, trivial or passive mechanisms to collect data for
 recommendations are essential.
 
-{\bf Group management, size and diversity.} This area needs better
+\paragraph*{Group management, size and diversity} This area needs better
 support in RCloud, but is clearly important to working in teams.
 We rely on external administrative processes and social conventions
 to manage accounts and groups. RCloud could benefit greatly from
 integrating social media to track identities and groups and to maintain
 communication channels, instead of having its own isolated solution.
 
-{\bf Curation.} Even without formal group management, users may
+\paragraph*{Curation} Even without formal group management, users may
 curate groups of related notebooks using notebook tree folders.
 We found this particularly effective in collecting and distributing
 training materials.
@@ -94,7 +94,7 @@ Because we developed our ideas while simultaneously creating a prototype,
 we did not foresee some of the requirements that emerged after
 people started working with RCloud.
 
-{\bf Versioning.}
+\paragraph*{Versioning}
 Some important aspects of the environment are more difficult to manage
 in RCloud than in conventional systems. RCloud does not explicitly
 separate the development and deployment environments. More than that,
@@ -134,7 +134,7 @@ and to apply algorithms and metadata to organize them.
 %\emph{of} the ACVA process. It will be important when we talk about
 %recommendation systems, and navigation of the set of notebooks, etc.
 
-{\bf Caching.}
+\paragraph*{Caching}
 An important consideration is how and where to introduce caching
 in RCloud's distributed computation model. Caching can dramatically
 improve performance in a way that is otherwise transparent to
@@ -154,7 +154,7 @@ but it seems better to implement this capability in a general purpose associativ
 cache, instead of application-specific libraries. We envision cache management
 being implemented in a new middle layer to be added in the future.
 
-{\bf Security.}
+\paragraph*{Security}
 It is essential to provide security in an environment for
 collaboration and data publishing. To provide some
 protection for RCloud workbooks in an organization's intranet,
@@ -180,7 +180,7 @@ new approaches to information security in visual analytics.
 %\gordon{This sounds like we think we are helping by pushing the
 %system to the breaking point, is that the idea?}
 
-{\bf Exploration is hard.}
+\paragraph*{Exploration is hard}
 R is a popular language for exploratory data analysis, and we built RCloud
 as a way for data scientists to seamlessly transition from EDA to sharing
 and presentation. But the combined notebook and command line interface we
@@ -219,7 +219,7 @@ to reduce the need for them.
 Other complaints mostly focus on layout, and can probably be addressed by
 offering better customization, and designs such as tabbed views.
 
-{\bf Discovery is hard.}
+\paragraph*{Discovery is hard}
 While we provided tools for searching and curating notebooks, the
 search function does not help for finding methodology (and does not protect
 searchers from erroneous notebooks), and the notebook tree starts to get
@@ -239,7 +239,7 @@ has been deleted or superseded by one of its forks, a user who opens it
 should be warned. And operations on multiple notebooks and folders of
 notebooks should be supported to make curation easier.
 
-{\bf Collaboration is hard.}
+\paragraph*{Collaboration is hard}
 While forking provides a simple way to continue someone else's work, working
 in teams is a lot more complicated. The forking feature is popular but it
 poses a problem, too, as dozens of versions of a notebook proliferate.
