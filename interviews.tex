@@ -21,7 +21,7 @@ me to see other people's notebooks.
 
 By default, all notebooks are publicly visible in RCloud, and notebooks can be
 found through the notebook tree or search. However, the method for sharing that
-users mentioned most is by sending links through email. Clint says, ``If my supervisor
+users mentioned most is sending links through email. Clint says, ``If my supervisor
 wants to see what I've done or QA it, I can just send her a link.''
 
 Besides providing a way to present work to others, notebook sharing can also
@@ -150,10 +150,7 @@ somebody else's, because I know that the kind of thing I'm looking for something
 more obscure than I'm likely to find in some random person's.''
 
 More selective ways to search will be needed as the volume of notebooks
-continues to grow. We are considering tagging notebooks filtering the notebook
-tree by tag, measuring the quality of notebooks by their forks as well as stars,
-and searching within a single user's notebooks.
-
+continues to grow. We explore some ideas in the Discussion below.
 
 \subsection{Integrated analysis}
 Integrating an analysis language into a web development environment is something
@@ -192,68 +189,83 @@ application.
 %% will continue to run in the background''
 
 
-\subsection{Other workflows}
+\subsection{Exploring elsewhere}
 
-Although most of the analysts we spoke to use and appreciates the sharing
-features, RCloud is less popular as a tool for exploratory data analysis and
-development.
+Although most of the analysts use and appreciate the sharing features,
+RCloud is less popular as a tool for exploratory data analysis. Every
+analyst with prior R experience still does analysis in another tool and
+pastes their code into RCloud for sharing.
 
-Much of this is because of familiarity with other tools. Horace: ``for other
-people who use RCloud vs RStudio, they will always think that they want to
-prototype on RStudio. Maybe because it's more familiar for them. So, they work
-on RStudio, on a small data set, and they fix up everything, make sure
-everything is right, and then they place it on RCloud for sharing.''
+This is partly out of familiarity. Taylor asks, ``why would I want to use
+RCloud over my current setup? If it's just me, I like my text editor and
+terminal. There's nothing that I want that those two don't give me.''
 
-Many of the analysts we spoke to preferred using a text editor to refine and
-store their work, pasting it to an R command line to try it out. Rick describes,
-``I have the discipline of having a file that describes what I'm doing with the
-commands that I'm using so that I can go back and recreate it or pass it on to
-someone else, so it's a little bit like having an RCloud notebook, it's not
-necessarily executable but most of the commands that I've typed are in there.''
+%% Much of this is because of familiarity with other tools. Horace: ``for other
+%% people who use RCloud vs RStudio, they will always think that they want to
+%% prototype on RStudio. Maybe because it's more familiar for them. So, they work
+%% on RStudio, on a small data set, and they fix up everything, make sure
+%% everything is right, and then they place it on RCloud for sharing.''
 
-But the web interface of RCloud doesn't cut it for him. ``I find that the style of editing is clunky. I would never edit like that
-if I'm doing ordinary work. I usually use vi.'' ``I mean it's nice to have it
-saved, but there's this trade-off between it making it easier for me to present
-something or to save something, and my ease of typing and correcting and things
-in a plain old editor window.''
+%% Many of the analysts we spoke to preferred using a text editor to refine and
+%% store their work, pasting it to an R command line to try it out.
 
-Kenny works much the same way, rearranging the file so the good code is at the top of
-the file. Then he saves the file once he's got the right code at
-the top of the file (and often shares the work by pasting it into an RCloud notebook).
+But there are interface reasons as well. Rick describes a common workflow:
+\begin{quote}
+I have the discipline of having a file that describes what I'm doing, with the
+commands that I'm using, so that I can go back and recreate it or pass it on to
+someone else. So it's a little bit like having an RCloud notebook. It's not
+necessarily executable but most of the commands that I've typed are in there.
+\end{quote}
 
-Running anything on the Web can also be a source of frustration.  Poor network
-connections can cause web sockets to die, and Corey complains ``What frustrates me is
-that if I do leave this window for what feels like 5 or 7 minutes, it
-disconnects and I have to reconnect and run the whole notebook again.'' Raif
-whines that ``being web-based, it's obviously slower than something you would be
-running on your machine.'' For Byers: even the little lag of sending a command
-to a server and receiving the result is intolerable
+However, the web interface of RCloud doesn't cut it for him:
+\begin{quote}
+I find that the style of editing is clunky. I would never edit like that if
+I'm doing ordinary work. I usually use vi. [...] I mean, it's nice to have
+it saved, but there's this trade-off between it making it easier for me to
+present something or to save something, and my ease of typing and
+correcting and things in a plain old editor window.
+\end{quote}
 
-Taylor asks, ``why would I want to use RCloud over my
-current setup? If it's just me, I like my text editor and terminal. There's
-nothing that I want that those two don't give me.''
+Kenny also works with text file and command line, rearranging a file so the
+good code is at the top of the file. Then he saves the file once he's got
+the right code at the top, and often shares the work by pasting it into an
+RCloud notebook.
+
+%% Running anything on the Web can also be a source of frustration.  Poor network
+%% connections can cause web sockets to die, and Corey complains ``What frustrates me is
+%% that if I do leave this window for what feels like 5 or 7 minutes, it
+%% disconnects and I have to reconnect and run the whole notebook again.'' Raif
+%% whines that ``being web-based, it's obviously slower than something you would be
+%% running on your machine.'' For Byers, even the little lag of sending a command
+%% to a server and receiving the result is intolerable
 
 Working in a shared environment also entails compromises about what you can
 install. Byers says installing alternative or nonstandard packages is
 intrinsic to exploratory data analysis.
 
-\subsection{Proliferation of notebook cells}
+\subsection{Cells versus the command line}
 RCloud's notebook interface combines editable Markdown with a command line
 interface.
 
-The interface takes some learning. Clint says ``it took me a couple of weeks of
+The interface takes some learning. Clint says
+\begin{quote}
+It took me a couple of weeks of
 looking at it to become comfortable because I saw the cells and it just threw me
 for a total loop. I mean, it's a good idea because [...] I can run it all at
 once if I want or I can break these into sections for either debugging or
 staging purposes. I really like it now, but when I first saw it, [it was] very
-confusing [...] I think I prefer it now, because you can cut your code up.''
+confusing [...] I think I prefer it now, because you can cut your code up.
+\end{quote}
 
 Just the difference between a cell and the command prompt can confuse and slow
-down users. Rick: ``if I was typing into one of the cells near that top, I had
-to think `I'm editing this cell and then I have to execute it', and if was doing
+down users. Rick explains:
+\begin{quote}
+If I was typing into one of the cells near that top, I had
+to think ``I'm editing this cell and then I have to execute it,'' and if was doing
 the one at the bottom I could type it but then it would automatically execute
 [by pressing enter], but then it became a standard cell and I have to edit
-it. It was just another set of modes that I didn't like''
+it. It was just another set of modes that I didn't like
+\end{quote}
 
 For some users, the cells getting saved feels incompatible with exploratory data
 analysis. Rick notes that Markdown is a form of literate programming, and
@@ -282,8 +294,7 @@ Taylor uses the R command line, he copies and pastes ``like 5-10 lines of code,
 so when something breaks, I get an error message on that one line, and I can
 up-arrow and change it and fix it, whereas in RCloud I have to run a whole cell,
 so the only way to get that same functionality is if every line's in one
-cell. Because if it runs lines 1, 2, 3, then 4 fails, I have to either run the
-whole cell again, or have line 4 in its own cell. I can't rerun just one line.''
+cell.''
 
 Cells can also take up substantial vertical space, requiring scrolling. Rick
 complains that ``every time I type more stuff, the notebook gets longer and
@@ -295,7 +306,7 @@ output is huge, and now that output would block the whole window, and to
 find the next cell, I have to scroll down, and find where that cell starts,
 right? So, I'm losing the continuity of my code.''
 
-Some users would like the option to keep results separate from code. 
+Some users would like the option to keep results separate from code.
 Ivan thinks that RStudio's layout is more helpful because charts
 are kept in another pane and stay in one place while doing analysis. Raif says
 ``cells are really useful'' but ``you want to see your output in a different
@@ -349,11 +360,11 @@ that having a scratch pad that doesn't persist between different notebooks is
 
 \subsection{A sea of notebooks}
 RCloud is starting to be a victim of its own success, as there are now too many
-notebooks.  There are over 5000 notebooks on the research instance, of which
+notebooks.  There are over 5200 notebooks on the research instance, of which
 more than 500 have been starred and more than 350 have been forked.
 
 Rick doesn't find the notebook tree very useful for this reason: ``I
-don't necessarily need to see everybody's notebook that uses RCloud'' ``every
+don't necessarily need to see everybody's notebook that uses RCloud [...] Every
 time I do something new, I get a new notebook and so now my notebooks are maybe
 50 or 60. That's enough to think about just on my own, but if I've got
 everybody's 50 or 60 sitting on my display, I find that it's more than I want to
