@@ -1,0 +1,203 @@
+\section{System\label{sec:system}}
+
+\subsection{High-level Architecture\label{sec:highlevelarchitecture}}
+
+% Stephen: Let's work from front to back, from human interface to the
+% services and frameworks that support it.
+
+The internal computing infrastructure of organizations has changed
+radically in the last fifteen years. The shift from large
+servers toward scalable, lower-cost, distributed systems (``the cloud'')
+led to a software ecosystem of processes distributed over a
+network, usually communicating via HTTP. HTTP is dominant because
+web browsers and servers are ubiquitous and available in almost
+all hardware devices, from tiny sensors, to handheld devices and
+laptops, to rack-mounted servers.
+
+As a result, HTTP is the lingua franca of interprocess communication
+(IPC). One of the design goals for RCloud was to provide a productive
+environment for creators of data-analysis scripts, that also behaves
+as a first-class citizen in the pre-existing ecosystem of computer
+services and networks in an organization.
+
+%% Design for cloud-friendly? This goes back to the point in the
+%% introduction about playing nice with the rest of the ecosystem.
+
+\subsection{Human Interface\label{sec:humaninterface}}
+
+%\stephen{What??}
+%We designed RCloud around the front-facing API, which provides roughly
+%one entry point to correspond with each requirement.
+
+Figure~\ref{fig:notebook} shows the RCloud developer interface.  The center
+panel is a notebook for code and visualizations.  Code is edited in this panel,
+and visualizations are rendered.  An inventory of supplementary ``asset'' files,
+that are part of the notebook, though not in its executable flow, are edited on
+the right.  Controls at the top of the screen allow the user to run, view, and
+share the notebook. \gordon{Why are we talking about the callable interface
+here?} The result of code execution is the final cell of the notebook.  On the
+left is a browsing area for searching and viewing other users' notebooks, and a
+help system.
+
+The call mechanism is the URL itself; arguments are read from the URL
+and the final cell is rendered as the result.
+
+\subsection{Notebooks\label{sec:notebooks}}
+
+The main unit of computation in RCloud is a \emph{notebook}.
+A notebook holds a sequence of \emph{cells}, each of which contains a
+snippet of code or hypertext in Markdown. This is not a novel idea;
+executable documents structured this way are a feature of many
+other systems, including Mathematica, IPython and Sage.
+\stephen{Code is executed when...?}
+
+One of the main contributions of RCloud is the idea that notebooks
+are ``always deployed''. In other words, the most recent version of
+a notebook is immediately available.\stephen{What if it is broken?}
+This makes it convenient to share and modify experiments and compose
+results without binding to a specific version of a notebook.
+On the other hand, there are situations where it might be important
+to name specific versions. We do not expect designers to decide which
+versions need to be preserved, but we embrace \emph{transparent} versioning.
+This is similar to models like Jankun-Kelly et al.'s p-set calculus \cite{Jankun-Kelly:2007:MFV}
+and VisTrails's version tree \cite{Callahan:2006:VVM}, where every change in the state of the system is tracked.
+
+To implement this, we built RCloud on top of GitHub's \emph{gists}~\cite{GitHub:2014:GG}.
+GitHub offers a HTTP interface for creating simplified git repositories, the main limitation
+being a restriction to text-only files in a single directory. The GitHub web-service
+API provides most of the semantics we need for the versioning portion of the storage back end:
+access to previous versions, comments, starring, and forking.
+
+Using GitHub for storage and versioning also exposes other capabilities
+that can be invoked with JSON and HTTP.
+Particularly, we can provide full text search using Apache SOLR.
+SOLR is scalable, can index in near-realtime, supports multiple character sets,
+indexes several common types of documents, and has schemas and faceted search.
+%
+Integrating existing services and software components, especially open source,
+instead of implementing custom code is a trend in the software industry, and
+is very positive for systems research and prototyping in visual analytics.
+By adopting existing technology, small teams with limited resoures can explore
+novel ideas toward the improvement of large, complex software ecosystems.
+In our case, even though this approach involved learning standards not directly
+related to visual analytics, our early decision to use the GitHub Gist API
+turned out to be successful. Future projects could gain many of the same benefits
+by adopting this strategy. In fact, it will be essential for technology adoption
+and transfer, because it is almost impossible for any one tool or platform to
+``own'' or support the entire visual analytics process.
+\stephen{Are we preaching too much?}
+
+\subsection{Reputation and Interest: starring\label{sec:starring}}
+
+Information retrieval based on collecting usage and recommendations
+is a cornerstone of modern web services. We would like to help data
+scientists to find workbooks (and therefore items in their contents
+such as code, data, and colleagues with specific expertise) with
+the benefit of such information.
+
+In RCloud, reputation and interest are a relationship between
+\emph{notebooks} and \emph{users}, rather than a relationship between
+user pairs. We chose this approach because we expect initial 
+RCloud deployments to have relatively few users, but some users to
+create many notebooks. Under that assumption, assigning interest
+to users would not provide sufficiently ``high-resolution'' data.
+
+We incorporate both explicit and implicit indications of interest
+in notebooks. Explicit interest is indicated by ``starring,'' or
+clicking on a button that marks a notebook as interesting.
+This makes explicit indication of interest a nearly trivial operation,
+always readily available, to encourage its use.
+
+Implicit signaling of interest is supported by keeping click-through counts
+\cite{Joachims:2005:AIC} and execution counts. (In addition to these
+standard techniques of collecting feedback from web search, we anticipate
+applying static and dynamic code analysis to infer fine-grained
+information about relationships, for example, which packages and data
+sets often appear together.)
+
+\subsection{Executing R in a web browser\label{sec:Rinbrowser}}
+
+One our main goals is to provide ubiquitous access to the statistical
+tools of the R programming language in the wider environment in which data
+science teams participate.
+%
+Given the recent developments of interactive visualization and visual
+analytics in HTML5 and the web, we decided to create an
+\emph{interconnect} between the two environments.
+%
+Every RCloud session spawns a new R execution process in a remote
+server.
+
+%% \subsubsection{Object capabilities: R to Javascript RPC and access
+%%   control}
+
+HTTP and web services are convenient but much of the protocol is
+stateless. (For example, GET requests are required to not change the
+remote state, and results can be cached in transparent proxies along
+the network). In the case of close communication between a running
+R process and a web browser, we need something that is more flexible
+than distinct URLs for every R process, and which embraces
+statefulness of both calculations and visualization parameters.
+
+\carlos{In-depth explanation of R<->web interconnect, and why it's
+  necessary or important. Main point: make programming in the R side
+  as close as possible to what R programming feels like, and make
+  programming in the Javascript side as close as possible to what
+  Javascript programming feels like. We do this because this part of
+  the system is targeted at programmers; Shiny targets web programming
+  at non-web-programmers. We don't attempt such a thing and land at a
+  different point in the spectrum.}
+
+\carlos{compare against https://www.opencpu.org, compare against
+  IPython notebooks. Two-way communication? Actually describe what it
+  is. IPython manipulate notebooks? Understand and contrast}
+
+\subsection{Interactive notebooks\label{sec:interactivenotebooks}}
+
+%% How do we do things that are not trivial to do with IPython (for
+%% example)
+
+%% What is relationship to a standard CMS with R/Python
+
+%% dcplot. two-way communication between between backend session and
+%% frontend session.
+
+A key engineering decision in RCloud was to rely on full two-way
+communication between the web client human interface, and data and
+computing resources in the cloud. It is easier to engineer a design
+in which the human interface is pushed one-way from the server
+and thereafter all interaction takes place within the client.
+Two-way communication is necessary, though, where the size of
+the data or computational performance makes it impractical to
+move all computation to the client.
+
+In addition, R is well suited as a language for analysis, and
+JavaScript for interactive visualization. To draw on
+the strengths of both languages and both environments, the connection
+between the languages is not just procedural: it makes \emph{closures}
+and \emph{first-class functions} available across the network.
+This provides considerable flexibility, so that for example, a chart built
+with dc.js or leaflet.js can call back to analysis functions in R
+without having to formalize the protocol between the processes.
+
+\subsection{Deployment of notebooks\label{sec:deployment}}
+
+Every notebook in RCloud is named by a URL, and notebooks by
+default are visible by the entire organization. This is deliberate.
+As pointed out by Wattenberg and Kriss~\cite{Wattenberg:2011:DFS},
+broad access to analysis outputs (in their case, for NameVoyager)
+increases long-term engagement in part through cross-references on
+the web. Although our prototype RCloud deployment is only visible
+inside a corporate intranet, we nevertheless found anecdotal support
+for this notion by discovering links to RCloud notebooks in internal
+discussion fora and mailing lists.
+
+Because notebooks are continually published, any work is immediately
+available both as a subroutine and a visual component. Close colleagues
+can start on the next stage of analysis, or delve into the data,
+even while the original author is polishing an algorithm or its
+presentation. \stephen{We glossed over the things that can go wrong.
+We should at least discuss that briefly.}
+The code is the page, and can either be shaped into
+a function of inputs and outputs, or the linear cells of the notebook
+can be reworked into a full-fledged HTML layout.
