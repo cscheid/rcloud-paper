@@ -128,7 +128,6 @@ to try new ideas quickly. So far we have not done much more to address the
 problem of having a lot of bits and pieces of code and data lying around,
 though we have provided a framework in which it should be easier to find them
 and to apply algorithms and metadata to organize them.
-\stephen{I think we need to defend that a bit more.}
 
 %Asynchronous collaborative visual analytics
 %(ACVA)~\cite{Chen:2011:SEC}. This paper addresses visualization
@@ -171,15 +170,15 @@ operating system and web server. In practice, most operating
 systems and web servers rely either on coarse permission models,
 which tend to be ineffective, or on detailed access control
 lists, which tend to be cumbersome.
-Information security in RCloud should be improved, but more
-sophisticated approaches (such as information flow analysis,
-and query languages that ensure differential privacy) are
-active research topics, and many difficult problems remain
+Information security in RCloud should be improved. More
+sophisticated approaches, such as information flow analysis,
+and query languages that ensure differential privacy, are
+active research topics, and many problems remain
 \cite{Moore:2011:SAF}. We are hopeful that having a richer
 environment for collaboration and information sharing will encourage
 new approaches to information security in visual analytics.
-\gordon{This sounds like we think we are helping by pushing the
-system to the breaking point, is that the idea?}
+%\gordon{This sounds like we think we are helping by pushing the
+%system to the breaking point, is that the idea?}
 
 {\bf Exploration is hard.}
 R is a popular language for exploratory data analysis, and we built RCloud
@@ -208,51 +207,48 @@ that have no side-effects, but in the general case this is no easier than
 auditing because R is not a purely functional language.
 
 The interface is also perceived to be slower, both for computer and for
-human. First, there is a slower reaction to commands being run, because
-RCloud necessarily saves a cell to its repository before executing it. It
+human. First, there is higher latency when commands run, because
+RCloud saves a cell to a repository before executing it. It
 may be possible to safely write to the repository behind execution of the
 same code. Second, and perhaps more detrimental, the interface requires
-mouse interaction and switching between the keyboard and mouse, which are
-known to be slower. \gordon{we don't need to back that up, right? i hate
-  using passive voice.} Shortcut keys can be devised if people are willing
-to learn them, but it would be better to reduce the number of such
-operations needed.
+switching between the keyboard and mouse, which can be cumbersome.
+%\gordon{we don't need to back that up, right? i hate using passive voice.}
+Shortcut keys can defined as a workaround, but it would be better
+to reduce the need for them.
 
-Other complaints mostly focus on layout and can probably be addressed with
-some iteration and customization features.
-
+Other complaints mostly focus on layout, and can probably be addressed by
+offering better customization, and designs such as tabbed views.
 
 {\bf Discovery is hard.}
-While we have provided tools for searching and curating notebooks, the
+While we provided tools for searching and curating notebooks, the
 search function does not help for finding methodology (and does not protect
 searchers from erroneous notebooks), and the notebook tree starts to get
-unwieldy with hundreds of users with hundreds of notebooks. In addition,
-our choice to retain notebooks even when they have been deleted has
-exacerbated the situation, since obsolete and broken notebooks stay around
+unwieldy with hundreds of users and many hundreds of notebooks. In addition,
+our choice to retain notebooks even when they have been deleted 
+exacerbates the situation, since obsolete and broken notebooks stay around
 forever.
 
-One thing to try is tagging and filtering the tree on tags, so that users
+One thing to try is tagging and filtering on tags, so that users
 can mark their own notebooks or those of others to make them easier to
-find. However, this relies on users making a conscious effort, and it may be
-better to rely more on passive metrics such as how often a notebook has
-been run.
+find. However, this relies on users making a conscious effort, which
+is not always reliable. It seems better if possible to lean more on
+passive metrics, such as how often a notebook has been run.
 
-The system also needs to help users curate their notebooks. If a notebook
+The system also needs to help users to curate notebooks. If a notebook
 has been deleted or superseded by one of its forks, a user who opens it
 should be warned. And operations on multiple notebooks and folders of
 notebooks should be supported to make curation easier.
 
-
 {\bf Collaboration is hard.}
 While forking provides a simple way to continue someone else's work, working
 in teams is a lot more complicated. The forking feature is popular but it
-poses a problem, too, as dozens of versions of a notebook start proliferating.
+poses a problem, too, as dozens of versions of a notebook proliferate.
 
 One solution we are considering is to allow overwriting the current state
 of a notebook with the current state of another fork of the notebook.
 
-More general solutions would be serious engineering endeavors. Even
-GitHub's generous web interface does not support merging where there are
-conflicts. Actual sharing of notebooks would probably require moving toward
-git's notion of decentralized code repositories, because GitHub gists do
-not support shared ownership.
+A more general solutions would be a serious engineering endeavor. Even
+GitHub's admirable web interface does not support merging where there are
+conflicts. Unrestricted sharing of notebooks would probably require moving
+toward git's notion of decentralized code repositories, because GitHub gists
+do not support shared ownership.
