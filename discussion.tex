@@ -104,72 +104,6 @@ Because we developed our ideas while simultaneously creating a prototype,
 we did not foresee some of the requirements that emerged after
 people started working with RCloud.
 
-{\bf Exploration is hard.}
-R is a popular language for exploratory data analysis, and we built RCloud
-as a way for data scientists to seamlessly transition from EDA to sharing
-and presentation. But the interface we implemented for combining sharing and presentation
-into the R command line interferes with the exploration aspect.
-
-In existing R tools, the command prompt is used to try things out. It is very
-fast and there is no commitment: nothing gets saved and there is nothing to
-later clean up. In contrast, in RCloud's notebook interface, the extra cells need
-to get deleted later, and there seems to be a mental burden that ``bad stuff
-is getting saved.''
-
-One thing to try here is making deletion easier, for example with a
-shortcut key to remove the last cell, or a way to keep a few cells and cull
-the rest. A far more ambitious solution, suggested by one of our
-interviewees, is to implement auditing of data analyses as it existed in
-S \cite{Becker:1988:Auditing}, so that the code which did not lead to a
-result could be discarded automatically.
-
-The interface is also perceived to be slower, both in terms of reaction
-time---RCloud necessarily saves a cell to its repository before executing
-it---and because it requires mouse interaction.
-
-Other complaints mostly focus on layout and can probably be addressed with
-some iteration and customization features.
-
-{\bf Discovery is hard.}
-While we have provided tools for searching and curating notebooks, the
-search function does not help for finding methodology (and does not protect
-searchers from erroneous notebooks), and the notebook tree starts to get
-unwieldly with hundreds of users with hundreds of notebooks. In addition,
-our choice to retain notebooks even when they have been deleted has
-exacerbated the situation, since obsolete and broken notebooks stay around
-forever.
-
-One thing to try is tagging and filtering the tree on tags, so that users
-can mark their own notebooks or those of others to make them easier to
-find.
-
-However, this relies on users making a conscious effort, and it may be
-better to rely more on passive metrics such as how often a notebook has
-been run.
-
-The system also needs to help users curate their notebooks. If a notebook
-has been superceded by one of its forks, a user who opens it should be
-warned. If a notebook has been deleted, but someone still has a link to it,
-it should be clear that the notebook is dead. And operations on multiple
-notebooks and folders of notebooks should be supported to make curation
-easier.
-
-
-{\bf Collaboration is hard.}
-While forking provides a simple way to continue someone else's work, working
-in teams is a lot more complicated. The forking feature is popular but it
-poses a problem, too, as dozens of versions of a notebook start proliferating.
-
-One solution we are mulling over is to allow overwriting the current state
-of a notebook with the current state of another fork of the notebook. More
-general solutions would be serious engineering endeavors: even GitHub's web
-interface does not support merging where there are any conflicts. Actual
-sharing of notebooks would probably require moving toward git's notion of
-decentralized code repositories, because GitHub gists do not support shared
-ownership.
-
-
-
 {\bf Versioning.}
 Some important aspects of the environment are more difficult to manage
 in RCloud than in conventional systems. RCloud does not explicitly
@@ -246,7 +180,7 @@ Access control for information security is delegated to the host
 operating system and web server. In practice, most operating
 systems and web servers rely either on coarse permission models,
 which tend to be ineffective, or on detailed access control
-lists, which tend to be cumbersome. 
+lists, which tend to be cumbersome.
 Information security in RCloud should be improved, but more
 sophisticated approaches (such as information flow analysis,
 and query languages that ensure differential privacy) are
@@ -256,3 +190,68 @@ environment for collaboration and information sharing will encourage
 new approaches to information security in visual analytics.
 \gordon{This sounds like we think we are helping by pushing the
 system to the breaking point, is that the idea?}
+
+{\bf Exploration is hard.}
+R is a popular language for exploratory data analysis, and we built RCloud
+as a way for data scientists to seamlessly transition from EDA to sharing
+and presentation. But the interface we implemented for combining sharing and presentation
+into the R command line interferes with the exploration aspect.
+
+In existing R tools, the command prompt is used to try things out. It is very
+fast and there is no commitment: nothing gets saved and there is nothing to
+later clean up. In contrast, in RCloud's notebook interface, the extra cells need
+to get deleted later, and there seems to be a mental burden that ``bad stuff
+is getting saved.''
+
+One thing to try here is making deletion easier, for example with a
+shortcut key to remove the last cell, or a way to keep a few cells and cull
+the rest. A far more ambitious solution, suggested by one of our
+interviewees, is to implement auditing of data analyses as it existed in
+S \cite{Becker:1988:Auditing}, so that the code which did not lead to a
+result could be discarded automatically.
+
+The interface is also perceived to be slower, both in terms of reaction
+time---RCloud necessarily saves a cell to its repository before executing
+it---and because it requires mouse interaction.
+
+Other complaints mostly focus on layout and can probably be addressed with
+some iteration and customization features.
+
+
+{\bf Discovery is hard.}
+While we have provided tools for searching and curating notebooks, the
+search function does not help for finding methodology (and does not protect
+searchers from erroneous notebooks), and the notebook tree starts to get
+unwieldly with hundreds of users with hundreds of notebooks. In addition,
+our choice to retain notebooks even when they have been deleted has
+exacerbated the situation, since obsolete and broken notebooks stay around
+forever.
+
+One thing to try is tagging and filtering the tree on tags, so that users
+can mark their own notebooks or those of others to make them easier to
+find.
+
+However, this relies on users making a conscious effort, and it may be
+better to rely more on passive metrics such as how often a notebook has
+been run.
+
+The system also needs to help users curate their notebooks. If a notebook
+has been superceded by one of its forks, a user who opens it should be
+warned. If a notebook has been deleted, but someone still has a link to it,
+it should be clear that the notebook is dead. And operations on multiple
+notebooks and folders of notebooks should be supported to make curation
+easier.
+
+
+{\bf Collaboration is hard.}
+While forking provides a simple way to continue someone else's work, working
+in teams is a lot more complicated. The forking feature is popular but it
+poses a problem, too, as dozens of versions of a notebook start proliferating.
+
+One solution we are mulling over is to allow overwriting the current state
+of a notebook with the current state of another fork of the notebook. More
+general solutions would be serious engineering endeavors: even GitHub's web
+interface does not support merging where there are any conflicts. Actual
+sharing of notebooks would probably require moving toward git's notion of
+decentralized code repositories, because GitHub gists do not support shared
+ownership.
