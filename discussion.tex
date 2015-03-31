@@ -30,11 +30,10 @@ their taxonomy for the following discussion.
 
 {\bf Shared artifacts and artifact histories} are a central feature of
 RCloud, through its shared workbooks of experiments and analyses.  We
-observed that hackers readily shared work through RCloud. They used it to
-discuss ideas and results in data analysis, to ask for help with
-programming problems, and to publish results by sharing URLs.  Artifact
-histories can be accessed through the notebook tree or through GitHub's web
-interface.
+observed that hackers readily share work through RCloud. They use it to
+demonstrate techniques, share results with peers and managers, and transfer algorithms
+to other groups.  Artifact histories can be accessed through the notebook
+tree or through GitHub's web interface.
 
 {\bf Modularity and granularity.} The ability to partition work into
 independent units (modularity) is a key to working productively in teams.
@@ -43,8 +42,7 @@ benefits at least proportional to the work on the units (granularity).
 RCloud's notebook and versioning capabilities allow work to be divided
 into units as fine as the underlying language allows, and versioning
 encourages making incremental changes at low cost and without disrupting
-the work of others. \gordon{But this design choice means that developing
-larger, multi-page apps is less well supported.}
+the work of others.
 
 {\bf View sharing, bookmarking.} Most resources in RCloud are named
 and accessed as URLs. This proved to be an effective mechanism for
@@ -54,7 +52,7 @@ provide access to code and experiments, instead of by pasting static
 screenshots into documents and presentations.
 
 {\bf Discussion.} Annotation and commenting was another central goal.
-Commenting is supported through github, but our hackers found it
+Commenting is supported through GitHub, but our hackers found it
 awkward and did not exercise it as much as we expected.
 An interesting question is, to what extent should application users
 be able to make annotations in published notebooks without coding
@@ -62,30 +60,22 @@ and being exposed to the hackers's view? The design of
 more elaborate, integrated annotation remains as future work.
 
 {\bf Content export} is not a capability we aimed at supporting,
-and R already has many packages for this. Instead, our goal was to
-encourage ways of working without needing as much explicit export.
-We did assume that RCloud notebooks should play well in the ecosystem
-of other tools, and this worked as intended, though we learned it also
-creates a temptation to absorb features almost without limit. (Should
-RCloud provide templates for personal web pages and graphical
-editing? Should it incorporate an email client and emacs?
-Should it push results to Facebook?) Experience shows that interfaces
-to external systems and other features almost always win over architectural
-purity in the real world. \gordon{If you don't export, doesn't that mean
-you have to support every possible operation downstream? Due to popular demand,
-we did add plot export.}
+and R already has many packages for this. Recently, due to popular
+demand, we added user interface support for exporting plot images.
+We assume that RCloud notebooks should play well in the ecosystem
+of other tools, but sometimes it is difficult to know whether adding
+a compatibility feature will offload complexity or bring more in.
 
-{\bf Social-psychological incentives} and {\bf voting and ranking} are supported
-through starring. This mechanism was employed often by our test
-audience. \gordon{actually, the notebook tree quickly became so unwieldy that
-no one uses this.} An obvious next step would be to enhance recommendations using
-relationships discovered by static and dynamic code analysis. This may be
-considered both within and across collections of scripts (the latter being
-similar to VisTrails' enhanced recommendations by clustering multiple
+{\bf Social-psychological incentives} and {\bf voting and ranking} are
+supported through starring and forking. These mechanisms are employed often
+on the platform. An obvious next step would be to enhance recommendations
+using relationships discovered by static and dynamic code analysis. This
+may be considered both within and across collections of scripts (the latter
+being similar to VisTrails' enhanced recommendations by clustering multiple
 workflows).  It seems valuable to know which packages are frequently used
-together, or appear in proximity to a certain record types or data feeds.  In
-general, trivial or passive mechanisms to collect data for recommendations are
-essential.
+together, or appear in proximity to a certain record types or data feeds.
+In general, trivial or passive mechanisms to collect data for
+recommendations are essential.
 
 {\bf Group management, size and diversity.} This area needs better
 support in RCloud, but is clearly important to working in teams.
@@ -108,7 +98,7 @@ people started working with RCloud.
 Some important aspects of the environment are more difficult to manage
 in RCloud than in conventional systems. RCloud does not explicitly
 separate the development and deployment environments. More than that,
-ever version of every prototype is shared by default. Although this encourages
+every version of every prototype is shared by default. Although this encourages
 collaboration on work in progress it also quickly exposes errors such as
 misconfiguration, mismatches between versions of packages, and programming
 errors that can unintentionally affect production websites. Such errors
@@ -194,7 +184,8 @@ system to the breaking point, is that the idea?}
 {\bf Exploration is hard.}
 R is a popular language for exploratory data analysis, and we built RCloud
 as a way for data scientists to seamlessly transition from EDA to sharing
-and presentation. But the combined notebook and command line interface we designed interferes with the exploration aspect.
+and presentation. But the combined notebook and command line interface we
+designed interferes with the use of R for exploration.
 
 In existing R tools, the command prompt is used to try things out. It is very
 fast and there is no commitment: nothing gets saved and there is nothing to
