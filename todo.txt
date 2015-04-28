@@ -1,16 +1,3 @@
-4/28/2015
-Had we missed this https://idl.cs.washington.edu/files/2009-Voyagers-CACM.pdf
-@article{2009-voyagers-and-voyeurs-cacm,
- title = {Voyagers and Voyeurs: Supporting Asynchronous Collaborative Visualization},
- author = {Jeffrey Heer AND Fernanda Vi\'{e}gas AND Martin Wattenberg},
- journal = {Communications of the ACM},
- year = {2009},
- volume = {52},
- number = {1},
- pages = {87--97},
- url = {http://idl.cs.washington.edu/papers/voyagers-and-voyeurs-cacm},
-}
-
 3/11/2015
 Need an intro paragraph.  Need to tie it to Vis without shameless flattery.
 The field is at the forefront. Now there is always a team. Quick prototypes.
