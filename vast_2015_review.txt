@@ -1,0 +1,430 @@
+Dear Carlos Scheidegger -
+
+We are pleased to inform you that your paper
+
+ 341 - Collaborative Visual Analysis on the Web with RCloud
+
+has been conditionally accepted by the IEEE VAST 2015 Program Committee to be presented at IEEE VIS, which will be held on October 25-30, 2015 in Chicago, Illinois, USA. This year, VAST had 149 submissions, among them 31 were conditionally accepted into the TVCG track, and 13 into the conference-only track. The decisions of 4 submissions are yet to be finalized. This paper is among the 13 papers for the conference track, which has been designed to increase the exposure of VA research activities around the world, and the participation of VA researchers and their collaborative partners. Further details about this track can be found at http://ieeevis.org/year/2015/info/call-participation/vast-papers.
+
+Conference-only papers will be published in the IEEE Digital Library. This conditional acceptance is subject to the satisfactory completion of the required revision. Following discussions with TVCG, it was decided that conference-only papers be shortened to 8 pages to delineate them more clearly from the papers in the TVCG track. The primary reviewer has identified, in the summary review, the most important issues raised by the reviewers that you should address. They are included with the reviews below. Furthermore, we encourage you to read all comments of reviewers carefully, and use them to improve your paper. We will verify if the changes you made are satisfactory and will inform you of our findings. Note that it is not guaranteed yet that your paper will be accepted.
+
+The next step for the process is now as follows:
+
+ASAP: Please confirm whether you will take the opportunity to present this work in VAST 2015 as a conference-only paper by no later than June 12, 2015.
+
+June 27: Submit a revised version. Upload this version via the conference management system PCS at https://precisionconference.com/~vgtc/ . Also upload a text file summarizing the revisions made. Please organize this summary by reviewer number and review comment (as typical for journal revisions).
+
+July 11: Authors of conditionally accepted papers will be notified of the final decision.
+
+August 1: Final papers, supplemental materials, and video preview due, at:
+   https://precisionconference.com/~vgtc/
+
+September 22: Fast forward slides due (further details will be sent late).
+
+Your camera-ready paper may be up to **8 pages** in length, with the right column on the 8th page containing ONLY references (no additional text or figures). We are aware that this involves extra work, and we appreciate very much your effort. Please ensure that the slightly shortened paper maintain all novel contributions in the original submission. You may use supplementary materials to provide further details, e.g., in the forms of an appendix, or a set of slides. The web page http://junctionpublishing.org/vgtc/Tasks/camera_tvcg.html has complete information regarding formatting requirements of your final revised PDF and videos. We do not need hardcopy. Please note in particular the suggestions for ensuring that the images in your PDF document are stored at a sufficiently high resolution instead of using the default lossy compression settings.
+
+You may also include other supplemental material such as additional images or videos. The web page http://junctionpublishing.org/vgtc/Tasks/supplement_tvcg.html includes information on how to do so.
+
+It is mandatory for authors of each VIS paper to submit a 30-sec Video Preview. The web page http://ieeevis.org/year/2015/info/presenter-information/video-previews includes details about this requirement.
+
+The official conference web site, which will include final program and registration information as it becomes available, is: http://ieeevis.org/. At least one author per accepted paper must register to present the work. In addition, an author from each paper will present a short preview during a fast-forward session. If your paper is accepted, please plan to arrive in Chicago in time for the fast-forward session. The date and time of this fast-forward session will be announced soon.
+
+We are looking forward to an exciting and vibrant VAST 2015, with an outstanding set of papers. We thank you for your contribution to VAST 2015 Papers this year, and hope that you will succeed in producing an acceptable version of your paper.
+
+Below are the reviews for your paper.
+
+Sincerely yours,
+
+Gennady Andrienko and Min Chen
+IEEE VAST 2015 Papers Co-Chairs
+
+------------------------ Submission 341, Review 1 ------------------------
+
+Title: Collaborative Visual Analysis on the Web with RCloud
+
+Reviewer:           primary
+
+Overall Rating
+
+  <b>3</b>: Sufficient contribution 
+
+Topic Classification
+
+  Type: System
+
+Best Paper Award
+
+  No
+
+Contribution to the field of Visual Analytics
+
+  The paper presents RCloud, a collaborative system that supports data
+  analysis, visualization and web deployment. In the system, analysts
+  create and view notebooks, which are the major front-end unit of the
+  system. In notebooks, users can write codes or hypertext in Markdown.
+  Multiple users can access the same notebook by URL and can edit and
+  execute the notebook at the same time.
+
+Expertise
+
+  3  (Knowledgeable)
+
+The Review
+
+  1. What are its strengths and weaknesses?
+
+  Strengths:
+  A comprehensive interviews with 13 current users of RCloud are conducted
+  and their comments are described in detail. It’s convincing that the
+  system is helpful and powerful.
+
+  Weakness:
+  The paper lacks depth and rigorousness expected for a TVCG paper. The
+  system is described at a high-level way and there are no much details. 
+  Besides, the paper mainly describes the code execution and version
+  controlling, instead of visual analytics.
+
+  2.	Is this work novel, incremental, or previously published? 
+  This work is incremental.
+  The visualization techniques used in the system are not novel. Comparing
+  with IBM ManyEyes, RCloud allows analysts to explore and visualize data
+  by writing codes.
+  Through the description, I think that RCloud is more like an IDE that
+  supports writing codes collaboratively or a code sharing system than a
+  collaborative visual analytic system.
+
+  3.	Is this work relevant for VAST? If not, what other venues would be
+  appropriate?
+  Visual analytics components in the system seem to be week as the paper
+  doesn’t describe any visualization techniques. The most novel aspect
+  claimed by the paper is the tight integration between the web client and
+  the backend R process,  which is less relevant to VAST.
+
+  4.	Is related work adequately referenced and if not what citations should
+  be added?
+  Related work is adequately referenced.
+
+  5.	Are the technical results sound? Are the methods and techniques
+  described in adequate detail
+  One case study is described. An application named LDAVis is built on the
+  system, but neither the result of visualization nor the discovery which
+  users find are demonstrated.
+
+  6.	Is the exposition clear? How could the structure or style of the
+  presentation be improved?
+  Introduction seems to be too long and section 3 The System is too short. 
+
+  7.	Should anything be deleted or condensed from the writeup?
+  Section 3.4 can be deleted, because it has little relation with
+  visualization.
+  Table 1 compares RCloud with other systems including RStudio, JSFiddle,
+  bl.ocks, shiny, Jupyter and Tableau. But ManyEyes is not included while
+  it is very relative to this system. I think ManyEyes should be added into
+  the table.
+
+  8.	Are the figures informative?
+  Captions of figure 2 and figure 4 are too short. 
+
+  Minor issues:
+  1)	Page 2, second column, paragraph 3, point 1:
+  “... development of analyses and visualizations s done by hackers and
+  scripters ...” → “development of analysis and visualizations is
+  done by hackers and scripters”.
+  2)	Page 5, second column, paragraph 3:
+  “Gibbs sampling []”, the reference is missing.
+  3)	Page 9, first column, paragraph 1:
+  “But the combined notebook and command line interface we designed
+  interferes with the use of R for exploration” → “But the combined
+  notebook and command line interface we designed interfere with the use of
+  R for exploration”
+
+Main Recommendation
+
+  <b>Acceptable for presentation</b>
+
+Additional Recommendation about TVCG Publication
+
+  This paper is well-below the average standard of papers in TVCG,  and it should not be considered for TVCG.
+
+The Summary Review
+
+  This paper received mixed reviews. It describes RCloud, a collaborative
+  visual analytics system, its usage in a large company, and feedback from
+  many end users. Two reviewers feel the paper lacks the depth and
+  rigorousness expected for a TVCG paper while the other two reviewers
+  believe knowing such a system used in a real company is worth to be
+  shared with the community. 
+
+  I do not see how the paper can be significantly changed with its current
+  structure. But the following presentation issues could be addressed in
+  several weeks:  
+   1- the beginning of the paper: on the issue, its important, and current
+  gap
+   2- system: provide more details about the system and some design
+  decisions
+   3- Evaluation: choice of evaluation, and more details about the
+  evaluation, settings, etc (right now it is too scattered and not
+  presented in a normal (or clear) format:  objectives, users, setting,  
+  process,results, etc. 
+   4-discussion: focus around the most important lesson learned.
+
+Second round final review
+
+
+
+Best Paper Award
+
+
+
+Second round comments
+
+
+
+------------------------ Submission 341, Review 2 ------------------------
+
+Title: Collaborative Visual Analysis on the Web with RCloud
+
+Reviewer:           secondary
+
+Overall Rating
+
+  4.5 
+
+Topic Classification
+
+  Type: System
+  Topic: Presentation, production and dissemination
+
+Best Paper Award
+
+  Yes
+
+Contribution to the field of Visual Analytics
+
+  Sharing visual analytics results, intermediate or final, is an important
+  area for visual analytics. I practically all areas of VA there are teams
+  analyzing data, scripts and outcomes, so RCloud is a good example on how
+  to enable sharing these assets within a team or a lab. This system paper
+  describes an implemented and tested system, and reports about the things
+  that worked and those that didn't work in recent years. I think it gives
+  great insights for researchers and practitioners who want to create and
+  use something similar.
+
+Expertise
+
+  3  (Knowledgeable)
+
+The Review
+
+  This is a rare paper, as it describes real experience with a system to
+  share analyses, scripts and results within a larger team. I was impressed
+  by the number of people that regularly use this platform to share, fork,
+  or discover and explore other's work.
+
+  The authors don't advertise their system but rather take a hard look at
+  their design considerations and limitations of the system. This allows
+  other researchers to adapt this approach and maybe find alternatives in
+  areas where RCloud has challenges. The paper also compares their system
+  with the best-of-breed systems (to my best of knowledge, I don't have a
+  complete overview of all the systems out there).
+
+  The system description and the case study clearly explain the features of
+  the system and how users can work with it. While the interview setup is
+  adequate and the study produced a lot of information (as shown in the
+  supplemental materials), it is maybe the weakest section. There is no
+  real structure within each subsection and the sequence of subsections is
+  not comprehensible to me. There are many citations of users, again not
+  structured to follow a certain argumentation, but seemingly without
+  structure. The reader has to create an own picture of common opinion vs.
+  unique statements, and what to learn from this.
+
+  My suggestion would be to first explain at the beginning of Section 5,
+  what the intention of this section is (is it just proving that the study
+  was indeed done, or is there some message that should come across). Maybe
+  it would be good to create an overview picture or initial section
+  explaining the sequence of subsections, and why these topics are
+  important for understanding user feedback. Each subsection should start
+  with a general picture of the feedback to this topic, followed by
+  statements as examples. When I read the first sentence, e.g., of 5.3:
+  "Automatic source control is also a popular feature." I assume that this
+  is all what I will learn from this section.
+
+  Overall, I am quite convinced that this paper is really helpful and
+  insightful. It complements the recent paper by Kandel et al. and specific
+  system approaches by giving a report about the actual use of such a
+  system in a larger organization. With an adapted study section, I think
+  it would be a very good contribution.
+
+
+------------------------ Submission 341, Review 3 ------------------------
+
+Title: Collaborative Visual Analysis on the Web with RCloud
+
+Reviewer:           external
+
+Overall Rating
+
+  <b>2</b>: Weak contribution 
+
+Topic Classification
+
+  Type: System
+
+Best Paper Award
+
+  No
+
+Contribution to the field of Visual Analytics
+
+  This paper introduces a set of tools to support collaborative EDA using
+  notebooks. It aims at making users more efficient by capturing the
+  knowledge they produce during the exploration process, and make it easy
+  to share and re-execute. It is basically a knowledge management tool
+  applied to Visual Analysis.
+
+Expertise
+
+  3  (Knowledgeable)
+
+The Review
+
+  The paper is well written. The section discussing the lessons and
+  limitation is very thoughtful and clearly explains the current state of
+  the deployment and the upcoming challenges. This kind of work would
+  definitely contribute in making visual analysis tools more pervasive and
+  efficient.
+
+  My main concern with the current article is that RCloud interface lacks
+  of details and remains quite abstract all along the article. It is not
+  clear what the workflow is, what the interface looks like, etc.
+  Screenshots are always very small. As I am familiar with iPython and R I
+  guessed what they are about, but then I can’t see any new strong
+  contribution with the RCloud interface. This is another concern: what is
+  the contribution of RCloud? The environment or the design study behind
+  its implementation and use? I've found the description of RCloud very
+  fluid and interesting (version control, easy way to share prototypes with
+  URLs, portability across systems) but here again I can’t see any
+  novelty compared to current tools (Github, notebook).
+
+  This brings me to another concern. The paper aims at addressing so many
+  points with RCloud that they are not detailed or discussed through-fully.
+  For instance, in "5.1 sharing of result", Kenyon says that it is easy to
+  find a piece of code form someone who previously worked on the same
+  problem.. but it is not clear how this can be done with RCloud (by
+  keyword? recommendation?). This also contradicts the claims that Notebook
+  were hard to find as there are too many. This should have been
+  anticipated as any accumulation of knowledge triggers the problem of
+  classification and retrieval. Thus, this should have also been one of the
+  core design principle for RCloud and not a lesson learned after a first
+  iteration.
+
+  As a summary, the article describes an ambitious content management
+  system for visual analysis, and its current progress towards it. Despite
+  I find the motivation and the discussion very relevant to the filed, the
+  of lack of description of RCloud and the apparent lack of improvement
+  over current tools suggest me the article is not ready for publication at
+  VAST.
+
+
+------------------------ Submission 341, Review 4 ------------------------
+
+Title: Collaborative Visual Analysis on the Web with RCloud
+
+Reviewer:           external
+
+Overall Rating
+
+  3.5 
+
+Topic Classification
+
+  Type: System
+
+Best Paper Award
+
+  No
+
+Contribution to the field of Visual Analytics
+
+  This paper presents design, implementation, and (at some level)
+  evaluation of Rcloud. Rcloud is a system that creates a shared visual
+  analytics environment for analysts and developers to collaborate and
+  communicate. The paper addresses several important issues that currently
+  VA developers are facing such as linking visualization to the source
+  code, issues like data wrangling, forking, sharing, and etc.
+
+  In terms of evaluation, I was so interested to see an in depth evaluation
+  of the system. There are many valid concerns reported by interviewees
+  that remain unclear and could have been investigated and discussed more
+  in the discussion section. However, I think that the design and
+  implementation of the system itself, as well as concerns raised by
+  interview study is a valid contribution to the field of visual analytics
+  and could inspire others in VAST research to follow up on this direction.
+
+Expertise
+
+  3  (Knowledgeable)
+
+The Review
+
+  What are the strengths and weaknesses?
+
+  In my mind, this paper has potential to be an excellent contribution to
+  the field of visual analytics. However, it needs some more work in terms
+  of exposition the idea, and more in depth evaluations. Authors present
+  many promising features for the system, my concern is the effectiveness
+  of the feature are not clear. For instance, one of the interesting
+  features in Notebook and the ability to easily share and reuse it. But
+  some valid and expected concerns reported by users, such as navigating
+  through notebook tree, dealing with old/deleted notebooks, and problem of
+  scalability should be discussed more deeply. 
+
+  However, I still think that the idea is promising and it is defiantly
+  relevant and important to VAST community.
+
+  Is this work novel?
+
+  Many aspects of the system, such as Notebook, are not novel (they aptly
+  noted this), but the idea of putting them together and use them to create
+  a collaborative data and code sharing space is very important to me. 
+
+
+  Is the exposition clear? How could the structure or style of the
+  presentation be improved?
+
+  Overall I found the paper well-written, but it could be improved a lot in
+  terms of structure and exposition. I would have liked a shorter and
+  better synthesized introduction that upfront explains the main goal of
+  the paper and how they accomplished it, what ideas have been tested and
+  what are the most important implications (in both abstract and
+  introduction). For instance, what are the novel features that system
+  offers and which one was reported the best by users/interviewees.
+
+  I also believe that the description of the system in the abstract should
+  be improved: “Rcloud is a system that supports the requirements of
+  collaborative data analysis, visualization and web deployment.” It
+  should better encompass the approach, significant and possible impacts.
+
+  Are the figures informative?
+
+  I did not find fig 1 as a teaser very informative. Mostly because the
+  caption does not provide clear objectives that Rcloud system addresses. I
+  feel like later in the paper, authors find better ways to describe the
+  system and contributions, but those should be captured and move early on
+  to provide a crisp description of the goals as well as all the
+  contributions.
+
+  For instant, in page 4 they better describe the goal and the importance
+  of the system: “By making it convenient for data scientists to expend
+  just a
+  little additional effort when creating experiments, we may be able to
+  eliminate the need for programming teams to recreate their work to
+  deploy it in production, which has a high cost in time, expense and
+  accuracy.”
+
+  Is the (optional) supplementary material helpful?
+
+  While, I appreciate the supplementary material that they provided, I
+  would have liked to see a demo of the system to have a better picture of
+  the system: things like Notebook features, navigation between notebooks
+  (own and others), how history and bookmarks are shown, and etc.
