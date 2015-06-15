@@ -5,170 +5,90 @@
 More than a half-century ago, Tukey foresaw
 much of what is now commonplace in data analysis~\cite{TukeyFDA}.
 Powerful, interactive environments for analysis and programming were
-the goal, together with an unflinching (and, at the time, somewhat
-heretical) insistence in keeping humans as a central part of the
-discovery process. His now-famous quip that ``the picture-examining eye is the
-best finder we have of the wholly unanticipated'' has come to define
-much of visual analytics and exploratory visualization~\cite{TukeyEDA}.
+the goal, with unswerving insistence on visualization as a
+central part of the discovery process. His now-famous quip that
+``the picture-examining eye is the best finder we have of the
+wholly unanticipated'' has come to define much of visual analytics
+and exploratory visualization~\cite{TukeyEDA}.
 
-In some way, we have moved far beyond what Tukey imagined:
-computing and networking capabilities today far exceed
-what was barely imaginable then. 
-We argue, on the other hand, that how we \emph{develop} our data analysis
-solutions has not changed as much: the S language
-was developed essentially alongside Unix~\cite{TheSSystem} and,
-although environments such as RStudio include a variety of modern
-features, they still follow the basic metaphor of terminal, text
-editor, and source files stored in file systems.
-We turn our attention to this opportunity to use computation
-to support, not only individuals, but entire teams and their
-work within larger organizations. In this paper, we contribute the
-design of RCloud, together with an interview study conducted over the
-course of its development and deployment at AT\&T Labs, where RCloud has
-been in use for about two years.
+Computing has moved far beyond what Tukey imagined.
+Processing and networking capabilities today far exceed
+what was barely imaginable then. Sophisticated technologies
+for processing, storing, publishing, searching and sharing
+information and analyses are commonplace.
+But how we \emph{develop} analytic solutions has not changed much. 
+Although environments such as RStudio include many features to
+graphically interact with a local workspace, still follow the metaphor
+of terminal, text editor, and source files stored in file systems.
 
-Consider the role of a data science team within
-a business or technical organization today.
+The work of data scientists in teams is also changing.
 Project teams vary in size, from just a few people to dozens or
-more, even within one project's duration. Assignments are often
-broad, and include tasks such as problem identification,
+more.
+Assignments are broad and include tasks such as problem identification,
 data wrangling, modeling, analysis, visualization, summarization,
 presentation and interpretation of results, and recommending
 actions to help clients to realize the benefits of the analysis.
-Eventually, knowledge or working prototypes created by these teams
-are transferred to other organizations to employ them in production.
-There are many details to these tasks. For example, data wrangling can involve
-finding data, understanding its syntax and semantics, assessing data quality,
-performing normalization and data quality remediation, and making the data
-available to other tasks that will follow.
+Knowledge or software prototypes created by these teams are transferred
+to other organizations to employ them in production.
+This work depends extensively on communication and collaboration.
+At almost every step, collaborators share detailed knowledge about tasks,
+data and code.
+Further, data scientists are increasingly asked to work closely
+with less technically-oriented business or domain specialists.
 
-Visual analytics depends greatly on communication and collaboration.
-At almost every step, detailed knowledge about data, code and tasks
-is shared by collaborators. 
-Further, data scientists are increasingly asked to work more closely
-with business or domain specialists who may be less technically oriented.
-Thus, data scientists and developers are being asked to become
-very broad, and integrate work across the spectrum.
+Previous work has identified important areas for improvement in
+visual analytics systems to address this situation.
 
-%% Interviews in {\it Data Scientists at Work} by Sebastian Gutierrez illuminate
-%% the teamwork and sharing in the current practice of visual analytics in industry.
-%% We particularly appreciated the remarks by Jonathan Lenaghan about the potential
-%% for continuous integration and publication.
+\begin{enumerate}
+\item Discoverability. A chronic complaint of data analysis teams is
+inefficiency due to a lack of transparency in accessing the work of
+other team memnbers.  The processes and technologies supporting
+data analysis and visual analytics today are fragmented.
+Knowledge is shared imperfectly through informal conversations, emails,
+meetings, phone calls, source code, wikis and project documents.
+This causes work to be repeated unnecessarily
+(``How can I connect to database X?'', ``How do you get clean data
+from column Y from feed Z?'') due to lack of communication about
+previously solved problems. 
+Our goal is support and
+promote transparency of work between team members.
 
-%% % \begin{addmargin}[1em]{1em}  % left and right margin change
-%% % part1.txt
-%% Erin Shellman [of Nordstrom] described the benefits of
-%% continuous deployment of experiments, and sharing knowledge
-%% through software and data analysis artifacts.
-%% ``Finally, prototyping our products so that internal
-%% customers can use them early on has been crucial for
-%% our success. It doesn't even have to be something
-%% fancy. For instance, our recommendations preview
-%% tool doesn't have a particularly interesting
-%% visualization, but its enough to show the result of our
-%% algorithms. Now we can shoot off a URL to internal
-%% customers and it allows them to sit at their desk and
-%% understand the behavior of our product and
-%% experiment with it, and provide feedback way before
-%% we're talking about getting it into production. This
-%% has been super helpful and has been a really great
-%% way to get people excited about what we're working
-%% on...
-%% %Building and maintaining those relationships are
-%% %just like anything else-- you always have to be
-%% %working on them. Nurturing those relationships are
-%% %part of the job, and if you leave them unattended,
-%% %they might not be there later.
-%% %
-%% % part2.txt
-%% %Gutierrez: How do you share the knowledge you are
-%% %building with others?
-%% We’re obsessed with Confluence from
-%% Atlassian, and the Data Lab has a very active
-%% Confluence space. Recommendo is fully documented
-%% on Confluence, so anyone in the company could learn
-%% how it’s built, where to find it, and how to use it.
-%% We also share exploratory analyses and reports on
-%% Confluence so that we can still exchange knowledge
-%% even if the work didn't make it into a larger project.''
+Results of experiments are often shared first by copying screen
+shots or static output. By the time decisions are made based on
+the results of that screenshot, data and processes may have changed
+so much that the decision can be wrong.
 
-%% % part3.txt
-%% John Foreman commented on the scope of the work in
-%% data science teams.
-%% ``I lead the data science team at
-%% MailChimp, and I like to get my hands dirty too.
-%% Some of the big pieces of my day involve working
-%% with my team to take stock of current projects and
-%% figure out where to go next, doing my own work and
-%% prototyping things-- I do projects just like my peers
-%% do and then also my talking with other teams,
-%% talking with management, and planning for the
-%% future.
-%% On our team, we've got different folks facing different
-%% % part4.txt
-%% kinds of projects. We've got one person who really
-%% owns compliance and looks at our compliance
-%% processes. We've got another data scientist who
-%% focuses on more of the user experience side of the
-%% house and understanding our customers. I help them
-%% and others as is needed while I do the three things
-%% mentioned earlier-- build data products, be a
-%% translator, and have conversations with the data
-%% science community.''
+\item Technology transfer.
+In most organizations, development of analyses and visualizations 
+s done by \emph{hackers} and \emph{scripters} (adopting Kandel et al.'s
+terminology~\cite{Kandel:2012:EDA}). \emph{Application users} 
+gain the benefits of the tools developed by hackers and scripters.
+Results of experiments are often shared first by copying screen
+shots or static output.  By the time decisions are made based on
+the results of that screenshot, data and processes may have changed
+so much that the decision can be wrong.
+\stephen{Transitional sentence here.}
+Generally, the connection between these two worlds is made by IT staff,
+who port or rewrite code so it can run as a stable production service.
+In an environment where business needs can change rapidly, this
+process does not scale. Our goal is to merge the worlds of EDA and
+production.
 
-%% % part5.txt
-%% Jonathan Lenaghan from PlaceIQ discussed to the potential
-%% for continuous deployment in data science.
-%% ``If you look at dev ops right now, they have things
-%% such as continuous integration, continuous build,
-%% automated testing, and test harnesses-- a1l of which
-%% map very well from the dev ops world to the data ops
-%% (a phrase I stole from Red Monk) world very easily. I
-%% think this is a very powerful notion. It is important to
-%% have testing frameworks for all of your data, so that if
-%% you make a code change, you can go back and test all
-%% of your data.''
+\item Coexistence. In current ecosystems, the isolation of exploratory
+visualization and data analysis environments hinders wider adoption of
+modern techniques from each.
+The richness of interactive visualization tools is still somewhat
+separated from the power of statistical programming environments.
+There is an opportunity to provide a framework so that developments
+on each side are more easily adopted by the other, and made available
+in production services.
 
-%% % part6.txt
-%% Anna Smith from Bitly spoke about the benefits of access to
-%% a rich environment of shared data and code.
-%% ``In addition to Bitly's extraordinary data sets,
-%% I was given all the resources that I needed. These were
-%% resources that I’d only heard about but had never
-%% seen. I went from asking what a Hadoop cluster was,
-%% as my school didn't have one, to being able to work
-%% with one. Now I could play with one to figure out how
-%% to make my work better and how to change my
-%% algorithms so they were cleaner and ran faster on
-%% Hadoop. The whole transition was eye opening. Not
-%% only that, I could also look at other people’s code and
-%% play with their code and data sets as well. It was
-%% fantastic and I was convinced that working with data was my thing.''
-%% % \end{addmargin}
+\end{enumerate}
 
-%% % (Hiring ``full stack developers'' to perform integration seems to be a trend, but does not achieve the potential benefits of specialization and division of labor in larger teams, and is not a practice to be encouraged.)
-
-Unfortunately, the processes and technologies supporting data analysis visual analytics are fragmented.
-Knowledge is shared through informal conversations, emails,
-meetings, phone calls, source code, in wikis, project documents and
-by other means. Results of experiments are often shared first by copying static
-output, usually a screen shot or image output. By the time
-decisions are made based on the results of that screenshot, data
-and processes may have changed so much that the decision can be wrong.
-
-%% This disjointed, inconsistent process inhibits the use of tools to bridge
-%% the many gaps and to help people find resources.
-%% For example, even when code is shared, we still not may know where to
-%% find examples that show how to use it.
-%% When we find a useful data source, we don't know what packages or
-%% other data sources usually go along with it, what problems with the data
-%% others have already discovered and corrected, or where to obtain online feeds
-%% to get updates.
-
-This situation can affect how data science teams work; as analysts and
-tool builders, we have experienced this first-hand in our environment, and
-others report similar findings. Gutierrez collected interviews with data
-scientists~\cite{Gutierrez:2014:DSA}, which include the following:
+Fortunately, there is abundant evidance that technology can
+solve many of these problems.
+Gutierrez collected interviews with data scientists~\cite{Gutierrez:2014:DSA},
+which include the following:
 
 \begin{itemize}
 \item (upon being given access to other code and data analysis, in
@@ -188,12 +108,6 @@ have testing frameworks so you can go back and test all
 of your data.''
 \end{itemize}
 
-Currently, these concerns are being addressed \emph{alongside} the
-visual analytics environment. Some symptoms of the situation are:
-\begin{itemize}
-\item It is hard to find data, metadata, and knowledge about them.
-\item Most coordination is done through meetings, whose content is not linked to other artifacts and may not even be stored.
-\item Production deployment requires porting code to a different environment or even completely rewriting it, thwarting continuous release.
 \item Many tools adopt a standalone or single developer perspective,
 not suited to collaboration and web deployment. 
 \item Analysts find insufficient support for tracing events or issues from production back to the EDA process.
@@ -201,7 +115,15 @@ not suited to collaboration and web deployment.
 
 In view of the opportunity to improve this situation,
 we created a software environment that supports the end-to-end
-visual analytics process for individuals and teams.
+visual analytics process for individuals and teams and
+their work within larger organizations.
+
+
+In this paper, we contribute the
+design of RCloud, with an interview study based on the
+course of its development and deployment at AT\&T Labs for 
+about three years.
+
 This environment knits together some familiar tools, and 
 provides new features to find data and code; create experimental workbooks;
 run experiments; annotate and deploy experiments as end-user websites or
@@ -226,40 +148,6 @@ R also has many useful packages for data analysis and visualization,
 and the core system and its packages are open source that can be modified to
 support research. 
 
-From a more principled or theoretical perspective, certain visual analytics
-goals or objectives for emerging systems, described in previous work,
-closely match ours. We identified the following central themes.
-
-\begin{enumerate}
-
-\item Technology transfer.
-In most organizations, development of analyses and visualizations 
-s done by \emph{hackers} and \emph{scripters} (adopting Kandel et al.'s
-terminology~\cite{Kandel:2012:EDA}). \emph{Application users} 
-gain the benefits of the tools developed by hackers and scripters.
-Generally, the connection between these two worlds is made by IT staff,
-who port or even rewrite code so it can run as a stable production service.
-In an environment where business needs can change rapidly, this
-process does not scale. Our objective is to merge the worlds
-of EDA and production.
-
-\item Coexistence. In the current data science ecosystem, the
-isolation of exploratory visualization and data analysis
-environments hinders wider adoption of modern techniques from each.
-The richness of interactive visualization tools is still somewhat
-separated from the power of statistical programming environments.
-There is an opportunity to provide a framework so that developments
-on each side are more easily adopted by the other, and made available
-in production services.
-
-\item Discoverability. A chronic complaint of data analysis teams is
-repeated work (``How can I connect to database X?'', ``How do you get
-clean data from column Y from feed Z?'') This work arises from lack of
-communication about previously solved subproblems. Our goal is encourage
-and support transparency of work between team members.
-
-\end{enumerate}
-
 Over the past three years, we prototyped RCloud and deployed it to
 a community of data scientists, business analysts and other colleagues.  The
 platform today has over 300 active accounts; about 20 people use it regularly,
@@ -267,6 +155,3 @@ another 30 people use it more than once a week, and another 50 use it more than
 once a month.  Most of the
 active users are members of AT\&T Labs, but some are data scientists and other
 collaborators in other business units.
-
-%\carlos{we need a segue into related work}.
-%\stephen{maybe not?}
