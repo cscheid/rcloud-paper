@@ -6,39 +6,35 @@
 
 \section{Related Work\label{sec:related}}
 
-Previous work has identified some requirements for supporting the
-visual analytics process, including the work of multiple users.
+Previous work has identified key requirements for supporting the
+visual analytics process, including by multiple users.
 
 \paragraph*{Social Data exploration and Analysis}
 ManyEyes~\cite{Viegas:2007:MAS} was a landmark system for the
-crowdsourced creation and publication of data
-visualizations. Although ManyEyes supported a fixed set of
-visual encodings, the system's success was a precursor to more
-sophisticated solutions and an early indication that the world-wide
-web was a suitable platform for data visualization. One of the main
-challenges we faced in designing RCloud was providing an experience
-for \emph{consuming} visualizations as seamless as ManyEyes's, while
-sacrificing as little as possible on the generality of the analyses
-themselves.
+crowdsourced creation and publication of data visualizations.
+Although ManyEyes supported only a fixed set of visual encodings,
+the system's success was an early indication of the potential to
+combine social media on the web with visual analytics.
 
 \paragraph*{Notebooks as a medium for data analysis dissemination}
-The concept of a ``notebook'' as we use it here can be traced all the
-way back to Knuth's literate programming~\cite{Knuth:1984:LP}. In
-literate programming, a comprehensive description in prose of the
-behavior of the program is ``weaved'' together with the source code,
-yielding both an executable program and a human-readable document.
-A notebook represented as a collection of short, executable cells,
+The concept of a ``notebook'' as we use it can be traced
+back to Knuth's literate programming~\cite{Knuth:1984:LP}. In
+literate programming, a prose description of the behavior of
+a program is ``weaved'' with its source code, yielding both an
+executable program and a human-readable document.
+A notebook represented as a collection of small executable cells,
 originated with Mathematica, and in R, literate programming is
 supported by packages such as knitr and RMarkdown~\cite{Xie:2013:DDW}.
 Project Jupyter~\cite{jupyter} (originally implemented as part of
-IPython) offer some notebook features, but lack a transparent
-mechanism for sharing and deployment in multiple-user settings.
+IPython) offers some notebook features, though it lacks a transparent
+mechanism for multi-user sharing and deployment.
 %
 Further afield, {Electronic Lab Notebooks} are applications for organizing
 and sharing data from scientific lab experiments\cite{Rubacha:2011:ELN}.
 In a sense, we hope to adapt and extend this concept to the work of
 visual analytics teams.
 %
+\stephen{RStudio is highly acclaimed for its...}
 Although RStudio offers publication of literate R programs as a free
 service on their website, the workflow is somewhat disconnected from
 the development of those programs. Once they're uploaded, it's hard
