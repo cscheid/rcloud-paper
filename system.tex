@@ -1,12 +1,11 @@
 \section{The System\label{sec:system}}
 
-The starting point in our design was to take advantage of the current
-infrastructure of web software as much as possible. HTTP, despite its
-deficiencies, has become the lingua franca of
-distributed interprocess communication. This meant that if our system
-could speak HTTP natively, then it would be possible to provide a low-friction
-path from development of an interactive data analysis script to an
-automated \emph{web service}, essentially a remote function call over
+Our design takes advantage of existing web software as much as possible.
+HTTP, despite its deficiencies, is the lingua franca of distributed
+interprocess communication. By speaking HTTP natively, our system
+provides a low-friction path from experimental data analysis scripts
+to automated \emph{web services}. 
+essentially a remote function call over
 the web, which can be invoked by higher-level tools. An example of
 this sort of progression is described in Section~\ref{sec:casestudy}.
 
@@ -24,19 +23,19 @@ and the backend R process, described in Section~\ref{sec:Rinbrowser}.
 The main unit of computation in RCloud is a \emph{notebook}.  A
 notebook holds a sequence of \emph{cells}, each of which is a snippet
 of code or hypertext in Markdown. As mentioned in
-Section~\ref{sec:related}, this is not novel; executable
-documents like this are a feature of many other systems,
-including Mathematica, IPython and Sage.
+Section~\ref{sec:related}, executable documents like
+this are a feature of previous systems, including Mathematica,
+IPython and Sage.
 
-Notebooks can be executed one cell at a time during an interactive
-editing session, providing a similar experience to traditional
-read-eval-print loops, or can also be executed all at once, providing
-an experience similar to running a shell script.
+Notebooks can be executed one cell at a time in an interactive
+session, similar to traditional read-eval-print
+loops, or can all be executed concurrently,
+similar to running a shell script.
 
 One of the main contributions of RCloud is the notion that notebooks are
 ``always deployed''. In other words, the most recent version of a
-notebook is immediately available to all other users of the system as
-the notebook is being developed. Another way to describe this is that
+notebook is immediately available to all other users of the system.
+Another way to describe this is that
 RCloud lacks a ``save'' button: any notebook cell that runs is always
 associated to a notebook version serialized to disk. Although one of
 our interview subjects reported that this sometimes leads to an
@@ -46,8 +45,7 @@ losing automatic sharing is worse (and see
 Section~\ref{sec:interviews} again for users reporting their
 satisfaction over the low-friction shareability).
 
-When we combine immediate deployment with the ability to refer to the
-latest version of a notebook by name, we get notebooks that are always live,
+In this design, we get notebooks that are always live,
 but sometimes broken. Because stability is important, we also
 allow any previous version of a notebook to be tagged and referenced.
 Our notebook scheme is similar in many ways to models like
@@ -68,9 +66,10 @@ editing, and so on.
 
 \subsection{Reputation and Interest: starring\label{sec:starring}}
 
-One side advantage of centralizing the execution and storage of
+One side benefit of centralizing the execution and storage of
 notebooks is that it becomes feasible to collect usage information
-that would otherwise be lost. In the case of social data visualization
+that might be lost in a conventional environment.
+In the case of social data visualization
 platforms, we would like to exploit usage data to help analysts
 find content of interest, whether the content is actual source code
 or accompanying data. The standard way to achieve this is through
@@ -78,7 +77,7 @@ or accompanying data. The standard way to achieve this is through
 
 Automatic recommendations have become famous in the user experience
 provided by companies such as Amazon and Netflix (``If you liked
-that film, then you should like this one too''). To compute such
+that film, then you should like this one too''). To make such
 recommendations, we need users to \emph{curate} the collection, by
 providing explicit reviews or some other method of indicating interest.
 %%
@@ -93,7 +92,7 @@ We incorporate both explicit and implicit indications of interest
 in notebooks. Explicit interest is indicated by ``starring,'' or
 clicking on a button that marks a notebook as interesting.
 This makes explicit indication of interest a nearly trivial operation,
-always available, to encourage its use.
+always available and easy to use.
 %
 RCloud today uses only simple counts of stars to measure overall
 notebook interest, mostly because standard
@@ -104,11 +103,10 @@ to create personalized recommendations~\cite{Hu:2008:CFF}.
 
 Implicit signaling of interest is supported by keeping click-through
 counts~\cite{Joachims:2005:AIC} and execution counts. In addition to
-these standard techniques of collecting feedback from web search, we
-anticipate applying static and dynamic code analysis to infer
-fine-grained information about relationships, for example, which
-packages and data sets often appear together, in the style of Fast et
-al's Codex system.~\cite{Fast:2014:ECS}.
+these standard techniques, we hope to apply static and dynamic code
+analysis to infer fine-grained information about relationships,
+for example, which packages and data sets often appear together,
+in the style of Fast et al's Codex system.~\cite{Fast:2014:ECS}.
 
 \subsection{Deployment of notebooks\label{sec:deployment}}
 
