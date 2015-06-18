@@ -37,7 +37,7 @@ starting point for coding. Lilo says, ``The best part is how easily you can
 share code. You can find a working example, rather than wearing
 out Google and finding questionable examples that may or may not work.'' Wendy
 notes, ``[If] some person has done something similar, then you're able to just
-edit that, and that's saved a lot of work time for me.''
+edit that, and that's saved a lot of work for me.''
 
 Eric develops packages for analysts, and uses RCloud ``more for sharing code with
 other people, and for doing tutorials for {\em iotools} or {\em hmr}'', his packages.
@@ -45,7 +45,7 @@ other people, and for doing tutorials for {\em iotools} or {\em hmr}'', his pack
 to see the code... I write it just like I would write GitHub
 Markdown, where you have little code snippets and text, but RCloud lets me
 actually run the snippets [and display the results].'' He also uses RCloud for
-describing and debugging  problems with data sources.
+describing and debugging problems with data sources.
 
 Some users, who tried RCloud and were not able to continue for organizational
 reasons, miss certain capabilities. Leith ``[likes] the concept of being
@@ -66,8 +66,8 @@ my code was. It would be just, hey, go look on RCloud, here's the stuff.''
 %% Kenyon: ``I like being able to look at other people's notebooks.''
 
 \subsection{Forking}
-The ability to start work where someone else let off, by forking, proved to
-be a popular feature. In fact, almost twice as many (131) users have forked
+The ability to start work where someone else let off, by forking, was
+a popular feature. Almost twice as many (131) users have forked
 someone else's notebook as have starred one (75).  Lilo says, ``It's one of the
 handiest functions, because instead of having to find it, copy, paste it, you
 just hit Fork, rename it, and it's done. It's pretty amazing.''
@@ -92,7 +92,7 @@ there and check values.''
 %% Leith: ``gives the audience a way to try their own analysis, like maybe Leith
 %% should have used this parameter and they can just change the parameters''
 
-A common but somewhat problematic use of forking is to change
+A common but ill-advised use of forking is to change
 parameters. Wendy says, ``I've been forking other people's notebooks [because] I
 want to run them on a different part of data, or I want to change some parts,
 I don't want to see this column, I want a different column, things like
@@ -102,9 +102,9 @@ look at it for the next month or the previous month, so they'd fork it to
 change the month.''
 
 Parameters can be added to a notebook URL, but adding user interface
-elements to do the same thing requires expertise. Tool builders see a
+elements to do the same thing takes more expertise. Tool builders see a
 need for facilities to make it easier. Allison calls it ``web-enabling'' the
-notebook: ``[users] can always fork the notebooks and make changes, but I
+notebook: ``[Users] can always fork the notebooks and make changes, but I
 feel that if the owner of the notebook web-enables it, it's easier to
 run. Instead of forking it, if they can set options, it's probably more
 efficient, and they can [still] fork it if they want to.''
@@ -125,8 +125,8 @@ hope I've got them backed up, if they're on RCloud I know they are.''
 %% don't have to worry about it, if I drop my computer in the bathtub, everythings
 %% gone, because I'm not great about uploading my own for versioning.''
 
-Iris points out that the automatic versioning works well for dealing with the
-minutiae of web development:
+Iris points out that automatic versioning works well for coping with
+the details of web development:
 \begin{quote}
 I like the fact that it has a built-in editor, so
 if you need to fix a typo in a link, or an extra line break or other
@@ -160,7 +160,7 @@ through, because I know that the kind of thing I'm looking for is something
 more obscure than I'm likely to find in some random person's.''
 
 More selective ways to search will be needed as the number of notebooks
-grows further. We explore some ideas in Section~\ref{sec:discussion}.
+grows further. We mention possible approaches in Section~\ref{sec:discussion}.
 
 \subsection{Integrated analysis}
 Integrating an analysis language into a web development environment is something
@@ -193,12 +193,12 @@ wait for the response is extremely helpful in writing the application.''
 
 \subsection{Exploring elsewhere}
 
-Although most of the analysts use and appreciate the sharing features,
-RCloud is less popular as a tool for exploratory data analysis. Every
-analyst with prior R experience still prefers to do analysis in another
-tool, and paste code into RCloud for sharing.
-
-This is mainly out of familiarity. Eric asks, ``Why would I want to use
+Although most of the analysts appreciate RCloud's sharing features,
+it is not popular as a tool for exploratory data analysis.
+All analysts with R experience prefer to do analysis in another
+tool, then paste code into RCloud for sharing.
+It appears this is mainly due to familiarity.
+Eric asks, ``Why would I want to use
 RCloud over my current setup? If it's just me, I like my text editor and
 terminal. There's nothing that I want that those two don't give me.''
 
@@ -224,10 +224,10 @@ it saved, but there's this trade-off between it making it easier for me to
 present something or to save something, and my ease of typing and
 correcting and things in a plain editor window.''
 
-Coby also works with text files and command line, rearranging a file so the
-good code is at the top of the file. When he's done, all the right code is
-at the top. RCloud does not readily support this workflow, but Coby
-often shares work by pasting it into an RCloud notebook when he's done.
+Coby also works with text files and commands, rearranging source files
+so the good code is at the top. RCloud does not readily support this
+workflow, so Coby often shares work by pasting it into an RCloud
+notebook when he's done.
 
 %% Running anything on the Web can also be a source of frustration.  Poor network
 %% connections can cause web sockets to die, and Kaylee complains ``What frustrates me is
@@ -239,7 +239,8 @@ often shares work by pasting it into an RCloud notebook when he's done.
 
 Working in a shared environment also entails compromises about what you can
 install. Joy says installing alternative or nonstandard packages is
-intrinsic to exploratory data analysis.
+intrinsic to exploratory data analysis. This is a weakness in systems
+like RCloud.
 
 \subsection{Cells versus the command line}
 RCloud's notebook interface combines editable Markdown with a command line
@@ -256,7 +257,7 @@ staging purposes. I really like it now, but when I first saw it, [it was] very
 confusing.
 \end{quote}
 
-Simply the difference between a cell and the command prompt can confuse some people.
+The difference between a cell and a command prompt confuses some people.
 Kenyon explains:
 \begin{quote}
 If I was typing into one of the cells near that top, I had to think ``I'm editing
@@ -308,15 +309,14 @@ are shown in another pane that stays in place while doing analysis. Wendy says
 window or on a separate part of the window''.
 
 The cell structure also can be problematic if some cells take a long time to
-execute. In Coby's work, there is often a ``long tail''.  The first cell may
-take just seconds to run, the next cell minutes, and the last cell 5 hours.
-In this situation, the Run Whole Notebook button is dangerous.
+execute. High variance is common: cells may take anywhere from seconds to
+hours to run.  In this situation, the Run Whole Notebook button is dangerous.
 Coby reports that when converting his work to notebooks, he
 ends up with a lot of comments saying ``This cell takes a long time to run.''
 
-To avert this pitfall, some users write code within cells to explicitly cache results.
+To avoid this pitfall, some users write code within cells to explicitly cache results.
 Coby ends up ``littering the notebook with little switches that comment out the
-slow parts'' and either load or save the object to disk. One of the authors of this paper
+slow parts'' and either load or save the object to disk. One of the authors of this study
 manually writes cells that check if a result file exists, and perform a calculation only
 if it's needed.
 

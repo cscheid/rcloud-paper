@@ -156,7 +156,7 @@ cache, instead of application-specific libraries. We envision cache management
 being implemented in a new middle layer to be added in the future.
 
 \paragraph*{Security}
-It is essential to provide security in an environment for
+Security is an important concern in an environment for
 collaboration and data publishing. To provide some
 protection for RCloud workbooks in an organization's intranet,
 RCloud uses an object capability model
@@ -175,30 +175,32 @@ Information security in RCloud should be improved. More
 sophisticated approaches, such as information flow analysis,
 and query languages that ensure differential privacy, are
 active research topics, and many problems remain
-\cite{Moore:2011:SAF}. We are hopeful that having a richer
-environment for collaboration and information sharing will encourage
-new approaches to information security in visual analytics.
+\cite{Moore:2011:SAF}.
+% We are hopeful that having a richer
+% environment for collaboration and information sharing will encourage
+% new approaches to information security in visual analytics.
 %\gordon{This sounds like we think we are helping by pushing the
 %system to the breaking point, is that the idea?}
 
 \paragraph*{Exploration is hard}
-R is a popular language for exploratory data analysis, and we built RCloud
-as a way for data scientists to seamlessly transition from EDA to sharing
-and presentation. But the combined notebook and command line interface we
-designed interferes with the use of R for exploration.
+% R is a popular language for exploratory data analysis, and we built RCloud
+% as a way for data scientists to seamlessly transition from EDA to sharing
+% and presentation.
+Users reported that RCloud's combined notebook and command line interface
+interferes with the familiar use of R for exploration.
+In current R practice, the command prompt is used to try things out.
+It is very fast and there is often no commitment: nothing gets saved
+and there is nothing to clean up.
+In contrast, in RCloud's notebook interface, the extra cells need
+to be deleted later, and there seems to be a mental burden
+that \emph{scratch work is getting saved}.
 
-In existing R tools, the command prompt is used to try things out. It is very
-fast and there is no commitment: nothing gets saved and there is nothing to
-clean up. In contrast, in RCloud's notebook interface, the extra cells need
-to be deleted later, and there seems to be a mental burden that \emph{bad stuff
-is getting saved}.
-
-One thing to try here is making deletion easier, for example with a
-shortcut key to remove the last cell, or a way to keep a few cells and cull
-the rest. A far more ambitious solution, suggested by one of our
+One thing to try is to make deletion easier, for example with a
+shortcut key that removes the last cell, or a way to keep a few cells
+and cull the rest. A far more ambitious solution, suggested by one of our
 interviewees, is to implement auditing of data analyses as it existed in S
 \cite{Becker:1988:Auditing}, so that a result could be selected and code
-which did not lead to it could be discarded automatically.
+which did not lead to it could be discarded automatically. 
 
 We got here from an insistence on reproducibility: it is a core principle
 of RCloud that no command should be run without being saved, even if it
@@ -220,36 +222,33 @@ to reduce the need for them.
 Other complaints mostly focus on layout, and can probably be addressed by
 offering better customization, and designs such as tabbed views.
 
-\paragraph*{Discovery is hard}
-While we provided tools for searching and curating notebooks, the
-search function does not help for finding methodology (and does not protect
-searchers from erroneous notebooks), and the notebook tree starts to get
-unwieldy with hundreds of users and many hundreds of notebooks. In addition,
-our choice to retain notebooks even when they have been deleted 
-exacerbates the situation, since obsolete and broken notebooks stay around
-forever.
+\paragraph*{Discovery is hard} There are several problems.
+With hundreds of users and thousands of notebooks, the notebook
+tree becomes unwieldy.
+The search function does not protect searchers from obsolete and
+erroneous notebooks, which by default are retained forever.
+It helps with finding notebooks, but not with acquiring
+other types of information, such as methodology.
 
-One thing to try is tagging and filtering on tags, so that users
-can mark their own notebooks or those of others to make them easier to
-find. However, this relies on users making a conscious effort, which
-is not always reliable. It seems better if possible to lean more on
-passive metrics, such as how often a notebook has been run.
+One thing to try is tagging, so that users can mark notebooks
+to make them easier to find. However, this relies on users making
+a conscious effort, which is not always reliable. It seems better
+to rely more on passive metrics, such as how often a notebook has been run.
 
 The system also needs to help users to curate notebooks. If a notebook
 has been deleted or superseded by one of its forks, a user who opens it
-should be warned. And operations on multiple notebooks and folders of
+should be informed. Operations on multiple notebooks and folders of
 notebooks should be supported to make curation easier.
 
 \paragraph*{Collaboration is hard}
 While forking provides a simple way to continue someone else's work, working
 in teams is a lot more complicated. The forking feature is popular but it
-poses a problem, too, as dozens of versions of a notebook proliferate.
-
-One solution we are considering is to allow overwriting the current state
+poses a problem, too, when dozens of versions of a notebook proliferate.
+A possible solution is to allow overwriting the current state
 of a notebook with the current state of another fork of the notebook.
 
-A more general solutions would be a serious engineering endeavor. Even
-GitHub's admirable web interface does not support merging where there are
-conflicts. Unrestricted sharing of notebooks would probably require moving
-toward git's notion of decentralized code repositories, because GitHub gists
-do not support shared ownership.
+Implementing a more general solution seems like a big job.
+Even GitHub's web interface does not support merging where there are
+conflicts. Unrestricted sharing of notebooks may involve moving
+toward git's notion of decentralized code repositories, because GitHub
+gists do not support shared ownership.
