@@ -137,106 +137,100 @@ and to apply algorithms and metadata to organize them.
 %recommendation systems, and navigation of the set of notebooks, etc.
 
 \paragraph*{Caching}
-An important consideration is how and where to introduce caching
-in RCloud's distributed computation model. Caching can dramatically
+An important consideration is how and where to introduce caching in
+RCloud's distributed computation model. Caching can dramatically
 improve performance in a way that is otherwise transparent to
 application program semantics \cite{Callahan:2006:VVM, Guo:2010:TPI}.
-Though caching is usually implicit, in some environments, such as
-VisTrails, programmers may also have some explicit control over cache
-management. This may be desirable to ensure the repeatability of
-computations that rely on volatile or unreliable data sources.
-For example, the stock ticker use case is one for which the data
-might temporarily become unavailable, so caching could improve
-reliability and consistency of results. Alternatively, in situations
-involving relatively expensive computation (for example, analysis of large
-text corpora, clustering multivariate time series or deep learning algorithms)
-caching may be essential to adequate performance. Currently we would
-program this in RCloud by explicitly saving an analysis in a persistent database,
-but it seems better to implement this capability in a general purpose associative
-cache, instead of application-specific libraries. We envision cache management
-being implemented in a new middle layer to be added in the future.
+Currently, RCloud offers no support for implicit caching, but since it
+supports the entirety of the R language, it's possible to incorporate
+caching in R libraries.  Still, since the reuse of intermediate
+results is a recurring problem in data exploration environments, it
+seems better to implement this capability in a general purpose
+associative cache. We envision cache management being implemented in a
+new middle layer to be added in the future.
 
 \paragraph*{Security}
-Security is an important concern in an environment for
-collaboration and data publishing. To provide some
-protection for RCloud workbooks in an organization's intranet,
-RCloud uses an object capability model
-\cite{Miller:2006:RCT}
-recently added to the Rserve protocol \cite{Urbanek:2003:AFW}
-that prevents unauthenticated clients from making
-unauthorized calls to the RCloud runtime environment.
+Because RCloud allows arbitrary R code to be run
+\emph{by design}, it's not straightforward to protect deployments
+from running unauthorized arbitrary code. RCloud uses an object capability model
+\cite{Miller:2006:RCT} recently added to the Rserve
+protocol~\cite{Urbanek:2003:AFW}. Object capabilities are opaque handles
+to remote procedure calls; this way, web browsers never directly instruct the
+RCloud backend to execute arbitrary code, preventing unauthenticated clients
+from making unauthorized calls to the RCloud runtime environment.
 
-Our back-end environment assumes a high degree of trust between users.
-Access control for information security is delegated to the host
-operating system and web server. In practice, most operating
-systems and web servers rely either on coarse permission models,
+Our back-end environment, on the other hand, assumes a high degree of trust between users:
+access control for information security is delegated to the host
+operating system and web server. In practice, operating
+systems rely either on coarse permission models,
 which tend to be ineffective, or on detailed access control
-lists, which tend to be cumbersome.
-Information security in RCloud should be improved. More
+lists, which tend to be cumbersome. This means that information security
+in RCloud is a delicate, unsolved matter. More
 sophisticated approaches, such as information flow analysis,
 and query languages that ensure differential privacy, are
-active research topics, and many problems remain
-\cite{Moore:2011:SAF}.
+still research topics~\cite{Moore:2011:SAF}.
 % We are hopeful that having a richer
 % environment for collaboration and information sharing will encourage
 % new approaches to information security in visual analytics.
 %\gordon{This sounds like we think we are helping by pushing the
 %system to the breaking point, is that the idea?}
 
-\paragraph*{Exploration is hard}
-% R is a popular language for exploratory data analysis, and we built RCloud
-% as a way for data scientists to seamlessly transition from EDA to sharing
-% and presentation.
-Users reported that RCloud's combined notebook and command line interface
-interferes with the familiar use of R for exploration.
-In current R practice, the command prompt is used to try things out.
-It is very fast and there is often no commitment: nothing gets saved
-and there is nothing to clean up.
-In contrast, in RCloud's notebook interface, the extra cells need
-to be deleted later, and there seems to be a mental burden
-that \emph{scratch work is getting saved}.
+\paragraph*{Nonforgetful, effortless exploration is hard}
+Users reported that RCloud's combined notebook and command line
+interface interferes with their familiar use of R for exploration.  In
+current R practice, the command prompt is used to try things out.  It
+is very fast and there is often no commitment: nothing gets saved by
+default, but clean up is automatic.  In contrast, in RCloud's
+notebook interface, cells generated doing exploration are saved in the
+notebook.  We arrived here from an insistence on reproducibility: it is a
+core principle of RCloud that no command should be run without being
+saved. In our experience some history steps are only found to be
+important in hindsight, and deleting history by default makes it too
+easy to lose those steps by accident.
 
-One thing to try is to make deletion easier, for example with a
-shortcut key that removes the last cell, or a way to keep a few cells
-and cull the rest. A far more ambitious solution, suggested by one of our
-interviewees, is to implement auditing of data analyses as it existed in S
-\cite{Becker:1988:Auditing}, so that a result could be selected and code
-which did not lead to it could be discarded automatically. 
+Surprisingly, we found that when users realize that \emph{scratch work
+  is getting saved}, the extra versions become a mental burden for
+them. Clearly, RCloud has now moved too far to the other side, and the
+right solution is somewhere in the middle. An intriguing possibility,
+suggested by one of our interviewees, is to implement auditing of data
+analyses as it existed in S~\cite{Becker:1988:Auditing}, tying the
+data artifacts to the processes that generated them. As a result, the
+bookkeeping is reduced to selecting the \emph{data} to be kept, and
+the code which generates it can be derived and saved transparently.
 
-We got here from an insistence on reproducibility: it is a core principle
-of RCloud that no command should be run without being saved, even if it
-gets deleted later. This is why we did not implement a simple command line
-as many users request. We could imagine making an exception for commands
-that have no side-effects, but in the general case this is no easier than
-auditing because R is not a purely functional language.
+%% . This is why we did not implement a simple command line
+%% as many users request. We could imagine making an exception for commands
+%% that have no side-effects, but in the general case this is no easier than
+%% auditing because R is not a purely functional language.
 
-The interface is also perceived to be slower, both for computer and for
-human. First, there is higher latency when commands run, because
-RCloud saves a cell to a repository before executing it. It
-may be possible to safely write to the repository behind execution of the
-same code. Second, and perhaps more detrimental, the interface requires
-switching between the keyboard and mouse, which can be cumbersome.
-%\gordon{we don't need to back that up, right? i hate using passive voice.}
-Shortcut keys can defined as a workaround, but it would be better
-to reduce the need for them.
+%% The interface is also perceived to be slower, both for computer and for
+%% human. First, there is higher latency when commands run, because
+%% RCloud saves a cell to a repository before executing it. It
+%% may be possible to safely write to the repository behind execution of the
+%% same code. Second, and perhaps more detrimental, the interface requires
+%% switching between the keyboard and mouse, which can be cumbersome.
+%% %\gordon{we don't need to back that up, right? i hate using passive voice.}
+%% Shortcut keys can defined as a workaround, but it would be better
+%% to reduce the need for them.
 
-Other complaints mostly focus on layout, and can probably be addressed by
-offering better customization, and designs such as tabbed views.
+%% Other complaints mostly focus on layout, and can probably be addressed by
+%% offering better customization, and designs such as tabbed views.
 
 \paragraph*{Discovery is hard} 
 With hundreds of users and thousands of notebooks, the notebook tree
 becomes unwieldy. The search function does not protect searchers from
 obsolete and erroneous notebooks, which by default are retained
-forever.  It helps with finding notebooks, but not with finding other
-types of metadata. In other words, \emph{textual search} is easy, but
-\emph{relevance search} is what we need. Allowing users to \emph{tag}
-notebooks is a natural idea, but it relies on users making a conscious
-effort, This goes somewhat against our ideal of not asking the user to
-do work for the system. Rather, we believe a better alternative is to
-have the system work for the user, relying on passive metrics, such as
-how often a notebook has been run.  More generally, infrastructure for
-automatic \emph{curation} of the software artifacts generated by teams
-seems to be an important avenue for future work.
+forever.  In addition, some important metadata (has this notebook been
+recently run, or edited?) is also not easily searchable. In other words,
+\emph{textual search} is easy, but \emph{relevance search} is what we
+need. Allowing users to \emph{tag} notebooks is a natural idea, but it
+relies on users making a conscious effort, which goes somewhat against
+our ideal of not asking the user to do work for the system. Rather, we
+believe a better alternative is to have the system work for the user,
+relying on passive metrics, such as how often a notebook has been run.
+More generally, infrastructure for automatic \emph{curation} of the
+software artifacts generated by teams seems to be an important avenue
+for future work.
 
 \paragraph*{Collaboration is hard}
 While forking provides a simple way to continue someone else's work,
