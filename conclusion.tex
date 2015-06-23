@@ -1,25 +1,24 @@
 \section{Conclusions and Future Work}
 We designed a prototype environment for exploration, sharing,
-presentation, and publishing.
-This study has provided a step toward practical ``DevOps for data science''
-and reproducible, publishable experiments. Our users found that the
-benefits of sharing 
+presentation, and publishing.  This study has provided a step toward
+practical ``DevOps for data science'' and reproducible, publishable
+experiments.
 
-We found that features for sharing and publishing were eagerly adopted.
-Features for single-user data exploration, that compete with existing mature
-tools, were not accepted as readily. Some experienced users
-fashioned their own workflow so they could keep using familiar EDA tools.
+RCloud has become a valid avenue for easy deployment of visualizations
+and interactive exploration tools inside our organization.  We found
+that features for sharing and publishing were eagerly adopted.
+Features for single-user data exploration, on the other hand, competed
+with existing mature tools, and were not accepted as readily.  In
+future work, we hope to study and to understand the degree to which
+this reluctance is caused by bad design decisions on our part, and how
+much comes from ``mere'' change aversion.
 
-Possible next steps to improve the existing prototype are to incorporate
-richer recommendation techniques, to provide fine-grained information
-security, and to improve the usability of the human interface.
+We still firmly believe that the current biggest barrier to the
+adoption of visual analytics is in software infrastructure.
+Just like structuring visualization software around
+simple but composable parts is a successful approach (like Vega, ggplot and the grammar of
+graphics), it is intriguing to consider what systems are
+possible if this philosophy were carried over to the 
+broader requirements of interactive analysis.
 
-There is a clear need for better software infrastructure to support
-experiments in visual analytics systems. We did benefit greatly from
-building RCloud on exisitng software and services, but the implementation
-was still difficult with much trial and error. Possibly some analogue
-of grammar-based visualization methods would help the visual analytics process.
-
-RCloud code is available at \url{github.com/att/rcloud/}
-under an MIT open source license.
-
+RCloud is open-source, and available at \url{github.com/att/rcloud/}.
