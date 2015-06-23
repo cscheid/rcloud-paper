@@ -96,40 +96,35 @@ Because we developed our ideas while simultaneously creating a prototype,
 we did not foresee some of the requirements that emerged after
 people started working with RCloud.
 
-\paragraph*{Versioning}
+\paragraph*{Versioning and Upgrading}
 Some important aspects of the environment are more difficult to manage
-in RCloud than in conventional systems. RCloud does not explicitly
-separate the development and deployment environments. More than that,
-every version of every prototype is shared by default. Although this encourages
-collaboration on work in progress it also quickly exposes errors such as
-misconfiguration, mismatches between versions of packages, and programming
-errors that can unintentionally affect production websites. Such errors
-are difficult to completely avoid, but the power of convenient sharing is often
-worth it (as proven true with distributed systems in general).
-Still, effective control over versioning when sharing problem needs more
-attention if RCloud would be scaled up to a wider number of users lacking
-informal channels to coordinate work.
+in RCloud than in conventional systems. RCloud does not separate the
+development and deployment environments, and every version of every
+prototype is shared by default. Although this encourages
+collaboration, it also quickly exposes errors such as
+misconfiguration, mismatches between versions of packages, and
+programming errors that can unintentionally affect production
+websites. For example, if the RCloud website is distributed across
+servers in different machines, different versions of system software
+can cause errors that are hard to find and fix.
 
-Versioning needs to be managed in several places: in scripts;
-in the R environment such as the installed libraries and packages;
-and in the external environment such as the operating system and
-protocols spoken by remote services. At one end of the scale, we have
-full control over the versioning of scripts via git, along with conventions
-to name stable or working versions of scripts, and versions known to work together.
-The R environment itself is under the control of its package manager
-that has rules to ensure reasonable consistency.
-It is at least possible for RCloud to access information about
-package versions and configurations, but support for checking compatibility
-and maintaining multiple versions in the same environment is not strong.
-At the other end of the scale, there is not much reason to expect version
-control for the external environment. Most programmers rely on clean living
-and a careful approach to system upgrades.
-
-On top of this, RCloud allows or even encourages hackers to fork experiments
-to try new ideas quickly. So far we have not done much more to address the
-problem of having a lot of bits and pieces of code and data lying around,
-though we have provided a framework in which it should be easier to find them
-and to apply algorithms and metadata to organize them.
+Versioning of different software pieces must be managed in several
+levels: in data analysis and visualization scripts (that is, the
+notebooks themselves); in the R environment such as the installed
+libraries and packages; and in the external environment such as the
+operating system, libraries, and protocols spoken by remote
+services. At one end of the scale, we have full control over the
+versions via git, along with conventions that fix stable notebook
+versions.  The R environment itself is under the control of its
+package manager that has rules to ensure reasonable consistency.  It
+is at least possible for RCloud to access information about package
+versions and configurations, but support for checking compatibility
+and maintaining multiple versions in the same environment is not
+strong.  At the other end of the scale, there is not much reason to
+expect version control for the external environment, and consider what
+would happend if a web service that is used by a notebook changes the
+format of its output: notebooks now stop working, but nothing in
+RCloud has changed.
 
 %Asynchronous collaborative visual analytics
 %(ACVA)~\cite{Chen:2011:SEC}. This paper addresses visualization
@@ -158,7 +153,7 @@ protocol~\cite{Urbanek:2003:AFW}. Object capabilities are opaque handles
 to remote procedure calls; this way, web browsers never directly instruct the
 RCloud backend to execute arbitrary code, preventing unauthenticated clients
 from making unauthorized calls to the RCloud runtime environment.
-
+%
 Our back-end environment, on the other hand, assumes a high degree of trust between users:
 access control for information security is delegated to the host
 operating system and web server. In practice, operating
