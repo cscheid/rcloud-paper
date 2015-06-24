@@ -316,9 +316,7 @@ ends up with a lot of comments saying ``This cell takes a long time to run.''
 
 To avoid this pitfall, some users write code within cells to explicitly cache results.
 Coby ends up ``littering the notebook with little switches that comment out the
-slow parts'' and either load or save the object to disk. One of the authors of this study
-manually writes cells that check if a result file exists, and perform a calculation only
-if it's needed.
+slow parts'' and either load or save the object to disk. One of the authors of this study manually writes cells that check if a result file exists, and perform a calculation only when needed.
 
 %% Kenyon on auditing (possible solution): ``you didn't see your mistakes, they were
 %% in there but you never really saw them because a mistake never led to an answer

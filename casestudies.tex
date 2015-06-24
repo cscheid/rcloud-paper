@@ -1,14 +1,9 @@
 \section{Case Study\label{sec:casestudy}: visual exploration of topic modeling in RCloud}
 
-To illustrate ...
-As an example, we present a simple real-world application
-deployed under RCloud.
-The application is an implementation of LDAVis,
-a method for visualizing large text corpora.
 LDAVis helps non-experts to explore collections of
-short text documents using topic modeling and
-visualization. Topic modeling~\cite{Blei:2003:LDA}, although
-powerful, often requires human interaction
+short text documents, using topic modeling and
+visualization. Topic modeling~\cite{Blei:2003:LDA},
+although powerful, often requires human guidance
 and interpretation~\cite{Sievert:2014:LAM}.
 
 \begin{figure*}
@@ -17,13 +12,13 @@ and interpretation~\cite{Sievert:2014:LAM}.
 \end{figure*}
 
 LDAVis was developed by two technical staff members at
-AT\&T Labs, and originally was written in RStudio's
-Shiny~\cite{RStudio:2013:SWA}, a framework for developing R
-applications for the web.  While Shiny provides outstanding ease of
-development, it turns out that discoverability and deployment are equally
-important aspects in the lifecycle of an internal application (see
-Section~\ref{sec:interviews}). In these aspects, RCloud provides a
-simple solution: \emph{all developed notebooks are automatically deployed}.
+AT\&T Labs, originally in RStudio Shiny~\cite{RStudio:2013:SWA},
+a framework for developing web applications in R.
+While Shiny offers outstanding ease of development,
+discoverability and deployment are also very important aspects
+in an application's lifecycle (see Section~\ref{sec:interviews}).
+RCloud's assumption that \emph{all developed notebooks are automatically
+deployed} simplifies this for LDAVis.
 
 LDAVis combines text analysis, dimensionality reduction and
 interactive visualization. Text analysis is performed by
@@ -64,11 +59,11 @@ While RCloud notebooks allow deployment of R analyses over
 the web with no additional effort, RCloud \emph{applications} are more
 powerful, and are developed with a combination of Javascript and HTML
 for the front end. This requires additional knowledge over Shiny, but
-the RCloud model makes the analysis side simpler (since analysts
+the RCloud model makes analysis simpler (since analysts
 simply write R in the style they already know)
-and front end visualization side is simpler for the web
+and front end visualization side is simpler for web
 developers (since they simply write the Javascript code in
-the style \emph{they} are used to). In addition, RCloud applications
+the style \emph{they} know). In addition, RCloud applications
 inherit the automatic deployment and discoverability features of
 all RCloud notebooks.
 
