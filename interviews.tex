@@ -3,7 +3,7 @@
 To evaluate the effectiveness of RCloud, we interviewed 13 current or
 recent users of RCloud. 9 are data analysts, and 4 build tools for data
 analysts and business needs.
-
+% no paragraphbreak needed! scn
 The subjects differed in their evaluation of its benefits and disadvantages,
 as described below.
 
@@ -32,8 +32,8 @@ found by navigating the notebook tree, or by searching. However, users most
 often mentioned sharing by sending links through email. Lilo says,
 ``If my supervisor wants to see what I've done or QA it, I can just send her a link.''
 
-Besides providing a way to present work, notebook sharing can provide a
-starting point for coding. Lilo says, ``The best part is how easily you can
+Besides providing a way to present work, notebook sharing become a starting point
+in coding. Lilo says, ``The best part is how easily you can
 share code. You can find a working example, rather than wearing
 out Google and finding questionable examples that may or may not work.'' Wendy
 notes, ``[If] some person has done something similar, then you're able to just
@@ -45,7 +45,7 @@ other people, and for doing tutorials for {\em iotools} or {\em hmr}'', his pack
 to see the code... I write it just like I would write GitHub
 Markdown, where you have little code snippets and text, but RCloud lets me
 actually run the snippets [and display the results].'' He also uses RCloud for
-describing and debugging problems with data sources.
+describing and debugging data sources.
 
 Some users, who tried RCloud and were not able to continue for organizational
 reasons, miss certain capabilities. Leith ``[likes] the concept of being
@@ -117,7 +117,7 @@ efficient, and they can [still] fork it if they want to.''
 %% Kenyon: ``when I've finished something, there's a nice clean record of it.''
 %% (I think this may be more about the publish/markdown than about source control.)
 
-Automatic source control is also a popular feature. Lilo says, ``Instead of
+Automatic source control proved helpful. Lilo says, ``Instead of
 looking back and saying I've got a billion files here in this subdirectory and I
 hope I've got them backed up, if they're on RCloud I know they are.''
 
@@ -148,17 +148,14 @@ every direction I've tried.''
 %% the names of notebooks is hard, much less the names of states within each
 %% notebook.''
 
-
 \subsection{Discovering others' work}
 Many users find the search function valuable. Wendy says, ``The fact that we have
 all the notebooks there, searchable, saves me from replicating what other people
 have done.''
-
 But other users prefer to browse just the notebooks of experts they
 know. Kenyon says, ``Usually I know somebody's notebooks that I want to search
 through, because I know that the kind of thing I'm looking for is something
 more obscure than I'm likely to find in some random person's.''
-
 More selective ways to search will be needed as the number of notebooks
 grows further. We mention possible approaches in Section~\ref{sec:discussion}.
 
@@ -174,7 +171,7 @@ Once you get the data into RCloud, then you have a dataframe
 to work with, and then they can produce another dataframe.
 \end{quote}
 
-Integrating R also helps Allison's application: ``Having an open session where I can run R commands or
+Integrating R helps Allison's application: ``Having an open session where I can run R commands or
 functions without having to invoke an API or send a request and then
 wait for the response is extremely helpful in writing the application.''
 
@@ -193,9 +190,9 @@ wait for the response is extremely helpful in writing the application.''
 
 \subsection{Exploring elsewhere}
 
-Although most of the analysts appreciate RCloud's sharing features,
-it is not popular as a tool for exploratory data analysis.
-All analysts with R experience prefer to do analysis in another
+Although most analysts appreciated RCloud's sharing features,
+it was not a popular tool for exploratory data analysis.
+All analysts with R experience prefered to do analysis in another
 tool, then paste code into RCloud for sharing.
 It appears this is mainly due to familiarity.
 Eric asks, ``Why would I want to use
@@ -245,7 +242,6 @@ environments like RCloud.
 \subsection{Cells versus the command line}
 RCloud's notebook interface combines editable Markdown with a command line
 interface.
-
 The interface takes some learning. Lilo says,
 \begin{quote}
 %% It took me a couple of weeks of
@@ -312,9 +308,9 @@ execute. High variance is common: cells may take anywhere from seconds to
 hours to run. In this situation, the Run Whole Notebook button is dangerous.
 Coby reports that when converting his work to notebooks, he
 ends up with a lot of comments saying ``This cell takes a long time to run.''
-To avoid this pitfall, some users write code within cells to explicitly cache results.
-Coby ends up ``littering the notebook with little switches that comment out the
-slow parts'' and either load or save the object to disk. One of the authors of this study manually writes cells that check if a result file exists, and perform a calculation only when needed.
+To avoid this pitfall, some users write code to explicitly cache results.
+% Coby ends up ``littering the notebook with little switches that comment out the
+% slow parts'' and either load or save the object to disk. One of the authors of this study manually writes cells that check if a result file exists, and perform a calculation only when needed.
 
 %% Kenyon on auditing (possible solution): ``you didn't see your mistakes, they were
 %% in there but you never really saw them because a mistake never led to an answer

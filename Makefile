@@ -42,7 +42,7 @@ draft: $(NAME).tex $(BIBFILES)
 	$(LATEX) -draftmode $(NAME).tex
 
 
-$(NAME).pdf: $(NAME).tex introduction.tex relatedwork.tex system.tex casestudies.tex discussion.tex conclusion.tex $(BIBFILES)
+$(NAME).pdf: $(NAME).tex introduction.tex relatedwork.tex system.tex casestudies.tex discussion.tex interviews.tex conclusion.tex $(BIBFILES)
 	@echo '-------------------- latex #1 --------------------'
 	$(LATEX) $(NAME).tex
 	@echo '-------------------- bibtex --------------------'
