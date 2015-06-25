@@ -14,12 +14,12 @@ ManyEyes~\cite{Viegas:2007:MAS} was a landmark system for the
 crowdsourced creation and publication of data visualizations.
 Although ManyEyes supported only a fixed set of visual encodings,
 the system's success was an early indication of the potential to
-combine social media on the web with visual analytics.
+combine social media with visual analytics.
 
 \paragraph*{Notebooks as a medium for data analysis dissemination}
 The concept of a ``notebook'' as we use it can be traced
-back to Knuth's literate programming~\cite{Knuth:1984:LP}. In
-literate programming, a prose description of the behavior of
+back to Knuth's literate programming~\cite{Knuth:1984:LP}.
+In literate programming, a prose description of the behavior of
 a program is ``weaved'' with its source code, yielding both an
 executable program and a human-readable document.
 A notebook represented as a collection of small executable cells,
@@ -34,21 +34,21 @@ and sharing data from scientific lab experiments\cite{Rubacha:2011:ELN}.
 In a sense, we hope to adapt and extend this concept to the work of
 visual analytics teams.
 %
-\stephen{RStudio is highly acclaimed for its...}
+RStudio is highly acclaimed for its polished and powerful human interface.
 Although RStudio offers publication of literate R programs as a free
-service on their website, the workflow is somewhat disconnected from
+service on its website, the workflow is somewhat disconnected from
 the development of those programs. Once they're uploaded, it's hard
-for other users to build off of the work published (or even for the
-original author to update new versions). In other words, RStudio
+for other users to build off the work published, or even for the
+original author to update new versions. In other words, RStudio
 handles \emph{publication}, but not \emph{deployment} and sharing.
 
 \paragraph*{Provenance and versioning} As
 mentioned, one central issue in exploratory analysis is that
-problems can change quickly, often in the course of developing a
-solution. As a result, systems should provide adequate support for
-tracking \emph{changes} of the data analysis scripts. VisTrails was
-one of the original systems for managing \emph{process provenance} ,
-and demonstrated the value of capturing aspects of the processes that
+problems may change quickly, often while in the course of
+developing a solution. As a result, systems need to provide adequate
+support for tracking \emph{changes} of data analysis scripts. VisTrails
+was one of the original systems for managing \emph{process provenance},
+and it demonstrated the value of capturing aspects of the processes that
 surround data analysis experiments and tools, including detailed
 history, collaboration, and deployment~\cite{Callahan:2006:VVM}.
 
@@ -65,13 +65,13 @@ Python code, while retaining attractive properties like transparent
 provenance tracking and interactive data visualization on the web.
 
 \paragraph*{Web-based tools for sharing code snippets}
-There have been quite a few tools recently developed for quickly
+Quite a few tools were recently developed for quickly
 sharing small programs on the web, including
 bl.ocks~\cite{blocks}, jsfiddle~\cite{jsfiddle}, and
 plot.ly~\cite{plotly}. bl.ocks and jsfiddle are designed to
 share Javascript programs, which means that deployment happens
 automatically through the web browser. If Javascript eventually becomes
-the lingua franca of exploratory data analysis, we can foresee
+the lingua franca of exploratory data analysis, we foresee
 building a simpler version of RCloud where all execution happens
 either on the client side or via web services. Unfortunately that is
 not a realistic assumption at present, making these stand-alone
@@ -97,8 +97,8 @@ technology. ``We found that analysts typically did not
 share scripts with each other. Scripts that were shared were
 disseminated similarly to intermediate data: either through shared
 drives or email. Analysts rarely stored their analytic code in source
-control.'' Their study highlights the opportunity for better ways
-of supporting collaboration and sharing in data analysis teams.
+control.'' Their study highlights the opportunity to contribute better
+ways of supporting collaboration and sharing by data analysis teams.
 
 An earlier study by Kandel et al argues that data wrangling
 (cleaning, parsing and transformation)is a major part of exploratory
@@ -144,7 +144,7 @@ techniques may be integrated and made available to a broad community.
 \emph{cells}, each a snippet of source in one of the supported languages (typically R, but Python and others are also supported) or Markdown. The main creation workflow involves editing notebooks, which are transparently stored as git repositories in GitHub, providing us with easy access primitives for version tracking. Notebooks can be executed as they're edited (left), or in a standalone viewer (right), via a slightly different URL. This provides a lightweight, low-friction mechanism for sharing results which we discuss in detail in Section~\ref{sec:interviews}. }
 \end{figure*}
 
-One overall goal is to reduce the gap between implementers and
+One high-level goal is to reduce the gap between implementers and
 deployers in visual analytics. The fusion of development with
 production operations in software release management (``DevOps''
 \cite{Httermann:2012:DD} or ``continuous integration''
@@ -155,5 +155,6 @@ eliminate the need for programming teams to recreate their work to
 deploy it in production, which has a high cost in time, expense and
 accuracy.
 
-We next give a description of the system architecture,
-and how it enables capabilities that satisfy the requirements as described.
+% We next give a description of the system architecture,
+% and how it enables capabilities that satisfy the requirements as described.
+% \stephen{This should flow naturally, or have a more natural transition.}
