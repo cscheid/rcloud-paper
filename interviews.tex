@@ -66,21 +66,21 @@ my code was. It would be just, hey, go look on RCloud, here's the stuff.''
 %% Kenyon: ``I like being able to look at other people's notebooks.''
 
 \subsection{Forking}
-The ability to start work where someone else let off, by forking, was
-a popular feature. Almost twice as many (131) users have forked
-someone else's notebook as have starred one (75).  Lilo says, ``It's one of the
+The ability to start work where someone else let off, by forking, was popular.
+Almost twice as many (131) users have forked
+someone else's notebook as have starred one (75). Lilo says, ``It's one of the
 handiest functions, because instead of having to find it, copy, paste it, you
 just hit Fork, rename it, and it's done. It's pretty amazing.''
 
 Although we intended forking to be available to improve others' code, we 
-initially didn't anticipate support forking one's own notebooks, which
+didn't anticipate forking one's own notebooks, which
 proved very useful. Kenyon says, ``I fork my own notebooks because I'm going off
 and doing some other analogous project, so I've got interesting content that I've
 already done in a previous analysis, that I want to start from and then tweak
 to match a new set of data.''
 
 Forking also provides a way for others to troubleshoot when something goes
-wrong.  When Hugh works with the users of his notebooks, ``I'll teach people
+wrong. When Hugh collaborates with users of his notebooks, ``I'll teach people
 to intercept the result in the middle, to insert print statements here and
 there and check values.''
 
@@ -96,15 +96,15 @@ A common but ill-advised use of forking is to change
 parameters. Wendy says, ``I've been forking other people's notebooks [because] I
 want to run them on a different part of data, or I want to change some parts,
 I don't want to see this column, I want a different column, things like
-that.''  Eric complains that a notebook might say ```This is a report of
+that.'' Eric complains that a notebook might say ```This is a report of
 the volume of all of our feeds for this month', and someone would want to
 look at it for the next month or the previous month, so they'd fork it to
 change the month.''
 
 Parameters can be added to a notebook URL, but adding user interface
 elements to do the same thing takes more expertise. Tool builders see a
-need for facilities to make it easier. Allison calls it ``web-enabling'' the
-notebook: ``[Users] can always fork the notebooks and make changes, but I
+need for facilities to make that easier. Allison calls it ``web-enabling''
+notebooks: ``[Users] can always fork the notebooks and make changes, but I
 feel that if the owner of the notebook web-enables it, it's easier to
 run. Instead of forking it, if they can set options, it's probably more
 efficient, and they can [still] fork it if they want to.''
@@ -164,7 +164,7 @@ grows further. We mention possible approaches in Section~\ref{sec:discussion}.
 
 \subsection{Integrated analysis}
 Integrating an analysis language into a web development environment is something
-tool developers really appreciate.  The structure of Hugh's visualization
+tool developers really appreciate. The structure of Hugh's visualization
 notebook means
 \begin{quote}
 the other guys who want to do analytics on the data can first pull
@@ -225,11 +225,11 @@ present something or to save something, and my ease of typing and
 correcting and things in a plain editor window.''
 
 Coby also works with text files and commands, rearranging source files
-so the good code is at the top. RCloud does not readily support this
-workflow, so Coby often shares work by pasting it into an RCloud
-notebook when he's done.
+so active code is at the top. RCloud does not readily support this
+workflow, so Coby often shares work by pasting code into an RCloud
+notebook after he's done.
 
-%% Running anything on the Web can also be a source of frustration.  Poor network
+%% Running anything on the Web can also be a source of frustration. Poor network
 %% connections can cause web sockets to die, and Kaylee complains ``What frustrates me is
 %% that if I do leave this window for what feels like 5 or 7 minutes, it
 %% disconnects and I have to reconnect and run the whole notebook again.'' Wendy
@@ -239,8 +239,8 @@ notebook when he's done.
 
 Working in a shared environment also entails compromises about what you can
 install. Joy says installing alternative or nonstandard packages is
-intrinsic to exploratory data analysis. This is a weakness in systems
-like RCloud.
+intrinsic to exploratory data analysis. This is a weakness in shared
+environments like RCloud.
 
 \subsection{Cells versus the command line}
 RCloud's notebook interface combines editable Markdown with a command line
@@ -285,15 +285,14 @@ or you make a plot of the data. Things that should not really become part of a
 notebook, but things that help you understand your data better'' (Wendy).
 
 Users felt that cells do not capture the right level of granularity: they
-either hold too much code or too little. Kenyon says that RCloud's cell structure
+hold either too much code or too little. Kenyon says that RCloud's cell structure
 ``tempts me to type a big long thing and then run the whole thing, as opposed to
 typing a few little pieces and then put them together'' as he would on the command line.
 When Eric uses the R command line, he ``copies and pastes 5-10 lines of code,
 so when something breaks, I get an error message on that one line, and I can
 up-arrow and change it and fix it, whereas in RCloud I have to run a whole cell,
 so the only way to get that functionality is if every line's in one cell.''
-Another complaint related to the human interface was that cells can take up
-substantial vertical space, requiring scrolling.
+Another complaint was that cells can take up too much vertical space, requiring scrolling.
 % Rick complains, ``Every time I type more stuff, the notebook gets longer and
 % longer and it's harder to deal with.'' Ivan says that cells' controls and blank
 % space take extra screen space compared to a straight command line, and he and
@@ -310,10 +309,9 @@ window or on a separate part of the window''.
 
 The cell structure also can be problematic if some cells take a long time to
 execute. High variance is common: cells may take anywhere from seconds to
-hours to run.  In this situation, the Run Whole Notebook button is dangerous.
+hours to run. In this situation, the Run Whole Notebook button is dangerous.
 Coby reports that when converting his work to notebooks, he
 ends up with a lot of comments saying ``This cell takes a long time to run.''
-
 To avoid this pitfall, some users write code within cells to explicitly cache results.
 Coby ends up ``littering the notebook with little switches that comment out the
 slow parts'' and either load or save the object to disk. One of the authors of this study manually writes cells that check if a result file exists, and perform a calculation only when needed.
@@ -352,7 +350,7 @@ slow parts'' and either load or save the object to disk. One of the authors of t
 
 \subsection{A sea of notebooks}
 RCloud is becoming a victim of its own success, as it is becoming
-difficult to navigate all the notebooks.  There are over 5200 notebooks in
+difficult to navigate all the notebooks. There are over 5200 notebooks in
 the research instance, of which more than 500 have been starred, and more
 than 350 have been forked.
 
@@ -368,7 +366,7 @@ Although RCloud promises an environment where notebooks should keep working,
 not all our users have learned the habits that make this a reality. As Joy
 puts it, there is still a big problem with ``bitrot'' -- notebooks often
 stop working because the user changed the structure of their data, or
-changed a filename or a database.  She says we need ``organizational
+changed a filename or a database. She says we need ``organizational
 protocols'' to catch up with the technology. Even if one forks someone
 else's notebook and corrects it, the original notebook still exists with
 the error.
@@ -389,16 +387,15 @@ because they don't actually disappear.
 
 The problem of dead notebooks is compounded by changing
 packages and example notebooks at the same time. Eric will ``go back and
-change it and update the page, but then what happens is people have in the
-meantime forked it. I'll have to change a package as well, so their
+change [a notebook] and update the page, but in the meantime people
+have forked it. I'll have to change a package as well, so their
 old fork stops working, and they complain.''
 
 Eric tried to keep his notebook tree well organized, but this didn't help,
 because some people kept old links in their email, or forked notebooks which 
 had become obsolete. By design, notebooks that are deleted in the user interface
-are not purged from the repository. Now he says he is scared to share notebooks:
+are not purged from the repository. He says he became reluctant to share notebooks:
 ``Do I want to support this forever?''
-
 
 %% Iris: ``One UI notebook and a bunch of other notebooks that do various tasks and
 %% are called with API calls. The problem is, if you clone all the notebooks, then

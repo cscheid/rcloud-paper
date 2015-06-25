@@ -30,13 +30,13 @@ mechanism described in Section~\ref{sec:system};
 thus analysis is performed remotely on an RCloud server.
 
 Each text topic is a probability distribution over the all the
-words of the document. To expose patterns in the relationships
-between topics, LDAVis employs a combination of
+words of a document. To expose patterns in the relationships
+between topics, LDAVis combines
 interactive visualization and dimensionality reduction,
 allowing users to adjust measures for topic distances and the choice
 of dimensionality reduction technique. The dimensionality reduction
 algorithms and distance measures are implemented in R, which
-means they can be executed on the RCloud servers as well.
+means they can be executed on RCloud servers as well.
 
 The result of the dimensionality reduction process is a
 two-dimensional plot of the topic space, an example of which is shown in
@@ -51,7 +51,7 @@ topic cluster, or word) do not appear to be available yet in Vega~\cite{vega},
 although the required components for reactive interaction were
 recently described by Satyanarayan et
 al.~\cite{Satyanarayan:2014:DID}.
-Although custom Javascript was required, the flexibility is welcomed
+Although custom Javascript was required, its flexibility is welcomed
 by many web developers.
 
 LDAVis highlights some unique features of RCloud.
@@ -62,7 +62,7 @@ for the front end. This requires additional knowledge over Shiny, but
 the RCloud model makes analysis simpler (since analysts
 simply write R in the style they already know)
 and front end visualization side is simpler for web
-developers (since they simply write the Javascript code in
+developers (since they simply write Javascript in
 the style \emph{they} know). In addition, RCloud applications
 inherit the automatic deployment and discoverability features of
 all RCloud notebooks.
