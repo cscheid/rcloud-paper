@@ -45,27 +45,29 @@ and Javascript through D3~\cite{Bostock:2011:DDD}. One of the most
 popular web-based visualization libraries for R is ggvis~\cite{ggvis},
 so it is natural to ask if ggvis could have been used instead of
 custom Javascript. In this case, the interactive features of ggvis
-(and, by extension, Shiny) are a subset of those in Vega~\cite{vega}.
-Custom interactions in LDAVis (such as hovering over a topic,
-topic cluster, or word) do not appear to be available yet in Vega~\cite{vega},
-although the required components for reactive interaction were
-recently described by Satyanarayan et
+and Shiny are a subset of Vega's~\cite{vega}.
+Custom interactions in LDAVis (like hovering over a topic,
+topic cluster, or word) are not available yet in Vega~\cite{vega},
+although the required components were recently described by Satyanarayan et
 al.~\cite{Satyanarayan:2014:DID}.
-Although custom Javascript was required, its flexibility is welcomed
+Although LDAVis required custom Javascript, that flexibility is welcomed
 by many web developers.
 
-LDAVis highlights some unique features of RCloud.
-While RCloud notebooks allow deployment of R analyses over
-the web with no additional effort, RCloud \emph{applications} are more
-powerful, and are developed with a combination of Javascript and HTML
-for the front end. This requires additional knowledge over Shiny, but
+LDAVis demonstrates some unique features of RCloud.
+While RCloud notebooks allow deployment of analyses over
+the web with no extra effort, RCloud \emph{applications} are more
+powerful, and are developed by combining Javascript and HTML
+for the front end. This requires more expertise than Shiny, but
 the RCloud model makes analysis simpler (since analysts
 simply write R in the style they already know)
-and front end visualization side is simpler for web
+and the visualization front end is simpler for web
 developers (since they simply write Javascript in
-the style \emph{they} know). In addition, RCloud applications
-inherit the automatic deployment and discoverability features of
-all RCloud notebooks.
+the style \emph{they} know).
+LDAVis inherits the automatic deployment and discoverability
+of all RCloud applications.
+% In addition, RCloud applications
+% inherit the automatic deployment and discoverability features of
+% all RCloud notebooks.
 
 % IMPORTANT: what is unique about RCloud here
 % From prototyping to dashboard
