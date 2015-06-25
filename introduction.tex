@@ -61,20 +61,19 @@ so much that the decision can be wrong.
 
 \item Technology transfer.
 In most organizations, development of analyses and visualizations 
-s done by \emph{hackers} and \emph{scripters} (adopting Kandel et al.'s
+is done by \emph{hackers} and \emph{scripters} (adopting Kandel et al.'s
 terminology~\cite{Kandel:2012:EDA}). \emph{Application users} 
 benefit from tools developed by hackers and scripters.
-Results of experiments are often shared first by copying screen
+Results of experiments are often first shared by copying screen
 shots or static output. By the time decisions are made based on
-the results of those screenshots, data and processes may have changed
-so much that the decision can be wrong.
-\stephen{Transitional sentence here.}
-Generally, the connection between these two worlds is made by IT staff,
-who port or rewrite code so it can run as a stable production service.
+those screenshots, the data and processes may have
+changed so much that the decision can be wrong.
+Moreover, the connection between EDA and deployment
+are made by porting or rewriting code so it runs as a stable service.
 In an environment where business needs can change rapidly, this
 process does not scale. It is also difficult to trace problems
 from production back to EDA.
-Our goal is to merge the worlds of EDA and production to close this gap.
+Our goal is to merge the worlds of EDA and deployment, to close the gap.
 
 \item Coexistence. In current ecosystems, the isolation of exploratory
 visualization and data analysis environments hinders wider adoption of
@@ -122,13 +121,14 @@ at AT\&T Labs for about three years.
 RCloud knits together some familiar tools, and 
 provides new features to find data and code; create experimental notebooks;
 run experiments; annotate and deploy experiments as end-user websites or
-as reusable, callable services; and to share, search and recommend these artifacts. The artifacts are stored in a version
+as reusable, callable services; and to share, search and recommend these artifacts.
+The artifacts are stored in a version
 control system that provides a common workspace, as well as needed control
 and isolation between stable and experimental versions of code and other
 resources. 
 
-A key point is that, for the most part, the improved capabilities are
-available by default, without much explicit involvement on the part of
+For the most part, the improved capabilities are available by default,
+without much explicit involvement on the part of
 data scientists and other customers. Visual analytics experiments are
 conveniently shared and turned into production websites, without moving
 or porting code. All the published artifacts in the system can be

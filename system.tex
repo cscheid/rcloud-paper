@@ -40,10 +40,10 @@ RCloud lacks a ``save'' button: any notebook cell that runs is always
 associated to a notebook version serialized to disk. Although one of
 our interview subjects reported that this sometimes leads to an
 excessively fine-grained sequence of versions (see
-Section~\ref{sec:interviews}), we believe that the alternative of
-losing automatic sharing is worse (and see
-Section~\ref{sec:interviews} again for users reporting their
-satisfaction over the low-friction shareability).
+Section~\ref{sec:interviews}), 
+losing information that could be shared is worse (see
+Section~\ref{sec:interviews} user comments on
+satisfaction with low-friction shareability).
 
 In this design, we get notebooks that are always live,
 but sometimes broken. Because stability is important, we also
@@ -66,18 +66,18 @@ editing, and so on.
 
 \subsection{Reputation and Interest: starring\label{sec:starring}}
 
-One side benefit of centralizing the execution and storage of
+A side benefit of centralizing the execution and storage of
 notebooks is that it becomes feasible to collect usage information
-that might be lost in a conventional environment.
+that is lost in conventional environments.
 In the case of social data visualization
 platforms, we would like to exploit usage data to help analysts
-find content of interest, whether the content is actual source code
-or accompanying data. The standard way to achieve this is through
+find content of interest, whether that content is source code
+or data. Standard ways to achieve this are through
 \emph{user-generated curation} and \emph{automatic recommendations}.
 
 Automatic recommendations have become famous in the user experience
 provided by companies such as Amazon and Netflix (``If you liked
-that film, then you should like this one too''). To make such
+that film, you'll like this one too''). To make such
 recommendations, we need users to \emph{curate} the collection, by
 providing explicit reviews or some other method of indicating interest.
 %%
@@ -107,7 +107,7 @@ these standard techniques, we hope to apply static and dynamic code
 analysis to infer fine-grained information about relationships,
 for example, which packages and data sets often appear together,
 % in the style of Fast et al's Codex system.~\cite{Fast:2014:ECS}.
-in the style of Codex.~\cite{Fast:2014:ECS}.
+in the style of Codex~\cite{Fast:2014:ECS}.
 
 \subsection{Deployment of notebooks\label{sec:deployment}}
 

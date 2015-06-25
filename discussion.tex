@@ -34,7 +34,7 @@ of RCloud, through shared workbooks. We observed that hackers readily
 share experiments, demonstrate techniques, publish results to peers and
 managers, and transfer algorithms to other groups. Artifact histories
 can be accessed through the notebook tree or through GitHub's web interface.
-But a problem is that it is easy to create a large number of artifacts
+But it is easy to create a large number of artifacts
 and the system does not help enough to organize and navigate them.
 
 \paragraph*{Modularity and granularity} Modularity, or the ability
@@ -42,16 +42,16 @@ to partition work into independent units, is a key to working
 productively in teams.
 It is a benefit if the units can be kept small or granular, so team members
 can realize benefits at least proportional to the work on the units.
-RCloud's notebook and versioning capabilities allow work to be divided
-into units as fine as the underlying language allows, and versioning
-encourages making incremental changes at low cost and without disrupting
+RCloud's notebook and versioning allow work to be divided
+into units as fine as the underlying language allows, and
+encourage making incremental changes at low cost and without disrupting
 the work of others.
 
 \paragraph*{View sharing, bookmarking} Most resources in RCloud are named
 and accessed as URLs. This proved to be effective for sharing analyses
 and integrating them with external processes.  It is particularly
-advantageous for work to be shared as URLs that provide access to code
-and experiments, instead of by pasting screenshots into reports.
+advantageous for work to be shared as URLs that provide access to live
+notebooks, instead of by pasting screenshots into reports.
 
 \paragraph*{Discussion} Annotation and commenting was another central goal.
 Commenting is supported through GitHub, but our hackers found it
@@ -64,8 +64,8 @@ more elaborate, integrated annotation remains as future work.
 \paragraph*{Content export} is not a capability we aimed at supporting,
 and R already has many packages for this. Recently, due to popular
 demand, we added user interface support for exporting plot images.
-We assume that RCloud notebooks should play well in the ecosystem
-of other tools, but sometimes it is difficult to know whether adding
+RCloud notebooks should play well in the R ecosystem,
+but sometimes it is difficult to know whether adding
 a feature for compatibility will offload complexity, or increase it.
 
 \paragraph*{Social-psychological incentives} and {\bf voting and ranking} are
@@ -74,19 +74,18 @@ on the platform. An obvious next step would be to enhance recommendations
 using relationships discovered by static and dynamic code analysis. This
 may be considered both within and across collections of scripts (the latter
 being similar to VisTrails' enhanced recommendations by clustering multiple
-workflows).  It seems valuable to know which packages are frequently used
-together, or appear in proximity to a certain record types or data feeds.
-In general, trivial or passive mechanisms to collect data for
-recommendations are essential.
+workflows). It seems helpful to help users find which packages are frequently
+used together, or when using record types or data feeds.
+Overall, simple, passive mechanisms to collect data for recommendations are preferred.
 
 \paragraph*{Group management, size and diversity} This area needs better
-support in RCloud, but is clearly important to working in teams.
+support, and is clearly important to working in teams.
 We rely on external administrative processes and social conventions
 to manage accounts and groups. RCloud could benefit greatly from
 integrating social media to track identities and groups and to maintain
 communication channels, instead of having its own isolated solution.
 
-\paragraph*{Curation} Even without formal group management, users may
+\paragraph*{Curation} Even without formal group management, users often
 organize groups of related notebooks using tree folders.
 We found this particularly effective in collecting and distributing
 training materials.
@@ -97,16 +96,16 @@ we did not foresee some of the requirements that emerged after
 people started working with RCloud.
 
 \paragraph*{Versioning and Upgrading}
-Some aspects of the programming environment are more difficult to
+Some aspects of the environment are more difficult to
 manage in RCloud than in conventional systems. RCloud does not separate
-the development and deployment environments, and every version of every
-prototype is shared by default. While this encourages
-collaboration, it also quickly exposes errors such as
-misconfiguration, mismatches between package versions, and
-programming errors, that can unintentionally affect production
-websites. For example, if an RCloud website is distributed across
-multiple servers, conflicting versions of system software
-can cause errors that are hard to debug.
+its development and deployment environments, and every version of every
+prototype is shared by default. Although this encourages
+collaboration, it also quickly exposes misconfigurations,
+mismatches between package versions, and programming errors
+that can unintentionally affect production websites.
+If an RCloud website is distributed across multiple servers,
+conflicting versions of system software
+can also cause errors that are hard to debug.
 
 Versioning of software components must be managed in several
 levels: in data analysis and visualization scripts (the
@@ -117,11 +116,12 @@ services. At one end of the scale, we have full control over notebooks
 via git, along with conventions to fix stable notebook versions.
 The R environment is under the control of its package manager that
 has rules to ensure reasonable consistency.
-(It is possible for RCloud to access information about package
-versions and configurations, but support for checking compatibility
-and maintaining multiple versions in the same environment is not
-strong.) At the other end of the scale, there is hardly any version
-control for the external environment, and if an external service 
+% (It is possible for RCloud to access information about package
+% versions and configurations, but support for checking compatibility
+% and maintaining multiple versions in the same environment is not
+% strong.)
+At the other end of the scale, there is basically no
+control over the external environment, and if an external service 
 used by a notebook changes its API, the notebook can stop working.
 
 %Asynchronous collaborative visual analytics
@@ -152,15 +152,12 @@ RCloud backend to execute arbitrary code, preventing unauthenticated clients
 from making unauthorized calls to the RCloud runtime environment.
 %
 Our back-end environment, on the other hand, assumes a high degree of trust between users:
-access control for information security is delegated to the host
-operating system and web server.
+access control is delegated to the host operating system and web server.
 Most operating systems rely either on coarse permission models,
 which tend to be ineffective, or on detailed access control
-lists, which tend to be cumbersome. This means that information security
-in RCloud is a delicate, unsolved matter. More
-sophisticated approaches, such as information flow analysis,
-and query languages that ensure differential privacy, are
-open research topics~\cite{Moore:2011:SAF}.
+lists, which tend to be cumbersome.
+Information security in RCloud today is an unsolved matter.
+More sophisticated approaches are open research topics~\cite{Moore:2011:SAF}.
 % We are hopeful that having a richer
 % environment for collaboration and information sharing will encourage
 % new approaches to information security in visual analytics.
@@ -180,10 +177,11 @@ saved. In our experience some history steps are only found to be
 important in hindsight, and deleting history by default makes it too
 easy to lose those steps by accident.
 
-Surprisingly, we found that when users realize that \emph{scratch work
-is getting saved}, the extra versions become burdensome to them.
+% Surprisingly, we found that when users realize that \emph{scratch work
+We found that when users realize that \emph{scratch work
+is getting saved}, it sheer volume becomes burdensome.
 Clearly, RCloud is an extreme, and the right solution is
-in the middle. An intriguing possibility,
+probably in the middle. An intriguing possibility,
 suggested by one of our interviewees, is to implement auditing of data
 analyses as it existed in S~\cite{Becker:1988:Auditing}, tying
 data artifacts to the processes that generated them. 
