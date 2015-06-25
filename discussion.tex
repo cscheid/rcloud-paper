@@ -87,7 +87,7 @@ integrating social media to track identities and groups and to maintain
 communication channels, instead of having its own isolated solution.
 
 \paragraph*{Curation} Even without formal group management, users may
-curate groups of related notebooks using notebook tree folders.
+organize groups of related notebooks using tree folders.
 We found this particularly effective in collecting and distributing
 training materials.
 
@@ -97,34 +97,32 @@ we did not foresee some of the requirements that emerged after
 people started working with RCloud.
 
 \paragraph*{Versioning and Upgrading}
-Some important aspects of the environment are more difficult to manage
-in RCloud than in conventional systems. RCloud does not separate the
-development and deployment environments, and every version of every
-prototype is shared by default. Although this encourages
+Some aspects of the programming environment are more difficult to
+manage in RCloud than in conventional systems. RCloud does not separate
+the development and deployment environments, and every version of every
+prototype is shared by default. While this encourages
 collaboration, it also quickly exposes errors such as
-misconfiguration, mismatches between versions of packages, and
-programming errors that can unintentionally affect production
-websites. For example, if the RCloud website is distributed across
-servers in different machines, different versions of system software
-can cause errors that are hard to find and fix.
+misconfiguration, mismatches between package versions, and
+programming errors, that can unintentionally affect production
+websites. For example, if an RCloud website is distributed across
+multiple servers, conflicting versions of system software
+can cause errors that are hard to debug.
 
-Versioning of different software pieces must be managed in several
-levels: in data analysis and visualization scripts (that is, the
+Versioning of software components must be managed in several
+levels: in data analysis and visualization scripts (the
 notebooks themselves); in the R environment such as the installed
 libraries and packages; and in the external environment such as the
 operating system, libraries, and protocols spoken by remote
-services. At one end of the scale, we have full control over the
-versions via git, along with conventions that fix stable notebook
-versions.  The R environment itself is under the control of its
-package manager that has rules to ensure reasonable consistency.  It
-is at least possible for RCloud to access information about package
+services. At one end of the scale, we have full control over notebooks
+via git, along with conventions to fix stable notebook versions.
+The R environment is under the control of its package manager that
+has rules to ensure reasonable consistency.
+(It is possible for RCloud to access information about package
 versions and configurations, but support for checking compatibility
 and maintaining multiple versions in the same environment is not
-strong. At the other end of the scale, there is not much reason to
-expect version control for the external environment, and consider what
-would happened if a web service that is used by a notebook changes the
-format of its output: notebooks now stop working, but nothing in
-RCloud has changed.
+strong.) At the other end of the scale, there is hardly any version
+control for the external environment, and if an external service 
+used by a notebook changes its API, the notebook can stop working.
 
 %Asynchronous collaborative visual analytics
 %(ACVA)~\cite{Chen:2011:SEC}. This paper addresses visualization
@@ -132,17 +130,16 @@ RCloud has changed.
 %recommendation systems, and navigation of the set of notebooks, etc.
 
 \paragraph*{Caching}
-An important consideration is how and where to introduce caching in
+An important issue is how and where to introduce caching in
 RCloud's distributed computation model. Caching can dramatically
-improve performance in a way that is otherwise transparent to
+improve performance in a way that is transparent to
 application program semantics \cite{Callahan:2006:VVM, Guo:2010:TPI}.
-Currently, RCloud offers no support for implicit caching, but since it
-supports the entirety of the R language, it's possible to incorporate
-caching in R libraries. Still, since the reuse of intermediate
-results is a recurring problem in data exploration environments, it
-seems better to implement this capability in a general purpose
-associative cache. We envision cache management being implemented in a
-new middle layer to be added in the future.
+Currently, RCloud offers no support for implicit caching, but 
+it's possible to incorporate caching in individual R libraries.
+The reuse of intermediate results is a recurring problem
+in many data exploration environments.
+We envision general cache management being implemented in a
+new middle layer in the future.
 
 \paragraph*{Security}
 Because RCloud allows arbitrary R code to be run
@@ -150,20 +147,20 @@ Because RCloud allows arbitrary R code to be run
 from running unauthorized arbitrary code. RCloud uses an object capability model
 \cite{Miller:2006:RCT} recently added to the Rserve
 protocol~\cite{Urbanek:2003:AFW}. Object capabilities are opaque handles
-to remote procedure calls; this way, web browsers never directly instruct the
+to remote procedure calls; web browsers never directly instruct the
 RCloud backend to execute arbitrary code, preventing unauthenticated clients
 from making unauthorized calls to the RCloud runtime environment.
 %
 Our back-end environment, on the other hand, assumes a high degree of trust between users:
 access control for information security is delegated to the host
-operating system and web server. In practice, operating
-systems rely either on coarse permission models,
+operating system and web server.
+Most operating systems rely either on coarse permission models,
 which tend to be ineffective, or on detailed access control
 lists, which tend to be cumbersome. This means that information security
 in RCloud is a delicate, unsolved matter. More
 sophisticated approaches, such as information flow analysis,
 and query languages that ensure differential privacy, are
-still research topics~\cite{Moore:2011:SAF}.
+open research topics~\cite{Moore:2011:SAF}.
 % We are hopeful that having a richer
 % environment for collaboration and information sharing will encourage
 % new approaches to information security in visual analytics.
@@ -175,23 +172,23 @@ Users reported that RCloud's combined notebook and command line
 interface interferes with their familiar use of R for exploration. In
 current R practice, the command prompt is used to try things out. It
 is very fast and there is often no commitment: nothing gets saved by
-default, but clean up is automatic. In contrast, in RCloud's
+default, and clean up is automatic. In contrast, in RCloud's
 notebook interface, cells generated doing exploration are saved in the
 notebook. We arrived here from an insistence on reproducibility: it is a
-core principle of RCloud that no command should be run without being
+core principle that no command should be run without being
 saved. In our experience some history steps are only found to be
 important in hindsight, and deleting history by default makes it too
 easy to lose those steps by accident.
 
 Surprisingly, we found that when users realize that \emph{scratch work
-is getting saved}, the extra versions become a mental burden for
-them. Clearly, RCloud is an extreme, and the right solution is
+is getting saved}, the extra versions become burdensome to them.
+Clearly, RCloud is an extreme, and the right solution is
 in the middle. An intriguing possibility,
 suggested by one of our interviewees, is to implement auditing of data
 analyses as it existed in S~\cite{Becker:1988:Auditing}, tying
-data artifacts to the processes that generated them. As a result,
-bookkeeping can be reduced to selecting the \emph{data} to be kept,
-and the code which generates it can be derived and saved transparently.
+data artifacts to the processes that generated them. 
+Bookkeeping would be reduced to selecting the \emph{data} to be kept,
+and the code that generated it would be derived and saved transparently.
 
 %% . This is why we did not implement a simple command line
 %% as many users request. We could imagine making an exception for commands
@@ -216,14 +213,16 @@ With hundreds of users and thousands of notebooks, a global notebook tree
 becomes unwieldy. The search function does not protect searchers from
 obsolete and erroneous notebooks, which by default are retained
 forever. In addition, important metadata (has this notebook been
-recently run, or edited?) is also not easily searchable. In other words,
+recently run, or edited?) is not easily searchable. In other words,
 \emph{textual search} is easy, but \emph{relevance search} is what we
-need. Allowing users to \emph{tag} notebooks is natural, but it
+need. Allowing users to \emph{tag} notebooks is natural, but
 relies on users making a conscious effort, which goes against
 our ideal of not asking the user to do work for the system.
-It is better to have the system work for the user,
-relying on passive metrics, such as how often a notebook has been run.
-More generally, infrastructure for automatic \emph{curation} of
+% It is better to have the system work for the user,
+% relying on passive metrics, such as how often a notebook has been run.
+% More generally, infrastructure for automatic
+Automatic
+\emph{curation} of
 software artifacts generated by teams seems to be an important avenue
 for future work.
 
