@@ -34,7 +34,7 @@ of RCloud, through shared workbooks. We observed that hackers readily
 share experiments, demonstrate techniques, publish results to peers and
 managers, and transfer algorithms to other groups. Artifact histories
 can be accessed through the notebook tree or through GitHub's web interface.
-But a probem is that it is easy to create a large number of artifacts
+But a problem is that it is easy to create a large number of artifacts
 and the system does not help enough to organize and navigate them.
 
 \paragraph*{Modularity and granularity} Modularity, or the ability
@@ -120,9 +120,9 @@ package manager that has rules to ensure reasonable consistency.  It
 is at least possible for RCloud to access information about package
 versions and configurations, but support for checking compatibility
 and maintaining multiple versions in the same environment is not
-strong.  At the other end of the scale, there is not much reason to
+strong. At the other end of the scale, there is not much reason to
 expect version control for the external environment, and consider what
-would happend if a web service that is used by a notebook changes the
+would happened if a web service that is used by a notebook changes the
 format of its output: notebooks now stop working, but nothing in
 RCloud has changed.
 
@@ -138,7 +138,7 @@ improve performance in a way that is otherwise transparent to
 application program semantics \cite{Callahan:2006:VVM, Guo:2010:TPI}.
 Currently, RCloud offers no support for implicit caching, but since it
 supports the entirety of the R language, it's possible to incorporate
-caching in R libraries.  Still, since the reuse of intermediate
+caching in R libraries. Still, since the reuse of intermediate
 results is a recurring problem in data exploration environments, it
 seems better to implement this capability in a general purpose
 associative cache. We envision cache management being implemented in a
@@ -172,19 +172,19 @@ still research topics~\cite{Moore:2011:SAF}.
 
 \paragraph*{Nonforgetful, effortless exploration is hard}
 Users reported that RCloud's combined notebook and command line
-interface interferes with their familiar use of R for exploration.  In
-current R practice, the command prompt is used to try things out.  It
+interface interferes with their familiar use of R for exploration. In
+current R practice, the command prompt is used to try things out. It
 is very fast and there is often no commitment: nothing gets saved by
-default, but clean up is automatic.  In contrast, in RCloud's
+default, but clean up is automatic. In contrast, in RCloud's
 notebook interface, cells generated doing exploration are saved in the
-notebook.  We arrived here from an insistence on reproducibility: it is a
+notebook. We arrived here from an insistence on reproducibility: it is a
 core principle of RCloud that no command should be run without being
 saved. In our experience some history steps are only found to be
 important in hindsight, and deleting history by default makes it too
 easy to lose those steps by accident.
 
 Surprisingly, we found that when users realize that \emph{scratch work
-  is getting saved}, the extra versions become a mental burden for
+is getting saved}, the extra versions become a mental burden for
 them. Clearly, RCloud has now moved too far to the other side, and the
 right solution is somewhere in the middle. An intriguing possibility,
 suggested by one of our interviewees, is to implement auditing of data
@@ -215,7 +215,7 @@ the code which generates it can be derived and saved transparently.
 With hundreds of users and thousands of notebooks, the notebook tree
 becomes unwieldy. The search function does not protect searchers from
 obsolete and erroneous notebooks, which by default are retained
-forever.  In addition, some important metadata (has this notebook been
+forever. In addition, some important metadata (has this notebook been
 recently run, or edited?) is also not easily searchable. In other words,
 \emph{textual search} is easy, but \emph{relevance search} is what we
 need. Allowing users to \emph{tag} notebooks is a natural idea, but it
@@ -230,7 +230,7 @@ for future work.
 \paragraph*{Collaboration is hard}
 While forking provides a simple way to continue someone else's work,
 teams working together generate workflows for which forking is not
-ideal.  Although popular, forking poses a problem when dozens of
+ideal. Although popular, forking poses a problem when dozens of
 versions of a notebook proliferate. A fully general solution seems
 intractable. Nevertheless, we expect future versions of the
 notebook infrastructure to move toward git's ideal of decentralized
