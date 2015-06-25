@@ -142,12 +142,12 @@ communicates with Javascript does not expose unprotected evaluation of
 arbitrary functions. Instead, every function that the R layer intends
 to expose is associated with a large, cryptographically-safe random
 number (a ``hash''). This random number is then sent
-across the wire. This number is interpreted as an opaque identifier to
-a function. Because these identifiers are cryptographically safe, all
-that the Javascript layer can do is return them to the R side, in a
-message requesting that this function be called on its behalf. In that
-case, the results of this function call might include \emph{new}
-opaque identifiers, exposing new ``capabilities'' to the web browser.
+across the wire and interpreted as an opaque function identifier.
+Because these identifiers are cryptographically safe, all
+the Javascript layer can do is send them to the R side, in a
+message requesting a function call. 
+The result of this function call might include \emph{new}
+opaque identifiers, exposing new ``capabilities'' to the client.
 
 The same idea of exposing functionality via hashes can be used to give
 the server-side of RCloud access to Javascript functions. This allows
