@@ -88,8 +88,8 @@ in production services.
 
 Fortunately, there is abundant evidence that technology can
 solve many of these problems.
-Gutierrez collected interviews with data scientists~\cite{Gutierrez:2014:DSA},
-which include the following:
+Gutierrez's interviews with data scientists~\cite{Gutierrez:2014:DSA}, 
+include the following:
 
 \begin{itemize}
 \item (upon being given access to other code and data analysis, in
@@ -109,14 +109,12 @@ have testing frameworks so you can go back and test all
 of your data.''
 \end{itemize}
 
-In view of the opportunity to improve this situation,
-we created a software environment that supports the end-to-end
-visual analytics process for individuals and teams and
-their work within larger organizations.
-
-In this paper, we contribute the design of RCloud, and an
-interview study based on its development and deployment
-at AT\&T Labs for about three years.
+In order to tackle these issues, we created RCloud, a software environment
+supporting the end-to-end visual analytics process for individuals and
+teams and their work within larger organizations. In this paper, we
+contribute the design of RCloud, and an interview study based on the
+course of its development and deployment at AT\&T Labs for about three
+years.
 
 RCloud knits together some familiar tools, and 
 provides new features to find data and code; create experimental notebooks;
@@ -127,15 +125,16 @@ control system that provides a common workspace, as well as needed control
 and isolation between stable and experimental versions of code and other
 resources. 
 
-For the most part, the improved capabilities are available by default,
-without much explicit involvement on the part of
-data scientists and other customers. Visual analytics experiments are
-conveniently shared and turned into production websites, without moving
-or porting code. All the published artifacts in the system can be
-searched immediately. Recommendation is as easy as clicking a star
-on a useful notebook.
+One of the key design criteria for RCloud was \emph{transparency}: for
+the most part, the novel features are
+available and usable by default, without explicit involvement on the part of
+data scientists and other customers. Visualizations are
+shared and turned into production websites without moving
+or porting code; all artifacts present in the system can be
+searched at all times; recommendation is as easy as clicking a star
+on a useful workbook.
 
-The high level architecture of the prototype system
+The high level architecture of RCloud
 is shown in figure~\ref{fig:system}.
 We chose R as the foundation because it is already
 the dominant statistical computing language in our lab.
@@ -148,5 +147,5 @@ a community of data scientists, business analysts and other colleagues. The
 platform today has over 300 active accounts; about 20 people use it regularly,
 another 30 people use it more than once a week, and another 50 use it more than
 once a month. Most of the
-active users are members of AT\&T Labs, but some are data scientists and other
+active users are members of AT\&T Labs, but some are data scientists and
 collaborators in other business units.
