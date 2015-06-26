@@ -98,47 +98,33 @@ people started working with RCloud.
 Some aspects of the environment are more difficult to
 manage in RCloud than in conventional systems. RCloud does not separate
 its development and deployment environments, and every version of every
-prototype is shared by default. Although this encourages
+notebook is shared by default. Although this encourages
 collaboration, it also quickly exposes misconfigurations,
 mismatches between package versions, and programming errors
 that can unintentionally affect production websites.
-If an RCloud website is distributed across multiple servers,
-conflicting versions of system software
-can also cause errors that are hard to debug.
-
-Versioning of software components must be managed in several
-levels: in data analysis and visualization scripts (the
-notebooks themselves); in the R environment such as the installed
-libraries and packages; and in the external environment such as the
-operating system, libraries, and protocols spoken by remote
-services. At one end of the scale, we have full control over notebooks
-via git, along with conventions to fix stable notebook versions.
-The R environment is under the control of its package manager that
-has rules to ensure reasonable consistency.
-% (It is possible for RCloud to access information about package
-% versions and configurations, but support for checking compatibility
-% and maintaining multiple versions in the same environment is not
-% strong.)
-At the other end of the scale, there is basically no
-control over the external environment, and if an external service 
-used by a notebook changes its API, the notebook can stop working.
+%% If an RCloud website is distributed across multiple servers,
+%% conflicting versions of system software
+%% can also cause errors that are hard to debug.
+Versioning of software components must be managed in several levels: in
+the notebooks themselves, in the installed libraries and packages of the
+R environment, and in the external environment such as the operating
+system, libraries, and protocols spoken by remote services.
+%% At one end of the scale, we have full control over notebooks
+%% via git, along with conventions to fix stable notebook versions.
+%% The R environment is under the control of its package manager that
+%% has rules to ensure reasonable consistency.
+%% % (It is possible for RCloud to access information about package
+%% % versions and configurations, but support for checking compatibility
+%% % and maintaining multiple versions in the same environment is not
+%% % strong.)
+%% At the other end of the scale, there is basically no
+%% control over the external environment, and if an external service 
+%% used by a notebook changes its API, the notebook can stop working.
 
 %Asynchronous collaborative visual analytics
 %(ACVA)~\cite{Chen:2011:SEC}. This paper addresses visualization
 %\emph{of} the ACVA process. It will be important when we talk about
 %recommendation systems, and navigation of the set of notebooks, etc.
-
-\paragraph*{Caching}
-An important issue is how and where to introduce caching in
-RCloud's distributed computation model. Caching can dramatically
-improve performance in a way that is transparent to
-application program semantics \cite{Callahan:2006:VVM, Guo:2010:TPI}.
-Currently, RCloud offers no support for implicit caching, but 
-it's possible to incorporate caching in individual R libraries.
-The reuse of intermediate results is a recurring problem
-in many data exploration environments.
-We envision general cache management being implemented in a
-new middle layer in the future.
 
 \paragraph*{Security}
 Because RCloud allows arbitrary R code to be run
@@ -146,10 +132,9 @@ Because RCloud allows arbitrary R code to be run
 from running unauthorized arbitrary code. RCloud uses an object capability model
 \cite{Miller:2006:RCT} recently added to the Rserve
 protocol~\cite{Urbanek:2003:AFW}. Object capabilities are opaque handles
-to remote procedure calls; web browsers never directly instruct the
+to remote procedure calls: web browsers never directly instruct the
 RCloud backend to execute arbitrary code, preventing unauthenticated clients
 from making unauthorized calls to the RCloud runtime environment.
-%
 Our back-end environment, on the other hand, assumes a high degree of trust between users:
 access control is delegated to the host operating system and web server.
 Most operating systems rely either on coarse permission models,
@@ -157,11 +142,6 @@ which tend to be ineffective, or on detailed access control
 lists, which tend to be cumbersome.
 Information security in RCloud today is an unsolved matter.
 More sophisticated approaches are open research topics~\cite{Moore:2011:SAF}.
-% We are hopeful that having a richer
-% environment for collaboration and information sharing will encourage
-% new approaches to information security in visual analytics.
-%\gordon{This sounds like we think we are helping by pushing the
-%system to the breaking point, is that the idea?}
 
 \paragraph*{Nonforgetful, effortless exploration is hard}
 Users reported that RCloud's interface clashes with the
@@ -176,7 +156,6 @@ In our experience, some history steps are only found to be
 important in hindsight, and deleting history by default makes
 it too easy to lose those steps by accident.
 
-% Surprisingly, we found that when users realize that \emph{scratch work
 We found that when users realize that \emph{scratch work
 is getting saved}, its sheer volume becomes burdensome.
 Clearly, RCloud is an extreme, and the right solution is
@@ -186,24 +165,6 @@ analyses as it existed in S~\cite{Becker:1988:Auditing}, tying
 data artifacts to the processes that generated them. 
 Bookkeeping would be reduced to selecting the \emph{data} to be kept,
 and the code that generated it would be derived and saved transparently.
-
-%% . This is why we did not implement a simple command line
-%% as many users request. We could imagine making an exception for commands
-%% that have no side-effects, but in the general case this is no easier than
-%% auditing because R is not a purely functional language.
-
-%% The interface is also perceived to be slower, both for computer and for
-%% human. First, there is higher latency when commands run, because
-%% RCloud saves a cell to a repository before executing it. It
-%% may be possible to safely write to the repository behind execution of the
-%% same code. Second, and perhaps more detrimental, the interface requires
-%% switching between the keyboard and mouse, which can be cumbersome.
-%% %\gordon{we don't need to back that up, right? i hate using passive voice.}
-%% Shortcut keys can defined as a workaround, but it would be better
-%% to reduce the need for them.
-
-%% Other complaints mostly focus on layout, and can probably be addressed by
-%% offering better customization, and designs such as tabbed views.
 
 \paragraph*{Discovery is hard} 
 With hundreds of users and thousands of notebooks, a global notebook tree
@@ -215,9 +176,6 @@ recently run, or edited?) is not easily searchable. In other words,
 need. Allowing users to \emph{tag} notebooks is natural, but
 relies on users making a conscious effort, which goes against
 our ideal of not asking the user to do work for the system.
-% It is better to have the system work for the user,
-% relying on passive metrics, such as how often a notebook has been run.
-% More generally, infrastructure for automatic
 Automatic
 \emph{curation} of
 software artifacts generated by teams seems to be an important avenue
