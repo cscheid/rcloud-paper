@@ -4,10 +4,10 @@ Our design takes advantage of existing web software as much as possible.
 HTTP, despite its deficiencies, is the lingua franca of distributed
 interprocess communication. By speaking HTTP natively, our system
 provides a low-friction path from experimental data analysis scripts
-to automated \emph{web services}. 
-essentially a remote function call over
-the web, which can be invoked by higher-level tools. An example of
-this sort of progression is described in Section~\ref{sec:casestudy}.
+to automated \emph{web services}: essentially a remote function call over
+the web which can be invoked by higher-level tools.
+%An example of
+%this sort of progression is described in Section~\ref{sec:casestudy}.
 
 In consequence, the entire high-level infrastructure of RCloud, shown
 in Figure~\ref{sec:system}, uses web standards. The communication between
@@ -60,9 +60,9 @@ interface for simplified repositories. The GitHub web-service API
 provides most of the semantics we need for the versioning portion of
 the storage back end: access to previous versions, comments, starring,
 and forking. This provides the additional benefit that every RCloud
-notebook can also be manipulated like a git repository. Advanced users
-then have access to features like command-line checkout, history
-editing, and so on.
+notebook can also be manipulated like a git repository, granting advanced users
+access to features like command-line checkout and history
+editing.
 
 \subsection{Reputation and Interest: starring\label{sec:starring}}
 
@@ -151,17 +151,19 @@ opaque identifiers, exposing new ``capabilities'' to the client.
 
 The same idea of exposing functionality via hashes can be used to give
 the server-side of RCloud access to Javascript functions. This allows
-R libraries to respond to user input in the browser, giving them
+R libraries to request user input in the browser, giving them
 access to features ranging from password prompts, to the currently
-selected set of points in an interactive linked brushing
-visualization.
+selected set of points in an interactive visualization.
 
 As a result, the features required to provide safe access to R from
 the client, and Javascript access from the R side, also enable
 full two-way communication between the languages.  This provides
 considerable flexibility, so that for example, a chart built with dc.js
-or leaflet.js can call back to analysis functions in R without having
-to define an additional protocol between the processes. From the
-Javascript side, an RPC call into the R process is just another HTTP
-request. From the R process, a call into Javascript looks like just
-another function call.
+or leaflet.js can call analysis functions in R without having
+to define an additional protocol between the processes. Calls in either
+direction look like ordinary function calls.
+%% gw: inaccurate, it's websocket; we still don't support HTTP into a live process
+%% From the
+%% Javascript side, an RPC call into the R process is just another HTTP
+%% request. From the R process, a call into Javascript looks like just
+%% another function call.
