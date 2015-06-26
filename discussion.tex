@@ -165,21 +165,21 @@ More sophisticated approaches are open research topics~\cite{Moore:2011:SAF}.
 %system to the breaking point, is that the idea?}
 
 \paragraph*{Nonforgetful, effortless exploration is hard}
-Users reported that RCloud's combined notebook and command line
-interface interferes with their familiar use of R for exploration. In
-current R practice, the command prompt is used to try things out. It
-is very fast and there is often no commitment: nothing gets saved by
-default, and clean up is automatic. In contrast, in RCloud's
-notebook interface, cells generated doing exploration are saved in the
-notebook. We arrived here from an insistence on reproducibility: it is a
-core principle that no command should be run without being
-saved. In our experience some history steps are only found to be
-important in hindsight, and deleting history by default makes it too
-easy to lose those steps by accident.
+Users reported that RCloud's interface clashes with the
+typical use of R for exploration.
+In current R practice, the command prompt is used to try things out.
+It is very fast and there is often no commitment: nothing gets saved by
+default, and clean up is automatic. In contrast, in RCloud,
+cells generated during exploration are saved in notebooks.
+We arrived at this from an insistence on reproducibility: 
+no command should be run without being saved.
+In our experience, some history steps are only found to be
+important in hindsight, and deleting history by default makes
+it too easy to lose those steps by accident.
 
 % Surprisingly, we found that when users realize that \emph{scratch work
 We found that when users realize that \emph{scratch work
-is getting saved}, it sheer volume becomes burdensome.
+is getting saved}, its sheer volume becomes burdensome.
 Clearly, RCloud is an extreme, and the right solution is
 probably in the middle. An intriguing possibility,
 suggested by one of our interviewees, is to implement auditing of data
