@@ -108,7 +108,7 @@ analysis and visualization~\cite{Kandel:2011:RDI}.
 % We view this as attacking a different semantic level than ours, but also showing
 Although attacking a different semantic level from ours, it shows
 the need for an environment that enables better sharing
-of the knowledge, tools and processes to do this. Anecdotally
+of wrangling knowledge, tools and processes. Anecdotally
 we find much frustration among practitioners that this knowledge
 is difficult to find and often is not recorded or available in a
 reusable form even within the same organization.
@@ -144,7 +144,7 @@ techniques may be integrated and made available to a broad community.
 \centering
 \includegraphics[width=.95\linewidth]{fig/notebook/notebook.pdf}
 \caption{\label{fig:notebook}An RCloud notebook is a sequence of
-\emph{cells}, each a snippet of source in one of the supported languages (typically R, but Python and others are also supported) or Markdown. The main creation workflow involves editing notebooks, which are transparently stored as git repositories in GitHub, providing us with easy access primitives for version tracking. Notebooks can be executed as they're edited (left), or in a standalone viewer (right), via a slightly different URL. This provides a lightweight, low-friction mechanism for sharing results which we discuss in detail in Section~\ref{sec:interviews}. }
+\emph{cells}, each a snippet of source in one of the supported languages (typically R, but Python and others are also supported) or Markdown. The main creation workflow involves editing notebooks, which are transparently stored as git repositories in GitHub, providing us with easy access to primitives for version tracking. Notebooks can be executed as they're edited (left), or in a standalone viewer (right), via a slightly different URL. This provides a lightweight, low-friction mechanism for sharing results which we discuss in detail in Section~\ref{sec:interviews}. }
 \end{figure*}
 
 One high-level goal is to reduce the gap between implementers and
@@ -152,11 +152,19 @@ deployers in visual analytics. The fusion of development with
 production operations in software release management (``DevOps''
 \cite{Httermann:2012:DD} or ``continuous integration''
 \cite{Fowler:2006:Continuous}) is a trend in web services and similar
-fields. By making it convenient for data scientists to expend just a
-little additional effort when creating experiments, we may be able to
-eliminate the need for programming teams to recreate their work to
-deploy it in production, which has a high cost in time, expense and
-accuracy.
+fields.
+%% By making it convenient for data scientists to expend just a
+%% little additional effort when creating experiments, we may be able to
+%% eliminate the need for programming teams to recreate their work to
+%% deploy it in production, which has a high cost in time, expense and
+%% accuracy.
+%gw{sentence was just too long}
+When programming teams recreate the work of data scientists to
+deploy it in production, it has a high cost in time, expense and
+accuracy. By making it convenient for data scientists to productionize
+their experiments, we may be able to eliminate the need for this costly step.
+
+
 
 % We next give a description of the system architecture,
 % and how it enables capabilities that satisfy the requirements as described.
