@@ -1,0 +1,21 @@
+Reviewer 1:  Introduction seems to be too long and section 3 The System is too short.
+Authors: We shortened the introduction. Due to the request to actually shorten the paper, we are not able to expand Section 3.
+
+Reviewer 1: Table 1 compares RCloud with other systems...  I think ManyEyes should be added into the table.
+Authors: This has been done.
+
+Reviewer 1: Captions of figure 2 and figure 4 are too short.
+Authors: 
+
+Summary Review
+The following presentation issues could be addressed in several weeks:
+1- the beginning of the paper: on the issue, its important, and current
+gap
+2- system: provide more details about the system and some design
+decisions
+3- Evaluation: choice of evaluation, and more details about the
+evaluation, settings, etc (right now it is too scattered and not
+presented in a normal (or clear) format:  objectives, users, setting,
+process,results, etc.
+4-discussion: focus around the most important lesson learned.
+
