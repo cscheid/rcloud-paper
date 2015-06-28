@@ -25,22 +25,72 @@ pressing, namely of managing a large number of changing visual
 analysis solutions deeply connected to statistical models and data
 access layers, all while maintaining easy deployment and portability.
 
-\section*{Specific changes}
+\section*{Specific changes, by review criteria}
+
+We will answer the primary reviewer, point by point.
+
+\paragraph*{1. Strengths and weaknesses}
+We have kept most of the content of the interviews, but structured it
+differently to provide more context, as suggested by a reviewer. On
+the other hand, we have chosen to keep the details about the version
+control and execution, because they are central to the system design
+of RCloud, and they enable the collaboration modes we wish the system
+support. As we've argued above, inadequate infrastructure for sharing
+and searching for different analyses and visualizations is becoming
+the bottleneck in large organizations, and we believe our
+infrastructure offers a novel attack on the problem.
+
+\paragraph*{2. Is the work novel, incremental, or previously published? 3. Is this work relevant for VAST?}
+We accept that there are no novel visual encodings in RCloud; our goal
+was to provide supporting infrastructure for visual and exploratory
+analysis as a central tool for discovery in a larger organization. We
+believe there are many previously published VAST papers falling into
+this broader category, and would like to argue for our submission to
+be considered similarly.
+
+\paragraph*{4. Is related work adequately referenced?}
+Even though the primary reviewer did not request any changes on this
+point, later in the review (specifically in point 7) they mentioned a
+missing comparison to ManyEyes in Table 1. We have added this
+comparison.
+
+\paragraph*{5. Are the technical results sound?}
+We apologize for the lack of other examples, but we chose LDAVis as
+one application to showcase RCloud because, to put it completely
+frankly, we are not allowed to disclose the other applications being
+developed at AT\&T Labs. LDAVis has been given publication clearance
+\emph{and} is developed in RCloud. We understand that this is not a
+completely satisfactory solution, but again, we believe the
+fundamental contribution of RCloud is to reduce the barriers for
+exploratory visual analysis in larger organizations, rather than any
+specific visual encodings. Since RCloud is built on top of R and
+HTML5, any technologies spanning this subspace are usable: LDAVis uses
+D3, but one can similarly develop visual encodings using other
+techniques such as WebGL.
+
+\paragraph*{6. Is the exposition clear? 7. Should anything be deleted or condensed?}
+We have reduced the length of the introduction, as requested, but kept
+the system description to most of its current length. We believe that
+exposition to be important for the completeness of the manuscript.
+
+\paragraph*{8. Are the figures informative?}
+We have extended the captions of the requested figures.
+
+\section*{Other issues}
 
 \paragraph*{Paper Length} We have reduced the length of the paper
 to eight pages, removing only extended discussion in the limitation
 and interviews sections. We achieved most of the space savings was
-achieved by a redesign of the figures and tables, and rewriting
-the text.
+achieved by a redesign of the figures and tables, and rewriting the
+text.
 
 \paragraph*{Section Lengths} The reviewers were concerned about the length
 of the introduction. We have significantly reduced it. Unfortunately,
 space constraints meant that we could not add more details to the
 system section.
 
-\paragraph*{Comparisons} We have added the comparison to ManyEyes to Table 1.
-
-\paragraph*{Captions} We have added appropriately-sized captions to Figures 2 and 4.
+\paragraph*{Should anything be deleted or condensed?}
+We have added the comparison to ManyEyes in Table 1, as suggested by the review.
 
 \paragraph*{Typos, missing references} We have corrected all missing references and typos.
 
