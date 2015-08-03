@@ -1,0 +1,221 @@
+\section{Evaluation\label{sec:interviews}}
+
+To evaluate the effectiveness of RCloud, we informally interviewed 13 current or
+recent users of RCloud. 9 are data analysts, and 4 build tools for data
+analysts and business needs. Users felt that sharing works well, but the notebook
+interface slows down exploration, and the browsing interface is not scaling well.
+%gw (trying to be specific)
+
+\paragraph*{Sharing of results} is the core feature of RCloud, and a popular one. All
+the subjects praised this feature.
+
+By default, all RCloud notebooks are publicly visible, and notebooks can be
+found by navigating the notebook tree, or by searching. However, users most
+often mentioned sharing by sending links through email.
+
+Besides providing a way to present work, notebook sharing become a starting point
+in coding. Lilo says, ``The best part is how easily you can
+share code. You can find a working example, rather than wearing
+out Google and finding questionable examples that may or may not work.'' Wendy
+notes, ``[If] some person has done something similar, then you're able to just
+edit that, and that's saved a lot of work for me.''
+
+Eric develops packages for analysts, and uses RCloud ``for sharing code with
+other people, and for doing tutorials for'' the packages he develops.
+``I want people to see how the package works, so I clearly want them
+to see the code... I write it just like I would write GitHub
+Markdown, where you have little code snippets and text, but RCloud lets me
+actually run the snippets [and display the results].'' He also uses RCloud for
+describing and debugging data sources.
+
+Some users, who tried RCloud and were not able to continue for organizational
+reasons, miss certain capabilities. Leith ``[likes] \comment{the concept of} being
+able to create notebooks and share them... A wiki is not the best way for
+communicating results - it's \comment{kind of} like writing a blog post with very limited
+functionality. I have to save every picture and post it as an image.'' He adds,
+``I can't share all of the code because it would just get crowded and wouldn't
+look right on a wiki.'' Iris explains, ``If I could make a folder on RCloud and
+have Python notebooks and also Pig notebooks there, and execute them from RCloud,
+that would be much better than my current [environment], because that would free
+me from manual documentation and version control and also telling people where
+my code was. It would be just, hey, go look on RCloud, here's the stuff.''
+
+\paragraph*{Forking} The ability to fork someone's notebook and continue their
+work proves to be a useful feature, but it is a lousy way to change simple parameters.
+Almost twice as many (131) users have forked
+someone else's notebook as have starred one (75). Lilo says, ``It's one of the
+handiest functions, because instead of having to find it, copy, paste it, you
+just hit Fork, rename it, and it's done. It's pretty amazing.''
+
+Although we intended forking to be available to improve others' code, we
+didn't anticipate users forking their own notebooks, which
+proved very useful. Kenyon says, ``I fork my own notebooks because I'm going off
+and doing some other analogous project, so I've got interesting content that I've
+already done in a previous analysis, that I want to start from and then tweak
+to match a new set of data.''
+
+Forking also provides a way for others to troubleshoot when something goes
+wrong. When Hugh collaborates with users of his notebooks, ``I'll teach people
+to intercept the result in the middle, to insert print statements here and
+there and check values.''
+
+A common but ill-advised use of forking is to change
+parameters. Eric complains that a notebook might say ```This is a report of
+the volume of all of our feeds for this month', and someone would want to
+look at it for the next month or the previous month, so they'd fork it to
+change the month.''
+
+Parameters can be added to a notebook URL, but adding user interface
+elements to do the same thing takes more expertise. Tool builders told us it
+should be easier. Allison explains: ``[Users] can always fork the notebooks
+and make changes, but I
+feel that if the owner of the notebook [adds a user interface], it's easier to
+run. Instead of forking it, if they can set options, it's probably more
+efficient, and they can [still] fork it if they want to.''
+
+\paragraph*{Automatic source control} is appreciated for its safety and ease,
+but the large number of commits can be hard to manage. Lilo says, ``Instead of
+looking back and saying I've got a billion files here in this subdirectory and I
+hope I've got them backed up, if they're on RCloud I know they are.''
+
+Iris points out that automatic versioning works well for coping with
+the details of web development:
+\begin{quote}
+I like the fact that it has a built-in editor, so
+if you need to fix a typo in a link, or an extra line break or other
+nonsense, you can just switch to the edit view, pull up your asset, type
+something, it's automatically saved, committed, everything. You don't have to go
+back to your source code, change it, commit it to the repo, pull the repo to
+your distribution version.
+\end{quote}
+
+On the other hand, saving every change leads to many fine-grained
+versions. Kenyon says that for this reason, the history feature is not that
+helpful: ``I don't need something that keeps track of every mistake I've made or
+every direction I've tried.''
+
+\paragraph*{Discovering others' work} Users reported that the search function is
+more helpful for learning about
+particular functions than techniques. Wendy says, ``The fact that we have
+all the notebooks there, searchable, saves me from replicating what other people
+have done.''
+
+But other users prefer to browse just the notebooks of experts they
+know. Kenyon says, ``Usually I know somebody's notebooks that I want to search
+through, because \comment{I know that} the kind of thing I'm looking for is something
+more obscure than I'm likely to find in some random person's.''
+More selective ways to search will be needed as the number of notebooks
+grows further. We mention possible approaches in Section~\ref{sec:discussion}.
+
+\paragraph*{Integrated analysis} Integrating an analysis language into a web
+development environment is something tool developers really appreciate.
+The structure of Hugh's visualization notebook means
+\begin{quote}
+the other guys who want to do analytics on the data can first pull
+the data, do the analytics on it, and then feed the viewer the data.
+Anyone from the stats group can insert something in between.
+Once you get the data into RCloud, then you have a dataframe
+to work with, and then they can produce another dataframe.
+\end{quote}
+
+Integrating R makes Allison's application development easier:
+``Having an open session where I can run R commands or
+functions without having to invoke an API or send a request and then
+wait for the response is extremely helpful in writing the application.''
+
+\paragraph*{Web is limiting} Although most analysts appreciated RCloud's sharing features,
+it was not a popular tool for exploratory data analysis.
+All analysts with R experience preferred to do analysis in another
+tool, then paste code into RCloud for sharing, because the web interface got in the
+way of their work.
+
+The web interface of RCloud isn't satisfactory to Kenyon: ``It's nice to have
+it saved, but there's this trade-off between it making it easier for me to
+present something or to save something, and my ease of typing and
+correcting and things in a plain editor window.''
+
+Claude also works with text files and commands, rearranging source files
+so active code is at the top. RCloud does not readily support this
+workflow, so Claude often shares work by pasting code into an RCloud
+notebook after he's done.
+
+Working in a shared environment also entails compromises about what you can
+install. Joy says installing alternative or nonstandard packages is
+intrinsic to exploratory data analysis. This is a weakness in shared
+environments like RCloud.
+
+\paragraph*{Impermeable cells} RCloud's notebook interface combines editable
+Markdown with a command line
+interface. Many users felt that this format, so effective for presentation,
+is incompatible with exploratory data analysis.
+
+Much of the time, commands typed at the R command line serve only a transitory
+purpose, so having RCloud persist commands in cells can be annoying.
+Claude notes, ``It saves everything I do like everything is gold, but most
+of it is junk not meant to be saved.''
+
+Material that is not appropriate to save includes ``expressions that allow
+me to check that I'm the right track'' (Kenyon), ``checking out what your data is,
+or you make a plot of the data. Things that should not really become part of a
+notebook, but things that help you understand your data better'' (Wendy).
+
+Users felt that cells do not capture the right level of granularity.
+Kenyon says that RCloud's cell structure
+``tempts me to type a big long thing and then run the whole thing, as opposed to
+typing a few little pieces and then put them together'' as he would on the command line.
+When Eric uses the R command line, he ``copies and pastes 5-10 lines of code,
+so when something breaks, I get an error message on that one line, and I can
+up-arrow and change it and fix it, whereas in RCloud I have to run a whole cell,
+so the only way to get that functionality is if every line's in one cell.''
+
+\paragraph*{Too vertical} The vertical orientation of a notebook also poses problems
+not encountered on the command line, where typically only the last few page of output matters.
+
+Scrolling between code and results is time consuming, and some users would
+prefer to keep results separate from code.
+Gerrard thinks RStudio's layout is more helpful because charts
+are shown in another pane that stays in place while doing analysis. Wendy says
+``Cells are really useful, [but] you want to see your output in a different
+window or on a separate part of the window''.
+
+The cell structure also can be problematic if some cells take a long time to
+execute. High variance is common: cells may take anywhere from seconds to
+hours to run. In this situation, the Run Whole Notebook button is dangerous.
+Claude reports that when converting his work to notebooks, he
+ends up with a lot of comments saying ``This cell takes a long time to run.''
+To avoid this pitfall, some users write code to explicitly cache results.
+
+\paragraph*{A sea of notebooks} RCloud is becoming a victim of its own success, as it is becoming
+difficult to navigate all the notebooks. There are over 5200 notebooks in
+the research instance, of which more than 500 have been starred, and more
+than 350 have been forked.
+
+For this reason, Kenyon doesn't find the notebook tree satisfactory:
+\begin{quote}
+I don't necessarily need to see everybody's notebook that uses RCloud. Every
+time I do something new, I get a new notebook, so now I have 50 or 60 notebooks.
+That's enough to think about just on my own, but if everybody has
+50 or 60 sitting on my display, it's more than I want to know about.
+\end{quote}
+
+Although RCloud promises an environment where notebooks should keep working,
+not all our users have learned the habits that make this a reality. As Joy
+puts it, ``bitrot'' is still a big problem -- notebooks often
+stop working because the user changed the structure of their data, or
+changed a filename or a database. Even if one forks someone
+else's notebook and corrects it, the original notebook still exists with
+the error. She says we need ``organizational protocols'' to catch up with the technology.
+
+Eric, who writes packages and example notebooks for them, mentioned the
+accumulation of dead notebooks. When Eric and Hugh work together on a notebook:
+\begin{quote}
+There's no way for both of us to have ownership of a notebook, so the only
+way is to fork it back and forth, and so we have dozens of old copies. We
+end up deleting all the old ones, but people still have links to them,
+because they don't actually disappear.
+\end{quote}
+
+Eric tried to keep his notebook
+tree well organized, but this didn't help, because people kept old links
+in email, or forked notebooks which had become obsolete.
+He says he became scared to share notebooks: ``Do I want to support this forever?''
