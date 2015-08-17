@@ -1,9 +1,5 @@
 % `vgtc' LaTeX class.
-% - modifications by Meghan Haley on 2011/03/10
-%   - manuscript received dates changed for 2011 journal style
-% - modifications by Steven Bergner on 2009/03/28
-%   - revived teaser feature
-%   - added captionmargin to align teaser caption with abstract width
+% $Id: vgtc.cls 11 2007-04-03 22:25:53Z jpeltier $
 % - modifications by Meghan Haley on 2006/07/20
 %   - manuscript received changed to 31 March for journal style
 % - modifications by Steven Bergner on 2006/06/28
@@ -64,97 +60,94 @@
 % 'cameraready' option.
 
 \DeclareOption{cameraready}{%
-   \vgtc@cameratrue%
-   \vgtc@preprintfalse%
-   \vgtc@reviewfalse%
-   \renewcommand{\vgtc@columnmode}{twocolumn}%
-   \vgtc@doublespacedfalse%
-   \renewcommand{\vgtc@pointsize}{9pt}}
+    \vgtc@cameratrue%
+    \vgtc@preprintfalse%
+    \vgtc@reviewfalse%
+    \renewcommand{\vgtc@columnmode}{twocolumn}%
+    \vgtc@doublespacedfalse%
+    \renewcommand{\vgtc@pointsize}{9pt}}
 
 % 'review' option.
 
 \DeclareOption{review}{%
-   \vgtc@camerafalse%
-   \vgtc@preprintfalse%
-   \vgtc@reviewtrue%
-   \renewcommand{\vgtc@columnmode}{twocolumn}%
-   \vgtc@doublespacedfalse%
-   \renewcommand{\vgtc@pointsize}{9pt}
-   \havecopyrightspacefalse}
+    \vgtc@camerafalse%
+    \vgtc@preprintfalse%
+    \vgtc@reviewtrue%
+    \renewcommand{\vgtc@columnmode}{twocolumn}%
+    \vgtc@doublespacedfalse%
+    \renewcommand{\vgtc@pointsize}{9pt}
+    \havecopyrightspacefalse}
 
 % 'widereview' option.
 
 \DeclareOption{widereview}{%
-   \vgtc@camerafalse%
-   \vgtc@preprintfalse%
-   \vgtc@reviewtrue%
-   \renewcommand{\vgtc@columnmode}{onecolumn}%
-   \vgtc@widetrue%
-   \vgtc@doublespacedtrue%
-   \renewcommand{\vgtc@pointsize}{12pt}}
+    \vgtc@camerafalse%
+    \vgtc@preprintfalse%
+    \vgtc@reviewtrue%
+    \renewcommand{\vgtc@columnmode}{onecolumn}%
+    \vgtc@widetrue%
+    \vgtc@doublespacedtrue%
+    \renewcommand{\vgtc@pointsize}{12pt}}
 
 % 'preprint' option.
 
 \DeclareOption{preprint}{%
-   \vgtc@camerafalse%
-   \vgtc@preprinttrue%
-   \vgtc@reviewfalse%
-   \renewcommand{\vgtc@columnmode}{twocolumn}%
-   \vgtc@doublespacedfalse%
-   \renewcommand{\vgtc@pointsize}{9pt}}
+    \vgtc@camerafalse%
+    \vgtc@preprinttrue%
+    \vgtc@reviewfalse%
+    \renewcommand{\vgtc@columnmode}{twocolumn}%
+    \vgtc@doublespacedfalse%
+    \renewcommand{\vgtc@pointsize}{9pt}}
 
 \DeclareOption{tvcgpapersize}
-  {\setlength\paperheight {10.75in}%
-   \setlength\paperwidth  {7.875in}
-   \tvcgsizetrue
+   {\setlength\paperheight {10.75in}%
+    \setlength\paperwidth  {7.875in}
+    \tvcgsizetrue
 }
 
 % 'journal' option
 \DeclareOption{journal}{%
-   \vgtcjournaltrue %
-   \@twosidetrue  \@mparswitchtrue %
-   %\ExecuteOptions{tvcgpapersize}
+    \vgtcjournaltrue %
+    \@twosidetrue  \@mparswitchtrue %
+    %\ExecuteOptions{tvcgpapersize}
 }
 
-
-
-%%% the following code has partly been adapted from egpubl.cls
-%\newif\ifpdf  % determine if we are running PDFLaTeX or not
-%\ifx\pdfoutput\undefined \pdffalse % we are not running PDFLaTeX 
-%\else 
-% %\pdfoutput=1 % we are running PDFLaTeX 
-% \pdftrue 
-%\fi 
+%% the following code has partly been adapted from egpubl.cls
+\newif\ifpdf  % determine if we are running PDFLaTeX or not
+\ifx\pdfoutput\undefined \pdffalse % we are not running PDFLaTeX 
+\else 
+  %\pdfoutput=1 % we are running PDFLaTeX 
+  \pdftrue 
+\fi 
 
 \newcommand{\vgtcinsertpkg}{}
 \DeclareOption{electronic}{%
-\RequirePackage{ifpdf}
-\ifpdf 
- \renewcommand{\vgtcinsertpkg}{%
-  \usepackage[pdftex,
-   pagebackref=true,
-   colorlinks,linkcolor=blue,citecolor=blue,urlcolor=blue,
-   bookmarks=false,
-   pdfpagemode=UseNone,
-   pdftitle={\@title},
-   %pdfauthor={\@shortauthor},
-   %pdfsubject={\@title},
-   pdfkeywords={\vgtc@keywords}]{hyperref}
- }
-\else 
- \renewcommand{\vgtcinsertpkg}{%
-  \usepackage[dvips,
-   pagebackref=true,
-   colorlinks,linkcolor=blue,citecolor=blue,urlcolor=blue,
-   bookmarks=false,
-   pdfpagemode=UseNone,
-   %pdftitle={\@title},
-   %pdfauthor={authorinfo},
-   %pdfsubject={\@title},
-   %pdfkeywords={\vgtc@keywords}
-  ]{hyperref}
- }
-\fi
+ \ifpdf 
+  \renewcommand{\vgtcinsertpkg}{%
+   \usepackage[pdftex,
+    pagebackref=true,
+    colorlinks,linkcolor=blue,citecolor=blue,urlcolor=blue,
+    bookmarks=false,
+    pdfpagemode=UseNone,
+    pdftitle={\@title},
+    %pdfauthor={\@shortauthor},
+    %pdfsubject={\@title},
+    pdfkeywords={\vgtc@keywords}]{hyperref}
+  }
+ \else 
+  \renewcommand{\vgtcinsertpkg}{%
+   \usepackage[dvips,
+    pagebackref=true,
+    colorlinks,linkcolor=blue,citecolor=blue,urlcolor=blue,
+    bookmarks=false,
+    pdfpagemode=UseNone,
+    %pdftitle={\@title},
+    %pdfauthor={authorinfo},
+    %pdfsubject={\@title},
+    %pdfkeywords={\vgtc@keywords}
+   ]{hyperref}
+  }
+ \fi
 }
 %% end of code adapted from egpubl.cls
 
@@ -165,60 +158,60 @@
 % Here's a warning command for use just below.
 
 \newcommand{\vgtc@optwarning}[1]{%
-   \ifvgtc@camera
-       \ClassWarningNoLine{vgtc}%
-           {#1 option used in camera-ready mode.\MessageBreak
-            This violates submission specifications}
-   \fi
+    \ifvgtc@camera
+        \ClassWarningNoLine{vgtc}%
+            {#1 option used in camera-ready mode.\MessageBreak
+             This violates submission specifications}
+    \fi
 }
 
 % The 'onecolumn' option doesn't work in 'cameraready' mode.
 
 \DeclareOption{onecolumn}{%
-   \vgtc@optwarning{onecolumn}
-   \renewcommand{\vgtc@columnmode}{onecolumn}}
+    \vgtc@optwarning{onecolumn}
+    \renewcommand{\vgtc@columnmode}{onecolumn}}
 
 % The 'twocolumn' option works in 'cameraready' mode.
 
 \DeclareOption{twocolumn}{%
-   \renewcommand{\vgtc@columnmode}{twocolumn}}
+    \renewcommand{\vgtc@columnmode}{twocolumn}}
 
 % Only the '9pt' size works in 'cameraready' mode.
 
 \DeclareOption{9pt}{%
-   \renewcommand{\vgtc@pointsize}{9pt}}
+    \renewcommand{\vgtc@pointsize}{9pt}}
 \DeclareOption{10pt}{%
-   \vgtc@optwarning{10pt}
-   \renewcommand{\vgtc@pointsize}{10pt}}
+    \vgtc@optwarning{10pt}
+    \renewcommand{\vgtc@pointsize}{10pt}}
 \DeclareOption{11pt}{%
-   \vgtc@optwarning{11pt}
-   \renewcommand{\vgtc@pointsize}{11pt}}
+    \vgtc@optwarning{11pt}
+    \renewcommand{\vgtc@pointsize}{11pt}}
 \DeclareOption{12pt}{%
-   \vgtc@optwarning{12pt}
-   \renewcommand{\vgtc@pointsize}{12pt}}
+    \vgtc@optwarning{12pt}
+    \renewcommand{\vgtc@pointsize}{12pt}}
 
 % The 'singlespace' option works in 'cameraready' mode.
 
 \DeclareOption{singlespace}{%
-   \vgtc@doublespacedfalse}
+    \vgtc@doublespacedfalse}
 
 % The 'doublespace' option does not work in 'cameraready' mode.
 
 \DeclareOption{doublespace}{%
-   \vgtc@optwarning{doublespace}
-   \vgtc@doublespacedtrue}
+    \vgtc@optwarning{doublespace}
+    \vgtc@doublespacedtrue}
 
 % No 'titlepage' option in 'cameraready' mode.
 
 \DeclareOption{titlepage}{%
-   \OptionNotUsed%
-   \ClassWarningNoLine{vgtc}{titlepage option not allowed}}
+    \OptionNotUsed%
+    \ClassWarningNoLine{vgtc}{titlepage option not allowed}}
 
 % No 'landscape' mode in 'cameraready' mode, either.
 
 \DeclareOption{landscape}{%
-   \OptionNotUsed%
-   \ClassWarningNoLine{vgtc}{landscape option not allowed}}
+    \OptionNotUsed%
+    \ClassWarningNoLine{vgtc}{landscape option not allowed}}
 
 % Pass everything else to the 'article' class, upon which this is based.
 
@@ -229,7 +222,7 @@
 \PassOptionsToClass{twoside}{article}
 \fi
 \ifdim\vgtc@pointsize>9pt
-   \PassOptionsToClass{\vgtc@pointsize}{article}
+    \PassOptionsToClass{\vgtc@pointsize}{article}
 \fi
 
 % ------------ package loading --------------
@@ -250,19 +243,10 @@
 %\newcommand{\journalidtxt}{IEEE TRANSACTIONS ON VISUALIZATION AND
 %COMPUTER GRAPHICS, VOL. 12, NO. 5, SEPTEMBER/OCTOBER 2006}
 %\newcommand{\journalid}[1]{\renewcommand{\journalidtxt}{#1}}
-
-%%Comment from here
-\newcommand{\manuscriptnotetxt}{
-Manuscript received 31 March 2013; accepted 1 August 2013; posted online 13 October 2013; mailed on 4 October 2013.\par
-For information on obtaining reprints of this article, please send \par
-e-mail to: tvcg@computer.org.
-}
-%% to here to not use the blank
-
-%% NOTE FOR BLANK SPACING
-%% uncomment from here
-%\newcommand{\manuscriptnotetxt}{\vspace{.25in}}
-%%  to here
+\newcommand{\manuscriptnotetxt}{Manuscript received 31 March 2007;
+accepted 1 August 2007; posted online 2 November 2007. \par For
+information on obtaining reprints of this article, please send e-mail
+to: tvcg@computer.org.}
 \newcommand{\manuscriptnote}[1]{\renewcommand{\manuscriptnotetxt}{#1}}
 \newcommand{\copyrighttext}{}
 %%\newcommand{\copyrighttext}{1077-2626/06/\$20.00 \copyright 2006 IEEE%
@@ -271,9 +255,9 @@ e-mail to: tvcg@computer.org.
 \newcommand{\authorfooter}[1]{\renewcommand{\authorfootertext}{{\em#1}}}
 \newcommand{\firstsectiontxt}{}
 \newcommand{\firstsection}[1]{\renewcommand{\firstsectiontxt}{#1}}
-\newcommand{\acknowledgments}[1]{%
+\newcommand{\acknowledgements}[1]{%
 \ifvgtc@review\else%
-\section*{Acknowledgments}
+\section*{Acknowledgements}
 #1
 \fi}
 
@@ -293,19 +277,17 @@ e-mail to: tvcg@computer.org.
 \flushbottom
 \setlength{\textwidth}{7.125in}
 \setlength{\columnsep}{0.17in}
-\newlength{\captionmargin}
-\setlength{\captionmargin}{0in}
 
 \iftvcgsize
- \setlength\paperheight {10.75in}
- \setlength\paperwidth  {7.875in}
- \setlength{\evensidemargin}{-0.6875in} %1in-0.3125
- \setlength{\oddsidemargin}{-.58in} %1in-0.4375
+  \setlength\paperheight {10.75in}
+  \setlength\paperwidth  {7.875in}
+  \setlength{\evensidemargin}{-0.6875in} %1in-0.3125
+  \setlength{\oddsidemargin}{-.58in} %1in-0.4375
 \else %else assume letter
- \setlength\paperheight {11in}
- \setlength\paperwidth  {8.5in}
- \setlength{\evensidemargin}{-0.375in} %1-(0.3125+0.3125)
- \setlength{\oddsidemargin}{-.25in} %1-(0.4375+0.3125)
+  \setlength\paperheight {11in}
+  \setlength\paperwidth  {8.5in}
+  \setlength{\evensidemargin}{-0.375in} %1-(0.3125+0.3125)
+  \setlength{\oddsidemargin}{-.25in} %1-(0.4375+0.3125)
 \fi
 
 \else
@@ -324,179 +306,177 @@ e-mail to: tvcg@computer.org.
 \fi
 
 \renewcommand{\ps@plain}%
-   {%
-   \renewcommand{\@oddhead}{}%
-   \renewcommand{\@oddfoot}{}%
+    {%
+    \renewcommand{\@oddhead}{}%
+    \renewcommand{\@oddfoot}{}%
 
-   \ifvgtc@preprint%
-     \renewcommand{\@oddhead}{\hfil\textit{\large\vgtc@preprinttext}\hfil}%
-     \renewcommand{\@oddfoot}{\hfil\textrm{\thepage}\hfil}%
-   \fi%
+    \ifvgtc@preprint%
+      \renewcommand{\@oddhead}{\hfil\textit{\large\vgtc@preprinttext}\hfil}%
+      \renewcommand{\@oddfoot}{\hfil\textrm{\thepage}\hfil}%
+    \fi%
 
-   \ifvgtc@review%
-     \renewcommand{\@oddhead}{\hfil\textit{\large\vgtc@reviewtext}\hfil}%
-     \renewcommand{\@oddfoot}{\hfil\textrm{\thepage}\hfil}%
-   \fi%
+    \ifvgtc@review%
+      \renewcommand{\@oddhead}{\hfil\textit{\large\vgtc@reviewtext}\hfil}%
+      \renewcommand{\@oddfoot}{\hfil\textrm{\thepage}\hfil}%
+    \fi%
 
-   \ifvgtcjournal%
-     \ifvgtc@review\else\ifvgtc@preprint\else%
+    \ifvgtcjournal%
+      \ifvgtc@review\else\ifvgtc@preprint\else%
 %        \renewcommand{\@evenhead}{\hfil\sffamily\small\MakeUppercase{\journalidtxt}}%
 %        \renewcommand{\@oddhead}{\sffamily\small\MakeUppercase{\shortauthortitletext}\hfil}%
-       \renewcommand{\@oddfoot}{}% no page number
-       \renewcommand{\@evenfoot}{\@oddfoot}%
-     \fi\fi%
-   \else%
+        \renewcommand{\@oddfoot}{}% no page number
+        \renewcommand{\@evenfoot}{\@oddfoot}%
+      \fi\fi%
+    \else%
 
-     \renewcommand{\@evenhead}{\@oddhead}%
-     \renewcommand{\@evenfoot}{\@oddfoot}%
-   \fi%
-   }
+      \renewcommand{\@evenhead}{\@oddhead}%
+      \renewcommand{\@evenfoot}{\@oddfoot}%
+    \fi%
+    }
 
 % will be used on the first page
 \renewcommand{\ps@empty}%
-   {%
-   \renewcommand{\@oddhead}{}%
-   \renewcommand{\@oddfoot}{}%
+    {%
+    \renewcommand{\@oddhead}{}%
+    \renewcommand{\@oddfoot}{}%
 
-   \ifvgtc@preprint%
-     \renewcommand{\@oddhead}{\hfil\textit{\large\vgtc@preprinttext}\hfil}%
-     \renewcommand{\@oddfoot}{\hfil\textrm{\thepage}\hfil}%
-   \fi%
+    \ifvgtc@preprint%
+      \renewcommand{\@oddhead}{\hfil\textit{\large\vgtc@preprinttext}\hfil}%
+      \renewcommand{\@oddfoot}{\hfil\textrm{\thepage}\hfil}%
+    \fi%
 
-   \ifvgtc@review%
-     \renewcommand{\@oddhead}{\hfil\textit{\large\vgtc@reviewtext}\hfil}%
-     \renewcommand{\@oddfoot}{\hfil\textrm{\thepage}\hfil}%
-   \fi%
+    \ifvgtc@review%
+      \renewcommand{\@oddhead}{\hfil\textit{\large\vgtc@reviewtext}\hfil}%
+      \renewcommand{\@oddfoot}{\hfil\textrm{\thepage}\hfil}%
+    \fi%
 
-   \ifvgtcjournal%
-     \ifvgtc@review\else\ifvgtc@preprint\else%
+    \ifvgtcjournal%
+      \ifvgtc@review\else\ifvgtc@preprint\else%
 %        \renewcommand{\@oddhead}{\sffamily\small\MakeUppercase{\journalidtxt}\hfil}%
-       \renewcommand{\@oddfoot}{\hfil{\small\sffamily\copyrighttext}\hfil}%
-     \fi\fi%
-   \fi%
-   \renewcommand{\@evenhead}{\@oddhead}%
-   \renewcommand{\@evenfoot}{\@oddfoot}%
-   }
+        \renewcommand{\@oddfoot}{\hfil{\small\sffamily\copyrighttext}\hfil}%
+      \fi\fi%
+    \fi%
+    \renewcommand{\@evenhead}{\@oddhead}%
+    \renewcommand{\@evenfoot}{\@oddfoot}%
+    }
 
 % no page numbers - they are added in production
 
 \pagestyle{plain}
 
 \newcommand{\vgtc@setninepoint}{
-   \renewcommand\normalsize{%
-       \@setfontsize\normalsize\@ixpt\@xpt
-       \abovedisplayskip 9\p@ \@plus2\p@ \@minus4\p@
-       \abovedisplayshortskip \z@ \@plus3\p@
-       \belowdisplayshortskip 6\p@ \@plus3\p@ \@minus3\p@
-       \belowdisplayskip \abovedisplayskip
-       \let\@listi\@listI}
-   \renewcommand\small{%
-       \@setfontsize\small\@viipt\@ixpt
-       \abovedisplayskip 8.5\p@ \@plus3\p@ \@minus4\p@
-       \abovedisplayshortskip \z@ \@plus2\p@
-       \belowdisplayshortskip 4\p@ \@plus2\p@ \@minus2\p@
-       \def\@listi{\leftmargin\leftmargini
-                   \topsep 4\p@ \@plus2\p@ \@minus2\p@
-                   \parsep 2\p@ \@plus\p@ \@minus\p@
-                   \itemsep \parsep}%
-       \belowdisplayskip \abovedisplayskip}
-   \renewcommand\footnotesize{%
-       \@setfontsize\footnotesize\@viiipt{9.5}%
-       \abovedisplayskip 6\p@ \@plus2\p@ \@minus4\p@
-       \abovedisplayshortskip \z@ \@plus\p@
-       \belowdisplayshortskip 3\p@ \@plus\p@ \@minus2\p@
-       \def\@listi{\leftmargin\leftmargini
-                   \topsep 3\p@ \@plus\p@ \@minus\p@
-                   \parsep 2\p@ \@plus\p@ \@minus\p@
-                   \itemsep \parsep}%
-       \belowdisplayskip \abovedisplayskip}
-   \renewcommand\scriptsize{\@setfontsize\scriptsize\@viiipt{9.5}}
-   \renewcommand\tiny{\@setfontsize\tiny\@vpt\@vipt}
-   \renewcommand\large{\@setfontsize\large\@xpt\@xiipt}
-   \renewcommand\Large{\@setfontsize\Large\@xiipt{14}}
-   \renewcommand\LARGE{\@setfontsize\LARGE\@xivpt{18}}
-   \renewcommand\huge{\@setfontsize\huge\@xviipt{22}}
-   \renewcommand\Huge{\@setfontsize\Huge\@xxpt{25}}
-   \selectfont
+    \renewcommand\normalsize{%
+        \@setfontsize\normalsize\@ixpt\@xpt
+        \abovedisplayskip 9\p@ \@plus2\p@ \@minus4\p@
+        \abovedisplayshortskip \z@ \@plus3\p@
+        \belowdisplayshortskip 6\p@ \@plus3\p@ \@minus3\p@
+        \belowdisplayskip \abovedisplayskip
+        \let\@listi\@listI}
+    \renewcommand\small{%
+        \@setfontsize\small\@viipt\@ixpt
+        \abovedisplayskip 8.5\p@ \@plus3\p@ \@minus4\p@
+        \abovedisplayshortskip \z@ \@plus2\p@
+        \belowdisplayshortskip 4\p@ \@plus2\p@ \@minus2\p@
+        \def\@listi{\leftmargin\leftmargini
+                    \topsep 4\p@ \@plus2\p@ \@minus2\p@
+                    \parsep 2\p@ \@plus\p@ \@minus\p@
+                    \itemsep \parsep}%
+        \belowdisplayskip \abovedisplayskip}
+    \renewcommand\footnotesize{%
+        \@setfontsize\footnotesize\@viiipt{9.5}%
+        \abovedisplayskip 6\p@ \@plus2\p@ \@minus4\p@
+        \abovedisplayshortskip \z@ \@plus\p@
+        \belowdisplayshortskip 3\p@ \@plus\p@ \@minus2\p@
+        \def\@listi{\leftmargin\leftmargini
+                    \topsep 3\p@ \@plus\p@ \@minus\p@
+                    \parsep 2\p@ \@plus\p@ \@minus\p@
+                    \itemsep \parsep}%
+        \belowdisplayskip \abovedisplayskip}
+    \renewcommand\scriptsize{\@setfontsize\scriptsize\@viiipt{9.5}}
+    \renewcommand\tiny{\@setfontsize\tiny\@vpt\@vipt}
+    \renewcommand\large{\@setfontsize\large\@xpt\@xiipt}
+    \renewcommand\Large{\@setfontsize\Large\@xiipt{14}}
+    \renewcommand\LARGE{\@setfontsize\LARGE\@xivpt{18}}
+    \renewcommand\huge{\@setfontsize\huge\@xviipt{22}}
+    \renewcommand\Huge{\@setfontsize\Huge\@xxpt{25}}
+    \selectfont
 }
 \ifdim\vgtc@pointsize=9pt
-   \vgtc@setninepoint
+    \vgtc@setninepoint
 \fi
 
 \newcommand{\vgtc@sectionfont}{}
 \newcommand{\sectionfont}[1]{\renewcommand{\vgtc@sectionfont}{#1}}
 \renewcommand\section{\@startsection{section}{1}{\z@}%
-               {-2ex \@plus -1ex \@minus -.2ex}%
-               {0.8ex \@plus .2ex}%
-               {\reset@font\normalsize\sffamily\bfseries\scshape\vgtc@sectionfont}}
+                {-2ex \@plus -1ex \@minus -.2ex}%
+                {0.8ex \@plus .2ex}%
+                {\reset@font\normalsize\sffamily\bfseries\scshape\vgtc@sectionfont}}
 \renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
-               {-1.8ex\@plus -1ex \@minus -.2ex}%
-               {0.8ex \@plus .2ex}%
-               {\reset@font\normalsize\sffamily\bfseries\vgtc@sectionfont}}
+                {-1.8ex\@plus -1ex \@minus -.2ex}%
+                {0.8ex \@plus .2ex}%
+                {\reset@font\normalsize\sffamily\bfseries\vgtc@sectionfont}}
 \renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
-               {-1.8ex\@plus -1ex \@minus -.2ex}%
-               {0.8ex \@plus .2ex}%
-               {\reset@font\sffamily\normalsize\vgtc@sectionfont}}
+                {-1.8ex\@plus -1ex \@minus -.2ex}%
+                {0.8ex \@plus .2ex}%
+                {\reset@font\sffamily\normalsize\vgtc@sectionfont}}
 
 \renewcommand\paragraph{\@startsection{paragraph}{4}{1em}%
-               {1ex \@plus 1ex \@minus.2ex}%
-               {-1em}%
-               {\reset@font\normalsize\sffamily\vgtc@sectionfont}}
+                {1ex \@plus 1ex \@minus.2ex}%
+                {-1em}%
+                {\reset@font\normalsize\sffamily\vgtc@sectionfont}}
 %\renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
 %                {3.25ex \@plus1ex \@minus.2ex}%
 %                {-1em}%
 %                {\reset@font\normalsize\sffamily\bfseries\vgtc@sectionfont}}
 
 \renewcommand\subparagraph{\@startsection{subparagraph}{5}{\parindent}%
-               {3.25ex \@plus1ex \@minus .2ex}%
-               {-1em}%
-               {\reset@font\normalsize\sffamily\bfseries\vgtc@sectionfont}}
+                {3.25ex \@plus1ex \@minus .2ex}%
+                {-1em}%
+                {\reset@font\normalsize\sffamily\bfseries\vgtc@sectionfont}}
 
 \ifvgtc@wide\else
 %% make captionfont 8pt
- \newcommand{\captionfonts}{\scriptsize\sffamily}
-
- \long\def\@makecaption#1#2{%
-   \vskip\abovecaptionskip
-   \leftskip = \captionmargin \rightskip = \leftskip%
-   \sbox\@tempboxa{\captionfonts #1\ifvgtcjournal. \else: \fi #2}%
-   \ifdim \wd\@tempboxa >\hsize
-     {\captionfonts #1\ifvgtcjournal. \else: \fi #2\par}
-   \else %single line caption
-     \global \@minipagefalse
-     \def\@figcaptype{figure}
-     \hskip0.0in%needed to make leftskip work
-     \hb@xt@\hsize{\ifvgtcjournal\ifx\@captype\@figcaptype\else\hfil\fi\else\hfil\fi\box\@tempboxa\hfil}%
-   \fi
-   \vskip\belowcaptionskip}
+  \newcommand{\captionfonts}{\scriptsize\sffamily}
+  
+  \long\def\@makecaption#1#2{%
+    \vskip\abovecaptionskip
+    \sbox\@tempboxa{\captionfonts #1\ifvgtcjournal. \else: \fi #2}%
+    \ifdim \wd\@tempboxa >\hsize
+      {\captionfonts #1\ifvgtcjournal. \else: \fi #2\par}
+    \else
+      \global \@minipagefalse
+      \def\@figcaptype{figure}
+      \hb@xt@\hsize{\ifvgtcjournal\ifx\@captype\@figcaptype\else\hfil\fi\else\hfil\fi\box\@tempboxa\hfil}%
+    \fi
+    \vskip\belowcaptionskip}
 
 %% fix the font size of the bibliography to 8pt
- \newdimen\bibindent
- \newdimen\bibspacing
- \setlength\bibindent{1em}
- \setlength{\bibspacing}{\z@}
- \renewenvironment{thebibliography}[1]
-      {\section*{\refname}%
-       \scriptsize%
-       \@mkboth{\MakeUppercase\refname}{\MakeUppercase\refname}%
-       \list{\@biblabel{\@arabic\c@enumiv}}%
-            {\settowidth\labelwidth{\@biblabel{#1}}%
-             \leftmargin\labelwidth
-             \advance\leftmargin\labelsep
-             \itemsep\bibspacing    % should this be commented out?
-             \parsep\bibspacing     % should this be commented out?
-             \@openbib@code
-             \usecounter{enumiv}%
-             \let\p@enumiv\@empty
-             \renewcommand\theenumiv{\@arabic\c@enumiv}}%
-       \sloppy
-       \clubpenalty4000
-       \@clubpenalty \clubpenalty
-       \widowpenalty4000%
-       \sfcode`\.\@m}
-      {\def\@noitemerr
-        {\@latex@warning{Empty `thebibliography' environment}}%
-       \endlist}
+  \newdimen\bibindent
+  \newdimen\bibspacing
+  \setlength\bibindent{1em}
+  \setlength{\bibspacing}{\z@}
+  \renewenvironment{thebibliography}[1]
+       {\section*{\refname}%
+        \scriptsize%
+        \@mkboth{\MakeUppercase\refname}{\MakeUppercase\refname}%
+        \list{\@biblabel{\@arabic\c@enumiv}}%
+             {\settowidth\labelwidth{\@biblabel{#1}}%
+              \leftmargin\labelwidth
+              \advance\leftmargin\labelsep
+              \itemsep\bibspacing    % should this be commented out?
+              \parsep\bibspacing     % should this be commented out?
+              \@openbib@code
+              \usecounter{enumiv}%
+              \let\p@enumiv\@empty
+              \renewcommand\theenumiv{\@arabic\c@enumiv}}%
+        \sloppy
+        \clubpenalty4000
+        \@clubpenalty \clubpenalty
+        \widowpenalty4000%
+        \sfcode`\.\@m}
+       {\def\@noitemerr
+         {\@latex@warning{Empty `thebibliography' environment}}%
+        \endlist}
 \fi
 
 \newcommand{\vgtc@empty}{}
@@ -515,7 +495,7 @@ e-mail to: tvcg@computer.org.
 {\@latex@warning{Format specification no longer required.}}
 
 \newcommand{\vgtc@teaser}{}
-\newcommand{\teaser}[1]{\renewcommand{\vgtc@teaser}{\setlength{\captionmargin}{0.33in} #1 \setlength{\captionmargin}{0in}}}
+\newcommand{\teaser}[1]{\renewcommand{\vgtc@teaser}{#1}}
 
 \newcommand{\vgtc@abstxt}{}
 \let\origabstract\abstract
@@ -529,86 +509,83 @@ e-mail to: tvcg@computer.org.
 \newcommand{\CCScatlist}[1]{\renewcommand{\vgtc@indexterms}{#1}}
 
 \newcommand{\CCScat}[4]{%
-    #1 [#2]%
-    \ifx#3\vgtc@empty \else : #3\fi%
-    \ifx#4\vgtc@empty \else ---#4\fi%
+     #1 [#2]%
+     \ifx#3\vgtc@empty \else : #3\fi%
+     \ifx#4\vgtc@empty \else ---#4\fi%
 }
 
-% use any of the following to adjust spaces in title block
 \newlength{\titlespace}
 \setlength{\titlespace}{0.25in}
 
 \newlength{\teaserspace}
-\setlength{\teaserspace}{0.0in}
+\setlength{\teaserspace}{0.25in}
 
 \newlength{\abstxtspace}
 \setlength{\abstxtspace}{0.20in}
 
 \renewcommand{\@maketitle}{%
-   \ifvgtc@review
-       \begin{center}%
-           \renewcommand{\thanks}[1]{}
-           {\sffamily\ifvgtcjournal\huge\else\LARGE\bfseries\fi%
+    \ifvgtc@review
+        \begin{center}%
+            \renewcommand{\thanks}[1]{}
+            {\sffamily\ifvgtcjournal\huge\else\LARGE\bfseries\fi%
 	      \vgtc@sectionfont%
 	      \@title \par}%
-           \vspace{1\baselineskip}%
-           {Category: \vgtc@category \par}%
+            \vspace{1\baselineskip}%
+            {Category: \vgtc@category \par}%
 %            \vspace{0.25\baselineskip}%	% no longer needed (1996)
 %            {Format: \vgtc@format \par}%	% no longer needed (1996)
-           \vspace{\titlespace}%
-           \ifx\vgtc@teaser\vgtc@empty \else%
-               \begingroup%
-                   \def\@captype{figure}%
-                   \vgtc@teaser%
-               \endgroup\par%
-               \vspace{\teaserspace}%
-           \fi%
-       \end{center} \par%
-   \else
-       \begin{center}%
-           {\sffamily\ifvgtcjournal\huge\else\LARGE\bfseries\fi%
+            \vspace{\titlespace}%
+            \ifx\vgtc@teaser\vgtc@empty \else%
+                \begingroup%
+                    \def\@captype{figure}%
+                    \vgtc@teaser%
+                \endgroup\par%
+                \vspace{\teaserspace}%
+            \fi%
+        \end{center} \par%
+    \else
+        \begin{center}%
+            {\sffamily\ifvgtcjournal\huge\else\LARGE\bfseries\fi%
 	      \vgtc@sectionfont%
 	      \@title \par}%
-           \ifvgtcjournal%
-             %\vspace{2\baselineskip}%
-             \vspace{14pt}%
-           \else%
+            \ifvgtcjournal%
+              %\vspace{2\baselineskip}%
+              \vspace{14pt}%
+            \else%
 	    \vspace{1\baselineskip}\fi%
-           \large\sffamily\vgtc@sectionfont 
-           \begin{tabular}[t]{c}%
-               \@author
-           \end{tabular}\par%
-           \ifx\vgtc@affiliation\vgtc@empty \else%
-               \par\vspace{1\baselineskip}%
-               \vgtc@affiliation\par%
-           \fi%
-          \ifvgtcjournal\vspace{0.08in}\else\vspace{\titlespace}\fi%
-           \ifx\vgtc@teaser\vgtc@empty \else%
-             { 
-               \begingroup%
-                   \def\@captype{figure}%
-                   \vgtc@teaser%
-               \endgroup\par%
-             }
-               \vspace{\teaserspace}%
-           \fi%
-       \end{center} \par%
-   \fi
-   \ifvgtcjournal%
-       {\scriptsize\sffamily%\renewcommand{\baselinestretch}{1.1}
-       \leftskip = 0.33in \rightskip = \leftskip%
-       \ifx\vgtc@abstxt\vgtc@empty \else%
-            \begingroup%
-                {\bfseries Abstract}---\vgtc@abstxt%
-            \endgroup\par%
-        \fi%
-        \ifx\vgtc@keywords\vgtc@empty \else%
-            \begingroup%
-                %{\normalsize\vgtc@absfont {\bfseries Keywords - } \vgtc@keywords}%
-                \vspace{0.5\baselineskip}%
-                \par\noindent \textbf{Index Terms}---\vgtc@keywords%
-            \endgroup\par%
-        \fi%
+            \large\sffamily\vgtc@sectionfont 
+            \begin{tabular}[t]{c}%
+                \@author
+            \end{tabular}%
+            \ifx\vgtc@affiliation\vgtc@empty \else%
+                \par\vspace{1\baselineskip}%
+                \vgtc@affiliation\par%
+            \fi%
+           \ifvgtcjournal\vspace{0.08in}\else\vspace{\titlespace}\fi%
+            \ifx\vgtc@teaser\vgtc@empty \else%
+                \begingroup%
+                    \def\@captype{figure}%
+                    \vgtc@teaser%
+                \endgroup\par%
+                \vspace{\teaserspace}%
+            \fi%
+        \end{center} \par%
+    \fi
+    \ifvgtcjournal%
+        {\scriptsize\sffamily%\renewcommand{\baselinestretch}{1.1}
+        \leftskip = 0.33in \rightskip = \leftskip%
+        \ifx\vgtc@abstxt\vgtc@empty \else%
+             \begingroup%
+                 {\bfseries Abstract}---\vgtc@abstxt%
+             \endgroup\par%
+         \fi%
+         \ifx\vgtc@keywords\vgtc@empty \else%
+             \begingroup%
+                 %{\normalsize\vgtc@absfont {\bfseries Keywords - } \vgtc@keywords}%
+                 \vspace{0.5\baselineskip}%
+                 \par\noindent \textbf{Index Terms}---\vgtc@keywords%
+             \endgroup\par%
+         \fi%
 %%          \ifx\vgtc@indexterms\vgtc@empty \else%
 %%              \begingroup%
 %%      %            {\normalsize\vgtc@absfont {\bfseries Index Terms - } %
@@ -617,79 +594,79 @@ e-mail to: tvcg@computer.org.
 %%                  \par\noindent \textbf{Index Terms -} \vgtc@indexterms%
 %%              \endgroup\par%
 %%          \fi%
-        }%
+         }%
 	\begin{center}\includegraphics{diamondrule.eps}\end{center}
-       %\vspace{\abstxtspace}%
+        %\vspace{\abstxtspace}%
 	\ifx\firstsectiontxt\vgtc@empty \else
 	  \section{\firstsectiontxt}
 	\fi
-    \fi%
+     \fi%
 }
 
 \let\vgtc@origmaketitle\maketitle
 \let\vgtc@origand\and
 \renewcommand{\maketitle}{%
-   \let\vgtc@title\@title%
-   \let\vgtc@author\@author%
-   \vgtc@origmaketitle%
-   \thispagestyle{empty}%
-   \ifvgtc@doublespaced%
-       \renewcommand{\baselinestretch}{1.66}\selectfont%
-   \fi%
-   \ifvgtcjournal% no copyrightspace for journal, but authorfooter
-     \ifvgtc@review\else
-       \renewcommand{\thefootnote}{}%
-       \footnotetext[0]{
-         \begin{flushleft}
-         \vskip -6pt
-         \begin{list}{\textbullet}{
-           \setlength{\partopsep}{0pt}
-           \setlength{\topsep}{0pt}
-           \setlength{\itemsep}{-2pt}
-           \setlength{\itemindent}{-4pt}
-           \setlength{\leftmargin}{12pt}}
-           \authorfootertext
-         \end{list}
-         \vskip 4pt
-         \ifvgtc@preprint\else\textit{\manuscriptnotetxt}\fi
-         \end{flushleft}
-       }%
-       \renewcommand{\thefootnote}{\arabic{footnote}}
-     \fi
-   \else%
-       \ifhavecopyrightspace\copyrightspace\fi%
-       \ifx\vgtc@abstxt\vgtc@empty \else%
-            \begingroup%
-                \begin{origabstract} \vgtc@abstxt \end{origabstract} %
-            \endgroup\par%
-            %\vspace{\abstxtspace}%
-        \fi%
-        \ifx\vgtc@keywords\vgtc@empty \else%
-            \begingroup%
-                %{\normalsize\vgtc@absfont {\bfseries Keywords - } \vgtc@keywords}%
-                \vspace{0.5\baselineskip}%
-                \par\noindent \textbf{Keywords: } \vgtc@keywords%
-            \endgroup\par%
-            %\vspace{\abstxtspace}%
-        \fi%
-        \ifx\vgtc@indexterms\vgtc@empty \else%
-            \begingroup%
-    %            {\normalsize\vgtc@absfont {\bfseries Index Terms - } %
-    %             \vgtc@indexterms}%
-                \vspace{0.5\baselineskip}%
-                \par\noindent \textbf{Index Terms:} \vgtc@indexterms%
-            \endgroup\par%
-            %\vspace{\abstxtspace}%
-        \fi%
+    \let\vgtc@title\@title%
+    \let\vgtc@author\@author%
+    \vgtc@origmaketitle%
+    \thispagestyle{empty}%
+    \ifvgtc@doublespaced%
+        \renewcommand{\baselinestretch}{1.66}\selectfont%
     \fi%
-    \ifx\firstsectiontxt\vgtc@empty \else
-      \ifvgtcjournal
-        \section*{}
-        \vskip -1.5em
-      \else
-        \section{\firstsectiontxt}
+    \ifvgtcjournal% no copyrightspace for journal, but authorfooter
+      \ifvgtc@review\else
+        \renewcommand{\thefootnote}{}%
+        \footnotetext[0]{
+          \begin{flushleft}
+          \vskip -6pt
+          \begin{list}{\textbullet}{
+            \setlength{\partopsep}{0pt}
+            \setlength{\topsep}{0pt}
+            \setlength{\itemsep}{-2pt}
+            \setlength{\itemindent}{-4pt}
+            \setlength{\leftmargin}{12pt}}
+            \authorfootertext
+          \end{list}
+          \vskip 4pt
+          \ifvgtc@preprint\else\textit{\manuscriptnotetxt}\fi
+          \end{flushleft}
+        }%
+        \renewcommand{\thefootnote}{\arabic{footnote}}
       \fi
-    \fi
+    \else%
+        \ifhavecopyrightspace\copyrightspace\fi%
+        \ifx\vgtc@abstxt\vgtc@empty \else%
+             \begingroup%
+                 \begin{origabstract} \vgtc@abstxt \end{origabstract} %
+             \endgroup\par%
+             %\vspace{\abstxtspace}%
+         \fi%
+         \ifx\vgtc@keywords\vgtc@empty \else%
+             \begingroup%
+                 %{\normalsize\vgtc@absfont {\bfseries Keywords - } \vgtc@keywords}%
+                 \vspace{0.5\baselineskip}%
+                 \par\noindent \textbf{Keywords: } \vgtc@keywords%
+             \endgroup\par%
+             %\vspace{\abstxtspace}%
+         \fi%
+         \ifx\vgtc@indexterms\vgtc@empty \else%
+             \begingroup%
+     %            {\normalsize\vgtc@absfont {\bfseries Index Terms - } %
+     %             \vgtc@indexterms}%
+                 \vspace{0.5\baselineskip}%
+                 \par\noindent \textbf{Index Terms:} \vgtc@indexterms%
+             \endgroup\par%
+             %\vspace{\abstxtspace}%
+         \fi%
+     \fi%
+     \ifx\firstsectiontxt\vgtc@empty \else
+       \ifvgtcjournal
+         \section*{}
+         \vskip -1.5em
+       \else
+         \section{\firstsectiontxt}
+       \fi
+     \fi
 }
 
 %% \newtoks\vgtc@abs
@@ -725,12 +702,12 @@ e-mail to: tvcg@computer.org.
 %% \fi
 
 \newcommand{\keywordsprefix}{%
-  \vspace{0.5\baselineskip}%q
-  \par\noindent \textbf{Index Terms - } \vgtc@keywords%
+   \vspace{0.5\baselineskip}%q
+   \par\noindent \textbf{Index Terms - } \vgtc@keywords%
 }
 \newenvironment{CRcatlistprefix}{%
-   \vspace{0.5\baselineskip}%
-   \par\noindent \textbf{CR Categories: }%
+    \vspace{0.5\baselineskip}%
+    \par\noindent \textbf{CR Categories: }%
 }{}
 
 % leave a 0.5 inch space at the bottom of the left column
@@ -740,16 +717,16 @@ e-mail to: tvcg@computer.org.
 \setlength{\vgtc@copyrightlength}{0.5in}
 
 \newcommand{\copyrightspace}{%
-   \renewcommand{\thefootnote}{}%
-   \footnotetext[0]{\rule[\vgtc@copyrightlength]{2.71828in}{0in}}%
-   \renewcommand{\thefootnote}{\arabic{footnote}}
+    \renewcommand{\thefootnote}{}%
+    \footnotetext[0]{\rule[\vgtc@copyrightlength]{2.71828in}{0in}}%
+    \renewcommand{\thefootnote}{\arabic{footnote}}
 }
 
 \newcommand{\nocopyrightspace}{\havecopyrightspacefalse}
 \renewcommand{\footnoterule}{%
-   \kern-3pt
-   \leftline{\hskip1in\vbox{\hrule width 0.45\columnwidth}\hfil}
-   \ifvgtcjournal \else \kern 2.6pt \fi
+    \kern-3pt
+    \leftline{\hskip1in\vbox{\hrule width 0.45\columnwidth}\hfil}
+    \ifvgtcjournal \else \kern 2.6pt \fi
 }
 
 \newcommand{\vgtc@contactname}{}
@@ -780,59 +757,60 @@ e-mail to: tvcg@computer.org.
 
 \newcommand{\suppresscover}{\vgtc@coverfalse}
 \newcommand{\vgtc@coverpage}{%
-   \begin{titlepage}%
-       \def\thanks##1{}
-       \let\and\vgtc@origand
-       \vgtc@setninepoint\normalsize
-       \renewcommand{\baselinestretch}{1}\selectfont
-       \begin{center}%
-           \vspace*{\fill}
-           {\LARGE\sffamily\bfseries\vgtc@sectionfont \vgtc@title \par}%
-           \vspace{2\baselineskip}%
-           {\large
-               \begin{tabular}[t]{c}%
-               \vgtc@author
-            \end{tabular}\par%
-           }%
-           \vspace{1\baselineskip}%
-           {\large \vgtc@affiliation \par}%
-           \addvspace{3\baselineskip}%
-           {Category: \vgtc@category \par}%
+    \begin{titlepage}%
+        \def\thanks##1{}
+        \let\and\vgtc@origand
+        \vgtc@setninepoint\normalsize
+        \renewcommand{\baselinestretch}{1}\selectfont
+        \begin{center}%
+            \vspace*{\fill}
+            {\LARGE\sffamily\bfseries\vgtc@sectionfont \vgtc@title \par}%
+            \vspace{2\baselineskip}%
+            {\large
+                \begin{tabular}[t]{c}%
+                \vgtc@author
+             \end{tabular}\par%
+            }%
+            \vspace{1\baselineskip}%
+            {\large \vgtc@affiliation \par}%
+            \addvspace{3\baselineskip}%
+            {Category: \vgtc@category \par}%
 %            \vspace{0.5\baselineskip}%		% no longer needed (1996)
 %            {Format: \vgtc@format \par}%	% no longer needed (1996)
-           \vspace{3\baselineskip}%
-           \begin{tabular}{ll}
-               Contact: & \vgtc@contactname \\[1\baselineskip]
-                        & \begin{tabular}[b]{@{}l@{}}
-                              \vgtc@contactaddress
-                              \end{tabular} \\[1\baselineskip]
-               phone: & \vgtc@contactphone \\
-               fax: & \vgtc@contactfax \\
-               email: & \vgtc@contactemail
-           \end{tabular}\par%
-           \vspace*{3\baselineskip}%
-           {Estimated \# of pages: \vgtc@estpages \par}%
-           \vspace*{\baselineskip}%
-           {Keywords: \vgtc@keywords \par}%
-           \vspace*{\fill}%
-           \begin{minipage}{5in}%
-               \the\vgtc@abs
-           \end{minipage}\par%
-           \vspace*{\fill}
-       \end{center}%
-   \end{titlepage}%
+            \vspace{3\baselineskip}%
+            \begin{tabular}{ll}
+                Contact: & \vgtc@contactname \\[1\baselineskip]
+                         & \begin{tabular}[b]{@{}l@{}}
+                               \vgtc@contactaddress
+                               \end{tabular} \\[1\baselineskip]
+                phone: & \vgtc@contactphone \\
+                fax: & \vgtc@contactfax \\
+                email: & \vgtc@contactemail
+            \end{tabular}\par%
+            \vspace*{3\baselineskip}%
+            {Estimated \# of pages: \vgtc@estpages \par}%
+            \vspace*{\baselineskip}%
+            {Keywords: \vgtc@keywords \par}%
+            \vspace*{\fill}%
+            \begin{minipage}{5in}%
+                \the\vgtc@abs
+            \end{minipage}\par%
+            \vspace*{\fill}
+        \end{center}%
+    \end{titlepage}%
 }
 
 \AtEndDocument{\ifvgtc@cover \vgtc@coverpage \fi}
 \newcommand{\vgtcopening}[1]{%
- \ClassError{vgtc}{%
-   The vgtcopening command is no longer needed.\MessageBreak%
-   Switch to the maketitle command and abstract environment}{}}
+  \ClassError{vgtc}{%
+    The vgtcopening command is no longer needed.\MessageBreak%
+    Switch to the maketitle command and abstract environment}{}}
 \InputIfFileExists{vgtc.cfg}
-       {\typeout{***************************************^^J%
-                 * Local config file vgtc.cfg used *^^J%
-                 ***************************************}}
-       {}
+        {\typeout{***************************************^^J%
+                  * Local config file vgtc.cfg used *^^J%
+                  ***************************************}}
+        {}
 \endinput
 
 % End of file 'vgtc.cls'.
+

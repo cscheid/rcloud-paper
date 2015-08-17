@@ -1,7 +1,8 @@
 \begin{figure*}
-\centering
-\includegraphics[width=.9\linewidth]{fig/system/system.pdf}
-\caption{\label{fig:system}A diagram of RCloud's architecture. RCloud was specifically designed to leverage existing systems and standards, and so communication between most parts of the system happens through HTTP. As a result, some desirable features of RCloud become natural, such as native support for RCloud notebooks as web services. }
+  \centering
+\includegraphics[width=.8\linewidth]{fig/system/system.pdf}
+  \vspace{-1em}
+\caption{\small \label{fig:system}A diagram of RCloud's architecture. RCloud was specifically designed to leverage existing systems and standards, and so communication between most parts of the system happens through HTTP. As a result, some desirable features of RCloud become natural, such as native support for RCloud notebooks as web services. } \vspace{-1.5em}
 \end{figure*}
 
 \section{Related Work\label{sec:related}}
@@ -145,10 +146,12 @@ environments \cite{Guo:2010:TPI}.
 The goal of RCloud is to define an environment in which many such
 techniques may be integrated and made available to a broad community.
 \begin{figure*}
-\centering
-\includegraphics[width=.95\linewidth]{fig/notebook/notebook.pdf}
-\caption{\label{fig:notebook}An RCloud notebook is a sequence of
-\emph{cells}, each a snippet of source in one of the supported languages (typically R, but Python and others are also supported) or Markdown. The main creation workflow involves editing notebooks, which are transparently stored as git repositories in GitHub, providing us with easy access to primitives for version tracking. Notebooks can be executed as they're edited (left), or in a standalone viewer (right), via a slightly different URL. This provides a lightweight, low-friction mechanism for sharing results which we discuss in detail in Section~\ref{sec:interviews}. }
+  \centering
+\includegraphics[width=.85\linewidth]{fig/notebook/notebook.pdf}
+  \vspace{-1em}
+\caption{\small \label{fig:notebook}An RCloud notebook is a sequence of
+  \emph{cells}, each a snippet of source in one of the supported languages (typically R, but Python and others are also supported) or Markdown. The main creation workflow involves editing notebooks, which are transparently stored as git repositories in GitHub, providing us with easy access to primitives for version tracking. Notebooks can be executed as they're edited (left), or in a standalone viewer (right), via a slightly different URL. This provides a lightweight, low-friction mechanism for sharing results which we discuss in detail in Section~\ref{sec:interviews}. }
+\vspace{-1.5em}
 \end{figure*}
 
 One high-level goal is to reduce the gap between implementers and

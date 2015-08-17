@@ -1,4 +1,5 @@
-\documentclass[journal]{vgtc}                % final (journal style)
+\documentclass{vgtc}                % final (journal style)
+\let\ifpdf\relax
 %\documentclass[review,journal]{vgtc}         % review (journal style)
 %\documentclass[widereview]{vgtc}             % wide-spaced review
 %\documentclass[preprint,journal]{vgtc}       % preprint (journal style)
@@ -27,10 +28,11 @@
 
 \usepackage{mathptmx}
 \usepackage{graphicx}
-\usepackage{times}
 \usepackage{xspace}
 \usepackage{amssymb}
 \newcommand{\comment}[1]{}
+
+\usepackage{times}
 
 % \usepackage[onecolumn]{multicol}
 
@@ -51,36 +53,21 @@
 %% with other math-related packages, you may want to disable it.
 
 %% This turns references into clickable hyperlinks.
-\usepackage[bookmarks,backref=true,linkcolor=black]{hyperref} %,colorlinks
-\hypersetup{
-  pdfauthor = {},
-  pdftitle = {},
-  pdfsubject = {},
-  pdfkeywords = {},
-  colorlinks=true,
-  linkcolor= black,
-  citecolor= black,
-  pageanchor=true,
-  urlcolor = black,
-  plainpages = false,
-  linktocpage
-}
 
 %% If you are submitting a paper to a conference for review with a double
 %% blind reviewing process, please replace the value ``0'' below with your
 %% OnlineID. Otherwise, you may safely leave it at ``0''.
-\onlineid{341}
 
 %% declare the category of your paper, only shown in review mode
-\vgtccategory{Research}
 
 %% allow for this line if you want the electronic option to work properly
-\vgtcinsertpkg
 
 %% In preprint mode you may define your own headline.
 %\preprinttext{To appear in an IEEE VGTC sponsored conference.}
 
 %% Paper title.
+
+\linespread{0.9575} % I hate myself
 
 \title{Collaborative Visual Analysis with RCloud}
 % \title{Integrating Social Visual Analysis and Deployment with RCloud}
@@ -89,24 +76,30 @@
 %% This is how authors are specified in the journal style
 
 %% indicate IEEE Member or Student Member in form indicated below
-\author{Stephen North, Carlos Scheidegger, Simon Urbanek and
-  Gordon Woodhull}
+\author{Stephen North \thanks{e-mail: s.c.n@ieee.org}\\ %
+  \scriptsize Infovisible %
+  \and Carlos Scheidegger \thanks{e-mail: cscheid@cs.arizona.edu}\\ %
+  \scriptsize University of Arizona %
+  \and Simon Urbanek\thanks{e-mail: urbanek@research.att.com}\\ %
+  \scriptsize AT\&T Labs %
+  \and Gordon Woodhull\thanks{e-mail: gordon@research.att.com}\\ %
+  \scriptsize AT\&T Labs}
 
-\authorfooter{
-%% insert punctuation at end of each item
-\item 
-Stephen North is with Infovisible, Oldwick, USA, and graphviz.org.
-\\Email: s.c.n@ieee.org
-\item
-Carlos Scheidegger is with the University of Arizona, USA.
-\\Email: cscheid@email.arizona.edu
-\item
-Simon Urbanek is with AT\&T Labs in Bedminster, USA.
-\\Email: urbanek@research.att.com
-\item
-Gordon Woodhull is with AT\&T Labs in New York, USA.
-\\Email: gordon@research.att.com
-}
+%% \authorfooter{
+%% %% insert punctuation at end of each item
+%% \item 
+%% Stephen North is with Infovisible, Oldwick, USA, and graphviz.org.
+%% \\Email: s.c.n@ieee.org
+%% \item
+%% Carlos Scheidegger is with the University of Arizona, USA.
+%% \\Email: cscheid@email.arizona.edu
+%% \item
+%% Simon Urbanek is with AT\&T Labs in Bedminster, USA.
+%% \\Email: urbanek@research.att.com
+%% \item
+%% Gordon Woodhull is with AT\&T Labs in New York, USA.
+%% \\Email: gordon@research.att.com
+%% }
 
 %other entries to be set up for journal
 % \shortauthortitle{Biv \MakeLowercase{\textit{et al.}}: Global Illumination for Fun and Profit}
@@ -150,16 +143,16 @@ Gordon Woodhull is with AT\&T Labs in New York, USA.
 %% Uncomment below to include a teaser figure.
 \teaser{
   \centering
-  \includegraphics[width=.80\linewidth]{fig/teaser/teaser.pdf}
+  \includegraphics[width=.70\linewidth]{fig/teaser/teaser.pdf}
   % \vspace{-.5em}
-  \caption{
+  \caption{ \small
 An overview of features in RCloud.
 RCloud is an environment in which \emph{hackers} and \emph{scripters}
 solve problems in data and visual analytics and create web applications
 and services.  It is a shared environment, in which \emph{discoverability} is a concern.
 RCloud supports search, annotation, recommendation, and commenting for all notebooks, and provides an overview where users can \emph{browse} popular and recent analyses. When problems and data sources change frequently, deployment can become very costly; RCloud supports \emph{transparent and automatic} deployment of analyses as web pages and web services, allowing a seamless transition from data exploration to production.
   }
-% \vspace{-.5em}
+ \vspace{-1.5em}
 }
 
 %% Uncomment below to disable the manuscript note
